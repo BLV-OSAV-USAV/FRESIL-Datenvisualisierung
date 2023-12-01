@@ -9,13 +9,13 @@ from bs4 import BeautifulSoup
 app = dash.Dash(__name__, suppress_callback_exceptions=True, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 
-steckbrief = pd.read_csv('ad_steckbrief-20231128.csv', sep='|')
-meldung = pd.read_csv('ad_meldung-20231128.csv', sep='|')
-gefahr = pd.read_csv('ad_gefahr-20231128.csv', sep='|')
+steckbrief = pd.read_csv('../csv-files/ad_steckbrief-20231128.csv', sep='|')
+meldung = pd.read_csv('../csv-files/ad_meldung-20231128.csv', sep='|')
+gefahr = pd.read_csv('../csv-files/ad_gefahr-20231128.csv', sep='|')
 
-steckbriefXmeldung = pd.read_csv('ad_meldung_ad_steckbrief-20231128.csv', sep='|')
-steckbriefXgefahr = pd.read_csv('ad_steckbrief_ad_gefahr-20231128.csv', sep='|')
-meldungXgefahr = pd.read_csv('ad_meldung_ad_gefahr-20231128.csv', sep='|')
+steckbriefXmeldung = pd.read_csv('../csv-files/ad_meldung_ad_steckbrief-20231128.csv', sep='|')
+steckbriefXgefahr = pd.read_csv('../csv-files/ad_steckbrief_ad_gefahr-20231128.csv', sep='|')
+meldungXgefahr = pd.read_csv('../csv-files/ad_meldung_ad_gefahr-20231128.csv', sep='|')
 
 
 gefahr_counts = steckbriefXgefahr['gefahr_id'].value_counts().reset_index()

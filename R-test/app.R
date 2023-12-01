@@ -4,13 +4,13 @@ library(DT)
 library(dplyr)
 
 
-steckbrief = read.csv('../ad_steckbrief-20231128.csv', sep='|')
-meldung = read.csv('../ad_meldung-20231128.csv', sep='|')
-gefahr = read.csv('../ad_gefahr-20231128.csv', sep='|')
+steckbrief = read.csv('../csv-files/ad_steckbrief-20231128.csv', sep='|')
+meldung = read.csv('../csv-files/ad_meldung-20231128.csv', sep='|')
+gefahr = read.csv('../csv-files/ad_gefahr-20231128.csv', sep='|')
 
-steckbriefXmeldung = read.csv('../ad_meldung_ad_steckbrief-20231128.csv', sep='|')
-steckbriefXgefahr = read.csv('../ad_steckbrief_ad_gefahr-20231128.csv', sep='|')
-meldungXgefahr = read.csv('../ad_meldung_ad_gefahr-20231128.csv', sep='|')
+steckbriefXmeldung = read.csv('../csv-files/ad_meldung_ad_steckbrief-20231128.csv', sep='|')
+steckbriefXgefahr = read.csv('../csv-files/ad_steckbrief_ad_gefahr-20231128.csv', sep='|')
+meldungXgefahr = read.csv('../csv-files/ad_meldung_ad_gefahr-20231128.csv', sep='|')
 
 gefahr_counts <- steckbriefXgefahr %>%
   group_by(gefahr_id) %>%

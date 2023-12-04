@@ -4,23 +4,20 @@ library(DT)
 library(dplyr)
 
 
-steckbrief = read.csv('../csv-files/ad_steckbrief-20231128.csv', sep='|')
-meldung = read.csv('../csv-files/ad_meldung-20231128.csv', sep='|')
-gefahr = read.csv('../csv-files/ad_gefahr-20231128.csv', sep='|')
+steckbrief = read.csv('/home/2220463/ADURA/csv-files/ad_steckbrief-20231128.csv', sep='|')
+meldung = read.csv('/home/2220463/ADURA/csv-files/ad_meldung-20231128.csv', sep='|')
+gefahr = read.csv('/home/2220463/ADURA/csv-files/ad_gefahr-20231128.csv', sep='|')
 
-steckbriefXmeldung = read.csv('../csv-files/ad_meldung_ad_steckbrief-20231128.csv', sep='|')
-steckbriefXgefahr = read.csv('../csv-files/ad_steckbrief_ad_gefahr-20231128.csv', sep='|')
-meldungXgefahr = read.csv('../csv-files/ad_meldung_ad_gefahr-20231128.csv', sep='|')
+steckbriefXmeldung = read.csv('/home/2220463/ADURA/csv-files/ad_meldung_ad_steckbrief-20231128.csv', sep='|')
+steckbriefXgefahr = read.csv('/home/2220463/ADURA/csv-files/ad_steckbrief_ad_gefahr-20231128.csv', sep='|')
+meldungXgefahr = read.csv('/home/2220463/ADURA/csv-files/ad_meldung_ad_gefahr-20231128.csv', sep='|')
 
-gefahr_counts <- steckbriefXgefahr %>%
+gefahr_counts <- meldungXgefahr %>%
   group_by(gefahr_id) %>%
   summarize(count = n()) %>%
+  rename(id = gefahr_id) %>%
   left_join(gefahr[, c('id', 'bezeichnung_de')], by = 'id')
 
-# Remove HTML tags from bezeichnung_de for all rows
-data_gefahr$bezeichnung_de <- sapply(data_gefahr$bezeichnung_de, function(x) {
-  xml2::xml_text(xml2::read_html(x))
-})
 
 initial_categories <- 20
 
@@ -38,7 +35,7 @@ ui <- fluidPage(
 server <- function(input, output, session) {
   gefahr_counts <- data.frame(table(data_gefahr$gefahr_id))
   colnames(gefahr_counts) <- c('id', 'count')
-  gefahr_counts <- merge(gefahr_counts, data_gefahr[, c('id', 'bezeichnung_de')], by = 'id', all.x = TRUE)
+  gefahr_counts <- merge(gefahr_counts, gefahr_counts[, c('id', 'bezeichnung_de')], by = 'id', all.x = TRUE)
   
   output$treemap <- renderPlotly({
     treemap <- plot_ly(gefahr_counts[1:initial_categories, ], labels = ~bezeichnung_de, values = ~count, type = 'treemap')

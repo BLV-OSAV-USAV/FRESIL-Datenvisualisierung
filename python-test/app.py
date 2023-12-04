@@ -18,7 +18,7 @@ steckbriefXgefahr = pd.read_csv('../csv-files/ad_steckbrief_ad_gefahr-20231128.c
 meldungXgefahr = pd.read_csv('../csv-files/ad_meldung_ad_gefahr-20231128.csv', sep='|')
 
 
-gefahr_counts = steckbriefXgefahr['gefahr_id'].value_counts().reset_index()
+gefahr_counts = meldungXgefahr['gefahr_id'].value_counts().reset_index()
 gefahr_counts.columns = ['id', 'count']
 gefahr_counts = pd.merge(gefahr_counts, gefahr[['id', 'bezeichnung_de']], on='id', how='left')
 

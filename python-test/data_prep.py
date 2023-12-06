@@ -10,17 +10,10 @@ def html_parser(path):
 def public_data(doc):
     return doc[doc['is_public']]
 
-def create_treemap(gefahr_counts, initial_categories):
-    return px.treemap(gefahr_counts.head(initial_categories),
+def create_treemap(csv_file, initial_categories):
+    return px.treemap(csv_file.head(initial_categories),
                      path=['bezeichnung_de'],
                      values='count',
                      title=f'Top {initial_categories} Gefahr')
                      
-def load_meldung_data():
-    # Load and preprocess meldung data
-    meldung = public_data(html_parser('../csv-files/ad_meldung-20231128.csv'))
-    return meldung.to_dict('records')
 
-def meldung_columns(meldung):
-    # Define columns for meldung_table
-    return [{"name": i, "id": i} for i in meldung.columns]

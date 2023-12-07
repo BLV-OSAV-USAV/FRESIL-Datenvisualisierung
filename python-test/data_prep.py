@@ -12,10 +12,13 @@ def public_data(doc):
     return doc[doc['is_public']]
 
 def create_treemap(csv_file, initial_categories):
-    return px.treemap(csv_file.head(initial_categories),
+    fig = px.treemap(csv_file.head(initial_categories),
                      path=['bezeichnung_de'],
-                     values='count',
-                     title=f'Top {initial_categories} Gefahr')
+                     values='count')
+    fig.update_layout(margin=dict(l=0, r=0, b=0, t=0))
+    fig.update_traces(textfont=dict(size=20))
+    fig.update_traces(hovertemplate='<b>%{label}<b> <br> Meldungenanzahl: %{value}')
+    return fig
 
 def create_table(title, file):
     return html.Div([html.H3(title), dash_table.DataTable(style_data={'whiteSpace': 'normal', 'height': 'auto'}, 

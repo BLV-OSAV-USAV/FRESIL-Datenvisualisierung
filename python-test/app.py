@@ -32,11 +32,10 @@ date = html.Center(dcc.DatePickerRange(start_date_placeholder_text="Start Period
                             end_date_placeholder_text="End Period", id='date_filter', display_format='DD/MM/YYYY', updatemode = 'bothdates', clearable=True))
 
 app.layout = html.Div([
-    html.H1('ADURA', style={'text-align':'center', 'font-size':'60px'}),
+    html.H1('Adura', style={'font-size':'40px', 'font-family': 'math', 'margin-left':'30px', 'margin-top':'30px'}),
     html.Div([
         dcc.Graph(id='treemap', figure=data_prep.create_treemap(gefahr_counts, 20)),
-        html.Center(['Anzahl der Gefahr: ', daq.NumericInput(id='top_gefahr', value=20, max= max_gefahr, style={'width':'50px'})]),
-        date        
+        html.Center(['Anzahl der Gefahr: ', daq.NumericInput(id='top_gefahr', value=20, max= max_gefahr, style={'width':'50px'}), date]),        
     ]),
     html.Br(),
     html.Div(id='tbl_meldung'),

@@ -6,6 +6,7 @@ import data_prep
 from dash.exceptions import PreventUpdate
 import pandas as pd
 from dash import callback_context
+import dash_daq as daq
 
 app = dash.Dash(__name__, suppress_callback_exceptions=True, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
@@ -21,6 +22,7 @@ meldungXgefahr = data_prep.html_parser('../csv-files/ad_meldung_ad_gefahr-202311
 gefahr_counts = meldungXgefahr['gefahr_id'].value_counts().reset_index()
 gefahr_counts.columns = ['id', 'count']
 gefahr_counts = pd.merge(gefahr_counts, gefahr[['id', 'bezeichnung_de']], on='id', how='left')
+max_gefahr = len(gefahr_counts)
 
 # Initialize the list directly in the layout
 bezeichnung_list = [html.Li(bez) for bez in gefahr_counts['bezeichnung_de']]
@@ -30,10 +32,10 @@ date = html.Center(dcc.DatePickerRange(start_date_placeholder_text="Start Period
                             end_date_placeholder_text="End Period", id='date_filter', display_format='DD/MM/YYYY', updatemode = 'bothdates', clearable=True))
 
 app.layout = html.Div([
-    html.H1('ADURA'),
+    html.H1('ADURA', style={'text-align':'center', 'font-size':'60px'}),
     html.Div([
         dcc.Graph(id='treemap', figure=data_prep.create_treemap(gefahr_counts, 20)),
-        html.Center(dcc.Input(type='number', id='top_gefahr', value=20)),
+        html.Center(['Anzahl der Gefahr: ', daq.NumericInput(id='top_gefahr', value=20, max= max_gefahr, style={'width':'50px'})]),
         date        
     ]),
     html.Br(),
@@ -98,18 +100,10 @@ def display_selected_data(click_data):
         selected_id = selected_element['id']
 
         selected_gefahr_counts_row = gefahr_counts[gefahr_counts['bezeichnung_de'] == selected_id]
-        filtered_data_meldung = meldungXgefahr[meldungXgefahr['gefahr_id'] == selected_gefahr_counts_row['id'].item()]
-        selected_meldung_table = meldung[meldung['id'].isin(filtered_data_meldung['meldung_id'])]
-        selected_meldung_table = selected_meldung_table[['titel', 'kurzinfo', 'sterne', 'erf_date']]
 
-        selected_meldung_table =  data_prep.create_table('Meldung', selected_meldung_table)
+        selected_meldung_table = data_prep.filter_table('Meldung', meldung, selected_gefahr_counts_row, meldungXgefahr, ['titel', 'kurzinfo', 'sterne', 'erf_date'])                                                  
+        selected_steckbrief_table = data_prep.filter_table('Steckbrief', steckbrief, selected_gefahr_counts_row, meldungXgefahr,['titel', 'kurzinfo', 'priority', 'erf_date'])
 
-        filtered_data_steckbrief = meldungXgefahr[meldungXgefahr['gefahr_id'] == selected_gefahr_counts_row['id'].item()]
-        selected_steckbrief_table = steckbrief[steckbrief['id'].isin(filtered_data_steckbrief['meldung_id'])]
-        selected_steckbrief_table = selected_steckbrief_table[['titel', 'kurzinfo', 'priority', 'erf_date']]
-
-        selected_steckbrief_table = data_prep.create_table('Steckbrief', selected_steckbrief_table)                                                       
-        
         return [selected_meldung_table, selected_steckbrief_table]
     else:
         return [None, None]

@@ -32,3 +32,11 @@ def create_table(title, file):
                                                                     export_headers='display')])
                      
 
+def filter_table(title, file, gefahr_count_row, gefahr_id_file, columns):
+
+    filtered_data = gefahr_id_file[gefahr_id_file['gefahr_id'] == gefahr_count_row['id'].item()]
+    selected_table = file[file['id'].isin(filtered_data['meldung_id'])]
+    selected_table = selected_table[columns]
+    selected_table = create_table(title, selected_table)
+    
+    return selected_table

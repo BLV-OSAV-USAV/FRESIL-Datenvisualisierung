@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import pandas as pd
 import plotly.express as px
+from dash import html, dcc, dash_table
 
 def html_parser(path):
     csv_file = pd.read_csv(path, sep='|')
@@ -15,5 +16,19 @@ def create_treemap(csv_file, initial_categories):
                      path=['bezeichnung_de'],
                      values='count',
                      title=f'Top {initial_categories} Gefahr')
+
+def create_table(title, file):
+    return html.Div([html.H3(title), dash_table.DataTable(style_data={'whiteSpace': 'normal', 'height': 'auto'}, 
+                                                                    data = file.to_dict('records'), 
+                                                                    columns = [{"name": i, "id": i} for i in file.columns],
+                                                                    filter_action="native",
+                                                                    sort_action="native",
+                                                                    sort_mode="multi",
+                                                                    page_action="native",
+                                                                    page_current= 0,
+                                                                    page_size= 5,
+                                                                    style_cell={'textAlign': 'left'},
+                                                                    export_format='xlsx',
+                                                                    export_headers='display')])
                      
 

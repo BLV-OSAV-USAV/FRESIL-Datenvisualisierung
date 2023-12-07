@@ -102,38 +102,13 @@ def display_selected_data(click_data):
         selected_meldung_table = meldung[meldung['id'].isin(filtered_data_meldung['meldung_id'])]
         selected_meldung_table = selected_meldung_table[['titel', 'kurzinfo', 'sterne', 'erf_date']]
 
-        selected_meldung_table = html.Div([html.H3('Meldung'),
-                                                dash_table.DataTable(style_data={'whiteSpace': 'normal', 'height': 'auto'}, 
-                                                                    data = selected_meldung_table.to_dict('records'), 
-                                                                    columns = [{"name": i, "id": i} for i in selected_meldung_table.columns],
-                                                                    filter_action="native",
-                                                                    sort_action="native",
-                                                                    sort_mode="multi",
-                                                                    page_action="native",
-                                                                    page_current= 0,
-                                                                    page_size= 5,
-                                                                    style_cell={'textAlign': 'left'},
-                                                                    export_format='xlsx',
-                                                                    export_headers='display')])
-
+        selected_meldung_table =  data_prep.create_table('Meldung', selected_meldung_table)
 
         filtered_data_steckbrief = meldungXgefahr[meldungXgefahr['gefahr_id'] == selected_gefahr_counts_row['id'].item()]
         selected_steckbrief_table = steckbrief[steckbrief['id'].isin(filtered_data_steckbrief['meldung_id'])]
         selected_steckbrief_table = selected_steckbrief_table[['titel', 'kurzinfo', 'priority', 'erf_date']]
 
-        selected_steckbrief_table = html.Div([html.H3('Steckbrief'),
-                                                dash_table.DataTable(style_data={'whiteSpace': 'normal', 'height': 'auto'}, 
-                                                                    data = selected_steckbrief_table.to_dict('records'), 
-                                                                    columns = [{"name": i, "id": i} for i in selected_steckbrief_table.columns],
-                                                                    filter_action="native",
-                                                                    sort_action="native",
-                                                                    sort_mode="multi",
-                                                                    page_action="native",
-                                                                    page_current= 0,
-                                                                    page_size= 5,
-                                                                    style_cell={'textAlign': 'left'},
-                                                                    export_format='xlsx',
-                                                                    export_headers='display')])                                                            
+        selected_steckbrief_table = data_prep.create_table('Steckbrief', selected_steckbrief_table)                                                       
         
         return [selected_meldung_table, selected_steckbrief_table]
     else:

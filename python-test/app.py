@@ -8,12 +8,14 @@ import pandas as pd
 from dash import callback_context
 import dash_daq as daq
 
-app = dash.Dash(__name__, suppress_callback_exceptions=True, external_stylesheets=[dbc.themes.BOOTSTRAP])
+app = dash.Dash(__name__, suppress_callback_exceptions=True, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.FONT_AWESOME])
 
 # Load data using data_prep functions
 gefahr = data_prep.html_parser('../csv-files/ad_gefahr-20231128.csv')
 meldung = data_prep.public_data(data_prep.html_parser('../csv-files/ad_meldung-20231128.csv'))
+meldung['link'] = meldung['id'].apply(lambda x: f'[<i class="fa-solid fa-arrow-up-right-from-square"></i>](/meldung/{x})')
 steckbrief = data_prep.public_data(data_prep.html_parser('../csv-files/ad_steckbrief-20231128.csv'))
+steckbrief['link'] = steckbrief['id'].apply(lambda x: f'[<i class="fa-solid fa-arrow-up-right-from-square"></i>](/steckbrief/{x})')
 
 steckbriefXmeldung = data_prep.html_parser('../csv-files/ad_meldung_ad_steckbrief-20231128.csv')
 steckbriefXgefahr = data_prep.html_parser('../csv-files/ad_steckbrief_ad_gefahr-20231128.csv')
@@ -100,8 +102,8 @@ def display_selected_data(click_data):
 
         selected_gefahr_counts_row = gefahr_counts[gefahr_counts['bezeichnung_de'] == selected_id]
 
-        selected_meldung_table = data_prep.filter_table('Meldung', meldung, selected_gefahr_counts_row, meldungXgefahr, ['titel', 'kurzinfo', 'sterne', 'erf_date'])                                                  
-        selected_steckbrief_table = data_prep.filter_table('Steckbrief', steckbrief, selected_gefahr_counts_row, meldungXgefahr,['titel', 'kurzinfo', 'priority', 'erf_date'])
+        selected_meldung_table = data_prep.filter_table('Meldung', meldung, selected_gefahr_counts_row, meldungXgefahr, ['titel', 'kurzinfo', 'sterne', 'erf_date', 'link'])                                                  
+        selected_steckbrief_table = data_prep.filter_table('Steckbrief', steckbrief, selected_gefahr_counts_row, meldungXgefahr,['titel', 'kurzinfo', 'priority', 'erf_date','link'])
 
         return [selected_meldung_table, selected_steckbrief_table]
     else:

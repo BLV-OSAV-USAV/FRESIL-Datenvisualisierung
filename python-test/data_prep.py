@@ -23,7 +23,8 @@ def create_treemap(csv_file, initial_categories):
 def create_table(title, file):
     return html.Div([html.H3(title), dash_table.DataTable(style_data={'whiteSpace': 'normal', 'height': 'auto'}, 
                                                                     data = file.to_dict('records'), 
-                                                                    columns = [{"name": i, "id": i} for i in file.columns],
+                                                                    columns = [{'name': i, 'id': i, 'presentation': 'markdown'} if i == 'link' else {'name': i, 'id': i} for i in file.columns],
+                                                                    markdown_options={"html": True},
                                                                     filter_action="native",
                                                                     sort_action="native",
                                                                     sort_mode="multi",

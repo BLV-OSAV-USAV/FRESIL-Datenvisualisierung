@@ -11,9 +11,14 @@ def html_parser(path):
 def public_data(file):
     return file[file['is_public']]
 
+def autorisierung_dok(file):
+    return file[file['autorisierung'] == 10]
 
 def prep_data(path):
     file = html_parser(path)
 
     if 'is_public' in file.columns:
         file = public_data(file)
+
+    if 'autorisierung' in file.columns:
+        file = autorisierung_dok(file)

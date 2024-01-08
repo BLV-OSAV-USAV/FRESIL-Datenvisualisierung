@@ -1,3 +1,4 @@
 .env
 Awisa-Datenbank-struktur.png
 *.csv
+.venv

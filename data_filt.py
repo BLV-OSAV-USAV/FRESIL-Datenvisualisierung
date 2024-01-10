@@ -1,29 +1,50 @@
 from bs4 import BeautifulSoup
 import pandas as pd
 import os
+import re
 
 def html_parser(path):
     # Read CSV file using pandas with '|' as the separator
     csv_file = pd.read_csv(path, sep='|')
     # Apply BeautifulSoup to each cell in the DataFrame to extract text from HTML
     csv_file = csv_file.applymap(lambda x: BeautifulSoup(x, 'html.parser').text if isinstance(x, str) else x)
-    return csv_file            
+    return csv_file
+
+def remove_stx_characters(entry):
+    # Replace ASCII STX character (code 2) with an empty string
+    if isinstance(entry, str):
+        return entry.replace('\x02', '')
+    else:
+        return entry
 
 def public_data(file):
     # Filter rows where 'is_public' column has True values
     return file[file['is_public']]
 
 def autorisierung_dok(file):
-    # Filter rows where 'autorisierung' column has a value of 10
+    # Filter rows where 'autorisierung' column has a value of 10 (Public)
     return file[file['autorisierung'] == 10]
 
 def open_status(file):
-    # Filter rows where 'status' column has values 20 or 70
+    # Filter rows where 'status' column has values 20 (Freigegeben) or 70 (Abgeschlossen)
     return file[file['status'].isin([20, 70])]
+
+def format_single_line(entry):
+    # get rid of new lines
+    if isinstance(entry, str):
+        return re.sub(r'\s+', ' ', entry)
+    else:
+        return entry
 
 def prep_data(input_path, output_path):
     try:
         file = html_parser(input_path)
+
+        # Apply remove_stx_characters to each cell in the DataFrame
+        file = file.map(remove_stx_characters)
+
+        # Apply format_single_line to each cell in the DataFrame
+        file = file.map(format_single_line)
 
         # Define functions to filter data based on specific columns
         column_functions = {
@@ -38,7 +59,7 @@ def prep_data(input_path, output_path):
                 file = func(file)
 
         # Save the filtered DataFrame to a new CSV file using '#' as the separator, " as quotation, and utf-8 encoding
-        return file.to_csv(output_path, sep='#', quotechar='"', index=False, encoding='utf-8-sig')
+        return file.to_csv(output_path, sep='#', quotechar='`', index=False, encoding='utf-8-sig')
 
     except pd.errors.EmptyDataError:
         # Handle the case where the file is empty

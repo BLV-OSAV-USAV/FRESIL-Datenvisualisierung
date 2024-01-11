@@ -10,24 +10,6 @@ def html_parser(path):
     csv_file = csv_file.applymap(lambda x: BeautifulSoup(x, 'html.parser').text if isinstance(x, str) else x)
     return csv_file
 
-def public_data(file):
-    # Filter rows where 'is_public' column has True values
-    return file[file['is_public']]
-
-def autorisierung_dok(file):
-    # Filter rows where 'autorisierung' column has a value of 10 (Public)
-    return file[file['autorisierung'] == 10]
-
-def open_status(file):
-    # Filter rows where 'status' column has values 20 (Freigegeben) or 70 (Abgeschlossen)
-    return file[file['status'].isin([20, 70])]
-
-def convert_datetime_format(file):
-    # change the format of dates to be compatible with cube creator
-    for column in ['erf_date','mut_date']:
-        file[column] = pd.to_datetime(file[column], format='%d.%m.%Y %H:%M:%S').dt.strftime('%Y-%m-%dT%H:%M:%S')
-    return file
-
 def format_single_line(entry):
     # get rid of new lines
     if isinstance(entry, str):
@@ -41,6 +23,34 @@ def remove_stx_characters(entry):
         return entry.replace('\x02', '')
     else:
         return entry
+
+def public_data(file, column):
+    # Filter rows where 'is_public' column has True values
+    return file[file[column]]
+
+def autorisierung_dok(file, column):
+    # Filter rows where 'autorisierung' column has a value of 10 (Public)
+    return file[file[column] == 10]
+
+def open_status(file, column):
+    # Filter rows where 'status' column has values 20 (Freigegeben) or 70 (Abgeschlossen)
+    return file[file[column].isin([20, 70])]
+
+def convert_to_bool(file, column):
+    #convert boolean value to be compatible to cube creator
+    file['signal'] = file['signal'].map({True: 'true', False: 'false'})
+    return file
+
+def convert_to_int(file, column):
+    file[column] = file[column].round().astype('Int64') 
+    return file   
+
+def convert_datetime_format(file, column):
+    # change the format of dates to be compatible with cube creator
+    for column in ['erf_date','mut_date']:
+        file[column] = pd.to_datetime(file[column], format='%d.%m.%Y %H:%M:%S').dt.strftime('%Y-%m-%dT%H:%M:%S')
+    return file
+
 
 def prep_data(input_path, output_path):
     try:
@@ -57,13 +67,17 @@ def prep_data(input_path, output_path):
             'is_public': public_data,
             'autorisierung': autorisierung_dok,
             'status': open_status, 
-            'erf_date': convert_datetime_format
+            'erf_date': convert_datetime_format,
+            'signal': convert_to_bool,
+            'sterne': convert_to_int,
+            'page_count': convert_to_int,
+            'publikation_id': convert_to_int
         }
 
         # Apply the specified filter function for each column
         for column, func in column_functions.items():
             if column in file.columns:
-                file = func(file)
+                file = func(file, column)
 
         # Save the filtered DataFrame to a new CSV file using '#' as the separator, " as quotation, and utf-8 encoding
         return file.to_csv(output_path, sep='#', quotechar='`', index=False, encoding='utf-8-sig')

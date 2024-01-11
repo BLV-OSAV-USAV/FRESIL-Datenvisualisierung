@@ -10,13 +10,6 @@ def html_parser(path):
     csv_file = csv_file.applymap(lambda x: BeautifulSoup(x, 'html.parser').text if isinstance(x, str) else x)
     return csv_file
 
-def remove_stx_characters(entry):
-    # Replace ASCII STX character (code 2) with an empty string
-    if isinstance(entry, str):
-        return entry.replace('\x02', '')
-    else:
-        return entry
-
 def public_data(file):
     # Filter rows where 'is_public' column has True values
     return file[file['is_public']]
@@ -29,10 +22,23 @@ def open_status(file):
     # Filter rows where 'status' column has values 20 (Freigegeben) or 70 (Abgeschlossen)
     return file[file['status'].isin([20, 70])]
 
+def convert_datetime_format(file):
+    # change the format of dates to be compatible with cube creator
+    for column in ['erf_date','mut_date']:
+        file[column] = pd.to_datetime(file[column], format='%d.%m.%Y %H:%M:%S').dt.strftime('%Y-%m-%dT%H:%M:%S')
+    return file
+
 def format_single_line(entry):
     # get rid of new lines
     if isinstance(entry, str):
         return re.sub(r'\s+', ' ', entry)
+    else:
+        return entry
+
+def remove_stx_characters(entry):
+    # Replace ASCII STX character (code 2) with an empty string
+    if isinstance(entry, str):
+        return entry.replace('\x02', '')
     else:
         return entry
 
@@ -50,7 +56,8 @@ def prep_data(input_path, output_path):
         column_functions = {
             'is_public': public_data,
             'autorisierung': autorisierung_dok,
-            'status': open_status
+            'status': open_status, 
+            'erf_date': convert_datetime_format
         }
 
         # Apply the specified filter function for each column

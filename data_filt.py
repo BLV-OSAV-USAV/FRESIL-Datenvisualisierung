@@ -11,7 +11,7 @@ def html_parser(path):
     return csv_file
 
 def format_single_line(entry):
-    # get rid of new lines
+    # get rid of line breaks
     if isinstance(entry, str):
         return re.sub(r'\s+', ' ', entry)
     else:
@@ -42,6 +42,7 @@ def convert_to_bool(file, column):
     return file
 
 def convert_to_int(file, column):
+    #convert to int datatype
     file[column] = file[column].round().astype('Int64') 
     return file   
 

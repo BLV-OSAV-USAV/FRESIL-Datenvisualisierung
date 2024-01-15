@@ -3,13 +3,6 @@ import pandas as pd
 import plotly.express as px
 from dash import html, dcc, dash_table
 
-def html_parser(path):
-    csv_file = pd.read_csv(path, sep='|')
-    csv_file = csv_file.map(lambda x: BeautifulSoup(x, 'html.parser').text if isinstance(x, str) else x)
-    return csv_file
-
-def public_data(doc):
-    return doc[doc['is_public']]
 
 def create_treemap(csv_file, initial_categories):
     fig = px.treemap(csv_file.head(initial_categories),

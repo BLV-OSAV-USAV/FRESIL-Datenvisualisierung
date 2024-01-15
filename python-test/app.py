@@ -11,15 +11,15 @@ import dash_daq as daq
 app = dash.Dash(__name__, suppress_callback_exceptions=True, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.FONT_AWESOME])
 
 # Load data using data_prep functions
-gefahr = data_prep.html_parser('../csv-files/ad_gefahr-20231128.csv')
-meldung = data_prep.public_data(data_prep.html_parser('../csv-files/ad_meldung-20231128.csv'))
+gefahr = pd.read_csv('../csv-files-filtered/filtered-ad_gefahr-20231128.csv', sep='#', quotechar='`')
+meldung = pd.read_csv('../csv-files-filtered/filtered-ad_meldung-20231128.csv', sep='#', quotechar='`')
 meldung['link'] = meldung['id'].apply(lambda x: f'[<i class="fa-solid fa-arrow-up-right-from-square"></i>](/meldung/{x})')
-steckbrief = data_prep.public_data(data_prep.html_parser('../csv-files/ad_steckbrief-20231128.csv'))
+steckbrief = pd.read_csv('../csv-files-filtered/filtered-ad_steckbrief-20231128.csv', sep='#', quotechar='`')
 steckbrief['link'] = steckbrief['id'].apply(lambda x: f'[<i class="fa-solid fa-arrow-up-right-from-square"></i>](/steckbrief/{x})')
 
-steckbriefXmeldung = data_prep.html_parser('../csv-files/ad_meldung_ad_steckbrief-20231128.csv')
-steckbriefXgefahr = data_prep.html_parser('../csv-files/ad_steckbrief_ad_gefahr-20231128.csv')
-meldungXgefahr = data_prep.html_parser('../csv-files/ad_meldung_ad_gefahr-20231128.csv')
+steckbriefXmeldung = pd.read_csv('../csv-files-filtered/filtered-ad_meldung_ad_steckbrief-20231128.csv', sep='#', quotechar='`')
+steckbriefXgefahr = pd.read_csv('../csv-files-filtered/filtered-ad_steckbrief_ad_gefahr-20231128.csv', sep='#', quotechar='`')
+meldungXgefahr = pd.read_csv('../csv-files-filtered/filtered-ad_meldung_ad_gefahr-20231128.csv', sep='#', quotechar='`')
 
 gefahr_counts = meldungXgefahr['gefahr_id'].value_counts().reset_index()
 gefahr_counts.columns = ['id', 'count']

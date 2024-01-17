@@ -50,6 +50,7 @@ def convert_datetime_format(file, column):
     # change the format of dates to be compatible with cube creator
     for column in ['erf_date','mut_date']:
         file[column] = pd.to_datetime(file[column], format='%d.%m.%Y %H:%M:%S').dt.strftime('%Y-%m-%dT%H:%M:%S')
+        file[f'Dates_{column}'] = pd.to_datetime(file[column]).dt.date
     return file
 
 

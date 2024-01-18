@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3.js Bar Chart</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+
+</head>
+
+<body>
+
+    <h1>D3.js Bar Chart Example</h1>
+
+    <div id="chart"></div>
+
+    <script>
+        // Sample data
+        const data = [10, 25, 30, 45, 50];
+
+        // Set up the SVG canvas dimensions
+        const width = 400;
+        const height = 200;
+
+        // Create the SVG container
+        const svg = d3.select("#chart")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+        // Create bars
+        svg.selectAll("rect")
+            .data(data)
+            .enter()
+            .append("rect")
+            .attr("x", (d, i) => i * (width / data.length))
+            .attr("y", d => height - d)
+            .attr("width", width / data.length - 2)
+            .attr("height", d => d)
+            .attr("fill", "steelblue");
+    </script>
+
+</body>
+
+</html>

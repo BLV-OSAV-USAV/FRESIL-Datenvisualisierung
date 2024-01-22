@@ -12,7 +12,7 @@ def count_gefahr():
     gefahr_counts = pd.merge(gefahr_counts, gefahr[['id', 'bezeichnung_de']], on='id', how='left')
 
 
-    gefahr_counts.to_csv('./figure_data/gefahr_counts.csv', sep='#', quotechar='`', index=False)
+    gefahr_counts.to_csv('./figure_data/gefahr_counts.csv', index=False)
 
 
 def count_gefahr_pro_tag():

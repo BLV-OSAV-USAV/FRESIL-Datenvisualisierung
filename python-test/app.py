@@ -110,4 +110,4 @@ def display_selected_data(click_data):
         return [None, None]
 
 if __name__ == '__main__':
-    app.run_server(debug=True,port=8051)
+    app.run_server(debug=True,port=8050)

@@ -1,46 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D3.js Bar Chart</title>
-    <script src="https://d3js.org/d3.v6.min.js"></script>
-
+    <title>D3 Bubble Chart from CSV</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
 </head>
-
 <body>
 
-    <h1>D3.js Bar Chart Example</h1>
+<script>
+    // Load data from CSV file
+    d3.csv("../figure_data/gefahr_counts.csv").then(function(data) {
+        // Set up the SVG container
+        const svg = d3.select("body").append("svg")
+            .attr("width", 1000)
+            .attr("height", 1000);
 
-    <div id="chart"></div>
-
-    <script>
-        // Sample data
-        const data = [10, 25, 30, 45, 50];
-
-        // Set up the SVG canvas dimensions
-        const width = 400;
-        const height = 200;
-
-        // Create the SVG container
-        const svg = d3.select("#chart")
-            .append("svg")
-            .attr("width", width)
-            .attr("height", height);
-
-        // Create bars
-        svg.selectAll("rect")
+        // Create bubbles
+        const bubbles = svg.selectAll("circle")
             .data(data)
             .enter()
-            .append("rect")
-            .attr("x", (d, i) => i * (width / data.length))
-            .attr("y", d => height - d)
-            .attr("width", width / data.length - 2)
-            .attr("height", d => d)
-            .attr("fill", "steelblue");
-    </script>
+            .append("circle")
+            .attr("cx", (d, i) => i * 120 + 60)
+            .attr("cy", 200)
+            .attr("r", d => d.count)  // Convert radius to a number
+            .attr("fill", "blue")
+            .on("mouseover", handleMouseOver)
+            .on("mouseout", handleMouseOut);
+
+        // Add labels dynamically
+        function handleMouseOver(d, i) {
+            svg.append("text")
+                .attr("id", `label-${i}`)
+                .attr("x", i * 120 + 60)
+                .attr("y", 200)
+                .attr("text-anchor", "middle")
+                .attr("alignment-baseline", "middle")
+                .style("font-size", Math.min(2 * d.count, 20) + "px")
+                .text(d.bezeichnung_de);
+        }
+
+        function handleMouseOut(d, i) {
+            d3.select(`#label-${i}`).remove();
+        }
+    });
+</script>
 
 </body>
-
 </html>

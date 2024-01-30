@@ -15,6 +15,7 @@
         d3.csv("../figure_data/gefahr_treiber_counts.csv")
     ]).then(([gefahrCounts, treiberCounts]) => {
         // Merge the data on 'id' and 'gefahr_id'
+        console.log(treiberCounts)
         const mergedData = gefahrCounts.map(count => ({
             ...count,
             ...treiberCounts.find(treiber => treiber.gefahr_id === count.id)
@@ -24,7 +25,7 @@
         const result = mergedData.map(entry => {
             const { id, count, bezeichnung_de, mean_sterne, gefahr_id, ...treiberColumns } = entry;
             const treiber = Object.keys(treiberColumns).reduce((acc, key) => {
-                acc[key] = +treiberColumns[key];
+                acc[key] = treiberColumns[key];
                 return acc;
             }, {});
     
@@ -73,20 +74,35 @@
     
         // Add a filled circle.
         node.append("circle")
-            .attr("fill-opacity", 0.7)
-            .attr("fill", "blue")
+            .attr("fill-opacity", 0.4)
+            .attr("fill", "white")
             .attr("r", d => d.r);
+
+        const treiberNames = Object.keys(result[0].treiber);
+        const customColors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728',
+                                 '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', 
+                                 '#bcbd22', '#17becf', '#aec7e8', '#ffbb78', 
+                                 '#98df8a', '#ff9896', '#c5b0d5', '#c49c94', 
+                                 '#f7b6d2', '#c7c7c7', '#dbdb8d'];
+
+        const colorScale = d3.scaleOrdinal()
+            .domain(treiberNames)
+            .range(customColors);
     
         // Add a pie chart for each gefahr circle.
         node.filter(d => d.depth === 1)  // Filter only circles representing gefahr
-            .each(function(d) {
+            .each(function (d) {
+                const hasTreiberData = Object.keys(d.data.treiber).length > 0;
+            
                 const pie = d3.pie().value(entry => entry.count);
-                const arcs = pie(Object.entries(d.data.treiber).map(([key, value]) => ({ name: key, count: value })));
-    
+                const arcs = pie(hasTreiberData
+                    ? Object.entries(d.data.treiber).map(([key, value]) => ({ name: key, count: value }))
+                    : [{ name: 'No Treiber', count: 1 }]); // Default data for pies without treiber
+            
                 d3.select(this).selectAll("path")
                     .data(arcs)
                     .join("path")
-                    .attr("fill", (arc, i) => `hsl(${i * 360 / arcs.length},70%,50%)`)
+                    .attr("fill", (arc, i) => (hasTreiberData ? colorScale(arc.data.name) : '#FFE5B4')) // Use the colorScale for pies with treiber, 'gray' for those without
                     .attr("d", d3.arc().innerRadius(0).outerRadius(d.r));
             });
     
@@ -115,12 +131,7 @@
             .attr("transform", `translate(${width - 170},${height - 400})`);
 
         const legendRectSize = 18;
-        const legendSpacing = 4;
-
-        const treiberNames = Object.keys(result[0].treiber);
-        const colorScale = d3.scaleOrdinal()
-            .domain(treiberNames)
-            .range(d3.schemeCategory10);
+        const legendSpacing = 6;
 
         const legendItems = legend.selectAll(".legend-item")
             .data(treiberNames)
@@ -137,6 +148,8 @@
             .attr("x", legendRectSize + legendSpacing)
             .attr("y", legendRectSize - legendSpacing)
             .text(d => d);
+
+
 
 
 

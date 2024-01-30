@@ -27,7 +27,7 @@ def count_gefahr():
     gefahr_counts.to_csv('./figure_data/gefahr_counts.csv', index=False)
 
 
-def gefahr_treiber_count():
+def gefahr_treiber_count(lg):
     # Charger les fichiers CSV
     meldungXgefahr = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_gefahr-20231128.csv', sep='#', quotechar='`')
     gefahr = pd.read_csv('./csv-files-filtered/filtered-ad_gefahr-20231128.csv', sep='#', quotechar='`')
@@ -38,6 +38,14 @@ def gefahr_treiber_count():
     merged_df = pd.merge(meldungXgefahr, treiberXmeldung, on='meldung_id')
     result_df_gefahr = merged_df.groupby(['gefahr_id', 'treiber_id']).size().unstack(fill_value=0)
     result_df_gefahr = result_df_gefahr.reset_index()
+    print(treiber[f'bezeichnung_{lg}'])
+    result_df_gefahr.columns.values[1:] = treiber[f'bezeichnung_{lg}']
+
+
+
+
+
+
     print(result_df_gefahr)
 
     # Enregistrer le résultat dans un fichier CSV
@@ -76,6 +84,6 @@ def count_meldung_pro_tag():
 
 
 #count_gefahr()
-gefahr_treiber_count()
+gefahr_treiber_count('de')
 #count_gefahr_pro_tag()
 #count_meldung_pro_tag()

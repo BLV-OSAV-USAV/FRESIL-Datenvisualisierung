@@ -39,7 +39,7 @@
         });
     
         // Set up the SVG container
-        const width = 1000;
+        const width = 1500;
         const height = 600;
     
         const svg = d3.select("body").append("svg")
@@ -61,16 +61,35 @@
         // Create a group element for the pack layout
         const packChart = svg.append("g")
             .attr("transform", "translate(0,0)");
+
+        // Define the zoomToNode function
+        function zoomToNode(clickedNode) {
+            const transitionDuration = 750;
+    
+            // Calculate the new scale and translate values for zooming
+            const scale = Math.min(width, height) / (2 * clickedNode.r);
+            const translate = [width / 2 - scale * clickedNode.x, height / 2 - scale * clickedNode.y];
+    
+            // Apply the zoom transformation to the packChart group
+            packChart.transition()
+                .duration(transitionDuration)
+                .attr("transform", `translate(${translate}) scale(${scale})`)
+                .on("end", () => {
+                    // Hide non-zoomed nodes after the zoom transition is complete
+                    node.style("visibility", d => (d === clickedNode || d.ancestors().includes(clickedNode)) ? "visible" : "hidden");
+                });
+        }
     
         // Place each (leaf) node according to the layout’s x and y values.
         const node = packChart.selectAll()
             .data(root.descendants())
             .join("g")
-            .attr("transform", d => `translate(${d.x},${d.y})`);
+            .attr("transform", d => `translate(${d.x},${d.y})`)
+            .on("click", zoomToNode);  // Add click event listener to zoom on click
     
         // Add a title.
         node.append("title")
-            .text(d => `${d.data.name}\n${d.data.count}`);
+            .text(d => `${d.data.name}\nMeldung count: ${d.data.count}\nMean sterne: ${d.data.mean_sterne}`);
     
         // Add a filled circle.
         node.append("circle")
@@ -106,52 +125,60 @@
                     .attr("d", d3.arc().innerRadius(0).outerRadius(d.r));
             });
     
-        // Add a label.
+        // Add a label only if the pie is large enough
         const text = node.append("text")
             .attr("clip-path", d => `circle(${d.r})`);
-    
-        // Add a tspan for each word in the label.
+
+        // Add a tspan for each word in the label only if the pie is large enough
         text.selectAll()
-            .data(d => (d.data.name ? d.data.name.split(/\s+/) : []))
+            .data(d => (d.data.name && d.r > 20 ? d.data.name.split(/\s+/) : [])) // Adjust the threshold (20) as needed
             .join("tspan")
             .attr("x", 0)
             .attr("y", (d, i, nodes) => `${i - nodes.length / 2 + 0.35}em`)
             .text(d => d);
-    
+
         // Add a tspan for the node’s value.
         text.append("tspan")
             .attr("x", 0)
-            .attr("y", d => (d.data.name ? `${d.data.name.split(/\s+/).length / 2 + 0.35}em` : "0"))
+            .attr("y", d => (d.data.name && d.r > 20 ? `${d.data.name.split(/\s+/).length / 2 + 0.35}em` : "0"))
             .attr("fill-opacity", 0.7)
             .text(d => d.data.count);
-
+            
         // Add a legend
         const legend = svg.append("g")
             .attr("class", "legend")
-            .attr("transform", `translate(${width - 170},${height - 400})`);
-
+            .attr("transform", `translate(${width - 400},${height - 400})`);
+                
         const legendRectSize = 18;
         const legendSpacing = 6;
-
+                
         const legendItems = legend.selectAll(".legend-item")
             .data(treiberNames)
             .enter().append("g")
             .attr("class", "legend-item")
             .attr("transform", (d, i) => `translate(0,${i * (legendRectSize + legendSpacing)})`);
-
+                
         legendItems.append("rect")
             .attr("width", legendRectSize)
             .attr("height", legendRectSize)
             .style("fill", d => colorScale(d));
-
+                
         legendItems.append("text")
+            .attr("text-anchor", "start")
             .attr("x", legendRectSize + legendSpacing)
             .attr("y", legendRectSize - legendSpacing)
             .text(d => d);
 
-
-
-
+        // Reset zoom when clicking outside the pie chart
+        svg.on("click", () => {
+            packChart.transition()
+                .duration(750)
+                .attr("transform", "translate(0,0) scale(1)")
+                .on("end", () => {
+                    // Make all nodes visible again after the zoom reset
+                    node.style("visibility", "visible");
+                });
+        });
 
     });
 </script>

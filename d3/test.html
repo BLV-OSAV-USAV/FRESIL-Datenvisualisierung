@@ -7,20 +7,37 @@
     <script src="https://d3js.org/d3.v5.min.js"></script>
 </head>
 <body>
-
 <script>
+    // Set up the SVG container
+    const width = window.innerWidth; // Set SVG width dynamically
+    const height = window.innerHeight; // Set SVG height dynamically
+
+    const zoom = d3.zoom()
+            .scaleExtent([1, 8])
+            .on("zoom", zoomed);
+
+    const svg = d3.select("body").append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .attr("style", "max-width: 100%; height: auto; font: 10px sans-serif;")
+        .attr("text-anchor", "middle")
+        .style("cursor", "pointer");
+
+    const packChart = svg.append("g")
+        .attr("transform", `translate(-${width / 5},0)`)
+        .call(zoom);
+
     // Load data from CSV files
     Promise.all([
         d3.csv("../figure_data/gefahr_counts.csv"),
         d3.csv("../figure_data/gefahr_treiber_counts.csv")
     ]).then(([gefahrCounts, treiberCounts]) => {
         // Merge the data on 'id' and 'gefahr_id'
-        console.log(treiberCounts)
         const mergedData = gefahrCounts.map(count => ({
             ...count,
             ...treiberCounts.find(treiber => treiber.gefahr_id === count.id)
         }));
-    
+
         // Convert the merged data to the desired structure
         const result = mergedData.map(entry => {
             const { id, count, bezeichnung_de, mean_sterne, gefahr_id, ...treiberColumns } = entry;
@@ -38,16 +55,6 @@
             };
         });
     
-        // Set up the SVG container
-        const width = 1500;
-        const height = 600;
-    
-        const svg = d3.select("body").append("svg")
-            .attr("width", width)
-            .attr("height", height)
-            .attr("style", "max-width: 100%; height: auto; font: 10px sans-serif;")
-            .attr("text-anchor", "middle");
-    
         // Create the pack layout.
         const pack = d3.pack()
             .size([width, height])
@@ -57,35 +64,14 @@
         // for each node; lastly, apply the pack layout.
         const root = pack(d3.hierarchy({ children: result })
             .sum(d => d.count));
-    
-        // Create a group element for the pack layout
-        const packChart = svg.append("g")
-            .attr("transform", "translate(0,0)");
-
-        // Define the zoomToNode function
-        function zoomToNode(clickedNode) {
-            const transitionDuration = 750;
-    
-            // Calculate the new scale and translate values for zooming
-            const scale = Math.min(width, height) / (2 * clickedNode.r);
-            const translate = [width / 2 - scale * clickedNode.x, height / 2 - scale * clickedNode.y];
-    
-            // Apply the zoom transformation to the packChart group
-            packChart.transition()
-                .duration(transitionDuration)
-                .attr("transform", `translate(${translate}) scale(${scale})`)
-                .on("end", () => {
-                    // Hide non-zoomed nodes after the zoom transition is complete
-                    node.style("visibility", d => (d === clickedNode || d.ancestors().includes(clickedNode)) ? "visible" : "hidden");
-                });
-        }
-    
         // Place each (leaf) node according to the layout’s x and y values.
         const node = packChart.selectAll()
             .data(root.descendants())
             .join("g")
             .attr("transform", d => `translate(${d.x},${d.y})`)
-            .on("click", zoomToNode);  // Add click event listener to zoom on click
+            .on("mouseover", function() { d3.select(this).attr("stroke", "#000"); })
+            .on("mouseout", function() { d3.select(this).attr("stroke", null); })
+            .on("click", reset);
     
         // Add a title.
         node.append("title")
@@ -121,7 +107,7 @@
                 d3.select(this).selectAll("path")
                     .data(arcs)
                     .join("path")
-                    .attr("fill", (arc, i) => (hasTreiberData ? colorScale(arc.data.name) : '#FFE5B4')) // Use the colorScale for pies with treiber, 'gray' for those without
+                    .attr("fill", (arc, i) => (hasTreiberData ? colorScale(arc.data.name) : '#FFE5B4'))
                     .attr("d", d3.arc().innerRadius(0).outerRadius(d.r));
             });
     
@@ -145,9 +131,16 @@
             .text(d => d.data.count);
             
         // Add a legend
+        const maxLegendTextWidth = d3.max(treiberNames, d => d.length);
+
+        const legendWidth = width/3; // Adjust the legend width as needed
+        const legendHeight = height - 50; // Adjust the legend height as needed
+        const legendX = width - legendWidth - 10; // Adjust the X position
+        const legendY = height - legendHeight - 10; // Adjust the Y position
+
         const legend = svg.append("g")
             .attr("class", "legend")
-            .attr("transform", `translate(${width - 400},${height - 400})`);
+            .attr("transform", `translate(${legendX},${legendY})`);
                 
         const legendRectSize = 18;
         const legendSpacing = 6;
@@ -169,19 +162,52 @@
             .attr("y", legendRectSize - legendSpacing)
             .text(d => d);
 
-        // Reset zoom when clicking outside the pie chart
-        svg.on("click", () => {
-            packChart.transition()
-                .duration(750)
-                .attr("transform", "translate(0,0) scale(1)")
-                .on("end", () => {
-                    // Make all nodes visible again after the zoom reset
-                    node.style("visibility", "visible");
-                });
-        });
-
     });
-</script>
 
+    svg.call(zoom);
+
+    function reset() {
+        svg.transition().duration(750).call(
+            zoom.transform,
+            d3.zoomIdentity,
+            d3.zoomTransform(svg.node()).invert([width / 2, height / 2])
+        );
+    }
+
+    // Replace the existing clicked function with the updated one
+    function clicked(event, d) {
+        console.log("Clicked Event Triggered");
+        
+        if (!d) return;
+        const [[x0, y0], [x1, y1]] = packChart.node().getBBox();
+        event.stopPropagation();
+
+        packChart.selectAll("path") // Select all pie chart paths
+            .transition().style("fill", null); // Reset fill for all paths
+
+        d3.select(this).transition().style("fill", "red"); // Highlight the clicked path
+
+        packChart.transition().duration(750).call(
+            zoom.transform,
+            d3.zoomIdentity
+                .translate(width / 2, height / 2)
+                .scale(Math.min(8, 0.9 / Math.max((x1 - x0) / width, (y1 - y0) / height)))
+                .translate(-(x0 + x1) / 2, -(y0 + y1) / 2),
+            d3.pointer(event, packChart.node())
+        );
+    }
+
+
+    function zoomed(event) {
+        console.log("Zoom Event Triggered");
+        if (!event || !event.transform) return;
+        const { transform } = event;
+        packChart.attr("transform", transform);
+        packChart.attr("stroke-width", 1 / transform.k);
+    }
+
+
+
+</script>
 </body>
 </html>

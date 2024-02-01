@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3 Bubble Chart with Treiber Pie Chart</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+<script>
+    // Set up the SVG container
+    const width = window.innerWidth; // Set SVG width dynamically
+    const height = window.innerHeight; // Set SVG height dynamically
+
+    const zoom = d3.zoom()
+        .scaleExtent([1, 8])
+        .on("zoom", zoomed);
+
+    const svg = d3.select("body").append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .attr("style", "max-width: 100%; height: auto; font: 10px sans-serif;")
+        .attr("text-anchor", "middle")
+        .style("cursor", "pointer");
+
+    const packChart = svg.append("g")
+        .attr("transform", `translate(-${width / 5},0)`)
+        .call(zoom);
+
+    // Sample pie chart data
+    const data = [10, 20, 30];
+
+    const pie = d3.pie();
+    const arcs = pie(data);
+
+    packChart.selectAll("path")
+        .data(arcs)
+        .enter().append("path")
+        .attr("fill", (d, i) => d3.schemeCategory10[i])
+        .attr("d", d3.arc())
+        .on("click", clicked);
+
+    svg.call(zoom);
+
+    function zoomed(event) {
+        console.log("Zoom Event Triggered");
+        if (!event || !event.transform) return;
+        const { transform } = event;
+        packChart.attr("transform", transform);
+        packChart.attr("stroke-width", 1 / transform.k);
+    }
+
+    function clicked(event, d) {
+        console.log("Clicked Event Triggered");
+        // Your existing clicked logic here
+    }
+</script>
+</body>
+</html>

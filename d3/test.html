@@ -7,25 +7,20 @@
     <script src="https://d3js.org/d3.v5.min.js"></script>
 </head>
 <body>
+    <svg></svg>
 <script>
     // Set up the SVG container
     const width = window.innerWidth; // Set SVG width dynamically
     const height = window.innerHeight; // Set SVG height dynamically
 
-    const zoom = d3.zoom()
-            .scaleExtent([1, 8])
-            .on("zoom", zoomed);
-
-    const svg = d3.select("body").append("svg")
+    const svg = d3.select("svg")
         .attr("width", width)
         .attr("height", height)
         .attr("style", "max-width: 100%; height: auto; font: 10px sans-serif;")
         .attr("text-anchor", "middle")
         .style("cursor", "pointer");
 
-    const packChart = svg.append("g")
-        .attr("transform", `translate(-${width / 5},0)`)
-        .call(zoom);
+    const packChart = svg.append("g");
 
     // Load data from CSV files
     Promise.all([
@@ -45,13 +40,14 @@
                 acc[key] = treiberColumns[key];
                 return acc;
             }, {});
-    
+            const size = count * mean_sterne;
             return {
                 id: +id,
                 name: bezeichnung_de,
                 count: +count,
                 mean_sterne: +mean_sterne,
-                treiber: treiber
+                treiber: treiber,
+                size: +size
             };
         });
     
@@ -63,7 +59,8 @@
         // Compute the hierarchy from the (flat) data; expose the values
         // for each node; lastly, apply the pack layout.
         const root = pack(d3.hierarchy({ children: result })
-            .sum(d => d.count));
+                    .sum(d => d.size));
+
         // Place each (leaf) node according to the layout’s x and y values.
         const node = packChart.selectAll()
             .data(root.descendants())
@@ -71,8 +68,8 @@
             .attr("transform", d => `translate(${d.x},${d.y})`)
             .on("mouseover", function() { d3.select(this).attr("stroke", "#000"); })
             .on("mouseout", function() { d3.select(this).attr("stroke", null); })
-            .on("click", reset);
-    
+            .on("click", zoomToBoundingBox);
+     
         // Add a title.
         node.append("title")
             .text(d => `${d.data.name}\nMeldung count: ${d.data.count}\nMean sterne: ${d.data.mean_sterne}`);
@@ -80,7 +77,7 @@
         // Add a filled circle.
         node.append("circle")
             .attr("fill-opacity", 0.4)
-            .attr("fill", "white")
+            .attr("fill", "blue")
             .attr("r", d => d.r);
 
         const treiberNames = Object.keys(result[0].treiber);
@@ -130,7 +127,7 @@
             .attr("fill-opacity", 0.7)
             .text(d => d.data.count);
             
-        // Add a legend
+/*         // Add a legend
         const maxLegendTextWidth = d3.max(treiberNames, d => d.length);
 
         const legendWidth = width/3; // Adjust the legend width as needed
@@ -160,51 +157,44 @@
             .attr("text-anchor", "start")
             .attr("x", legendRectSize + legendSpacing)
             .attr("y", legendRectSize - legendSpacing)
-            .text(d => d);
+            .text(d => d); */
+        
+    function zoomToBoundingBox(_, d) {
+        const evt = d3.event; // Access the d3 event object directly
+        console.log(evt); // Log the event object to the console
+        evt.stopPropagation();
+
+        let elem = evt.currentTarget;
+        
+        console.log(elem.getAttribute("transform"))
+        console.log(elem.offsetTop)
+        let rect = elem.getBoundingClientRect();
+
+        // Coordinates relative to the viewport
+        let elemTop = rect.x;
+        let elemLeft = rect.y;
+
+        console.log(elemTop,elemLeft);
+
+        //let elemTopDocument = elemTop + window.scrollY;
+        //let elemLeftDocument = elemLeft + window.scrollX;
+
+        //console.log('Top (document):', elemTopDocument, 'Left (document):', elemLeftDocument);
+        
+        let bbox = elem.getBBox();
+        let width = bbox.width;
+        let height = bbox.height;
+        //let minX = elemTopb box.x;
+        //let minY = elemLeft bbox.y;
+        let viewBox = elemTop + " " + elemLeft + " " + width + " " + height;
+        console.log(viewBox);
+        let svg = d3.select("svg");
+        svg.transition().duration(1000).attr("viewBox", viewBox);
+    }
+
+    d3.select("svg").on("click", zoomToBoundingBox) // or "pointerdown"
 
     });
-
-    svg.call(zoom);
-
-    function reset() {
-        svg.transition().duration(750).call(
-            zoom.transform,
-            d3.zoomIdentity,
-            d3.zoomTransform(svg.node()).invert([width / 2, height / 2])
-        );
-    }
-
-    // Replace the existing clicked function with the updated one
-    function clicked(event, d) {
-        console.log("Clicked Event Triggered");
-        
-        if (!d) return;
-        const [[x0, y0], [x1, y1]] = packChart.node().getBBox();
-        event.stopPropagation();
-
-        packChart.selectAll("path") // Select all pie chart paths
-            .transition().style("fill", null); // Reset fill for all paths
-
-        d3.select(this).transition().style("fill", "red"); // Highlight the clicked path
-
-        packChart.transition().duration(750).call(
-            zoom.transform,
-            d3.zoomIdentity
-                .translate(width / 2, height / 2)
-                .scale(Math.min(8, 0.9 / Math.max((x1 - x0) / width, (y1 - y0) / height)))
-                .translate(-(x0 + x1) / 2, -(y0 + y1) / 2),
-            d3.pointer(event, packChart.node())
-        );
-    }
-
-
-    function zoomed(event) {
-        console.log("Zoom Event Triggered");
-        if (!event || !event.transform) return;
-        const { transform } = event;
-        packChart.attr("transform", transform);
-        packChart.attr("stroke-width", 1 / transform.k);
-    }
 
 
 

@@ -1,59 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D3 Bubble Chart with Treiber Pie Chart</title>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Bubble Plot</title>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+  </style>
 </head>
+
 <body>
-<script>
-    // Set up the SVG container
-    const width = window.innerWidth; // Set SVG width dynamically
-    const height = window.innerHeight; // Set SVG height dynamically
+  <button id="reorganizeButton">Reorganize Circles</button>
+  <button id="resetButton">Reset Visualization</button>
+  <svg width="2000" height="1000" viewBox="-250 -250 500 500"></svg>
+  <script>
+    Promise.all([
+      d3.csv("../figure_data/gefahr_counts.csv"),
+      d3.csv("../figure_data/gefahr_treiber_counts.csv")
+    ]).then(([gefahrCounts, treiberCounts]) => {
 
-    const zoom = d3.zoom()
-        .scaleExtent([1, 8])
-        .on("zoom", zoomed);
+      // Merge the data on 'id' and 'gefahr_id'
+      const mergedData = gefahrCounts.map(count => ({
+        ...count,
+        ...treiberCounts.find(treiber => treiber.gefahr_id === count.id)
+      }));
 
-    const svg = d3.select("body").append("svg")
-        .attr("width", width)
-        .attr("height", height)
-        .attr("style", "max-width: 100%; height: auto; font: 10px sans-serif;")
-        .attr("text-anchor", "middle")
-        .style("cursor", "pointer");
+      // Convert the merged data to the desired structure
+      const result = mergedData.map(entry => {
+        const {
+          id,
+          count,
+          bezeichnung_de,
+          mean_sterne,
+          gefahr_id,
+          ...treiberColumns
+        } = entry;
+        const treiber = Object.keys(treiberColumns).reduce((acc, key) => {
+          acc[key] = treiberColumns[key];
+          return acc;
+        }, {});
+        const size = count * mean_sterne;
+        return {
+          id: +id,
+          name: bezeichnung_de,
+          count: +count,
+          mean_sterne: +mean_sterne,
+          treiber: treiber,
+          size: +size
+        };
+      });
 
-    const packChart = svg.append("g")
-        .attr("transform", `translate(-${width / 5},0)`)
-        .call(zoom);
+      // Create a force simulation
+      const simulation = d3.forceSimulation(result)
+        .force("x", d3.forceX().strength(0.05))
+        .force("y", d3.forceY().strength(0.05))
+        .force("collide", d3.forceCollide(d => d.size + 5).iterations(2))
+        .on("tick", ticked);
 
-    // Sample pie chart data
-    const data = [10, 20, 30];
+      function ticked() {
+        circles.attr("cx", d => d.x)
+          .attr("cy", d => d.y);
+      }
 
-    const pie = d3.pie();
-    const arcs = pie(data);
+      const treiberNames = Object.keys(result[0].treiber);
+      const customColors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728',
+        '#9467bd', '#8c564b', '#e377c2', '#7f7f7f',
+        '#bcbd22', '#17becf', '#aec7e8', '#ffbb78',
+        '#98df8a', '#ff9896', '#c5b0d5', '#c49c94',
+        '#f7b6d2', '#c7c7c7', '#dbdb8d'];
 
-    packChart.selectAll("path")
-        .data(arcs)
-        .enter().append("path")
-        .attr("fill", (d, i) => d3.schemeCategory10[i])
-        .attr("d", d3.arc())
-        .on("click", clicked);
+      const colorScale = d3.scaleOrdinal()
+        .domain(treiberNames)
+        .range(customColors);
 
-    svg.call(zoom);
+      const svg = d3.select("svg");
 
-    function zoomed(event) {
-        console.log("Zoom Event Triggered");
-        if (!event || !event.transform) return;
-        const { transform } = event;
-        packChart.attr("transform", transform);
-        packChart.attr("stroke-width", 1 / transform.k);
-    }
+      const circles = svg.selectAll("circle")
+        .data(result)
+        .join("circle")
+        .attr("r", d => d.size)
+        .on("click", zoomToBoundingBox);
 
-    function clicked(event, d) {
-        console.log("Clicked Event Triggered");
-        // Your existing clicked logic here
-    }
-</script>
+        circles.each(function (d) {
+          const hasTreiberData = Object.keys(d.treiber).length > 0;
+
+          const pie = d3.pie().value(entry => entry.count);
+          const arcs = pie(hasTreiberData ?
+            Object.entries(d.treiber).map(([key, value]) => ({ name: key, count: value })) :
+            [{ name: 'No Treiber', count: 1 }]);
+
+
+          const paths = d3.select(this)
+            .selectAll("path")
+            .data(arcs)
+            .join("path")
+            .attr("fill", (arc, i) => (hasTreiberData ? colorScale(arc.data.name) : '#FFE5B4'))
+            .attr("d", d3.arc().innerRadius(0).outerRadius(d.size)); // Set your desired radius
+
+          paths.each(function (pathData) {
+            const pathElement = d3.select(this);});
+
+
+      });
+
+      // Add this code inside your existing script tag
+      document.getElementById('reorganizeButton').addEventListener('click', reorganizeCircles);
+      document.getElementById('resetButton').addEventListener('click', resetVisualization);
+
+      function reorganizeCircles() {
+        // Sort the result array based on circle size
+        result.sort((a, b) => b.size - a.size);
+
+        // Calculate new positions for circles in a spiral layout
+        const numCircles = result.length;
+        const centerX = 0;
+        const centerY = 0;
+        const radiusStep = 20; // Adjust the step based on your preference
+        let angle = 0;
+
+        result.forEach((circle, index) => {
+          const radius = index * radiusStep;
+          const x = centerX + radius * Math.cos(angle);
+          const y = centerY + radius * Math.sin(angle);
+        
+          circle.x = x;
+          circle.y = y;
+        
+          // Increase the angle for the next circle
+          angle += 0.1; // Adjust the angle increment based on your preference
+        });
+      
+        // Update the simulation data and restart it
+        simulation.nodes(result).alpha(1).restart();
+      }
+
+      function resetVisualization() {
+        // Reset the positions of circles to their original state
+        result.forEach(circle => {
+          circle.x = 0;
+          circle.y = 0;
+        });
+      
+        // Update the simulation data and restart it
+        simulation.nodes(result).alpha(1).restart();
+      }
+
+      function zoomToBoundingBox(_, d) {
+        const evt = d3.event; // Access the d3 event object directly
+        evt.stopPropagation();
+
+        let elem = evt.currentTarget;
+        let bbox = elem.getBBox();
+        let minX = bbox.x;
+        let minY = bbox.y;
+        let viewBox = minX + " " + minY + " " + bbox.width + " " + bbox.height;
+
+        svg.transition().duration(1000).attr("viewBox", viewBox);
+      }
+
+      svg.on("click", zoomToBoundingBox) // or "pointerdown"
+    })
+  </script>
 </body>
+
 </html>

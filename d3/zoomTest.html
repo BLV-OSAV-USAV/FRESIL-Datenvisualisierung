@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Interactive Bubble Plot</title>
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <style>
-    body {
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    svg {
+        width: 100%;
+        height: 100%;
     }
   </style>
 </head>
-
 <body>
   <button id="reorganizeButton">Reorganize Circles</button>
   <button id="resetButton">Reset Visualization</button>
-  <svg width="2000" height="1000" viewBox="-250 -250 500 500"></svg>
+  <svg viewBox="-250 -250 500 500"></svg>
   <script>
     Promise.all([
       d3.csv("../figure_data/gefahr_counts.csv"),
       d3.csv("../figure_data/gefahr_treiber_counts.csv")
     ]).then(([gefahrCounts, treiberCounts]) => {
-
       // Merge the data on 'id' and 'gefahr_id'
       const mergedData = gefahrCounts.map(count => ({
         ...count,
@@ -97,7 +96,6 @@
             Object.entries(d.treiber).map(([key, value]) => ({ name: key, count: value })) :
             [{ name: 'No Treiber', count: 1 }]);
 
-
           const paths = d3.select(this)
             .selectAll("path")
             .data(arcs)
@@ -107,8 +105,6 @@
 
           paths.each(function (pathData) {
             const pathElement = d3.select(this);});
-
-
       });
 
       // Add this code inside your existing script tag

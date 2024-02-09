@@ -32,8 +32,11 @@
         ...treiberCounts.find(treiber => treiber.gefahr_id === count.id)
       }));
       
+<<<<<<< HEAD
       // Store the initial viewBox value
       const initialViewBox = "-250 -250 500 500";
+=======
+>>>>>>> 8bd44fe6324a88d742e9c7dce71fd44f7af0386e
       
 
       // Convert the merged data to the desired structure
@@ -86,12 +89,46 @@
 
       const svg = d3.select("svg");
 
+<<<<<<< HEAD
       let circles = svg.selectAll("circle")
         .data(result)
         .join("circle")
         .attr("r", d => d.size)
         .on("click", zoomToBoundingBox);
     
+=======
+      const groups = svg.selectAll("g")
+      .data(result)
+      .join("g")
+      .on("click", zoomToBoundingBox);
+        
+    groups.append("circle")
+      .attr("r", d => d.size);
+        
+    groups.each(function (d) {
+      const hasTreiberData = Object.keys(d.treiber).length > 0;
+    
+      const pie = d3.pie().value(entry => entry.count);
+      const arcs = pie(hasTreiberData ?
+        Object.entries(d.treiber).map(([key, value]) => ({ name: key, count: value })) :
+        [{ name: 'No Treiber', count: 1 }]);
+    
+      const paths = d3.select(this)
+        .selectAll("path")
+        .data(arcs)
+        .join("path")
+        .attr("fill", (arc, i) => (hasTreiberData ? colorScale(arc.data.name) : '#FFE5B4'))
+        .attr("d", d3.arc().innerRadius(0).outerRadius(d.size)); // Set your desired radius
+    
+      paths.each(function (pathData) {
+        const pathElement = d3.select(this);
+      });
+    });
+    
+    simulation.on("tick", () => {
+      groups.attr("transform", d => `translate(${d.x},${d.y})`);
+    });
+>>>>>>> 8bd44fe6324a88d742e9c7dce71fd44f7af0386e
 
       // Add this code inside your existing script tag
       document.getElementById('reorganizeButton').addEventListener('click', reorganizeCircles);

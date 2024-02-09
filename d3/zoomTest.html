@@ -32,6 +32,8 @@
         ...treiberCounts.find(treiber => treiber.gefahr_id === count.id)
       }));
       
+      // Store the initial viewBox value
+      const initialViewBox = "-250 -250 500 500";
       
 
       // Convert the merged data to the desired structure
@@ -84,37 +86,12 @@
 
       const svg = d3.select("svg");
 
-      const groups = svg.selectAll("g")
-      .data(result)
-      .join("g")
-      .on("click", zoomToBoundingBox);
-        
-    groups.append("circle")
-      .attr("r", d => d.size);
-        
-    groups.each(function (d) {
-      const hasTreiberData = Object.keys(d.treiber).length > 0;
+      let circles = svg.selectAll("circle")
+        .data(result)
+        .join("circle")
+        .attr("r", d => d.size)
+        .on("click", zoomToBoundingBox);
     
-      const pie = d3.pie().value(entry => entry.count);
-      const arcs = pie(hasTreiberData ?
-        Object.entries(d.treiber).map(([key, value]) => ({ name: key, count: value })) :
-        [{ name: 'No Treiber', count: 1 }]);
-    
-      const paths = d3.select(this)
-        .selectAll("path")
-        .data(arcs)
-        .join("path")
-        .attr("fill", (arc, i) => (hasTreiberData ? colorScale(arc.data.name) : '#FFE5B4'))
-        .attr("d", d3.arc().innerRadius(0).outerRadius(d.size)); // Set your desired radius
-    
-      paths.each(function (pathData) {
-        const pathElement = d3.select(this);
-      });
-    });
-    
-    simulation.on("tick", () => {
-      groups.attr("transform", d => `translate(${d.x},${d.y})`);
-    });
 
       // Add this code inside your existing script tag
       document.getElementById('reorganizeButton').addEventListener('click', reorganizeCircles);
@@ -147,15 +124,49 @@
         simulation.nodes(result).alpha(1).restart();
       }
 
+
+
       function resetVisualization() {
         // Reset the positions of circles to their original state
+
+          // Re-add the circles
+        circles = svg.selectAll("circle")
+          .data(result)
+          .join("circle")
+          .attr("r", d => d.size)
+          .on("click", zoomToBoundingBox);
+            
         result.forEach(circle => {
-          circle.x = 0;
-          circle.y = 0;
+          circle.x = Math.random() * 500 - 250; // Random x position
+          circle.y = Math.random() * 500 - 250; // Random y position
         });
-      
+
+        // Reset the forces in the simulation
+        simulation.force("x", d3.forceX().strength(0.05))
+                  .force("y", d3.forceY().strength(0.05))
+                  .force("collide", d3.forceCollide(d => d.size + 5).iterations(2));
+
         // Update the simulation data and restart it
         simulation.nodes(result).alpha(1).restart();
+
+        // Warm up the simulation
+        for (let i = 0; i < 120; i++) {
+          simulation.tick();
+        }
+
+        // Reset the viewBox to the initial value
+        svg.attr("viewBox", initialViewBox);
+
+        // Remove the pie chart and back button if they exist
+        svg.select(".pie-chart-group").remove();
+        svg.select("text").remove();
+
+        // Re-add the circles
+        circles = svg.selectAll("circle")
+          .data(result)
+          .join("circle")
+          .attr("r", d => d.size)
+          .on("click", zoomToBoundingBox);
       }
 
       function zoomToBoundingBox(_, d) {
@@ -166,9 +177,63 @@
         let bbox = elem.getBBox();
         let minX = bbox.x;
         let minY = bbox.y;
-        let viewBox = minX + " " + minY + " " + bbox.width + " " + bbox.height;
+        let width = bbox.width + 20;
+        let height = bbox.height;
+        let viewBox = minX + " " + minY + " " + width + " " + height;
 
-        svg.transition().duration(1000).attr("viewBox", viewBox);
+        // Calculate the center of the circle
+        let centerX = minX + bbox.width / 4;
+        let centerY = minY + bbox.height / 2;
+
+        // Get the data associated with the circle
+        const circleData = d3.select(this).data()[0];
+        console.log(circleData.treiber)
+
+        // Check if the circle has treiber data
+        const hasTreiberData = Object.keys(circleData.treiber).length > 0;
+
+        const pie = d3.pie().value(entry => entry.count);
+        const arcs = pie(hasTreiberData ?
+                        Object.entries(circleData.treiber).map(([key, value]) => ({ name: key, count: Number(value) })) :
+                        [{ name: 'No Treiber', count: 1 }]);
+
+        // Transition to the zoomed view and then draw the pie chart
+        svg.transition()
+          .duration(1000) // Adjust the duration as needed
+          .attr("viewBox", viewBox)
+          .on("end", drawPieChart);
+
+      function drawPieChart() {
+        // Clear the circles and the pie chart group
+        svg.selectAll("circle").remove();
+        svg.select(".pie-chart-group").remove();
+
+        const g = svg.append("g")
+          .attr("class", "pie-chart-group")
+          .attr("transform", `translate(${centerX}, ${centerY})`);
+
+        g.selectAll("path")
+          .data(arcs)
+          .join("path")
+          .attr("fill", (arc, i) => (hasTreiberData ? colorScale(arc.data.name) : '#FFE5B4'))
+          .attr("d", d3.arc().innerRadius(0).outerRadius(Math.min(bbox.width, bbox.height) / 2));
+
+        // Split the text into words
+        const words = circleData.name.split(' ');
+
+        // Create a text element
+        const text = g.append("text")
+          .attr("text-anchor", "middle")
+          .attr("font-size", "10px");
+
+        // Add each word as a separate tspan, adjusting the dy attribute for line spacing
+        words.forEach((word, i) => {
+          text.append("tspan")
+            .attr("x", 0)
+            .attr("dy", i ? "1.2em" : 0) // Adjust for line height
+            .text(word);
+        });
+      }
       }
 
       svg.on("click", zoomToBoundingBox) // or "pointerdown"

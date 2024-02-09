@@ -83,7 +83,7 @@ def count_meldung_pro_tag():
 
 
 
-#count_gefahr()
+count_gefahr()
 gefahr_treiber_count('de')
-#count_gefahr_pro_tag()
-#count_meldung_pro_tag()
+count_gefahr_pro_tag()
+count_meldung_pro_tag()

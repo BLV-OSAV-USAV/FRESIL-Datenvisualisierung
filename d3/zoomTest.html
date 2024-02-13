@@ -60,12 +60,9 @@
         };
       });
 
-      // Create a force simulation
-      const simulation = d3.forceSimulation(result)
-        .force("x", d3.forceX().strength(0.05))
-        .force("y", d3.forceY().strength(0.05))
-        .force("collide", d3.forceCollide(d => d.size + 5).iterations(2))
-        .on("tick", ticked);
+      let circles;
+      let texts;
+      let svg;
 
       function ticked() {
         circles.attr("cx", d => d.x)
@@ -74,6 +71,47 @@
         texts.attr('x', d => d.x)
             .attr('y', d => d.y);
       }
+
+
+      function baseVisualization(data){
+
+        // Create a force simulation
+        const simulation = d3.forceSimulation(data)
+          .force("x", d3.forceX().strength(0.05))
+          .force("y", d3.forceY().strength(0.05))
+          .force("collide", d3.forceCollide(d => d.size + 5).iterations(2))
+          .on("tick", ticked);
+
+        svg = d3.select("svg");
+
+        circles = svg.selectAll("circle")
+        .data(data)
+        .join("circle")
+        .attr("r", d => d.size)
+        .attr("fill", "#cab2d6")
+        .on("click", zoomToBoundingBox);
+
+        // Add a title.
+        circles.append("title")
+          .text(d => `${d.name}\nMeldung count: ${d.count}\nMean sterne: ${d.mean_sterne}`);
+
+        // Filter the data to include only bubbles big enough to display the text
+        let filteredData = data.filter(d => d.size > 20); // Adjust the threshold as needed
+
+        texts = svg.selectAll("text")
+          .data(filteredData)
+          .join('text')
+          .text(d => d.name)
+          .attr("class", "bubble-label")
+          .attr("text-anchor", "middle")
+          .attr("alignment-baseline", "middle")
+          .attr("fill", "black")
+          .attr("font-size", "8px");
+
+      }
+
+      baseVisualization(result);
+
 
       const treiberNames = Object.keys(result[0].treiber);
       const customColors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728',
@@ -86,31 +124,6 @@
         .domain(treiberNames)
         .range(customColors);
 
-      const svg = d3.select("svg");
-
-      let circles = svg.selectAll("circle")
-        .data(result)
-        .join("circle")
-        .attr("r", d => d.size)
-        .attr("fill", "#cab2d6")
-        .on("click", zoomToBoundingBox);
-
-      // Add a title.
-      circles.append("title")
-        .text(d => `${d.name}\nMeldung count: ${d.count}\nMean sterne: ${d.mean_sterne}`);
-
-      // Filter the data to include only bubbles big enough to display the text
-      let filteredData = result.filter(d => d.size > 20); // Adjust the threshold as needed
-
-      let texts = svg.selectAll("text")
-        .data(filteredData)
-        .join('text')
-        .text(d => d.name)
-        .attr("class", "bubble-label")
-        .attr("text-anchor", "middle")
-        .attr("alignment-baseline", "middle")
-        .attr("fill", "black")
-        .attr("font-size", "8px");
 
       // Add this code inside your existing script tag
       document.getElementById('reorganizeButton').addEventListener('click', reorganizeCircles);
@@ -146,39 +159,7 @@
       function resetVisualization() {
           // Reset the positions of circles to their original state
 
-          // Re-add the circles
-          circles = svg.selectAll("circle")
-              .data(result)
-              .join("circle")
-              .attr("r", d => d.size)
-              .attr("fill", "#cab2d6")
-              .on("click", zoomToBoundingBox);
-
-          // Add a title.
-          circles.append("title")
-              .text(d => `${d.name}\nMeldung count: ${d.count}\nMean sterne: ${d.mean_sterne}`);
-
-          let filteredData = result.filter(d => d.size > 20); // Adjust the threshold as needed
-          console.log(filteredData);
-
-
-          // Update the existing 'texts' selection
-          texts = svg.selectAll("text")
-              .data(filteredData)
-              .join('text')
-              .text(d => d.name)
-              .attr("class", "bubble-label")
-              .attr("text-anchor", "middle")
-              .attr("alignment-baseline", "middle")
-              .attr("fill", "black")
-              .attr("font-size", "8px");
-
-          // Create a force simulation
-          const simulation = d3.forceSimulation(result)
-              .force("x", d3.forceX().strength(0.05))
-              .force("y", d3.forceY().strength(0.05))
-              .force("collide", d3.forceCollide(d => d.size + 5).iterations(2))
-              .on("tick", ticked);
+          baseVisualization(result);
 
           // Reset the viewBox to the initial value
           svg.attr("viewBox", initialViewBox);
@@ -186,7 +167,6 @@
           // Remove the pie chart and back button if they exist
           svg.select(".pie-chart-group").remove();
       }
-
 
 
       function zoomToBoundingBox(_, d) {
@@ -231,35 +211,39 @@
             // Clear the circles and the pie chart group
             svg.selectAll("circle").remove();
             svg.select(".pie-chart-group").remove();
-          
+
             const g = svg.append("g")
               .attr("class", "pie-chart-group")
-              .attr("transform", `translate(${centerX}, ${centerY})`);
-          
+              .attr("transform", `translate(${centerX - 50}, ${centerY})`);
+
             g.selectAll("path")
               .data(arcs)
               .join("path")
               .attr("fill", (arc, i) => (hasTreiberData ? colorScale(arc.data.name) : '#FFE5B4'))
-              .attr("d", d3.arc().innerRadius(0).outerRadius(fixedRadius));
-          
+              .attr("d", d3.arc().innerRadius(0).outerRadius(fixedRadius/1.2))
+              .on("mouseover", function() { d3.select(this).attr("stroke", "#000"); })
+              .on("mouseout", function() { d3.select(this).attr("stroke", null); })
+              .append('title')
+              .text();
+
             // Split the text into words
             const words = circleData.name.split(' ');
-          
+
             // Calculate the font size dynamically based on the circle's size
             const fontSize = Math.min(fixedRadius / 5, 10); // Adjust the divisor and maximum font size as needed
             // Calculate the total height of the text
             const lineHeight = fontSize * 1.2; // Adjust the multiplier as needed for line spacing
             const totalHeight = lineHeight * words.length;
-                  
+
             // Calculate the starting y position for the first line of text to center it vertically
             const startY = -totalHeight / 2;
-                  
+
             // Create a text element with dynamic font size
             const text = g.append("text")
               .attr("text-anchor", "middle")
               .attr("font-size", fontSize + "px")
               .attr("y", startY); // Set the starting y position for the first line
-                  
+
             // Add each word as a separate tspan, adjusting the dy attribute for centering
             words.forEach((word, i) => {
               text.append("tspan")
@@ -269,6 +253,30 @@
             });
 
             svg.selectAll(".bubble-label").remove();
+
+/*             // Add legend on the right of the pie chart
+            const legend = svg.append("g")
+              .attr("class", "legend")
+              .attr("transform", `translate(${centerX + fixedRadius}, ${centerY - fixedRadius})`);
+
+            const legendItems = legend.selectAll(".legend-item")
+              .data(Object.keys(circleData.treiber))
+              .enter()
+              .append("g")
+              .attr("class", "legend-item")
+              .attr("transform", (d, i) => `translate(0, ${i * lineHeight / 1.5})`);
+
+            legendItems.append("rect")
+              .attr("width", 5)
+              .attr("height", 5)
+              .attr("fill", d => colorScale(d))
+              .attr("y", -5);
+
+            legendItems.append("text")
+              .attr("x", 10)
+              .attr("y", 0)
+              .attr("font-size", fontSize / 2 + "px")
+              .text(d => d); */
           }
         }
         

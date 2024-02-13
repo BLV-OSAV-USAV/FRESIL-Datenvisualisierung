@@ -160,6 +160,13 @@
 
           baseVisualization(result);
 
+          // Create a force simulation
+          const simulation = d3.forceSimulation(result)
+              .force("x", d3.forceX().strength(0.05))
+              .force("y", d3.forceY().strength(0.05))
+              .force("collide", d3.forceCollide(d => d.size + 5).iterations(2))
+              .on("tick", ticked);
+
           // Reset the viewBox to the initial value
           svg.attr("viewBox", initialViewBox);
 

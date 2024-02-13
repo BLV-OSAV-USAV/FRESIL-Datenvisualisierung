@@ -88,6 +88,8 @@
         .join("circle")
         .attr("r", d => d.size)
         .attr("fill", "#cab2d6")
+        .on("mouseover", function() { d3.select(this).attr("stroke", "#000"); })
+        .on("mouseout", function() { d3.select(this).attr("stroke", null); })
         .on("click", zoomToBoundingBox);
 
         // Add a title.
@@ -230,7 +232,7 @@
               .on("mouseover", function() { d3.select(this).attr("stroke", "#000"); })
               .on("mouseout", function() { d3.select(this).attr("stroke", null); })
               .append('title')
-              .text();
+              .text(d => `${d.data.name}: ${d.data.count}`);
 
             // Split the text into words
             const words = circleData.name.split(' ');

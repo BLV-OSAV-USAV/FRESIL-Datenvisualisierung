@@ -18,6 +18,7 @@
   </style>
 </head>
 <body>
+  <script src="https://unpkg.com/tippy.js@6"></script>
   <button id="reorganizeButton">Reorganize Circles</button>
   <button id="resetButton">Reset Visualization</button>
   <svg viewBox="-250 -250 500 500"></svg>
@@ -108,7 +109,6 @@
           .attr("alignment-baseline", "middle")
           .attr("fill", "black")
           .attr("font-size", "8px");
-
       }
 
       baseVisualization(result);
@@ -224,15 +224,24 @@
               .attr("class", "pie-chart-group")
               .attr("transform", `translate(${centerX - 50}, ${centerY})`);
 
+            const tooltip = d3.select("body")
+                              .append("div")
+                              .attr("class", "svg-tooltip")
+                              .style("position", "absolute")
+                              .style("visibility", "hidden");
+
             g.selectAll("path")
               .data(arcs)
               .join("path")
               .attr("fill", (arc, i) => (hasTreiberData ? colorScale(arc.data.name) : '#FFE5B4'))
               .attr("d", d3.arc().innerRadius(0).outerRadius(fixedRadius/1.2))
-              .on("mouseover", function() { d3.select(this).attr("stroke", "#000"); })
-              .on("mouseout", function() { d3.select(this).attr("stroke", null); })
-              .append('title')
-              .text(d => `${d.data.name}: ${d.data.count}`);
+              .on("mouseover", function(d) {d3.select(this).attr("stroke", "#000"); 
+                                            tooltip.style("visibility","visible")
+                                                    .text(`${d.data.name}: ${d.data.count}`);})
+              .on("mouseout", function() {d3.select(this).attr("stroke", null);
+                                          tooltip.style("visibility","hidden");})
+               .append('title')
+              .text(d => `${d.data.name}: ${d.data.count}`); 
 
             // Split the text into words
             const words = circleData.name.split(' ');

@@ -1,0 +1,73 @@
+.hidden {
+    display: none!important;
+}
+
+.label {
+  font-family: Arial;
+  fill: black;
+  fill-opacity: 1;
+  font-size: 11px;
+  text-anchor: middle;
+  pointer-events: none;
+  -ms-touch-action: none;
+}
+ 
+.canton-style {
+  stroke: rgb(226,226,226);
+  stroke-width: 1;
+}
+
+svg text {
+    pointer-events: none;
+	font-size: 12px;
+}
+
+#tooltip {
+	position: absolute;
+	width: 40px;
+	height: auto;
+	padding: 8px;
+	background-color: white;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+	pointer-events: none;
+}
+
+#tooltip.hidden {
+	display: none;
+}
+
+#tooltip p {
+	margin: 0;
+	font-family: Arial;
+	font-size: 12px;
+	line-height: 14px;
+}
+
+.selected {
+	background-color:#30A755 !important;
+	font-weight: bold !important;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+  stroke-width: 1px;
+}
+
+.x.axis path {
+  font-family: Arial;
+  font-size: 11px;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}

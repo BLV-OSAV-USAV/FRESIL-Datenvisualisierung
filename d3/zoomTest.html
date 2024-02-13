@@ -72,15 +72,14 @@
             .attr('y', d => d.y);
       }
 
-
-      function baseVisualization(data){
-
-        // Create a force simulation
-        const simulation = d3.forceSimulation(data)
+      // Create a force simulation
+      const simulation = d3.forceSimulation(result)
           .force("x", d3.forceX().strength(0.05))
           .force("y", d3.forceY().strength(0.05))
           .force("collide", d3.forceCollide(d => d.size + 5).iterations(2))
           .on("tick", ticked);
+    
+      function baseVisualization(data){
 
         svg = d3.select("svg");
 

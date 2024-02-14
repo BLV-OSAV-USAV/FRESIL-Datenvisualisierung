@@ -57,7 +57,7 @@ Promise.all([
   
     function baseVisualization(data){
 
-      svg = d3.select("svg");
+      svg = d3.select("svg#visWKA");
 
       circles = svg.selectAll("circle")
       .data(data)
@@ -66,7 +66,7 @@ Promise.all([
       .attr("fill", "#cab2d6")
       .on("mouseover", function() { d3.select(this).attr("stroke", "#000"); })
       .on("mouseout", function() { d3.select(this).attr("stroke", null); })
-      .on("click", zoomToBoundingBox);
+      .on("click", function(d,i) {moveToSection('three');});
 
       // Add a title.
       circles.append("title")
@@ -88,17 +88,6 @@ Promise.all([
 
     baseVisualization(result);
 
-
-    const treiberNames = Object.keys(result[0].treiber);
-    const customColors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728',
-      '#9467bd', '#8c564b', '#e377c2', '#7f7f7f',
-      '#bcbd22', '#17becf', '#aec7e8', '#ffbb78',
-      '#98df8a', '#ff9896', '#c5b0d5', '#c49c94',
-      '#f7b6d2', '#c7c7c7', '#dbdb8d'];
-
-    const colorScale = d3.scaleOrdinal()
-      .domain(treiberNames)
-      .range(customColors);
 
 
     // Add this code inside your existing script tag
@@ -151,127 +140,11 @@ Promise.all([
         svg.select(".pie-chart-group").remove();
     }
 
-
-    function zoomToBoundingBox(_, d) {
-        const evt = d3.event; // Access the d3 event object directly
-        evt.stopPropagation();
-            
-        let elem = evt.currentTarget;
-        let bbox = elem.getBBox();
-        let minX = bbox.x;
-        let minY = bbox.y;
-        let width = bbox.width + 20;
-        let height = bbox.height;
-            
-        // Calculate the center of the circle
-        let centerX = minX + bbox.width / 4;
-        let centerY = minY + bbox.height / 2;
-            
-        // Set a fixed radius for the pie chart
-        const fixedRadius = 100; // Adjust this value as needed
-            
-        // Calculate the viewBox based on the fixed radius
-        let viewBox = (centerX - fixedRadius) + " " + (centerY - fixedRadius) + " " + (fixedRadius * 2) + " " + (fixedRadius * 2);
-            
-        // Get the data associated with the circle
-        const circleData = d3.select(this).data()[0];
-            
-        // Check if the circle has treiber data
-        const hasTreiberData = Object.keys(circleData.treiber).length > 0;
-            
-        const pie = d3.pie().value(entry => entry.count);
-        const arcs = pie(hasTreiberData ?
-          Object.entries(circleData.treiber).map(([key, value]) => ({ name: key, count: Number(value) })) :
-          [{ name: 'No Treiber', count: 1 }]);
-            
-        // Transition to the zoomed view and then draw the pie chart
-        svg.transition()
-          .duration(1000) // Adjust the duration as needed
-          .attr("viewBox", viewBox)
-          .on("end", drawPieChart);
-            
-        function drawPieChart() {
-          // Clear the circles and the pie chart group
-          svg.selectAll("circle").remove();
-          svg.select(".pie-chart-group").remove();
-
-          const g = svg.append("g")
-            .attr("class", "pie-chart-group")
-            .attr("transform", `translate(${centerX - 50}, ${centerY})`);
-
-          const tooltip = d3.select("body")
-                            .append("div")
-                            .attr("class", "svg-tooltip")
-                            .style("position", "absolute")
-                            .style("visibility", "hidden");
-
-          g.selectAll("path")
-            .data(arcs)
-            .join("path")
-            .attr("fill", (arc, i) => (hasTreiberData ? colorScale(arc.data.name) : '#FFE5B4'))
-            .attr("d", d3.arc().innerRadius(0).outerRadius(fixedRadius/1.2))
-            .on("mouseover", function(d) {d3.select(this).attr("stroke", "#000"); 
-                                          tooltip.style("visibility","visible")
-                                                  .text(`${d.data.name}: ${d.data.count}`);})
-            .on("mouseout", function() {d3.select(this).attr("stroke", null);
-                                        tooltip.style("visibility","hidden");})
-             .append('title')
-            .text(d => `${d.data.name}: ${d.data.count}`); 
-
-          // Split the text into words
-          const words = circleData.name.split(' ');
-
-          // Calculate the font size dynamically based on the circle's size
-          const fontSize = Math.min(fixedRadius / 5, 10); // Adjust the divisor and maximum font size as needed
-          // Calculate the total height of the text
-          const lineHeight = fontSize * 1.2; // Adjust the multiplier as needed for line spacing
-          const totalHeight = lineHeight * words.length;
-
-          // Calculate the starting y position for the first line of text to center it vertically
-          const startY = -totalHeight / 2;
-
-          // Create a text element with dynamic font size
-          const text = g.append("text")
-            .attr("text-anchor", "middle")
-            .attr("font-size", fontSize + "px")
-            .attr("y", startY); // Set the starting y position for the first line
-
-          // Add each word as a separate tspan, adjusting the dy attribute for centering
-          words.forEach((word, i) => {
-            text.append("tspan")
-              .attr("x", 0)
-              .attr("dy", lineHeight + "px") // Set the line height for each line
-              .text(word);
-          });
-
-          svg.selectAll(".bubble-label").remove();
-
-/*             // Add legend on the right of the pie chart
-          const legend = svg.append("g")
-            .attr("class", "legend")
-            .attr("transform", `translate(${centerX + fixedRadius}, ${centerY - fixedRadius})`);
-
-          const legendItems = legend.selectAll(".legend-item")
-            .data(Object.keys(circleData.treiber))
-            .enter()
-            .append("g")
-            .attr("class", "legend-item")
-            .attr("transform", (d, i) => `translate(0, ${i * lineHeight / 1.5})`);
-
-          legendItems.append("rect")
-            .attr("width", 5)
-            .attr("height", 5)
-            .attr("fill", d => colorScale(d))
-            .attr("y", -5);
-
-          legendItems.append("text")
-            .attr("x", 10)
-            .attr("y", 0)
-            .attr("font-size", fontSize / 2 + "px")
-            .text(d => d); */
-        }
+    function moveToSection(sectionId) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
       }
-      
+    }
 
-    svg.on("click", zoomToBoundingBox) // or "pointerdown"
   })

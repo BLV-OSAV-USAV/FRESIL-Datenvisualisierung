@@ -42,8 +42,6 @@
 		<meta name="twitter:image" content="https://www.uvek-gis.admin.ch/BFE/storymaps/WK_WASTA/app.png">
 		<meta name="twitter:url" content="https://www.uvek-gis.admin.ch/BFE/storymaps/WK_WASTA/">
 
-
-		<script src="./main.js" defer></script>
 	
 		<!-- CSS -->
 		
@@ -55,6 +53,10 @@
 		<link rel="stylesheet" href="assets/css/map.css"/>
 		<link rel="stylesheet" href="assets/css/style.css"/>
 		<link rel="stylesheet" href="./main.css">
+
+
+		<script src="https://d3js.org/d3.v5.min.js"></script>
+
 
 		<style>
 		.dot {
@@ -105,7 +107,7 @@
         <div class="100%">
           <div class="logo"></div>
           <div class="amts">
-            <div class="amt trn">bfe</div>
+            <div class="amt trn">blv</div>
             <div class="amt-abbr">
               <span class="trn">bfeAbbr</span>
             </div>
@@ -136,16 +138,12 @@
 	  <p style="padding-bottom: 0px;"><span class="trn">storymapText</span></p>
 	  
 	<p>
-		<button id="sortProduction" class="btn active"><span class="trn">button1</span></button>
-		<button id="sortType" class="btn"><span class="trn">button2</span></button>
+		<button id="reorganizeButton" class="btn active"><span class="trn">Reorganize Circles</span></button>
+		<button id="resetButton"class="btn"><span class="trn">Reset Visualization</span></button>	
 	</p>
 
 	</div>
-	 <center>
-		<svg height="5" width="200">
-		  <line x1="0" y1="0" x2="200" y2="0" style="stroke:rgba(144, 144, 144, 0.5);stroke-width:2" />
-		</svg>
-	 </center><br>
+
 	</section>  
 	  
     <!-- Two - Viz -->
@@ -156,18 +154,16 @@
 	  <p><span class="trn">storymapText01</span></p>
 	</div>
 	-->
+	<script src="./main.js" defer></script>
 	 <center>
-		<div style="width: 100%;">
+		<div style="width: 40%; height: 10%;">
 			<div id="visWKA" style="padding-top: 10px; padding-bottom: 10px;">
-				<button id="reorganizeButton">Reorganize Circles</button>
-  				<button id="resetButton">Reset Visualization</button>
-  				<svg></svg>
-				
+				<svg id="visWKA" width="100%" height="100%" viewBox="-250 -250 500 500"></svg>			
 			</div>
 		</div>
 	 </center>
 	 
-	<center>
+	<!-- <center>
         <div style="width: 80%">
 		
 			<div class="row 100%">
@@ -180,7 +176,7 @@
 			</div>
 			
 		</div>
-		</center>
+	</center> -->
 		<p>	 
 	 
 	 <center><br>
@@ -223,12 +219,6 @@
       </ul>
     </section>
 
-
-    <script>
-		$(document).ready(function() {
-			init();
-		});
-    </script>    
 
 	</body>
 </html>

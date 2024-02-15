@@ -36,60 +36,7 @@ Promise.all([
       };
     });
 
-    let circles;
-    let texts;
-    let svg;
-
-    function ticked() {
-      circles.attr("cx", d => d.x)
-        .attr("cy", d => d.y);
-
-/*       texts.attr('x', d => d.x)
-          .attr('y', d => d.y); */
-    }
-
-    // Create a force simulation
-    const simulation = d3.forceSimulation(result)
-        .force("x", d3.forceX().strength(0.05))
-        .force("y", d3.forceY().strength(0.05))
-        .force("collide", d3.forceCollide(d => d.size + 5).iterations(8))
-        .on("tick", ticked);
-  
-    function baseVisualization(data){
-
-      svg = d3.select("svg#visWKA");
-
-      // Remove existing title elements
-      svg.selectAll("title").remove();
-
-      circles = svg.selectAll("circle")
-      .data(data)
-      .join("circle")
-      .attr("r", d => d.size)
-      .attr("fill", "#cab2d6")
-      .on("mouseover", function() { d3.select(this).attr("stroke", "#000"); })
-      .on("mouseout", function() { d3.select(this).attr("stroke", null); })
-      .on("click", function(d,i) {moveToSection('three');});
-
-      // Add a title.
-      circles.append("title")
-        .text(d => `${d.name}\nMeldung count: ${d.count}\nMean sterne: ${d.mean_sterne}`);
-
-/*       // Filter the data to include only bubbles big enough to display the text
-      let filteredData = data.filter(d => d.size > 20); // Adjust the threshold as needed
-
-      texts = svg.selectAll("text")
-        .data(filteredData)
-        .join('text')
-        .text(d => d.name)
-        .attr("class", "bubble-label")
-        .attr("text-anchor", "middle")
-        .attr("alignment-baseline", "middle")
-        .attr("fill", "black")
-        .attr("font-size", "8px"); */
-    }
-
-    baseVisualization(result);
+    baseVisualization(result, "#cab2d6");
 
 /*     function reorganizeCircles() {
       // Sort the result array based on circle size
@@ -137,11 +84,5 @@ Promise.all([
         svg.select(".pie-chart-group").remove();
     } */
 
-    function moveToSection(sectionId) {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
 
   })

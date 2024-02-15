@@ -30,28 +30,56 @@ def count_gefahr():
 def gefahr_treiber_count(lg):
     # Charger les fichiers CSV
     meldungXgefahr = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_gefahr-20231128.csv', sep='#', quotechar='`')
-    gefahr = pd.read_csv('./csv-files-filtered/filtered-ad_gefahr-20231128.csv', sep='#', quotechar='`')
-    meldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung-20231128.csv', sep='#', quotechar='`')
     treiber = pd.read_csv('./csv-files-filtered/filtered-ad_treiber-20231128.csv', sep='#', quotechar='`')
     treiberXmeldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_treiber-20231128.csv', sep='#', quotechar='`')
     
     merged_df = pd.merge(meldungXgefahr, treiberXmeldung, on='meldung_id')
     result_df_gefahr = merged_df.groupby(['gefahr_id', 'treiber_id']).size().unstack(fill_value=0)
     result_df_gefahr = result_df_gefahr.reset_index()
-    print(treiber[f'bezeichnung_{lg}'])
     result_df_gefahr.columns.values[1:] = treiber[f'bezeichnung_{lg}']
 
-
-
-
-
-
-    print(result_df_gefahr)
 
     # Enregistrer le résultat dans un fichier CSV
     result_df_gefahr.to_csv('./figure_data/gefahr_treiber_counts.csv', index=False)
 
+def count_matrix():
+    # Charger les fichiers CSV
+    meldungXmatrix = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_matrix-20231128.csv', sep='#', quotechar='`')
+    matrix = pd.read_csv('./csv-files-filtered/filtered-ad_matrix-20231128.csv', sep='#', quotechar='`')
+    meldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung-20231128.csv', sep='#', quotechar='`')
 
+    # Compter le nombre de meldung par matrix
+    matrix_counts = meldungXmatrix['matrix_id'].value_counts().reset_index()
+    matrix_counts.columns = ['id', 'count']
+
+    # Calculer la moyenne des valeurs de 'sterne' par matrix
+    merged_df = pd.merge(meldungXmatrix, meldung[['id', 'sterne']], left_on='meldung_id', right_on='id', how='left')
+    mean_sterne = merged_df.groupby('matrix_id')['sterne'].mean().reset_index()
+    mean_sterne.columns = ['id', 'mean_sterne']
+    mean_sterne['mean_sterne'] = mean_sterne['mean_sterne'].round(2)
+
+    # Fusionner les résultats avec le DataFrame existant
+    matrix_counts = pd.merge(matrix_counts, matrix[['id', 'bezeichnung_de']], on='id', how='left')
+    matrix_counts = pd.merge(matrix_counts, mean_sterne, on='id', how='left')
+
+    # Enregistrer le résultat dans un fichier CSV
+    matrix_counts.to_csv('./figure_data/matrix_counts.csv', index=False)
+
+
+def matrix_treiber_count(lg):
+    # Charger les fichiers CSV
+    meldungXmatrix = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_matrix-20231128.csv', sep='#', quotechar='`')
+    treiber = pd.read_csv('./csv-files-filtered/filtered-ad_treiber-20231128.csv', sep='#', quotechar='`')
+    treiberXmeldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_treiber-20231128.csv', sep='#', quotechar='`')
+    
+    merged_df = pd.merge(meldungXmatrix, treiberXmeldung, on='meldung_id')
+    result_df_matrix = merged_df.groupby(['matrix_id', 'treiber_id']).size().unstack(fill_value=0)
+    result_df_matrix = result_df_matrix.reset_index()
+    result_df_matrix.columns.values[1:] = treiber[f'bezeichnung_{lg}']
+
+
+    # Enregistrer le résultat dans un fichier CSV
+    result_df_matrix.to_csv('./figure_data/matrix_treiber_counts.csv', index=False)
 
 
 
@@ -82,8 +110,9 @@ def count_meldung_pro_tag():
     return None
 
 
-
-count_gefahr()
-gefahr_treiber_count('de')
-count_gefahr_pro_tag()
-count_meldung_pro_tag()
+count_matrix()
+matrix_treiber_count('de')
+#count_gefahr()
+#gefahr_treiber_count('de')
+#count_gefahr_pro_tag()
+#count_meldung_pro_tag()

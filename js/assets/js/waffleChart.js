@@ -18,7 +18,17 @@ function createWaffleChart(treiberData) {
         treiber: d.treiber,
         ratio: (d.value / total) * 100
     }));
-    console.log(chartData);
+    
+    // Check if chartData is empty
+    if (chartData.length === 0) {
+      d3.select("svg#waffleChart")
+          .append("text")
+          .attr("x", width / 2)
+          .attr("y", height / 2)
+          .attr("text-anchor", "middle")
+          .text("No data available to display the chart.");
+      return; // Exit the function early
+    }
 
 
     padding = ({x: 10, y: 40});
@@ -53,14 +63,21 @@ function createWaffleChart(treiberData) {
                 .range([0, waffleSize])
                 .padding(0.1);
 
-    color = d3.scaleOrdinal(d3.schemeTableau10)
-                .domain(sequence(chartData.length));
+    const customColors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728',
+    '#9467bd', '#8c564b', '#e377c2', '#7f7f7f',
+    '#bcbd22', '#17becf', '#aec7e8', '#ffbb78',
+    '#98df8a', '#ff9896', '#c5b0d5', '#c49c94',
+    '#f7b6d2', '#c7c7c7', '#dbdb8d'];
+        
+    const color = d3.scaleOrdinal()
+                    .domain(sequence(chartData.length))
+                    .range(customColors);
 
     const svg = d3.select("svg#waffleChart")
                     .attr("viewBox", [0, 0, width, height]);
     
     const g = svg.selectAll(".waffle")  
-                    .data(waffles)
+                    .data(array)
                     .join("g")
                     .attr("class", "waffle");
     
@@ -74,7 +91,7 @@ function createWaffleChart(treiberData) {
     
 
     cells.attr("x", d => scale(d.x))
-      .attr("y", d => whole ?  0 : scale(d.y))
+      .attr("y", d => scale(9 - d.y)) // Reverse the y-axis position
       .attr("rx", 3).attr("ry", 3)
       .attr("width", cellSize).attr("height", cellSize)      
 
@@ -90,37 +107,38 @@ function createWaffleChart(treiberData) {
       .attr("y", d => scale(d.y));
 
     svg.transition().delay(550)
-      .on("end", () => drawLegend(svg, cells));
+      .on("end", () => drawLegend(svg, cells, color));
 
 
-    drawLegend = (svg, cells) => {
-        const legend = svg.selectAll(".legend")
-          .data(chartData.map(d => d.treiber))
-          .join("g")      
-          .attr("opacity", 1)
-          .attr("transform", (d, i) => `translate(${waffleSize + 20},${i * 30})`)
-          .on("mouseover", highlight)
-          .on("mouseout", restore);
+    drawLegend = (svg, cells, color) => {
+      const legend = svg.selectAll(".legend")
+        .data(chartData.map(d => d.treiber))
+        .join("g")      
+        .attr("opacity", 1)
+        .attr("transform", (d, i) => `translate(${waffleSize + 20},${i * 30})`)
+        .on("mouseover", highlight)
+        .on("mouseout", restore);
       
-        legend.append("rect")
-          .attr("rx", 3).attr("ry", 3)
-          .attr("width", 30).attr("height", 20)
-          .attr("fill", (d, i) => color(i));    
+      legend.append("rect")
+        .attr("rx", 3).attr("ry", 3)
+        .attr("width", 30).attr("height", 20)
+        .attr("fill", (d, i) => color(i));    
       
-        legend.append("text")
-          .attr("dx", 40)
-          .attr("alignment-baseline", "hanging")
-          .text((d, i) => `${d} (${chartData[i].ratio.toFixed(1)}%)`);
+      legend.append("text")
+        .attr("x", 40) // Adjust the x position to align the text
+        .attr("y", 10) // Adjust the y position to align the text
+        .attr("alignment-baseline", "middle") // Align the text vertically in the middle
+        .text((d, i) => `${d} (${chartData[i].ratio.toFixed(1)}%)`);
         
         function highlight(e, d, restore) {
           const i = legend.nodes().indexOf(e.currentTarget);
           cells.transition().duration(500)
             .attr("fill", d => d.index === i ? color(d.index) : "#ccc");  
-        }
+        }     
         
-        function restore() {
-          cells.transition().duration(500).attr("fill", d => color(d.index))
-        }
+      function restore() {
+        cells.transition().duration(500).attr("fill", d => color(d.index))
       }
+    }
 
 }

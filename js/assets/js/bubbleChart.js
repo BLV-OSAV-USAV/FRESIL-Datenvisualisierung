@@ -7,10 +7,6 @@ function baseVisualization(data, color){
 	let width = 0;
 	let height = 0;
 
-    function ticked(d) {
-        circles.attr("cx", d => d.x)
-          .attr("cy", d => d.y);
-      }
 
     svg = d3.select("svg#bubbleChart");
 
@@ -24,26 +20,6 @@ function baseVisualization(data, color){
     .force("collide", d3.forceCollide(d => d.size + 5).iterations(8))
     .on("tick", ticked);
 
-    result.sort((a, b) => b.size - a.size);
-
-    // Calculate new positions for circles in a spiral layout
-    const numCircles = result.length;
-    const centerX = 0;
-    const centerY = 0;
-    const radiusStep = 20; // Adjust the step based on your preference
-    let angle = 0;
-    
-    result.forEach((circle, index) => {
-      const radius = index * radiusStep;
-      const x = centerX + radius * Math.cos(angle);
-      const y = centerY + radius * Math.sin(angle);
-    
-      circle.x = x;
-      circle.y = y;
-    
-      // Increase the angle for the next circle
-      angle += 0.1; // Adjust the angle increment based on your preference
-    });
 
     circles = svg.selectAll("circle")
     .data(data)
@@ -86,6 +62,7 @@ function baseVisualization(data, color){
 
         // Extract the "treiber" values from the selected circle
         const treiberData = d.treiber;
+        const total = d.count
         // Create and display waffle chart
         createWaffleChart(treiberData);
     });
@@ -93,6 +70,11 @@ function baseVisualization(data, color){
     // Add a title.
     circles.append("title")
       .text(d => `${d.name}\nMeldung count: ${d.count}\nMean sterne: ${d.mean_sterne}`);
+
+    function ticked(d) {
+      circles.attr("cx", d => d.x)
+        .attr("cy", d => d.y);
+    }
   }
 
 

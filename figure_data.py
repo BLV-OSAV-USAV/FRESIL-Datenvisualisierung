@@ -110,8 +110,21 @@ def count_meldung_pro_tag():
     return None
 
 
-count_matrix()
-matrix_treiber_count('de')
+def list_meldung_pro_Gefahr(id):
+    # Charger les fichiers CSV
+    meldungXgefahr = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_gefahr-20231128.csv', sep='#', quotechar='`')
+    meldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung-20231128.csv', sep='#', quotechar='`')
+
+    meldung_ids = list(meldungXgefahr.meldung_id[meldungXgefahr['gefahr_id'] == id])
+
+    meldungs = meldung[meldung['id'].isin(meldung_ids)]
+    print(meldungs)
+
+
+
+list_meldung_pro_Gefahr(188)
+#count_matrix()
+#matrix_treiber_count('de')
 #count_gefahr()
 #gefahr_treiber_count('de')
 #count_gefahr_pro_tag()

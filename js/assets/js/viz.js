@@ -82,12 +82,12 @@ function baseVisualization(data, color){
     })
     .on("click", function(d,i) {
         moveToSection('three');
-
         // Extract the "treiber" values from the selected circle
         const treiberData = d.treiber;
-        const total = d.count
+        const id = d.id;
         // Create and display waffle chart
         createWaffleChart(treiberData);
+        createList(id);
     });
 
     // Add a title.
@@ -99,6 +99,28 @@ function baseVisualization(data, color){
         .attr("cy", d => d.y);
     }
   }
+
+  function createList(id) {
+    Promise.all([
+        fetch("../csv-files-filtered/filtered-ad_meldung-20231128.csv").then(response => response.text()),
+        fetch("../csv-files-filtered/filtered-ad_meldung_ad_gefahr-20231128.csv").then(response => response.text())
+    ]).then(([meldungsText, meldungXgefahrText]) => {
+        // Parse CSV data
+        const meldungs = d3.dsvFormat("#").parse(meldungsText);
+        const meldungXgefahr = d3.dsvFormat("#").parse(meldungXgefahrText);
+
+        // Filter the meldungs based on the provided 'id'
+        const filteredMeldungs = meldungs.filter(row => {
+            return meldungXgefahr.some(meldung => meldung.gefahr_id === id && meldung.meldung_id === row.id);
+        });
+
+        // Now 'filteredMeldungs' contains only the rows where the 'id' column matches the provided 'id' variable
+        console.log(filteredMeldungs);
+        
+        // You can do further processing with the filtered data here
+    });
+}
+
 
 
 
@@ -247,9 +269,6 @@ function createWaffleChart(treiberData) {
     }
 
 }
-
-
-
 
 
 

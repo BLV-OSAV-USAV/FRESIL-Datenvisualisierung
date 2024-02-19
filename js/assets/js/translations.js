@@ -2,25 +2,25 @@ let sdTranslations = {
 
 	storymapTitel: {
 
-		de: '<strong>Die bedeutendsten Wasserkraftanlagen der Schweiz</strong>',
+		de: '<strong>Früherkennung für die Sicherheit der Lebensmittel</strong>',
 
-		fr: '<strong>Les principales centrales hydrauliques de Suisse</strong>',
+		fr: '<strong>Détection précoce pour la sécurité des aliments</strong>',
 
-		it: '<strong>I principali impianti idroelettrici svizzeri</strong>',
+		it: '<strong>Riconoscimento precoce della sicurezza degli alimenti</strong>',
 
-		en: '<strong>Switzerland’s main hydropower plants</strong>'
+		en: '<strong>Early detection for food safety</strong>'
 
 	},
 
 	pagetitle: {
 
-		de: 'Die bedeutendsten Wasserkraftanlagen der Schweiz',
+		de: 'Früherkennung für die Sicherheit der Lebensmittel',
 
-		fr: 'Les principales centrales hydrauliques de Suisse',
+		fr: 'Détection précoce pour la sécurité des aliments',
 
-		it: 'I principali impianti idroelettrici svizzeri',
+		it: 'Riconoscimento precoce della sicurezza degli alimenti',
 
-		en: 'Switzerland’s main hydropower plants'
+		en: 'Early detection for food safety'
 
 	},
 

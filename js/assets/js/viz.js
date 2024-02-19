@@ -1,93 +1,3 @@
-// Nach Gefahr visu
-Promise.all([
-    d3.csv("../figure_data/gefahr_counts.csv"),
-    d3.csv("../figure_data/gefahr_treiber_counts.csv")
-  ]).then(([gefahrCounts, treiberCounts]) => {
-    // Merge the data on 'id' and 'gefahr_id'
-    const mergedData = gefahrCounts.map(count => ({
-      ...count,
-      ...treiberCounts.find(treiber => treiber.gefahr_id === count.id)
-    }));
-
-    // Store the initial viewBox value
-    const initialViewBox = "-250 -250 500 500";
-
-    // Convert the merged data to the desired structure
-    let result = mergedData.map(entry => {
-      const {
-        id,
-        count,
-        bezeichnung_de,
-        mean_sterne,
-        gefahr_id,
-        ...treiberColumns
-      } = entry;
-      const treiber = Object.keys(treiberColumns).reduce((acc, key) => {
-        acc[key] = treiberColumns[key];
-        return acc;
-      }, {});
-      const size = count * mean_sterne;
-      return {
-        id: +id,
-        name: bezeichnung_de,
-        count: +count,
-        mean_sterne: +mean_sterne,
-        treiber: treiber,
-        size: +size
-      };
-    });
-
-    baseVisualization(result, "#cab2d6");
-
-  })
-
-
-// Nach Matrix visu
-  Promise.all([
-    d3.csv("../figure_data/matrix_counts.csv"),
-    d3.csv("../figure_data/matrix_treiber_counts.csv")
-  ]).then(([matrixCounts, treiberCounts]) => {
-    // Merge the data on 'id' and 'matrix_id'
-    const mergedData = matrixCounts.map(count => ({
-      ...count,
-      ...treiberCounts.find(treiber => treiber.matrix_id === count.id)
-    }));
-
-    // Store the initial viewBox value
-    const initialViewBox = "-250 -250 500 500";
-
-    // Convert the merged data to the desired structure
-    let result = mergedData.map(entry => {
-      const {
-        id,
-        count,
-        bezeichnung_de,
-        mean_sterne,
-        matrix_id,
-        ...treiberColumns
-      } = entry;
-      const treiber = Object.keys(treiberColumns).reduce((acc, key) => {
-        acc[key] = treiberColumns[key];
-        return acc;
-      }, {});
-      const size = count * mean_sterne;
-      return {
-        id: +id,
-        name: bezeichnung_de,
-        count: +count,
-        mean_sterne: +mean_sterne,
-        treiber: treiber,
-        size: +size
-      };
-    });
-
-    baseVisualization(result, '#a6cee3');
-
-
-  })
-
-
-
 // Bubble chart visu
 let circles;
 let svg;
@@ -95,8 +5,8 @@ let svg;
 function baseVisualization(data, color){
 
     let w = window.innerWidth;
-	let width = 0;
-	let height = 0;
+	  let width = 0;
+	  let height = 0;
 
 
     svg = d3.select("svg#bubbleChart");
@@ -238,12 +148,12 @@ function createWaffleChart(treiberData) {
     sequence = (length) => Array.apply(null, {length: length}).map((d, i) => i);
 
     const array = [];
+    
 
     for(let y = 9; y >= 0; y--){
       for(let x = 0; x < 10; x ++) {
         if (curr > accu && index < max) {
           let r = Math.round(chartData[++index].ratio);
-          console.log(r);
           while(r === 0 && index < max) r = Math.round(chartData[++index].ratio);
           accu += r;
         }

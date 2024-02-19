@@ -60,7 +60,7 @@ let sdTranslations = {
 
 	},	
 
-	button1: {
+	gefahrButton: {
 
 		de: 'Nach Gefahr ordnen',
 
@@ -73,7 +73,7 @@ let sdTranslations = {
 	},
 	
 
-	button2: {
+	matrixButton: {
 
 		de: 'Nach Matrix ordnen',
 
@@ -87,13 +87,13 @@ let sdTranslations = {
 	
 	legende_1: {
 
-		de: 'Laufkraftwerk',
+		de: 'Die Größe des Kreises wird berechnet, indem die Anzahl der Ankündigungen mit ihrer durchschnittlichen Bedeutung multipliziert wird. Diese Messung beschreibt sowohl die numerische Größe als auch die Ernsthaftigkeit der damit verbundenen Gefahr.',
 
-		fr: 'aménagement au fil de l’eau',
+		fr: 'La grandeur du cercle est déterminée en multipliant le nombre d\'annonces par leur importance moyenne. Cette mesure décrit à la fois l\'ampleur numérique et la gravité du danger associé.',
 
-		it: 'impianto ad acqua fluente',
+		it: 'La grandezza del cerchio è determinata moltiplicando il numero di annunci per la loro importanza media. Questa misura descrive sia l\'entità numerica che la gravità del pericolo associato.',
 
-		en: 'River power plant'
+		en: 'The size of the circle is determined by multiplying the number of announcements by their average importance. This measurement describes both the numerical magnitude and the severity of the associated danger.'
 
 	},
 	
@@ -133,7 +133,7 @@ let sdTranslations = {
 
 	},
 	
-	bfe: {
+	blv: {
 
 		de: 'Bundesamt für Lebensmittelsicherheit und Veterinärwesen BLV',
 
@@ -145,7 +145,7 @@ let sdTranslations = {
 
 	},
 
-	bfeAbbr: {
+	blvAbbr: {
 
 		de: 'BLV',
 

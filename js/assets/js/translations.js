@@ -38,13 +38,13 @@ let sdTranslations = {
 
 	storymapText: {
 
-		de: 'Mit <a href="https://www.bfe.admin.ch/bfe/de/home/versorgung/erneuerbare-energien/wasserkraft.html" target="_blank">Wasserkraft</a> werden rund <a href="https://www.bfe.admin.ch/bfe/de/home/versorgung/statistik-und-geodaten/energiestatistiken/elektrizitaetsstatistik.html" target="_blank">58&nbsp;% des Stroms der Schweiz</a> erzeugt. Entdecken Sie anhand dieser Storymap, wo sich die Schweizer Wasserkraftanlagen mit einer Leistung gr&ouml;sser als 300&nbsp;kW befinden und durch welche Zufl&uuml;sse sie gespiesen werden.<br>Bei Pumpspeicherkraftwerken ist nur die Produktion mit nat&uuml;rlich anfallendem Wasser ber&uuml;cksichtigt, entsprechend sind reine Umw&auml;lzwerke nicht in der Grafik aufgef&uuml;hrt. Bei Grenzkraftwerken wird der Schweizer Anteil an der Produktion gezeigt.<br><br>Jeder Kreis repr&auml;sentiert eine Wasserkraftanlage. Seine Gr&ouml;sse entspricht der jährlichen Stromproduktion und seine Farbe dem Typ. Klicken Sie auf einen Kreis, um mehr Informationen zu erhalten. Zudem können Sie die Kreise wahlweise nach Produktion oder nach Typ anordnen.',
+		de: 'Das BLV identifiziert neu auftretende Gefahren für die Gesundheit der Schweizer Bevölkerung, um die Lebensmittelsicherheit langfristig sicherzustellen und Betrug zu verhüten. Eine solche Früherkennung ermöglicht es, rechtzeitig Gegenmassnahmen zu ergreifen.',
 
-		fr: 'La <a href="https://www.bfe.admin.ch/bfe/fr/home/approvisionnement/energies-renouvelables/force-hydraulique.html" target="_blank">force hydraulique</a> est &agrave; l&rsquo;origine de <a href="https://www.bfe.admin.ch/bfe/fr/home/approvisionnement/statistiques-et-geodonnees/statistiques-de-lenergie/statistique-de-l-electricite.html" target="_blank">58&nbsp;% de la production d&rsquo;&eacute;lectricit&eacute; en Suisse</a>. La storymap permet de localiser les centrales hydrauliques de Suisse d&rsquo;une puissance sup&eacute;rieure &agrave; 300&nbsp;kW ainsi que les cours d&rsquo;eau qui les alimentent.<br>S&rsquo;agissant des centrales &agrave; pompage-turbinage, seule la production issue d&rsquo;apports naturels est prise en compte, raison pour laquelle les installations de repompage ne sont pas repr&eacute;sent&eacute;es. Pour les centrales hydrauliques frontali&egrave;res, seule la part suisse de la production est illustr&eacute;e.<br><br>Chaque cercle représente une centrale hydroélectrique. Sa taille correspond à la production annuelle d\'électricité et sa couleur au type. Cliquez sur un cercle pour obtenir plus d\'informations. Vous pouvez également choisir de classer les cercles par production ou par type.',
+		fr: 'Afin de garantir la sécurité des aliments à long terme et de prévenir les fraudes, l’OSAV identifie les dangers émergents pour la santé des consommateurs suisses. Détecter ces dangers suffisamment tôt permet de prendre les bonnes mesures au bon moment.',
 		
-		it: '<a href="https://www.bfe.admin.ch/bfe/it/home/approvvigionamento/energie-rinnovabili/forza-idrica.html" target="_blank">L&rsquo;energia idroelettrica</a> rappresenta circa il <a href="https://www.bfe.admin.ch/bfe/it/home/approvvigionamento/statistiche-e-geodati/statistiche-energetiche/statistica-dell_elettricita.html" target="_blank">58 per cento della produzione svizzera di elettricit&agrave;</a>. Con questa storymap potete scoprire dove si trovano gli impianti idroelettrici svizzeri di potenza superiore a 300&nbsp;kW e da quali corsi d&rsquo;acqua sono alimentati.<br>Nel caso delle centrali ad accumulazione con pompaggio viene considerata solamente l&rsquo;energia prodotta con acqua accumulata in modo naturale. Di conseguenza, le centrali di sola ricircolazione non sono indicate nella rappresentazione grafica. Per le centrali idroelettriche di confine &egrave; indicata la quota di produzione riservata alla Svizzera.<br><br>Ogni cerchio rappresenta una centrale idroelettrica. La sua dimensione corrisponde alla produzione annuale di elettricità e il suo colore al tipo. Clicca su un cerchio per ottenere maggiori informazioni. Puoi anche scegliere di organizzare i cerchi per produzione o per tipo.',
+		it: 'Per garantire in modo durevole la sicurezza degli alimenti e prevenire le frodi l’USAV identifica i possibili pericoli per la salute dei consumatori svizzeri. Il riconoscimento precoce di questi pericoli permette l’introduzione al momento opportuno di misure appropriate.',
 
-		en: '<a href="https://www.bfe.admin.ch/bfe/en/home/supply/renewable-energy/hydropower.html" target="_blank">Hydropower</a> is responsible for generating around <a href="https://www.bfe.admin.ch/bfe/en/home/supply/statistics-and-geodata/energy-statistics/electricity-statistics.html" target="_blank">58&nbsp;% of Switzerland&rsquo;s electricity</a>. Use the story map to discover where Swiss hydropower plants with an output of over 300&nbsp;kW are located, along with their main water sources.<br>In the case of pump storage plants, only production from naturally occurring water is presented; basic water flow plants are therefore not shown in the diagram. For hydropower plants located on the border, only the Swiss share of production is shown.<br><br>Each circle represents a hydropower plant. Its size corresponds to the annual electricity production and its color to the type. Click on a circle to get more information. In addition, you can choose to arrange the circles by production or by type.'
+		en: 'For sustainable assurance of food safety and the prevention of fraud, the FSVO identifies newly emerging risks to the health of Switzerland’s population. Early detection of this kind allows appropriate action to be taken in real time.'
 
 	},
 
@@ -62,26 +62,26 @@ let sdTranslations = {
 
 	button1: {
 
-		de: 'Nach Produktion ordnen',
+		de: 'Nach Gefahr ordnen',
 
-		fr: 'Trier par production',
+		fr: 'Trier par Danger',
 
-		it: 'Ordina per produzione',
+		it: 'Ordina per pericolo',
 
-		en: 'Arrange by production'
+		en: 'Arrange by danger'
 
 	},
 	
 
 	button2: {
 
-		de: 'Nach Typ ordnen',
+		de: 'Nach Matrix ordnen',
 
-		fr: 'Trier par type',
+		fr: 'Trier par matrice',
 
-		it: 'Ordina per tipo',
+		it: 'Ordina per matrice',
 
-		en: 'Group by type'
+		en: 'Group by matrix'
 
 	},	
 	
@@ -123,37 +123,37 @@ let sdTranslations = {
 		
 	kontakt: {
 
-		de: '<a href="mailto:geoinformation@bfe.admin.ch" target="_blank">Kontakt</a>',
+		de: '<a href="mailto:seismo@blv.admin.ch" target="_blank">Kontakt</a>',
 
-		fr: '<a href="mailto:geoinformation@bfe.admin.ch" target="_blank">Contact</a>',
+		fr: '<a href="mailto:seismo@blv.admin.ch" target="_blank">Contact</a>',
 
-		it: '<a href="mailto:geoinformation@bfe.admin.ch" target="_blank">Contatto</a>',
+		it: '<a href="mailto:seismo@blv.admin.ch" target="_blank">Contatto</a>',
 
-		en: '<a href="mailto:geoinformation@bfe.admin.ch" target="_blank">Contact</a>'
+		en: '<a href="mailto:seismo@blv.admin.ch" target="_blank">Contact</a>'
 
 	},
 	
 	bfe: {
 
-		de: 'Bundesamt für Energie BFE',
+		de: 'Bundesamt für Lebensmittelsicherheit und Veterinärwesen BLV',
 
-		fr: 'Office f&eacute;d&eacute;ral de l\'&eacute;nergie OFEN',
+		fr: 'Office fédéral de la sécurité alimentaire et des affaires vétérinaires OSAV',
 
-		it: 'Ufficio federale dell\'energia UFE',
+		it: 'Ufficio federale della sicurezza alimentare e di veterinaria USAV',
 
-		en: 'Swiss Federal Office of Energy SFOE'
+		en: 'Federal Food Safety and Veterinary Office FSVO'
 
 	},
 
 	bfeAbbr: {
 
-		de: 'BFE',
+		de: 'BLV',
 
-		fr: 'OFEN',
+		fr: 'OSAV',
 
-		it: 'UFE',
+		it: 'USAV',
 
-		en: 'SFOE'
+		en: 'FSVO'
 
 	},
 

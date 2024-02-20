@@ -100,6 +100,8 @@ function baseVisualization(data, color){
     }
   }
 
+  let table; // Define the DataTable variable outside the function scope
+
   function createList(id) {
     Promise.all([
         fetch("../csv-files-filtered/filtered-ad_meldung-20231128.csv").then(response => response.text()),
@@ -109,17 +111,69 @@ function baseVisualization(data, color){
         const meldungs = d3.dsvFormat("#").parse(meldungsText);
         const meldungXgefahr = d3.dsvFormat("#").parse(meldungXgefahrText);
 
-        // Filter the meldungs based on the provided 'id'
-        const filteredMeldungs = meldungs.filter(row => {
-            return meldungXgefahr.some(meldung => meldung.gefahr_id === id && meldung.meldung_id === row.id);
+        // Filter the CSV based on the 'id' variable
+        const filteredMeldungIds = meldungXgefahr.filter(row => Number(row.gefahr_id) === id)
+                                                  .map(row => row.meldung_id);
+    
+        const filteredData = meldungs.filter(row => filteredMeldungIds.includes(row.id));
+    
+
+        // Formatting function for row details - modify as you need
+        function format(d) {
+          // `d` is the original data object for the row
+          return (
+              '<dl>' +
+              '<dt>Full name:</dt>' +
+              '<dd>' +
+              d.kurzinfo +
+              '</dd>' +
+              '<dt>Sterne:</dt>' +
+              '<dd>' +
+              d.sterne +
+              '</dd>' +
+              '</dl>'
+          );
+        }
+
+        // Check if the DataTable instance already exists
+        if (!table) {
+          // Initialize DataTable only if it doesn't exist
+          table = new DataTable('#filtered-table', {
+              columns: [
+                {
+                  className: 'dt-control',
+                  orderable: false,
+                  data: null,
+                  defaultContent: ''
+              },
+              { title: 'Titel', data: 'titel' }
+              ],
+              data: filteredData, // Pass the modified data to the DataTable
+              scrollY: '500px', // Set a fixed height for the table body
+              scrollCollapse: true, // Allow collapsing the table height if the content doesn't fill it
+              paging: false // Disable pagination
+          });
+
+        } else {
+            // If DataTable instance already exists, just update its data
+            table.clear().rows.add(filteredData).draw();
+        }
+        // Add event listener for opening and closing details
+        $('#filtered-table').on('click', 'td.dt-control', function (e) {
+          let tr = $(this).closest('tr');
+          let row = table.row(tr);
+
+          if (row.child.isShown()) {
+              // This row is already open - close it
+              row.child.hide();
+          } else {
+              // Open this row
+              row.child(format(row.data())).show();
+          }
         });
 
-        // Now 'filteredMeldungs' contains only the rows where the 'id' column matches the provided 'id' variable
-        console.log(filteredMeldungs);
-        
-        // You can do further processing with the filtered data here
-    });
-}
+              });
+        }
 
 
 
@@ -143,7 +197,6 @@ function createWaffleChart(treiberData) {
         treiber: d.treiber,
         ratio: (d.value / total) * 100
     }));
-    console.log(chartData);
     
     // Check if chartData is empty
     if (chartData.length === 0) {

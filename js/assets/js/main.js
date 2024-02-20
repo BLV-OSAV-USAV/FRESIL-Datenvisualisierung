@@ -8,7 +8,7 @@ function handleGefahrButtonClick() {
     this.classList.add('active');
     // Load and execute the script for handling gefahrButton click
     const script = document.createElement('script');
-    script.src = './assets/js/gefahrOrdnung.js'; // Replace 'path/to/gefahrButtonScript.js' with the actual path to your script
+    script.src = './assets/js/gefahrOrdnung.js'; 
     document.head.appendChild(script);
 }
 
@@ -22,7 +22,7 @@ function handleMatrixButtonClick() {
     this.classList.add('active');
     // Load and execute the script for handling matrixButton click
     const script = document.createElement('script');
-    script.src = './assets/js/matrixOrdnung.js'; // Replace 'path/to/matrixButtonScript.js' with the actual path to your script
+    script.src = './assets/js/matrixOrdnung.js'; 
     document.head.appendChild(script);
 }
 

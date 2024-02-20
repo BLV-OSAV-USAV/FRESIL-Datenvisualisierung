@@ -179,6 +179,17 @@ let sdTranslations = {
 
 		en: '&copy; <a href="https://www.bfe.admin.ch/bfe/en/home.html" target="_blank">SFOE</a>, <a href="https://www.bfe.admin.ch/bfe/en/home/supply/renewable-energy/hydropower.html" target="_blank">Hydropower</a>, <a href="https://www.bfe.admin.ch/bfe/en/home/supply/statistics-and-geodata/geoinformation.html" target="_blank">Geoinformation</a>',
 
+	},
+
+	tableTitle:{
+
+		de: 'Meldung',
+
+		fr: 'Notification',
+
+		it: 'Notifica',
+
+		en: 'Notification'
 	}
 
 };

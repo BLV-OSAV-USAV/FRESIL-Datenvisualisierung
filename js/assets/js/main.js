@@ -27,8 +27,14 @@ function handleMatrixButtonClick() {
 }
 
 // Add event listeners to the buttons with context binding
-document.getElementById('gefahrButton').addEventListener('click', handleGefahrButtonClick.bind(document.getElementById('gefahrButton')));
-document.getElementById('matrixButton').addEventListener('click', handleMatrixButtonClick.bind(document.getElementById('matrixButton')));
+document.getElementById('gefahrButton').addEventListener('click', function() {
+    handleGefahrButtonClick.call(this);
+    moveToSection('two');
+});
+document.getElementById('matrixButton').addEventListener('click', function() {
+    handleMatrixButtonClick.call(this);
+    moveToSection('two');
+});
 
 // Call handleGefahrButtonClick() function by default when the page loads
 window.addEventListener('load', function() {

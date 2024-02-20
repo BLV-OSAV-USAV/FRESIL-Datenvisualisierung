@@ -54,27 +54,27 @@ function baseVisualization(data, color){
         let [posx, posy] = d3.mouse(this);
 
         let w = window.innerWidth;
-		let offsetheight = document.getElementById('bubbleChart').offsetHeight;
-		let tooltipOffsetWidth = (w - width) / 2;
+		    let offsetheight = document.getElementById('bubbleChart').offsetHeight;
+		    let tooltipOffsetWidth = (w - width) / 2;
 
-        //Update the tooltip position and value
-		d3.select("#tooltip")
-        .style("left", (posx + tooltipOffsetWidth) + "px")
-        .style("top", (posy + offsetheight) + "px")
-        .select("#titel")
-        .text(d.name);
+            //Update the tooltip position and value
+		    d3.select("#tooltip")
+            .style("left", (posx + tooltipOffsetWidth) + "px")
+            .style("top", (posy + offsetheight) + "px")
+            .select("#titel")
+            .text(d.name);
 
-        d3.select("#tooltip")  
-		    .select("#meldungCount")
-		    .text(`Anzahl Meldungen: ${d.count}`)
-            
-        d3.select("#tooltip")
-            .select("#meanSterne")
-            .text(`Durchschnittliche Wichtigkeit: ${d.mean_sterne}`);
-            
+            d3.select("#tooltip")  
+		        .select("#meldungCount")
+		        .text(`Anzahl Meldungen: ${d.count}`)
 
-        d3.select("#tooltip").classed("hidden", false);
-    })
+            d3.select("#tooltip")
+                .select("#meanSterne")
+                .text(`Durchschnittliche Wichtigkeit: ${d.mean_sterne}`);
+
+
+            d3.select("#tooltip").classed("hidden", false);
+        })
     .on("mouseout", function() { 
         d3.select(this).attr("stroke", null); 
         //Hide the tooltip
@@ -85,8 +85,9 @@ function baseVisualization(data, color){
         // Extract the "treiber" values from the selected circle
         const treiberData = d.treiber;
         const id = d.id;
+        const title = d.name;
         // Create and display waffle chart
-        createWaffleChart(treiberData);
+        createWaffleChart(treiberData, title);
         createList(id);
     });
 
@@ -102,38 +103,128 @@ function baseVisualization(data, color){
 
   let table; // Define the DataTable variable outside the function scope
 
-  function createList(id) {
+function createList(id) {
     Promise.all([
         fetch("../csv-files-filtered/filtered-ad_meldung-20231128.csv").then(response => response.text()),
-        fetch("../csv-files-filtered/filtered-ad_meldung_ad_gefahr-20231128.csv").then(response => response.text())
-    ]).then(([meldungsText, meldungXgefahrText]) => {
+        fetch("../csv-files-filtered/filtered-ad_meldung_ad_gefahr-20231128.csv").then(response => response.text()),
+        fetch("../csv-files-filtered/filtered-ad_publikation_detail-20231128.csv").then(response => response.text()),
+        fetch("../csv-files-filtered/filtered-ad_publikation-20231128.csv").then(response => response.text()),
+        fetch("../csv-files-filtered/filtered-ad_meldung_ad_treiber-20231128.csv").then(response => response.text()),
+        fetch("../csv-files-filtered/filtered-ad_treiber-20231128.csv").then(response => response.text()),
+        fetch("../csv-files-filtered/filtered-ad_meldung_ad_bereich-20231128.csv").then(response => response.text()),
+        fetch("../csv-files-filtered/filtered-ad_bereich-20231128.csv").then(response => response.text()),
+        fetch("../csv-files-filtered/filtered-ad_meldung_ad_matrix-20231128.csv").then(response => response.text()),
+        fetch("../csv-files-filtered/filtered-ad_matrix-20231128.csv").then(response => response.text()),
+    ]).then(([meldungsText, meldungXgefahrText, publikationDetailText, publikationText, 
+              meldungXtreiberText, treiberText, meldungXbereichText, bereichText, meldungXmatrixText, matrixText]) => {
         // Parse CSV data
         const meldungs = d3.dsvFormat("#").parse(meldungsText);
         const meldungXgefahr = d3.dsvFormat("#").parse(meldungXgefahrText);
+        const publikation_detail = d3.dsvFormat("#").parse(publikationDetailText);
+        const publikation = d3.dsvFormat("#").parse(publikationText);
+        const meldungXtreiber = d3.dsvFormat("#").parse(meldungXtreiberText);
+        const treiber = d3.dsvFormat("#").parse(treiberText);
+        const meldungXbereich = d3.dsvFormat("#").parse(meldungXbereichText);
+        const bereich = d3.dsvFormat("#").parse(bereichText);
+        const meldungXmatrix = d3.dsvFormat("#").parse(meldungXmatrixText);
+        const matrix = d3.dsvFormat("#").parse(matrixText);
 
         // Filter the CSV based on the 'id' variable
         const filteredMeldungIds = meldungXgefahr.filter(row => Number(row.gefahr_id) === id)
                                                   .map(row => row.meldung_id);
     
         const filteredData = meldungs.filter(row => filteredMeldungIds.includes(row.id));
-    
 
-        // Formatting function for row details - modify as you need
-        function format(d) {
-          // `d` is the original data object for the row
-          return (
-              '<dl>' +
-              '<dt>Full name:</dt>' +
-              '<dd>' +
-              d.kurzinfo +
-              '</dd>' +
-              '<dt>Sterne:</dt>' +
-              '<dd>' +
-              d.sterne +
-              '</dd>' +
-              '</dl>'
-          );
+        // Add 'links' column to filteredData
+        filteredData.forEach(row => {
+        // Find links associated with the current 'id'
+        const links = publikation_detail
+            .filter(pubRow => pubRow.publikation_id === row.id)
+            .map(pubRow => {
+                const foundPublikation = publikation.find(p => p.id === pubRow.publikation_id);
+                if (foundPublikation) {
+                    return { [foundPublikation.titel]: pubRow.link };
+                } else {
+                    return { [pubRow.link]: pubRow.link }; // or handle the missing data accordingly
+                }
+              });
+          // Assign links to 'links' column
+          row.links = links;
+
+          // Find treibers associated with the current 'id'
+          const treibers = meldungXtreiber.filter(meldungXtreiberRow => meldungXtreiberRow.meldung_id === row.id)
+          .map(meldungXtreiberRow => {
+              const treiberId = meldungXtreiberRow.treiber_id;
+              const treiberInfo = treiber.find(t => t.id === treiberId);
+              return treiberInfo ? treiberInfo.bezeichnung_de : '-';
+          });
+          // Assign treibers to 'treiber' column
+          row.treiber = treibers;
+
+          // Find treibers associated with the current 'id'
+          const matrices = meldungXmatrix.filter(meldungXmatrixRow => meldungXmatrixRow.meldung_id === row.id)
+          .map(meldungXmatrixRow => {
+              const matrixId = meldungXmatrixRow.matrix_id;
+              const matrixInfo = matrix.find(t => t.id === matrixId);
+              return matrixInfo ? matrixInfo.bezeichnung_de : '-';
+          });
+          // Assign treibers to 'treiber' column
+          row.matrix = matrices;
+
+          // Find treibers associated with the current 'id'
+          const bereichs = meldungXbereich.filter(meldungXbereichRow => meldungXbereichRow.meldung_id === row.id)
+          .map(meldungXbereichRow => {
+              const bereichId = meldungXbereichRow.bereich_id;
+              const bereichInfo = bereich.find(t => t.id === bereichId);
+              return bereichInfo ? bereichInfo.bezeichnung_de : '-';
+          });
+          // Assign treibers to 'treiber' column
+          row.bereich = bereichs;
+      });
+
+        console.log(filteredData);
+
+      // Formatting function for row details - modify as you need
+      function format(d) {
+        // `d` is the original data object for the row
+        let linksHTML = '';
+        for (const link of d.links) {
+            const key = Object.keys(link)[0]; // Extracting the key from the link object
+            const value = link[key]; // Extracting the value from the link object
+            linksHTML += `<a href="${value}" target="_blank">${key}</a><br>`;
         }
+      
+        return (
+            '<dl>' +
+            '<dt style="font-weight:bold;">Kurzinfo</dt>' +
+            '<dd>' +
+            d.kurzinfo +
+            '</dd>' +
+            '<dt style="font-weight:bold;">Wichtigkeit (von 3)</dt>' +
+            '<dd>' +
+            d.sterne +
+            '</dd>' +
+            '<dt style="font-weight:bold;">Treibers</dt>' +
+            '<dd>' +
+            d.treiber +
+            '</dd>' +
+            '<dt style="font-weight:bold;">Matrix</dt>' +
+            '<dd>' +
+            d.matrix +
+            '</dd>' +
+            '<dt style="font-weight:bold;">Bereich</dt>' +
+            '<dd>' +
+            d.bereich +
+            '</dd>' +
+            '<dt style="font-weight:bold;">Links</dt>' +
+            '<dd>' +
+            linksHTML +
+            '</dd>' +
+            '</dl>'
+        );
+      }
+
+
 
         // Check if the DataTable instance already exists
         if (!table) {
@@ -176,10 +267,8 @@ function baseVisualization(data, color){
         }
 
 
-
-
 // Waffle visu
-function createWaffleChart(treiberData) {
+function createWaffleChart(treiberData,title) {
     // Clear existing waffle chart if any
     d3.select("#waffleChart").selectAll("*").remove();
 
@@ -322,7 +411,6 @@ function createWaffleChart(treiberData) {
     }
 
 }
-
 
 
 // Move to section function

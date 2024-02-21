@@ -2,7 +2,7 @@
 let circles;
 let svg;
 
-function baseVisualization(data, color){
+function baseVisualization(data, color, filter){
 
     let w = window.innerWidth;
 	  let width = 0;
@@ -83,12 +83,12 @@ function baseVisualization(data, color){
     .on("click", function(d,i) {
         moveToSection('three');
         // Extract the "treiber" values from the selected circle
-        const treiberData = d.treiber;
-        const id = d.id;
-        const title = d.name;
+        let treiberData = d.treiber;
+        let id = d.id;
+        let title = d.name;
         // Create and display waffle chart
         createWaffleChart(treiberData, title);
-        createList(id);
+        createList(id, filter);
     });
 
     // Add a title.
@@ -103,23 +103,23 @@ function baseVisualization(data, color){
 
   let table; // Define the DataTable variable outside the function scope
 
-function createList(id) {
-    Promise.all([
-        fetch("../csv-files-filtered/filtered-ad_meldung-20231128.csv").then(response => response.text()),
-        fetch("../csv-files-filtered/filtered-ad_meldung_ad_gefahr-20231128.csv").then(response => response.text()),
-        fetch("../csv-files-filtered/filtered-ad_publikation_detail-20231128.csv").then(response => response.text()),
-        fetch("../csv-files-filtered/filtered-ad_publikation-20231128.csv").then(response => response.text()),
-        fetch("../csv-files-filtered/filtered-ad_meldung_ad_treiber-20231128.csv").then(response => response.text()),
-        fetch("../csv-files-filtered/filtered-ad_treiber-20231128.csv").then(response => response.text()),
-        fetch("../csv-files-filtered/filtered-ad_meldung_ad_bereich-20231128.csv").then(response => response.text()),
-        fetch("../csv-files-filtered/filtered-ad_bereich-20231128.csv").then(response => response.text()),
-        fetch("../csv-files-filtered/filtered-ad_meldung_ad_matrix-20231128.csv").then(response => response.text()),
-        fetch("../csv-files-filtered/filtered-ad_matrix-20231128.csv").then(response => response.text()),
-    ]).then(([meldungsText, meldungXgefahrText, publikationDetailText, publikationText, 
-              meldungXtreiberText, treiberText, meldungXbereichText, bereichText, meldungXmatrixText, matrixText]) => {
-        // Parse CSV data
+function createList(id, filter) {
+  Promise.all([
+    fetch("../csv-files-filtered/filtered-ad_meldung-20231128.csv").then(response => response.text()),
+    fetch(`../csv-files-filtered/filtered-ad_meldung_ad_${filter}-20231128.csv`).then(response => response.text()),
+    fetch("../csv-files-filtered/filtered-ad_publikation_detail-20231128.csv").then(response => response.text()),
+    fetch("../csv-files-filtered/filtered-ad_publikation-20231128.csv").then(response => response.text()),
+    fetch("../csv-files-filtered/filtered-ad_meldung_ad_treiber-20231128.csv").then(response => response.text()),
+    fetch("../csv-files-filtered/filtered-ad_treiber-20231128.csv").then(response => response.text()),
+    fetch("../csv-files-filtered/filtered-ad_meldung_ad_bereich-20231128.csv").then(response => response.text()),
+    fetch("../csv-files-filtered/filtered-ad_bereich-20231128.csv").then(response => response.text()),
+    fetch("../csv-files-filtered/filtered-ad_meldung_ad_matrix-20231128.csv").then(response => response.text()),
+    fetch("../csv-files-filtered/filtered-ad_matrix-20231128.csv").then(response => response.text()),
+    ]).then(([meldungsText, meldungXfilterText, publikationDetailText, publikationText, 
+          meldungXtreiberText, treiberText, meldungXbereichText, bereichText, meldungXmatrixText, matrixText]) => {
+      // Parse CSV data
         const meldungs = d3.dsvFormat("#").parse(meldungsText);
-        const meldungXgefahr = d3.dsvFormat("#").parse(meldungXgefahrText);
+        const meldungXfilter = d3.dsvFormat("#").parse(meldungXfilterText);
         const publikation_detail = d3.dsvFormat("#").parse(publikationDetailText);
         const publikation = d3.dsvFormat("#").parse(publikationText);
         const meldungXtreiber = d3.dsvFormat("#").parse(meldungXtreiberText);
@@ -130,7 +130,7 @@ function createList(id) {
         const matrix = d3.dsvFormat("#").parse(matrixText);
 
         // Filter the CSV based on the 'id' variable
-        const filteredMeldungIds = meldungXgefahr.filter(row => Number(row.gefahr_id) === id)
+        const filteredMeldungIds = meldungXfilter.filter(row => Number(row[`${filter}_id`]) === id)
                                                   .map(row => row.meldung_id);
     
         const filteredData = meldungs.filter(row => filteredMeldungIds.includes(row.id));
@@ -228,21 +228,27 @@ function createList(id) {
 
         // Check if the DataTable instance already exists
         if (!table) {
+
+          let titleHTML = '<h3 style="text-align: left;"><span class="trn">tableTitle</span></h3>';
+          $('#table-container').prepend(titleHTML);
+
           // Initialize DataTable only if it doesn't exist
           table = new DataTable('#filtered-table', {
-              columns: [
-                {
-                  className: 'dt-control',
-                  orderable: false,
-                  data: null,
-                  defaultContent: ''
+            columns: [
+              {
+                className: 'dt-control',
+                orderable: false,
+                data: null,
+                defaultContent: ''
               },
-              { title: 'Titel', data: 'titel' }
-              ],
-              data: filteredData, // Pass the modified data to the DataTable
-              scrollY: '500px', // Set a fixed height for the table body
-              scrollCollapse: true, // Allow collapsing the table height if the content doesn't fill it
-              paging: false // Disable pagination
+              { title: 'Titel', data: 'titel' },
+              { title: 'date', data: 'Dates_erf_date'}
+            ],
+            data: filteredData, // Pass the modified data to the DataTable
+            scrollY: '500px', // Set a fixed height for the table body
+            scrollCollapse: true, // Allow collapsing the table height if the content doesn't fill it
+            paging: false, // Disable pagination
+            order: [[2, 'desc']] // Order by the 'date' column in descending order
           });
 
         } else {

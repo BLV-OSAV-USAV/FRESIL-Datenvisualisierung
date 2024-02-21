@@ -39,7 +39,7 @@ Promise.all([
       };
     });
 
-    baseVisualization(result, '#a6cee3');
+    baseVisualization(result, '#a6cee3', 'matrix');
 
 
   })

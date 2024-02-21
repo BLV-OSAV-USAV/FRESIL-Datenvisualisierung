@@ -37,6 +37,6 @@ Promise.all([
       };
     });
 
-    baseVisualization(result, "#cab2d6");
+    baseVisualization(result, "#cab2d6", 'gefahr');
 
   })

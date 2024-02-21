@@ -9,9 +9,6 @@ Promise.all([
       ...treiberCounts.find(treiber => treiber.gefahr_id === count.id)
     }));
 
-    // Store the initial viewBox value
-    const initialViewBox = "-250 -250 500 500";
-
     // Convert the merged data to the desired structure
     let result = mergedData.map(entry => {
       const {

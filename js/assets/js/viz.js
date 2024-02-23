@@ -286,13 +286,15 @@ function createWaffleChart(treiberData,title) {
     
     // Assuming total is the sum of all values in your treiberData object
     const total = treiberArray.reduce((acc, obj) => acc + obj.value, 0);
-    
+
     // Now you can calculate the ratio for each treiber in the array
     const chartData = treiberArray.map(d => ({
         treiber: d.treiber,
+        total: total,
+        value: d.value,
         ratio: (d.value / total) * 100
     }));
-    
+    console.log(chartData);    
     // Check if chartData is empty
     if (chartData.length === 0) {
       d3.select("svg#waffleChart")
@@ -303,6 +305,28 @@ function createWaffleChart(treiberData,title) {
           .text("No data available to display the chart.");
       return; // Exit the function early
     }
+
+    // Calculate the sum of rounded ratios
+    const roundedSum = chartData.reduce((acc, obj) => acc + Math.round(obj.ratio), 0);
+
+    // If sum is less than 100, find treiber with the highest ratio
+    if (roundedSum < 100) {
+        // Find treiber with the highest ratio
+        const maxRatioTreiber = chartData.reduce((max, obj) => obj.ratio > max.ratio ? obj : max, chartData[0]);
+
+        // Calculate the difference
+        const difference = 100 - roundedSum;
+
+        // Assign the difference to the treiber with the highest ratio
+        maxRatioTreiber.ratio += difference;
+    }
+
+    // Update chartData accordingly
+    chartData.forEach(d => {
+        d.value = total * (d.ratio / 100); // Update the value based on the updated ratio
+    });
+
+    console.log(chartData);
 
 
     padding = ({x: 10, y: 40});
@@ -319,7 +343,7 @@ function createWaffleChart(treiberData,title) {
 
     const array = [];
     
-
+    console.log(chartData);
     for(let y = 9; y >= 0; y--){
       for(let x = 0; x < 10; x ++) {
         if (curr > accu && index < max) {
@@ -372,10 +396,10 @@ function createWaffleChart(treiberData,title) {
 
 
     cells.append("title").text(d => {
-      const cd = chartData[d.index];
-      return `${cd.treiber}\n (${cd.ratio.toFixed(1)}%)`;
-    });    
-    
+        const cd = chartData[d.index];
+        return `${cd.treiber}\n (${cd.ratio.toFixed(0)}%)`; // Use toFixed(0) to remove decimals
+    });
+     
     cells.transition()
       .duration(d => d.y * 100)
       .ease(d3.easeBounce)

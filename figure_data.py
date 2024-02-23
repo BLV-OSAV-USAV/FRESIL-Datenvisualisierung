@@ -42,6 +42,23 @@ def gefahr_treiber_count(lg):
     # Enregistrer le résultat dans un fichier CSV
     result_df_gefahr.to_csv('./figure_data/gefahr_treiber_counts.csv', index=False)
 
+
+def gefahr_bereich_count(lg):
+    # Charger les fichiers CSV
+    meldungXgefahr = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_gefahr-20231128.csv', sep='#', quotechar='`')
+    bereich = pd.read_csv('./csv-files-filtered/filtered-ad_bereich-20231128.csv', sep='#', quotechar='`')
+    bereichXmeldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_bereich-20231128.csv', sep='#', quotechar='`')
+    
+    merged_df = pd.merge(meldungXgefahr, bereichXmeldung, on='meldung_id')
+    result_df_gefahr = merged_df.groupby(['gefahr_id', 'bereich_id']).size().unstack(fill_value=0)
+    result_df_gefahr = result_df_gefahr.reset_index()
+    result_df_gefahr.columns.values[1:] = bereich[f'bezeichnung_{lg}']
+
+
+    # Enregistrer le résultat dans un fichier CSV
+    result_df_gefahr.to_csv('./figure_data/gefahr_bereich_counts.csv', index=False)
+
+
 def count_matrix():
     # Charger les fichiers CSV
     meldungXmatrix = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_matrix-20231128.csv', sep='#', quotechar='`')
@@ -80,6 +97,22 @@ def matrix_treiber_count(lg):
 
     # Enregistrer le résultat dans un fichier CSV
     result_df_matrix.to_csv('./figure_data/matrix_treiber_counts.csv', index=False)
+
+def matrix_bereich_count(lg):
+    # Charger les fichiers CSV
+    meldungXmatrix = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_matrix-20231128.csv', sep='#', quotechar='`')
+    bereich = pd.read_csv('./csv-files-filtered/filtered-ad_bereich-20231128.csv', sep='#', quotechar='`')
+    bereichXmeldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_bereich-20231128.csv', sep='#', quotechar='`')
+    
+    merged_df = pd.merge(meldungXmatrix, bereichXmeldung, on='meldung_id')
+    result_df_matrix = merged_df.groupby(['matrix_id', 'bereich_id']).size().unstack(fill_value=0)
+    result_df_matrix = result_df_matrix.reset_index()
+    result_df_matrix.columns.values[1:] = bereich[f'bezeichnung_{lg}']
+
+
+    # Enregistrer le résultat dans un fichier CSV
+    result_df_matrix.to_csv('./figure_data/matrix_bereich_counts.csv', index=False)
+
 
 
 
@@ -122,7 +155,9 @@ def list_meldung_pro_Gefahr(id):
 
 
 
-list_meldung_pro_Gefahr(188)
+#list_meldung_pro_Gefahr(188)
+gefahr_bereich_count('de')
+matrix_bereich_count('de')
 #count_matrix()
 #matrix_treiber_count('de')
 #count_gefahr()

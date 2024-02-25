@@ -4,8 +4,10 @@ function handleGefahrButtonClick() {
     document.querySelectorAll('.btn').forEach(button => {
         button.classList.remove('active');
     });
+
     // Add 'active' class to 'gefahrButton'
     this.classList.add('active');
+
     // Load and execute the script for handling gefahrButton click
     const script = document.createElement('script');
     script.src = './assets/js/gefahrOrdnung.js'; 
@@ -18,8 +20,10 @@ function handleMatrixButtonClick() {
     document.querySelectorAll('.btn').forEach(button => {
         button.classList.remove('active');
     });
+
     // Add 'active' class to 'matrixButton'
     this.classList.add('active');
+
     // Load and execute the script for handling matrixButton click
     const script = document.createElement('script');
     script.src = './assets/js/matrixOrdnung.js'; 

@@ -1,4 +1,4 @@
-// Nach Gefahr visu
+// Load data from CSV files: gefahrCounts and treiberCounts
 Promise.all([
     d3.csv("../figure_data/gefahr_counts.csv"),
     d3.csv("../figure_data/gefahr_treiber_counts.csv")
@@ -34,6 +34,7 @@ Promise.all([
       };
     });
 
+    // Call the baseVisualization function with the result data
     baseVisualization(result, "#cab2d6", 'gefahr');
 
   })

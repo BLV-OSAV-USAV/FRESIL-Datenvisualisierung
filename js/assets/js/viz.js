@@ -2,6 +2,13 @@
 let circles;
 let svg;
 
+/**
+ * Visualizes data using a bubble chart.
+ * 
+ * @param {Array} data - The data to be visualized.
+ * @param {string} color - The color of the bubbles.
+ * @param {string} filter - The filter to be applied to the data.
+ */
 function baseVisualization(data, color, filter){
 
     let w = window.innerWidth;
@@ -95,6 +102,10 @@ function baseVisualization(data, color, filter){
     circles.append("title")
       .text(d => `${d.name}\nMeldung count: ${d.count}\nMean sterne: ${d.mean_sterne}`);
 
+    /**
+     * Updates the position of circles based on the tick event.
+     * @param {Object} d - The data object representing the circle.
+     */
     function ticked(d) {
       circles.attr("cx", d => d.x)
         .attr("cy", d => d.y);
@@ -103,6 +114,11 @@ function baseVisualization(data, color, filter){
 
   let table; // Define the DataTable variable outside the function scope
 
+/**
+ * Creates a list based on the provided id and filter.
+ * @param {number} id - The id used for filtering the CSV data.
+ * @param {string} filter - The filter used for filtering the CSV data.
+ */
 function createList(id, filter) {
   Promise.all([
     fetch("../csv-files-filtered/filtered-ad_meldung-20231128.csv").then(response => response.text()),
@@ -184,7 +200,12 @@ function createList(id, filter) {
 
         console.log(filteredData);
 
-      // Formatting function for row details - modify as you need
+      /**
+       * Formats the data object for a row.
+       * 
+       * @param {Object} d - The original data object for the row.
+       * @returns {string} The formatted HTML string.
+       */
       function format(d) {
         // `d` is the original data object for the row
         let linksHTML = '';
@@ -273,7 +294,11 @@ function createList(id, filter) {
         }
 
 
-// Waffle visu
+/**
+ * Creates a waffle chart based on the provided treiberData and title.
+ * @param {Object} treiberData - The data object containing treiber values.
+ * @param {string} title - The title of the waffle chart.
+ */
 function createWaffleChart(treiberData,title) {
     // Clear existing waffle chart if any
     d3.select("#waffleChart").selectAll("*").remove();
@@ -429,12 +454,19 @@ function createWaffleChart(treiberData,title) {
         .attr("alignment-baseline", "middle") // Align the text vertically in the middle
         .text((d, i) => `${d} (${chartData[i].ratio.toFixed(1)}%)`);
         
+        /**
+         * Highlights a specific data point in the chart.
+         * @param {string} d - The value to be highlighted.
+         */
         function highlight(d) {
           const i = chartData.findIndex(item => item.treiber === d);
           cells.transition().duration(500)
             .attr("fill", data => data.index === i ? color(data.index) : "#ccc");
         }            
         
+      /**
+       * Restores the fill color of cells using a transition animation.
+       */
       function restore() {
         cells.transition().duration(500).attr("fill", d => color(d.index))
       }
@@ -443,7 +475,10 @@ function createWaffleChart(treiberData,title) {
 }
 
 
-// Move to section function
+/**
+ * Scrolls the page to the specified section.
+ * @param {string} sectionId - The ID of the section to scroll to.
+ */
 function moveToSection(sectionId) {
     const element = document.getElementById(sectionId);
     if (element) {

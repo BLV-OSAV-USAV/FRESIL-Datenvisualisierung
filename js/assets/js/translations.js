@@ -38,7 +38,7 @@ let sdTranslations = {
 
 	storymapText: {
 
-		de: 'Das BLV identifiziert neu auftretende Gefahren für die Gesundheit der Schweizer Bevölkerung, um die Lebensmittelsicherheit langfristig sicherzustellen und Betrug zu verhüten. Eine solche Früherkennung ermöglicht es, rechtzeitig Gegenmassnahmen zu ergreifen.',
+		de: 'Das Bundesamt für Lebensmittelsicherheit und Veterinärwesen (BLV) identifiziert auftretende Gefahren für die Gesundheit der Schweizer Bevölkerung wie bspw. Mikroplastik, um die Lebensmittelsicherheit langfristig sicherzustellen. Die Gefahren treten in bestimmten Lebensmittelgruppen auf, wie bspw. Gemüse oder Früchte. Die folgende Datenvisualisierung zeigt wahlweise die Gefahren oder die betroffenen Lebensmittelgruppen in Form von Kreisen. Die Grösse des Kreises zeigt die Aktualität und Bedeutung der Gefahr bzw. Lebensmittelgruppe. Klickt man auf einen Kreis, werden die Treiber dieser Gefahr bzw. der Gefahren einer Lebensmittelgruppe dargestellt und sämtliche erfasste Meldungen dazu aufgelistet.',
 
 		fr: 'Afin de garantir la sécurité des aliments à long terme et de prévenir les fraudes, l’OSAV identifie les dangers émergents pour la santé des consommateurs suisses. Détecter ces dangers suffisamment tôt permet de prendre les bonnes mesures au bon moment.',
 		
@@ -62,7 +62,7 @@ let sdTranslations = {
 
 	gefahrButton: {
 
-		de: 'Nach Gefahr ordnen',
+		de: 'Gefahren',
 
 		fr: 'Trier par Danger',
 
@@ -75,7 +75,7 @@ let sdTranslations = {
 
 	matrixButton: {
 
-		de: 'Nach Matrix ordnen',
+		de: 'Lebensmittelgruppen',
 
 		fr: 'Trier par matrice',
 
@@ -87,7 +87,7 @@ let sdTranslations = {
 	
 	legende_1: {
 
-		de: 'Die Größe des Kreises wird berechnet, indem die Anzahl der Ankündigungen mit ihrer durchschnittlichen Bedeutung multipliziert wird. Diese Messung beschreibt sowohl die numerische Größe als auch die Ernsthaftigkeit der damit verbundenen Gefahr.',
+		de: 'Gefahren werden durch Treiber wie bspw. den Klimawandel verursacht oder verstärkt. Die folgende Darstellung zeigt für die gewählte Gefahr oder Matrix die Treiber und deren Anteile auf.',
 
 		fr: 'La grandeur du cercle est déterminée en multipliant le nombre d\'annonces par leur importance moyenne. Cette mesure décrit à la fois l\'ampleur numérique et la gravité du danger associé.',
 
@@ -159,7 +159,7 @@ let sdTranslations = {
 
 	impressum: {
 
-		de: '<a href="https://opendata.swiss/de/dataset/statistik-der-wasserkraftanlagen-wasta" target="_blank">Daten herunterladen</a>',
+		de: '<a href="https://opendata.swiss" target="_blank">Daten herunterladen</a>',
 
 		fr: '<a href="https://opendata.swiss/fr/dataset/statistik-der-wasserkraftanlagen-wasta" target="_blank">Télécharger les données</a>',
 
@@ -171,7 +171,7 @@ let sdTranslations = {
 
 	copyrightMain: {
 
-		de: '&copy; <a href="https://www.bfe.admin.ch" target="_blank">BFE</a>, <a href="https://www.bfe.admin.ch/bfe/de/home/versorgung/erneuerbare-energien/wasserkraft.html" target="_blank">Wasserkraft</a>, <a href="https://www.bfe.admin.ch/bfe/de/home/versorgung/statistik-und-geodaten/geoinformation.html" target="_blank">Geoinformation</a>',
+		de: '&copy; <a href="https://www.blv.admin.ch/blv/de/home/lebensmittel-und-ernaehrung/lebensmittelsicherheit/frueherkennung-sicherheit-lebensmittel.html" target="_blank">BLV</a>',
 
 		fr: '&copy; <a href="https://www.bfe.admin.ch/bfe/fr/home.html" target="_blank">OFEN</a>, <a href="https://www.bfe.admin.ch/bfe/fr/home/approvisionnement/energies-renouvelables/force-hydraulique.html" target="_blank">Force hydraulique</a>, <a href="https://www.bfe.admin.ch/bfe/fr/home/approvisionnement/statistiques-et-geodonnees/geoinformation.html" target="_blank">Géoinformation</a>',
 

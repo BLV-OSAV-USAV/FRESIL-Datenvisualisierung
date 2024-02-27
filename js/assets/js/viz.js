@@ -14,6 +14,16 @@ function baseVisualization(data, color, filter){
     let w = window.innerWidth;
 	  let width = 0;
 	  let height = 0;
+    let defaultId = ''; // Variable to store the id of the data with the biggest count
+
+    // Find the data with the biggest count
+    let maxCount = -Infinity;
+    data.forEach(d => {
+        if (d.count > maxCount) {
+            maxCount = d.count;
+            defaultId = d.id;
+        }
+    });
 
 
     svg = d3.select("svg#bubbleChart");
@@ -93,6 +103,10 @@ function baseVisualization(data, color, filter){
         let treiberData = d.treiber;
         let id = d.id;
         let title = d.name;
+
+        // Update the content of the <span> tag with the class "trn"
+        document.querySelector('#waffle-title').innerText = title;
+
         // Create and display waffle chart
         createWaffleChart(treiberData, title);
         createList(id, filter);
@@ -101,6 +115,12 @@ function baseVisualization(data, color, filter){
     // Add a title.
     circles.append("title")
       .text(d => `${d.name}\nMeldung count: ${d.count}\nMean sterne: ${d.mean_sterne}`);
+
+
+    createWaffleChart(data.find(d => d.id === defaultId).treiber, data.find(d => d.id === defaultId).name);
+    createList(defaultId, filter);
+    // Update the content of the <span> tag with the class "trn"
+    document.querySelector('#waffle-title').innerText = data.find(d => d.id === defaultId).name;
 
     /**
      * Updates the position of circles based on the tick event.
@@ -198,8 +218,6 @@ function createList(id, filter) {
           row.bereich = bereichs;
       });
 
-        console.log(filteredData);
-
       /**
        * Formats the data object for a row.
        * 
@@ -250,8 +268,6 @@ function createList(id, filter) {
         // Check if the DataTable instance already exists
         if (!table) {
 
-          let titleHTML = '<h3 style="text-align: left;"><span class="trn">tableTitle</span></h3>';
-          $('#table-container').prepend(titleHTML);
 
           // Initialize DataTable only if it doesn't exist
           table = new DataTable('#filtered-table', {
@@ -319,7 +335,6 @@ function createWaffleChart(treiberData,title) {
         value: d.value,
         ratio: (d.value / total) * 100
     }));
-    console.log(chartData);    
     // Check if chartData is empty
     if (chartData.length === 0) {
       d3.select("svg#waffleChart")
@@ -351,7 +366,6 @@ function createWaffleChart(treiberData,title) {
         d.value = total * (d.ratio / 100); // Update the value based on the updated ratio
     });
 
-    console.log(chartData);
 
 
     padding = ({x: 10, y: 40});
@@ -368,7 +382,6 @@ function createWaffleChart(treiberData,title) {
 
     const array = [];
     
-    console.log(chartData);
     for(let y = 9; y >= 0; y--){
       for(let x = 0; x < 10; x ++) {
         if (curr > accu && index < max) {
@@ -422,7 +435,7 @@ function createWaffleChart(treiberData,title) {
 
     cells.append("title").text(d => {
         const cd = chartData[d.index];
-        return `${cd.treiber}\n (${cd.ratio.toFixed(0)}%)`; // Use toFixed(0) to remove decimals
+        return `${cd.treiber}\n (${Math.round(cd.ratio)}%)`; // Use toFixed(0) to remove decimals
     });
      
     cells.transition()
@@ -452,7 +465,7 @@ function createWaffleChart(treiberData,title) {
         .attr("x", 40) // Adjust the x position to align the text
         .attr("y", 10) // Adjust the y position to align the text
         .attr("alignment-baseline", "middle") // Align the text vertically in the middle
-        .text((d, i) => `${d} (${chartData[i].ratio.toFixed(1)}%)`);
+        .text((d, i) => `${d} (${chartData[i].ratio.toFixed(0)}%)`);
         
         /**
          * Highlights a specific data point in the chart.
@@ -468,7 +481,7 @@ function createWaffleChart(treiberData,title) {
        * Restores the fill color of cells using a transition animation.
        */
       function restore() {
-        cells.transition().duration(500).attr("fill", d => color(d.index))
+        cells.transition().duration(200).attr("fill", d => color(d.index))
       }
     }
 
@@ -476,12 +489,11 @@ function createWaffleChart(treiberData,title) {
 
 
 /**
- * Scrolls the page to the specified section.
+ * Scrolls the page to the specified section using jQuery.
  * @param {string} sectionId - The ID of the section to scroll to.
  */
-function moveToSection(sectionId) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
+ function moveToSection(sectionId) {
+  $('html, body').animate({
+    scrollTop: $('#' + sectionId).offset().top
+  }, 'slow');
+}

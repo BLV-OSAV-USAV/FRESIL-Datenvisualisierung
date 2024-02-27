@@ -40,11 +40,11 @@ let sdTranslations = {
 
 		de: 'Das Bundesamt für Lebensmittelsicherheit und Veterinärwesen (BLV) identifiziert auftretende Gefahren für die Gesundheit der Schweizer Bevölkerung wie bspw. Mikroplastik, um die Lebensmittelsicherheit langfristig sicherzustellen. Die Gefahren treten in bestimmten Lebensmittelgruppen auf, wie bspw. Gemüse oder Früchte. Die folgende Datenvisualisierung zeigt wahlweise die Gefahren oder die betroffenen Lebensmittelgruppen in Form von Kreisen. Die Grösse des Kreises zeigt die Aktualität und Bedeutung der Gefahr bzw. Lebensmittelgruppe. Klickt man auf einen Kreis, werden die Treiber dieser Gefahr bzw. der Gefahren einer Lebensmittelgruppe dargestellt und sämtliche erfasste Meldungen dazu aufgelistet.',
 
-		fr: 'Afin de garantir la sécurité des aliments à long terme et de prévenir les fraudes, l’OSAV identifie les dangers émergents pour la santé des consommateurs suisses. Détecter ces dangers suffisamment tôt permet de prendre les bonnes mesures au bon moment.',
+		fr: 'L\'office fédéral de la sécurité alimentaire et des affaires vétérinaires (OSAV) identifie les dangers émergents pour la santé de la population suisse tels que les microplastiques, afin de garantir à long terme la sécurité alimentaire. Les dangers se manifestent dans certains groupes d\'aliments, tels que les légumes ou les fruits. La visualisation des données suivante présente soit les dangers, soit les groupes d\'aliments concernés sous forme de cercles. La taille du cercle indique l\'actualité et l\'importance du danger ou du groupe d\'aliments. En cliquant sur un cercle, les \'moteurs\' de ce danger ou des dangers d\'un groupe d\'aliments sont présentés et toutes les notifications enregistrées à ce sujet sont répertoriées.',
 		
-		it: 'Per garantire in modo durevole la sicurezza degli alimenti e prevenire le frodi l’USAV identifica i possibili pericoli per la salute dei consumatori svizzeri. Il riconoscimento precoce di questi pericoli permette l’introduzione al momento opportuno di misure appropriate.',
+		it: 'L\'Ufficio federale per la sicurezza alimentare e veterinaria (USAV) identifica i pericoli emergenti per la salute della popolazione svizzera come ad esempio le microplastiche, al fine di garantire a lungo termine la sicurezza alimentare. I pericoli si manifestano in determinati gruppi di alimenti, come ad esempio le verdure o la frutta. La seguente visualizzazione dei dati mostra i pericoli o i gruppi di alimenti interessati sotto forma di cerchi. La dimensione del cerchio indica l\'attualità e l\'importanza del pericolo o del gruppo di alimenti. Cliccando su un cerchio, vengono presentati i driver di tale pericolo o dei pericoli di un gruppo di alimenti e vengono elencate tutte le notifiche registrate a riguardo.',
 
-		en: 'For sustainable assurance of food safety and the prevention of fraud, the FSVO identifies newly emerging risks to the health of Switzerland’s population. Early detection of this kind allows appropriate action to be taken in real time.'
+		en: 'The Federal Food Safety and Veterinary Office (FSVO) identifies emerging hazards to the health of the Swiss population such as microplastics, in order to ensure long-term food safety. Hazards occur in certain food groups, such as vegetables or fruits. The following data visualization shows either the hazards or the affected food groups in the form of circles. The size of the circle indicates the timeliness and importance of the hazard or food group. Clicking on a circle will display the drivers of that hazard or the hazards of a food group, and all recorded notifications on it are listed.'
 
 	},
 
@@ -64,11 +64,11 @@ let sdTranslations = {
 
 		de: 'Gefahren',
 
-		fr: 'Trier par Danger',
+		fr: 'Danger',
 
-		it: 'Ordina per pericolo',
+		it: 'Pericolo',
 
-		en: 'Arrange by danger'
+		en: 'Hazards'
 
 	},
 	
@@ -77,11 +77,11 @@ let sdTranslations = {
 
 		de: 'Lebensmittelgruppen',
 
-		fr: 'Trier par matrice',
+		fr: 'Groupes d\'aliments',
 
-		it: 'Ordina per matrice',
+		it: 'Gruppi alimentari',
 
-		en: 'Group by matrix'
+		en: 'Food groups'
 
 	},	
 	
@@ -89,11 +89,11 @@ let sdTranslations = {
 
 		de: 'Gefahren werden durch Treiber wie bspw. den Klimawandel verursacht oder verstärkt. Die folgende Darstellung zeigt für die gewählte Gefahr oder Matrix die Treiber und deren Anteile auf.',
 
-		fr: 'La grandeur du cercle est déterminée en multipliant le nombre d\'annonces par leur importance moyenne. Cette mesure décrit à la fois l\'ampleur numérique et la gravité du danger associé.',
+		fr: 'Les dangers sont causés ou exacerbés par des moteurs tels que le changement climatique. La représentation suivante montre les moteurs de la menace choisie ou de la matrice et leur part respective.',
 
-		it: 'La grandezza del cerchio è determinata moltiplicando il numero di annunci per la loro importanza media. Questa misura descrive sia l\'entità numerica che la gravità del pericolo associato.',
+		it: 'I pericoli sono causati o amplificati da driver come ad esempio il cambiamento climatico. La seguente rappresentazione mostra per il pericolo o la matrice selezionata i driver e le loro proporzioni.',
 
-		en: 'The size of the circle is determined by multiplying the number of announcements by their average importance. This measurement describes both the numerical magnitude and the severity of the associated danger.'
+		en: 'Dangers are caused or exacerbated by drivers such as climate change. The following representation shows the drivers and their proportions for the selected hazard or matrix.'
 
 	},
 	
@@ -161,11 +161,11 @@ let sdTranslations = {
 
 		de: '<a href="https://opendata.swiss" target="_blank">Daten herunterladen</a>',
 
-		fr: '<a href="https://opendata.swiss/fr/dataset/statistik-der-wasserkraftanlagen-wasta" target="_blank">Télécharger les données</a>',
+		fr: '<a href="https://opendata.swiss/fr" target="_blank">Télécharger les données</a>',
 
-		it: '<a href="https://opendata.swiss/it/dataset/statistik-der-wasserkraftanlagen-wasta" target="_blank">Scarica i dati</a>',
+		it: '<a href="https://opendata.swiss/it" target="_blank">Scarica i dati</a>',
 
-		en: '<a href="https://opendata.swiss/en/dataset/statistik-der-wasserkraftanlagen-wasta" target="_blank">Download data</a>'
+		en: '<a href="https://opendata.swiss/en" target="_blank">Download data</a>'
 
 	},
 
@@ -173,11 +173,11 @@ let sdTranslations = {
 
 		de: '&copy; <a href="https://www.blv.admin.ch/blv/de/home/lebensmittel-und-ernaehrung/lebensmittelsicherheit/frueherkennung-sicherheit-lebensmittel.html" target="_blank">BLV</a>',
 
-		fr: '&copy; <a href="https://www.bfe.admin.ch/bfe/fr/home.html" target="_blank">OFEN</a>, <a href="https://www.bfe.admin.ch/bfe/fr/home/approvisionnement/energies-renouvelables/force-hydraulique.html" target="_blank">Force hydraulique</a>, <a href="https://www.bfe.admin.ch/bfe/fr/home/approvisionnement/statistiques-et-geodonnees/geoinformation.html" target="_blank">Géoinformation</a>',
+		fr: '&copy; <a href="https://www.blv.admin.ch/blv/fr/home/lebensmittel-und-ernaehrung/lebensmittelsicherheit/frueherkennung-sicherheit-lebensmittel.html" target="_blank">OSAV</a>',
 
-		it: '&copy; <a href="https://www.bfe.admin.ch/bfe/it/home.html" target="_blank">UFE</a>, <a href="https://www.bfe.admin.ch/bfe/it/home/approvvigionamento/energie-rinnovabili/forza-idrica.html" target="_blank">Forza idrica</a>, <a href="https://www.bfe.admin.ch/bfe/it/home/approvvigionamento/statistiche-e-geodati/geoinformazione.html" target="_blank">Geoinformazione</a>',
+		it: '&copy; <a href="https://www.blv.admin.ch/blv/it/home/lebensmittel-und-ernaehrung/lebensmittelsicherheit/frueherkennung-sicherheit-lebensmittel.html" target="_blank">USAV</a>',
 
-		en: '&copy; <a href="https://www.bfe.admin.ch/bfe/en/home.html" target="_blank">SFOE</a>, <a href="https://www.bfe.admin.ch/bfe/en/home/supply/renewable-energy/hydropower.html" target="_blank">Hydropower</a>, <a href="https://www.bfe.admin.ch/bfe/en/home/supply/statistics-and-geodata/geoinformation.html" target="_blank">Geoinformation</a>',
+		en: '&copy; <a href="https://www.blv.admin.ch/blv/en/home/lebensmittel-und-ernaehrung/lebensmittelsicherheit/frueherkennung-sicherheit-lebensmittel.html" target="_blank">FSVO</a>',
 
 	},
 

@@ -232,6 +232,18 @@ function createList(id, filter) {
             const value = link[key]; // Extracting the value from the link object
             linksHTML += `<a href="${value}" target="_blank">${key}</a><br>`;
         }
+        function convertToStars(num) {
+          switch (num) {
+              case '1':
+                  return '<span>&#9733;</span>'; // One star symbol
+              case '2':
+                  return '<span>&#9733;&#9733;</span>'; // Two star symbols
+              case '3':
+                  return '<span>&#9733;&#9733;&#9733;</span>'; // Three star symbols
+              default:
+                  return '';
+          }
+        }
       
         return (
             '<dl>' +
@@ -241,7 +253,7 @@ function createList(id, filter) {
             '</dd>' +
             '<dt style="font-weight:bold;">Wichtigkeit (von 3)</dt>' +
             '<dd>' +
-            d.sterne +
+            convertToStars(d.sterne) +
             '</dd>' +
             '<dt style="font-weight:bold;">Treibers</dt>' +
             '<dd>' +

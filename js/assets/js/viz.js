@@ -265,46 +265,48 @@ function createList(id, filter) {
 
 
 
-        // Check if the DataTable instance already exists
-        if (!table) {
-
-
-          // Initialize DataTable only if it doesn't exist
-          table = new DataTable('#filtered-table', {
+      // Check if the DataTable instance already exists
+      if (!table) {
+        // Initialize DataTable only if it doesn't exist
+        table = new DataTable('#filtered-table', {
             columns: [
-              {
-                className: 'dt-control',
-                orderable: false,
-                data: null,
-                defaultContent: ''
-              },
-              { title: 'Titel', data: 'titel' },
-              { title: 'date', data: 'Dates_erf_date'}
+                {
+                    className: 'dt-control',
+                    orderable: false,
+                    data: null,
+                    defaultContent: ''
+                },
+                { title: 'Titel', data: 'titel' },
+                { title: 'date', data: 'Dates_erf_date' }
             ],
             data: filteredData, // Pass the modified data to the DataTable
             scrollY: '500px', // Set a fixed height for the table body
             scrollCollapse: true, // Allow collapsing the table height if the content doesn't fill it
             paging: false, // Disable pagination
             order: [[2, 'desc']] // Order by the 'date' column in descending order
-          });
-
-        } else {
-            // If DataTable instance already exists, just update its data
-            table.clear().rows.add(filteredData).draw();
-        }
-        // Add event listener for opening and closing details
-        $('#filtered-table').on('click', 'td.dt-control', function (e) {
-          let tr = $(this).closest('tr');
-          let row = table.row(tr);
-
-          if (row.child.isShown()) {
-              // This row is already open - close it
-              row.child.hide();
-          } else {
-              // Open this row
-              row.child(format(row.data())).show();
-          }
+              });
+            
+              // Bind the click event handler to the DataTable
+              $('#filtered-table tbody').on('click', 'td.dt-control', function () {
+                  var tr = $(this).parents('tr');
+            var row = table.row(tr);
+        
+            if (row.child.isShown()) {
+                // This row is already open - close it
+                console.log('hide');
+                row.child.hide();
+                tr.removeClass('shown');
+            } else {
+                console.log('show');
+                // Open this row (the format() function would return the data to be shown)
+                row.child(format(row.data())).show();
+                tr.addClass('shown');
+            }
         });
+      } else {
+        // If DataTable instance already exists, just update its data
+        table.clear().rows.add(filteredData).draw();
+      }
 
               });
         }

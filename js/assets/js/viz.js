@@ -11,9 +11,7 @@ let svg;
  */
 function baseVisualization(data, color, filter){
 
-    let w = window.innerWidth;
 	  let width = 0;
-	  let height = 0;
     let defaultId = ''; // Variable to store the id of the data with the biggest count
 
     // Find the data with the biggest count
@@ -35,7 +33,6 @@ function baseVisualization(data, color, filter){
     data.sort((a, b) => b.size - a.size);
 
     // Calculate new positions for circles in a spiral layout
-    const numCircles = data.length;
     const centerX = 0;
     const centerY = 0;
     const radiusStep = 20; // Adjust the step based on your preference
@@ -67,7 +64,10 @@ function baseVisualization(data, color, filter){
     .attr("r", d => d.size)
     .attr("fill", color)
     .on("mouseover", function(d) {
-        d3.select(this).attr("stroke", "#000"); 
+      // Only add stroke if the circle is not the clicked one
+      if (!d3.select(this).classed("clicked")) {
+          d3.select(this).attr("stroke", "#000"); 
+      }
         let [posx, posy] = d3.mouse(this);
 
         let w = window.innerWidth;
@@ -93,12 +93,21 @@ function baseVisualization(data, color, filter){
             d3.select("#tooltip").classed("hidden", false);
         })
     .on("mouseout", function() { 
-        d3.select(this).attr("stroke", null); 
-        //Hide the tooltip
-        d3.select("#tooltip").classed("hidden", true);
+      // Only remove stroke if the circle is not the clicked one
+      if (!d3.select(this).classed("clicked")) {
+          d3.select(this).attr("stroke", null); 
+      }
+      //Hide the tooltip
+      d3.select("#tooltip").classed("hidden", true);
     })
     .on("click", function(d,i) {
+      // Remove stroke from all circles
+      svg.selectAll("circle").attr("stroke", null).classed("clicked", false); 
+      
+      // Apply stroke to the clicked circle and add the "clicked" class
+      d3.select(this).attr("stroke", "#000").classed("clicked", true); 
         moveToSection('three');
+
         // Extract the "treiber" values from the selected circle
         let treiberData = d.treiber;
         let id = d.id;
@@ -111,10 +120,6 @@ function baseVisualization(data, color, filter){
         createWaffleChart(treiberData, title);
         createList(id, filter);
     });
-
-    // Add a title.
-    circles.append("title")
-      .text(d => `${d.name}\nMeldung count: ${d.count}\nMean sterne: ${d.mean_sterne}`);
 
 
     createWaffleChart(data.find(d => d.id === defaultId).treiber, data.find(d => d.id === defaultId).name);

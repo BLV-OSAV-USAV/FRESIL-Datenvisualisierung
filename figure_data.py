@@ -3,11 +3,26 @@
 
 import pandas as pd
 
-def count_gefahr():
+def count_gefahr(timeFilter):
     # Charger les fichiers CSV
     meldungXgefahr = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_gefahr-20231128.csv', sep='#', quotechar='`')
     gefahr = pd.read_csv('./csv-files-filtered/filtered-ad_gefahr-20231128.csv', sep='#', quotechar='`')
     meldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung-20231128.csv', sep='#', quotechar='`')
+
+    if timeFilter != 'all':
+        meldung['erfDate'] = pd.to_datetime(meldung['erf_date']).dt.date
+        today = pd.to_datetime('2023-11-28') #pd.to_datetime('today').date()
+
+        if timeFilter == 'week':
+            start = today - pd.DateOffset(weeks=1)
+        elif timeFilter == 'month':
+            start = today - pd.DateOffset(months=1)
+        elif timeFilter == 'year':
+            start = today - pd.DateOffset(years=1)
+
+        meldung = meldung[meldung['erfDate'] >= start]
+        meldung_ids = meldung['id']
+        meldungXgefahr = meldungXgefahr[meldungXgefahr['meldung_id'].isin(meldung_ids)]
 
     # Compter le nombre de meldung par gefahr
     gefahr_counts = meldungXgefahr['gefahr_id'].value_counts().reset_index()
@@ -24,7 +39,7 @@ def count_gefahr():
     gefahr_counts = pd.merge(gefahr_counts, mean_sterne, on='id', how='left')
 
     # Enregistrer le résultat dans un fichier CSV
-    gefahr_counts.to_csv('./figure_data/gefahr_counts.csv', index=False)
+    gefahr_counts.to_csv(f'./figure_data/gefahr_counts_{timeFilter}.csv', index=False)
 
 
 def gefahr_treiber_count(lg):
@@ -59,11 +74,24 @@ def gefahr_bereich_count(lg):
     result_df_gefahr.to_csv('./figure_data/gefahr_bereich_counts.csv', index=False)
 
 
-def count_matrix():
+def count_matrix(timeFilter):
     # Charger les fichiers CSV
     meldungXmatrix = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_matrix-20231128.csv', sep='#', quotechar='`')
     matrix = pd.read_csv('./csv-files-filtered/filtered-ad_matrix-20231128.csv', sep='#', quotechar='`')
     meldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung-20231128.csv', sep='#', quotechar='`')
+
+    if timeFilter != 'all':
+        meldung['erfDate'] = pd.to_datetime(meldung['erf_date']).dt.date
+        today = pd.to_datetime('2023-11-28') #pd.to_datetime('today').date()
+    if timeFilter == 'week':
+        start = today - pd.DateOffset(weeks=1)
+    elif timeFilter == 'month':
+        start = today - pd.DateOffset(months=1)
+    elif timeFilter == 'year':
+        start = today - pd.DateOffset(years=1)
+        meldung = meldung[meldung['erfDate'] >= start]
+        meldung_ids = meldung['id']
+        meldungXmatrix = meldungXmatrix[meldungXmatrix['meldung_id'].isin(meldung_ids)]
 
     # Compter le nombre de meldung par matrix
     matrix_counts = meldungXmatrix['matrix_id'].value_counts().reset_index()
@@ -80,7 +108,7 @@ def count_matrix():
     matrix_counts = pd.merge(matrix_counts, mean_sterne, on='id', how='left')
 
     # Enregistrer le résultat dans un fichier CSV
-    matrix_counts.to_csv('./figure_data/matrix_counts.csv', index=False)
+    matrix_counts.to_csv(f'./figure_data/matrix_counts_{timeFilter}.csv', index=False)
 
 
 def matrix_treiber_count(lg):
@@ -156,11 +184,14 @@ def list_meldung_pro_Gefahr(id):
 
 
 #list_meldung_pro_Gefahr(188)
-gefahr_bereich_count('de')
-matrix_bereich_count('de')
+#gefahr_bereich_count('de')
+#matrix_bereich_count('de')
 #count_matrix()
 #matrix_treiber_count('de')
 #count_gefahr()
 #gefahr_treiber_count('de')
 #count_gefahr_pro_tag()
 #count_meldung_pro_tag()
+
+#count_gefahr('year')
+#count_matrix('month')

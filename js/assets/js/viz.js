@@ -310,11 +310,9 @@ function createList(id, filter) {
         
             if (row.child.isShown()) {
                 // This row is already open - close it
-                console.log('hide');
                 row.child.hide();
                 tr.removeClass('shown');
             } else {
-                console.log('show');
                 // Open this row (the format() function would return the data to be shown)
                 row.child(format(row.data())).show();
                 tr.addClass('shown');

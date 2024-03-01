@@ -110,6 +110,7 @@ function baseVisualization(data, color, filter){
 
         // Extract the "treiber" values from the selected circle
         let treiberData = d.treiber;
+        let bereichData = d.bereich;
         let id = d.id;
         let title = d.name;
 
@@ -117,12 +118,12 @@ function baseVisualization(data, color, filter){
         document.querySelector('#waffle-title').innerText = title;
 
         // Create and display waffle chart
-        createWaffleChart(treiberData, title);
+        createWaffleChart(treiberData, bereichData);
         createList(id, filter);
     });
 
 
-    createWaffleChart(data.find(d => d.id === defaultId).treiber, data.find(d => d.id === defaultId).name);
+    createWaffleChart(data.find(d => d.id === defaultId).treiber, data.find(d => d.id === defaultId).bereich);
     createList(defaultId, filter);
     // Update the content of the <span> tag with the class "trn"
     document.querySelector('#waffle-title').innerText = data.find(d => d.id === defaultId).name;
@@ -328,12 +329,15 @@ function createList(id, filter) {
         }
 
 
+let svg_waffle, width, height, treiberCache, bereichCache;
+
 /**
  * Creates a waffle chart based on the provided treiberData and title.
  * @param {Object} treiberData - The data object containing treiber values.
- * @param {string} title - The title of the waffle chart.
  */
-function createWaffleChart(treiberData,title) {
+function createWaffleChart(treiberData, bereichData) {
+    treiberCache = treiberData;
+    bereichData = bereichCache;
     // Clear existing waffle chart if any
     d3.select("#waffleChart").selectAll("*").remove();
 
@@ -387,12 +391,15 @@ function createWaffleChart(treiberData,title) {
 
 
     padding = ({x: 10, y: 40});
-    height = 600;
-    width = 1024;
+    width = window.innerWidth * 0.8; // 80% of window width
+    if (window.innerWidth < 800) {
+      height = window.innerHeight * 1.5;
+    } else {
+      height = window.innerHeight * 0.6;
+    }
     waffleSize = width < height ? width : height;
 
 
-    const waffles = [];
     const max = chartData.length; 
     let index = 0, curr = 1, accu = Math.round(chartData[0].ratio), waffle = [];
 
@@ -428,10 +435,12 @@ function createWaffleChart(treiberData,title) {
                     .domain(sequence(chartData.length))
                     .range(customColors);
 
-    const svg = d3.select("svg#waffleChart")
-                    .attr("viewBox", [0, 0, width, height]);
+    svg_waffle = d3.select("svg#waffleChart")
+                  .attr("width", width)
+                  .attr("height", height)
+                  .attr("viewBox", [0, 0, width, height]);
     
-    const g = svg.selectAll(".waffle")  
+    const g = svg_waffle.selectAll(".waffle")  
                     .data(array)
                     .join("g")
                     .attr("class", "waffle");
@@ -461,8 +470,8 @@ function createWaffleChart(treiberData,title) {
       .ease(d3.easeBounce)
       .attr("y", d => scale(d.y));
 
-    svg.transition().delay(550)
-      .on("end", () => drawLegend(svg, cells, color));
+    svg_waffle.transition().delay(550)
+      .on("end", () => drawLegend(svg_waffle, cells, color));
 
 
     drawLegend = (svg, cells, color) => {
@@ -470,7 +479,15 @@ function createWaffleChart(treiberData,title) {
         .data(chartData.map(d => d.treiber))
         .join("g")      
         .attr("opacity", 1)
-        .attr("transform", (d, i) => `translate(${waffleSize + 20},${i * 30})`)
+        .attr("transform", (d, i) => {
+          if (window.innerWidth < 800) { // Adjust this value as needed
+              // Position the legends beneath the chart
+              return `translate(0,${waffleSize + 20 + i * 40})`;
+          } else {
+              // Position the legends to the right of the chart
+              return `translate(${waffleSize + 20},${i * 30})`;
+          }
+        })
         .on("mouseover", highlight)
         .on("mouseout", restore);
       
@@ -481,7 +498,8 @@ function createWaffleChart(treiberData,title) {
       
       legend.append("text")
         .attr("x", 40) // Adjust the x position to align the text
-        .attr("y", 10) // Adjust the y position to align the text
+        .attr("y", 15) // Adjust the y position to align the text
+        .style("font-size", window.innerWidth < 800 ? "17px" : "14px") // Adjust the font sizes as needed
         .attr("alignment-baseline", "middle") // Align the text vertically in the middle
         .text((d, i) => `${d} (${chartData[i].ratio.toFixed(0)}%)`);
         
@@ -515,3 +533,8 @@ function createWaffleChart(treiberData,title) {
     scrollTop: $('#' + sectionId).offset().top
   }, 'slow');
 }
+
+
+window.addEventListener('resize', () => {
+  createWaffleChart(treiberCache, bereichCache);
+});

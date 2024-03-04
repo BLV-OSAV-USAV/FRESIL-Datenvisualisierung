@@ -14,11 +14,11 @@ def count_gefahr(timeFilter):
         today = pd.to_datetime('2023-11-28') #pd.to_datetime('today').date()
 
         if timeFilter == 'week':
-            start = today - pd.DateOffset(weeks=1)
+            start = (today - pd.DateOffset(weeks=1)).date()
         elif timeFilter == 'month':
-            start = today - pd.DateOffset(months=1)
+            start = (today - pd.DateOffset(month=1)).date()
         elif timeFilter == 'year':
-            start = today - pd.DateOffset(years=1)
+            start = (today - pd.DateOffset(years=1)).date()
 
         meldung = meldung[meldung['erfDate'] >= start]
         meldung_ids = meldung['id']
@@ -83,12 +83,14 @@ def count_matrix(timeFilter):
     if timeFilter != 'all':
         meldung['erfDate'] = pd.to_datetime(meldung['erf_date']).dt.date
         today = pd.to_datetime('2023-11-28') #pd.to_datetime('today').date()
-    if timeFilter == 'week':
-        start = today - pd.DateOffset(weeks=1)
-    elif timeFilter == 'month':
-        start = today - pd.DateOffset(months=1)
-    elif timeFilter == 'year':
-        start = today - pd.DateOffset(years=1)
+        
+        if timeFilter == 'week':
+            start = (today - pd.DateOffset(weeks=1)).date()
+        elif timeFilter == 'month':
+            start = (today - pd.DateOffset(month=1)).date()
+        elif timeFilter == 'year':
+            start = (today - pd.DateOffset(years=1)).date()
+        
         meldung = meldung[meldung['erfDate'] >= start]
         meldung_ids = meldung['id']
         meldungXmatrix = meldungXmatrix[meldungXmatrix['meldung_id'].isin(meldung_ids)]
@@ -193,5 +195,13 @@ def list_meldung_pro_Gefahr(id):
 #count_gefahr_pro_tag()
 #count_meldung_pro_tag()
 
-#count_gefahr('year')
-#count_matrix('month')
+count_gefahr('year')
+count_gefahr('month')
+count_gefahr('week')
+count_gefahr('all')
+
+
+count_matrix('year')
+count_matrix('month')
+count_matrix('week')
+count_matrix('all')

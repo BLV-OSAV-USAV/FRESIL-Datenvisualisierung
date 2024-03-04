@@ -190,6 +190,50 @@ let sdTranslations = {
 		it: 'Notifica',
 
 		en: 'Notification'
-	}
+	},
+
+	all:{
+
+		de: 'Alle Daten',
+
+		fr: 'Toutes les données',
+
+		it: 'tutti i dati',
+
+		en: 'All data'
+	},
+
+	year:{
+
+		de: 'im letzten Jahr',
+
+		fr: 'L\'an dernier',
+
+		it: 'L\'anno scorso',
+
+		en: 'last year'
+	},
+
+	month:{
+
+		de: 'im letzten Monat',
+
+		fr: 'Le mois dernier',
+
+		it: 'Il mese scorso',
+
+		en: 'last month'
+	},
+
+	week:{
+
+		de: 'Letzte Woche',
+
+		fr: 'La semaine dernière',
+
+		it: 'La settimana scorsa',
+
+		en: 'last week'
+	},
 
 };

@@ -84,6 +84,7 @@ document.getElementById('matrixButton').addEventListener('click', function() {
 
 document.getElementById('timeFilter').addEventListener('change', function() {
     handleTimeFilterChange(this.value);
+    moveToSection('two');
 });
 
 // Call handleGefahrButtonClick() function by default when the page loads

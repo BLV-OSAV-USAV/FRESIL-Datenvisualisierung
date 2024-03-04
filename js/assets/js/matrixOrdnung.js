@@ -5,6 +5,16 @@ function matrixOrdnung(timeFilter) {
     d3.csv("../figure_data/matrix_treiber_counts.csv"), // Load matrix treiber counts data
     d3.csv("../figure_data/matrix_bereich_counts.csv")
   ]).then(([matrixCounts, treiberCounts, bereichCounts]) => {
+    d3.select("svg#bubbleChart").selectAll("*").remove();
+
+      // Check if gefahrCounts is empty
+      if (matrixCounts.length === 0) {
+        d3.select("svg#bubbleChart")
+            .append("text")
+            .attr("text-anchor", "middle")
+            .text("No data available to display the chart.");
+        return; // Exit the function early
+      }
     // Merge the data on 'id' and 'matrix_id'
     const mergedData = matrixCounts.map(count => {
       const treiberData = treiberCounts.find(treiber => treiber.matrix_id === count.id);
@@ -21,8 +31,24 @@ function matrixOrdnung(timeFilter) {
       };
     });
 
+    // Extract the 'name' column values
+    const nameList = mergedData.map(data => data.name);
+    // Call a function to populate the select element in the front end
+    populateSelect(nameList);
 
     // Call the baseVisualization function with the result datas
     baseVisualization(mergedData, '#a6cee3', 'matrix');
   });
 } 
+
+// Function to populate the select element in the front end
+function populateSelect(nameList) {
+  const selectElement = document.getElementById('gm-list');
+  selectElement.innerHTML = '';
+  nameList.forEach(name => {
+      const option = document.createElement('option');
+      option.value = name;
+      option.textContent = name;
+      selectElement.appendChild(option);
+  });
+}

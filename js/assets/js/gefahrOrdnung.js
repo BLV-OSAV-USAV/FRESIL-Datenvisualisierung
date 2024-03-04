@@ -5,10 +5,9 @@ function gefahrOrdnung(timeFilter){
       d3.csv("../figure_data/gefahr_treiber_counts.csv"),
       d3.csv("../figure_data/gefahr_bereich_counts.csv")
     ]).then(([gefahrCounts, treiberCounts, bereichCounts]) => {
+      d3.select("svg#bubbleChart").selectAll("*").remove();
       // Check if gefahrCounts is empty
       if (gefahrCounts.length === 0) {
-        d3.select("svg#bubbleChart").selectAll("*").remove();
-
         d3.select("svg#bubbleChart")
             .append("text")
             .attr("text-anchor", "middle")
@@ -31,10 +30,27 @@ function gefahrOrdnung(timeFilter){
           bereich: bereichData ? Object.fromEntries(Object.entries(bereichData).slice(1)) : {}  // Convert bereichData object to key-value pairs
         };
       });
-    
+
+    // Extract the 'name' column values
+    const nameList = mergedData.map(data => data.name);
+    // Call a function to populate the select element in the front end
+    populateSelect(nameList);
 
     // Call the baseVisualization function with the result data
     baseVisualization(mergedData, "#cab2d6", 'gefahr');
 
   })
+}
+
+// Function to populate the select element in the front end
+function populateSelect(nameList) {
+  const selectElement = document.getElementById('gm-list');
+  // Clear existing options
+  selectElement.innerHTML = '';
+  nameList.forEach(name => {
+      const option = document.createElement('option');
+      option.value = name;
+      option.textContent = name;
+      selectElement.appendChild(option);
+  });
 }

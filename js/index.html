@@ -165,6 +165,19 @@ The file is organized into different sections, each with its own HTML tags and a
 	<p>
 		<button id="gefahrButton" class="btn active"><span class="trn">gefahrButton</span></button>
 		<button id="matrixButton"class="btn"><span class="trn">matrixButton</span></button>	
+		<div>
+			<select name="timeFilter" id="timeFilter" style="width: 20%; margin: auto;">
+				<option value="all" selected><span class="trn">all</span></option>
+				<option value="year"><span class="trn">year</span></option>
+				<option value="month"><span class="trn">month</span></option>
+				<option value="week"><span class="trn">week</span></option>
+			</select>
+		</div>
+		<div>
+			<select name="gm-list" id="gm-list" style="width: 20%; margin: auto;">
+			</select>
+		</div>
+		
 	</p>
 
 	</div>
@@ -184,14 +197,6 @@ The file is organized into different sections, each with its own HTML tags and a
 		<div style="width: 60%; height: 10%;">
 			<div id="bubbleChart" style="padding-top: 10px; padding-bottom: 10px;">
 				<svg id="bubbleChart" width="100%" height="100%" viewBox="-250 -250 500 500"></svg>			
-			</div>
-			<div>
-				<select name="timeFilter" id="timeFilter">
-					<option value="all" selected>All data</option>
-					<option value="year">Last year</option>
-					<option value="month">Last month</option>
-					<option value="week">Last week</option>
-				</select>
 			</div>
 		</div>
 	 </center>

@@ -5,7 +5,6 @@ var permalink = addPermalink();
 // Load the language
 var lang = (langs.indexOf(permalink.lang) != -1) ? permalink.lang : langs[0];
 
-console.log(lang);
 
 // Define function to execute when the 'gefahrButton' is clicked
 function handleGefahrButtonClick() {
@@ -23,7 +22,6 @@ function handleGefahrButtonClick() {
 
     // Listen for the 'load' event on the script element
     script.addEventListener('load', () => {
-        console.log(lang)
         // Call the gefahrOrdnung function with the desired timeFilter argument
         gefahrOrdnung('all', lang);
     });
@@ -39,7 +37,7 @@ function handleTimeFilterChange(timeFilter) {
             // Listen for the 'load' event on the script element
         script.addEventListener('load', () => {
             // Call the gefahrOrdnung function with the desired timeFilter argument
-            gefahrOrdnung(timeFilter);
+            gefahrOrdnung(timeFilter, lang);
         });
 
     } else if (Ordnung === 'matrix') {
@@ -47,7 +45,7 @@ function handleTimeFilterChange(timeFilter) {
             // Listen for the 'load' event on the script element
         script.addEventListener('load', () => {
             // Call the matrixOrdnung function with the desired timeFilter argument
-            matrixOrdnung(timeFilter);
+            matrixOrdnung(timeFilter, lang);
         });
     }
 
@@ -75,7 +73,7 @@ function handleMatrixButtonClick() {
     // Listen for the 'load' event on the script element
     script.addEventListener('load', () => {
         // Call the gefahrOrdnung function with the desired timeFilter argument
-        matrixOrdnung('all');
+        matrixOrdnung('all', lang);
     });
     document.head.appendChild(script);
 }

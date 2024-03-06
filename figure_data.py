@@ -39,7 +39,7 @@ def count_gefahr(timeFilter):
     gefahr_counts = pd.merge(gefahr_counts, mean_sterne, on='id', how='left')
 
     # Enregistrer le résultat dans un fichier CSV
-    gefahr_counts.to_csv(f'./figure_data/gefahr_counts_{timeFilter}.csv', index=False)
+    gefahr_counts.to_csv(f'./figure_data/base/gefahr_counts_{timeFilter}.csv', index=False)
 
 
 def gefahr_treiber_count(lg):
@@ -55,7 +55,7 @@ def gefahr_treiber_count(lg):
 
 
     # Enregistrer le résultat dans un fichier CSV
-    result_df_gefahr.to_csv(f'./figure_data/gefahr_treiber_counts_{lg}.csv', index=False)
+    result_df_gefahr.to_csv(f'./figure_data/treiber/gefahr_treiber_counts_{lg}.csv', index=False)
 
 
 def gefahr_bereich_count(lg):
@@ -71,7 +71,7 @@ def gefahr_bereich_count(lg):
 
 
     # Enregistrer le résultat dans un fichier CSV
-    result_df_gefahr.to_csv(f'./figure_data/gefahr_bereich_counts_{lg}.csv', index=False)
+    result_df_gefahr.to_csv(f'./figure_data/bereich/gefahr_bereich_counts_{lg}.csv', index=False)
 
 
 def count_matrix(timeFilter):
@@ -110,7 +110,7 @@ def count_matrix(timeFilter):
     matrix_counts = pd.merge(matrix_counts, mean_sterne, on='id', how='left')
 
     # Enregistrer le résultat dans un fichier CSV
-    matrix_counts.to_csv(f'./figure_data/matrix_counts_{timeFilter}.csv', index=False)
+    matrix_counts.to_csv(f'./figure_data/base/matrix_counts_{timeFilter}.csv', index=False)
 
 
 def matrix_treiber_count(lg):
@@ -126,7 +126,7 @@ def matrix_treiber_count(lg):
 
 
     # Enregistrer le résultat dans un fichier CSV
-    result_df_matrix.to_csv('./figure_data/matrix_treiber_counts.csv', index=False)
+    result_df_matrix.to_csv(f'./figure_data/treiber/matrix_treiber_counts_{lg}.csv', index=False)
 
 def matrix_bereich_count(lg):
     # Charger les fichiers CSV
@@ -141,7 +141,7 @@ def matrix_bereich_count(lg):
 
 
     # Enregistrer le résultat dans un fichier CSV
-    result_df_matrix.to_csv(f'./figure_data/matrix_bereich_counts_{lg}.csv', index=False)
+    result_df_matrix.to_csv(f'./figure_data/bereich/matrix_bereich_counts_{lg}.csv', index=False)
 
 
 def list_meldung_pro_Gefahr(id):

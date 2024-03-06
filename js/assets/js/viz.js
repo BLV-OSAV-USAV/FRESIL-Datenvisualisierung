@@ -14,6 +14,8 @@ function baseVisualization(data, color, filter){
 	  let width = 0;
     let defaultId = ''; // Variable to store the id of the data with the biggest count
 
+    const selectElement = document.getElementById('gm-list');
+
     // Find the data with the biggest count
     let maxCount = -Infinity;
     data.forEach(d => {
@@ -63,6 +65,7 @@ function baseVisualization(data, color, filter){
     .join("circle")
     .attr("r", d => d.size)
     .attr("fill", color)
+    .attr("id", d => d.id)
     .on("mouseover", function(d) {
       // Only add stroke if the circle is not the clicked one
       if (!d3.select(this).classed("clicked")) {
@@ -81,16 +84,16 @@ function baseVisualization(data, color, filter){
             .select("#titel")
             .text(d.name);
 
-            d3.select("#tooltip")  
-		        .select("#meldungCount")
-		        .text(`Anzahl Meldungen: ${d.count}`)
+        d3.select("#tooltip")  
+		    .select("#meldungCount")
+		    .text(`Anzahl Meldungen: ${d.count}`);
 
-            d3.select("#tooltip")
-                .select("#meanSterne")
-                .text(`Durchschnittliche Wichtigkeit: ${d.mean_sterne}`);
+        d3.select("#tooltip")
+            .select("#meanSterne")
+            .text(`Durchschnittliche Wichtigkeit: ${d.mean_sterne}`);
 
+        d3.select("#tooltip").classed("hidden", false);
 
-            d3.select("#tooltip").classed("hidden", false);
         })
     .on("mouseout", function() { 
       // Only remove stroke if the circle is not the clicked one
@@ -105,28 +108,57 @@ function baseVisualization(data, color, filter){
       svg.selectAll("circle").attr("stroke", null).classed("clicked", false); 
       
       // Apply stroke to the clicked circle and add the "clicked" class
-      d3.select(this).attr("stroke", "#000").classed("clicked", true); 
-        moveToSection('three');
+      d3.select(this).attr("stroke", "#000").classed("clicked", true);
+ 
 
-        // Extract the "treiber" values from the selected circle
-        let treiberData = d.treiber;
-        let bereichData = d.bereich;
-        let id = d.id;
-        let title = d.name;
+      moveToSection('three');
 
-        // Update the content of the <span> tag with the class "trn"
-        document.querySelector('#waffle-title').innerText = title;
+      // Extract the "treiber" values from the selected circle
+      let treiberData = d.treiber;
+      let bereichData = d.bereich;
+      let id = d.id;
+      let title = d.name;
 
-        // Create and display waffle chart
-        createWaffleChart(treiberData, bereichData);
-        createList(id, filter);
+      // Set the value of the select element to the selected circle's name
+      selectElement.value = title; 
+      
+      // Update the content of the <span> tag with the class "waffle-title"
+      document.querySelector('#waffle-title').innerText = title;
+      // Create and display waffle chart
+      createWaffleChart(treiberData, bereichData);
+      createList(id, filter);
     });
-
 
     createWaffleChart(data.find(d => d.id === defaultId).treiber, data.find(d => d.id === defaultId).bereich);
     createList(defaultId, filter);
-    // Update the content of the <span> tag with the class "trn"
+    // Update the content of the <span> tag with the class "waffle-title"
     document.querySelector('#waffle-title').innerText = data.find(d => d.id === defaultId).name;
+ 
+      // Add event listener to the select element
+    selectElement.addEventListener('change', function(event) {
+        const selectedName = event.target.value;
+        const selectedCircle = data.find(circle => circle.name === selectedName);
+        if (selectedCircle) {
+            // Remove stroke from all circles
+            svg.selectAll("circle").attr("stroke", null).classed("clicked", false);
+
+            // Apply stroke to the selected circle and add the "clicked" class
+            const selectedCircleElement = svg.select(`circle[id="${selectedCircle.id}"]`);
+            selectedCircleElement.attr("stroke", "#000").classed("clicked", true);
+
+            // Run createWaffleChart and createList functions
+            moveToSection('three');
+            createWaffleChart(selectedCircle.treiber, selectedCircle.bereich);
+            createList(selectedCircle.id, filter);
+
+            let title = selectedCircle.name;
+
+            // Update the content of the <span> tag with the class "trn"
+            document.querySelector('#waffle-title').innerText = title;
+
+        }
+    });
+
 
     /**
      * Updates the position of circles based on the tick event.

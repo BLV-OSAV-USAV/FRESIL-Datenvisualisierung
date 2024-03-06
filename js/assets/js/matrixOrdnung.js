@@ -1,4 +1,4 @@
-function matrixOrdnung(timeFilter) {
+function matrixOrdnung(timeFilter, lang) {
   // Load the required CSV files asynchronously
   Promise.all([
     d3.csv(`../figure_data/matrix_counts_${timeFilter}.csv`), // Load matrix counts data
@@ -6,6 +6,7 @@ function matrixOrdnung(timeFilter) {
     d3.csv("../figure_data/matrix_bereich_counts.csv")
   ]).then(([matrixCounts, treiberCounts, bereichCounts]) => {
     d3.select("svg#bubbleChart").selectAll("*").remove();
+    console.log(matrixCounts);
 
       // Check if gefahrCounts is empty
       if (matrixCounts.length === 0) {
@@ -15,6 +16,12 @@ function matrixOrdnung(timeFilter) {
             .text("No data available to display the chart.");
         return; // Exit the function early
       }
+
+      var langs = ['de', 'fr', 'it', 'en'];
+      var permalink = addPermalink();
+      // Load the language
+      var lang = (langs.indexOf(permalink.lang) != -1) ? permalink.lang : langs[0]; 
+
     // Merge the data on 'id' and 'matrix_id'
     const mergedData = matrixCounts.map(count => {
       const treiberData = treiberCounts.find(treiber => treiber.matrix_id === count.id);
@@ -22,7 +29,7 @@ function matrixOrdnung(timeFilter) {
       const size = count.count * count.mean_sterne;
       return {
         id: +count.id,
-        name: count.bezeichnung_de,
+        name: count[`bezeichnung_${lang}`],
         count: +count.count,
         mean_sterne: +count.mean_sterne,
         size: +size,

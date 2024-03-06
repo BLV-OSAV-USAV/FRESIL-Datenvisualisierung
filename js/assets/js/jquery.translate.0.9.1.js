@@ -75,6 +75,17 @@
 
       $this.html(that.get(trn_key));
     });
+
+    // Translate options within select elements
+    this.find(settings.css).find('option.trn').each(function() {
+      var $this = $(this);
+      var trn_key = $this.attr("data-trn-key");
+      if (!trn_key) {
+          trn_key = $this.html();
+          $this.attr("data-trn-key", trn_key); //store key for next time
+      }
+      $this.text(that.get(trn_key));
+    });
     
     
 		return this;

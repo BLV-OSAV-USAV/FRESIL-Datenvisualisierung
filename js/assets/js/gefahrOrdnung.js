@@ -1,4 +1,4 @@
-function gefahrOrdnung(timeFilter){
+function gefahrOrdnung(timeFilter, lang){
 // Load data from CSV files: gefahrCounts and treiberCounts
     Promise.all([
       d3.csv(`../figure_data/gefahr_counts_${timeFilter}.csv`),
@@ -14,6 +14,10 @@ function gefahrOrdnung(timeFilter){
             .text("No data available to display the chart.");
         return; // Exit the function early
       }
+      var langs = ['de', 'fr', 'it', 'en'];
+      var permalink = addPermalink();
+      // Load the language
+      var lang = (langs.indexOf(permalink.lang) != -1) ? permalink.lang : langs[0]; 
 
       // Merge the data on 'id' and 'gefahr_id'
       const mergedData = gefahrCounts.map(count => {
@@ -22,7 +26,7 @@ function gefahrOrdnung(timeFilter){
         const size = count.count * count.mean_sterne;
         return {
           id: +count.id,
-          name: count.bezeichnung_de,
+          name: count[`bezeichnung_${lang}`],
           count: +count.count,
           mean_sterne: +count.mean_sterne,
           size: +size,
@@ -44,13 +48,17 @@ function gefahrOrdnung(timeFilter){
 
 // Function to populate the select element in the front end
 function populateSelect(nameList) {
-  const selectElement = document.getElementById('gm-list');
+  const selectElement = document.getElementById('gm-list'); 
+
   // Clear existing options
   selectElement.innerHTML = '';
+
+  // Add new options
   nameList.forEach(name => {
       const option = document.createElement('option');
       option.value = name;
       option.textContent = name;
       selectElement.appendChild(option);
   });
+
 }

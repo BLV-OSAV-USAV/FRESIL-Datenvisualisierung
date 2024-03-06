@@ -55,7 +55,7 @@ def gefahr_treiber_count(lg):
 
 
     # Enregistrer le résultat dans un fichier CSV
-    result_df_gefahr.to_csv('./figure_data/gefahr_treiber_counts.csv', index=False)
+    result_df_gefahr.to_csv(f'./figure_data/gefahr_treiber_counts_{lg}.csv', index=False)
 
 
 def gefahr_bereich_count(lg):
@@ -71,7 +71,7 @@ def gefahr_bereich_count(lg):
 
 
     # Enregistrer le résultat dans un fichier CSV
-    result_df_gefahr.to_csv('./figure_data/gefahr_bereich_counts.csv', index=False)
+    result_df_gefahr.to_csv(f'./figure_data/gefahr_bereich_counts_{lg}.csv', index=False)
 
 
 def count_matrix(timeFilter):
@@ -141,7 +141,7 @@ def matrix_bereich_count(lg):
 
 
     # Enregistrer le résultat dans un fichier CSV
-    result_df_matrix.to_csv('./figure_data/matrix_bereich_counts.csv', index=False)
+    result_df_matrix.to_csv(f'./figure_data/matrix_bereich_counts_{lg}.csv', index=False)
 
 
 def list_meldung_pro_Gefahr(id):
@@ -155,16 +155,11 @@ def list_meldung_pro_Gefahr(id):
     print(meldungs)
 
 
-
-#list_meldung_pro_Gefahr(188)
-#gefahr_bereich_count('de')
-#matrix_bereich_count('de')
-#count_matrix()
-#matrix_treiber_count('de')
-#count_gefahr()
-#gefahr_treiber_count('de')
-#count_gefahr_pro_tag()
-#count_meldung_pro_tag()
+for i in ['de','fr','it','en']:
+    gefahr_bereich_count(i)
+    matrix_bereich_count(i)
+    matrix_treiber_count(i)
+    gefahr_treiber_count(i)
 
 count_gefahr('year')
 count_gefahr('month')

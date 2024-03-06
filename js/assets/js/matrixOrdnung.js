@@ -2,8 +2,8 @@ function matrixOrdnung(timeFilter, lang) {
   // Load the required CSV files asynchronously
   Promise.all([
     d3.csv(`../figure_data/matrix_counts_${timeFilter}.csv`), // Load matrix counts data
-    d3.csv("../figure_data/matrix_treiber_counts.csv"), // Load matrix treiber counts data
-    d3.csv("../figure_data/matrix_bereich_counts.csv")
+    d3.csv(`../figure_data/matrix_treiber_counts_${lang}.csv`), // Load matrix treiber counts data
+    d3.csv(`../figure_data/matrix_bereich_counts_${lang}.csv`)
   ]).then(([matrixCounts, treiberCounts, bereichCounts]) => {
     d3.select("svg#bubbleChart").selectAll("*").remove();
     console.log(matrixCounts);

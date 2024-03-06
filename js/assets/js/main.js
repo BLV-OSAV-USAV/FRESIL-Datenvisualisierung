@@ -1,4 +1,12 @@
 Ordnung = 'gefahr';
+
+var langs = ['de', 'fr', 'it', 'en'];
+var permalink = addPermalink();
+// Load the language
+var lang = (langs.indexOf(permalink.lang) != -1) ? permalink.lang : langs[0];
+
+console.log(lang);
+
 // Define function to execute when the 'gefahrButton' is clicked
 function handleGefahrButtonClick() {
     Ordnung = 'gefahr';
@@ -6,7 +14,6 @@ function handleGefahrButtonClick() {
     document.querySelectorAll('.btn').forEach(button => {
         button.classList.remove('active');
     });
-
     // Add 'active' class to 'gefahrButton'
     this.classList.add('active');
 
@@ -16,8 +23,9 @@ function handleGefahrButtonClick() {
 
     // Listen for the 'load' event on the script element
     script.addEventListener('load', () => {
+        console.log(lang)
         // Call the gefahrOrdnung function with the desired timeFilter argument
-        gefahrOrdnung('all');
+        gefahrOrdnung('all', lang);
     });
 
     document.head.appendChild(script);

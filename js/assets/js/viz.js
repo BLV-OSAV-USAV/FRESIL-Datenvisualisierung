@@ -129,6 +129,20 @@ function baseVisualization(data, color, filter){
       createList(id, filter);
     });
 
+/*     // Create text elements for displaying circle names
+    svg.selectAll("text")
+        .data(data.slice(0, 5)) // Select only the top 5 circles
+        .enter()
+        .append("text")
+        .attr("cx", d => d.x) // Position text at the x-coordinate of the circle
+        .attr("cy", d => d.y) // Position text at the y-coordinate of the circle
+        .attr("text-anchor", "middle") // Center text horizontally
+        .attr("dy", "0.35em") // Offset text vertically for better alignment
+        .text(d => d.name) // Set text content to circle name
+        .style("font-size", "10px"); // Adjust font size as needed */
+
+
+
     createWaffleChart(data.find(d => d.id === defaultId).treiber, data.find(d => d.id === defaultId).bereich);
     createList(defaultId, filter);
     // Update the content of the <span> tag with the class "waffle-title"

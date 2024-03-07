@@ -1,0 +1,206 @@
+id,count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne
+126,30,Per- und polyfluorierte Alkylverbindungen (PFAS),Substances per- et polyfluoroalkylées (PFAS),Sostanze per- e polifluoroalchiliche (PFAS),Per- and polyfluoroalkyl substances (PFAS),1.63
+93,26,Salmonella spp.,Salmonella spp.,Salmonella spp.,Salmonella spp.,1.38
+26,23,Listeria monocytogenes,Listeria monocytogenes,Listeria monocytogenes,Listeria monocytogenes,1.65
+91,19,Pestizide,pesticides,pesticidi,pesticide,1.16
+19,18,STEC/VTEC,STEC/VTEC,STEC/VTEC,STEC/VTEC,1.72
+111,17,Mykotoxine,Mycotoxine,Micotossine,Mycotoxin,1.35
+125,16,Mikroplastik,microplastiques,microplastica,microplastics,1.62
+165,15,Cadmium,Cadmium,Cadmio,Cadmium,1.4
+1,15,Escherichia coli,Escherichia coli,Escherichia coli,Escherichia coli,1.67
+63,14,Antibiotika,antibiotiques,antibiotici,antibiotics,1.93
+102,14,Blei,Plomb,Piombo,Lead,1.21
+99,12,Vibrio spp.,Vibrio spp.,Vibrio spp.,Vibrio spp.,1.42
+244,11,Antibiotikaresistenzen,Antibiorésistance,Antibiotico-resistenza,Antibiotic resistance,1.27
+128,11,Schwermetalle,métaux lourds,metalli pesanti,heavy metals,1.18
+187,10,Arsen,Arsenic,Arsenico,Arsenic,1.3
+166,9,Bisphenol A (BPA),Bisphénol A (BPA),Bisfenolo A (BPA),Bisphenol A (BPA),1.89
+106,8,Bacillus cereus (sensu lato),Bacillus cereus (sensu lato),Bacillus cereus (sensu lato),Bacillus cereus (sensu lato),1.38
+86,8,Campylobacter spp.,Campylobacter spp.,Campylobacter spp.,Campylobacter spp.,1.75
+167,8,Quecksilber,Mercure,Mercurio,Mercury,1.12
+197,7,Nitrite,Nitrite,Nitrito,Nitrite,1.71
+119,6,Norovirus,Norovirus,Norovirus,Norovirus,1.33
+20,5,EHEC,EHEC,EHEC,EHEC,2.2
+9,5,Staphylococcus aureus,Staphylococcus aureus,Staphylococcus aureus,Staphylococcus aureus,1.2
+180,5,Phthalate,phtalates,ftalati,phthalates,1.6
+127,5,Perfluoroctansulfonsäure (PFOS),acide perfluorooctanesulfonique (PFOS),acido perfluoroottansolfonico,Perfluorooctanesulfonic acid (PFOS),2.0
+230,5,Nitrate,Nitrate,Nitrato,Nitrate,1.4
+261,5,Pseudomonas,Pseudomonas,Pseudomonas,Pseudomonas,1.6
+45,5,Aspartam,Aspartam,Aspartam,Aspartam,1.6
+202,4,Antibiotikaresistente Milchsäurebakterien,Bactéries lactiques résistantes aux antibiotiques,Batteri lattici resistenti agli antibiotici,Antibiotic-resistant lactic acid bacteria,2.0
+174,4,Fungizid,Fongicide,Fungicida,Fungicide,1.5
+66,4,Canabidiol (CBD),Canabidiol (CBD),Canabidiolo (CBD),Canabidiol (CBD),1.5
+195,4,Escherichia coli (ExPEC),Escherichia coli (ExPEC),Escherichia coli (ExPEC),Escherichia coli (ExPEC),2.25
+298,4,Deoxynivalenol (DON),Déoxynivalénol (DON),Deossinivalenolo (DON),Deoxynivalenol (DON),1.5
+238,4,Vibrio parahaemolyticus,Vibrio parahaemolyticus,Vibrio parahaemolyticus,Vibrio parahaemolyticus,1.25
+87,4,Campylobacter jejuni,Campylobacter jejuni,Campylobacter jejuni,Campylobacter jejuni,1.5
+150,4,Glyphosat,Glyphosate,Glifosato,Glyphosate,1.25
+123,3,Salmonella Infantis,Salmonella Infantis,Salmonella Infantis,Salmonella Infantis,1.33
+256,3,Parasiten,Parasites,Parassiti,Parasites,1.33
+94,3,Salmonella Typhimurium,Salmonella Typhimurium,Salmonella Typhimurium,Salmonella Typhimurium,1.0
+35,3,Cryptosporidium spp.,Cryptosporidium spp.,Cryptosporidium spp.,Cryptosporidium spp.,2.0
+90,3,Clostridium botulinum,Clostridium botulinum,Clostridium botulinum,Clostridium botulinum,1.33
+148,3,Radioaktivität,Radioactivité,Radioattività,Radioactivity,1.33
+89,3,Cronobacter sakazakii,Cronobacter sakazakii,Cronobacter sakazakii,Cronobacter sakazakii,1.33
+273,3,Koffein,Caféine,Caffeina,caffein,1.33
+109,3,Nanopartikeln,Nanoparticules,Nanoparticole,Nanoparticles,1.0
+246,3,Acrylamid,Acrylamide,Acrilammide,Acrylamide,1.67
+2,3,Hepatitis E Virus (HEV),Hepatitis E Virus (HEV),Hepatitis E Virus (HEV),Hepatitis E Virus (HEV),1.67
+101,2,Brucella spp.,Brucella spp.,Brucella spp.,Brucella spp.,2.5
+193,2,Salmonella Agona,Salmonella Agona,Salmonella Agona,Salmonella Agona,2.0
+8,2,Sapovirus,Sapovirus,Sapovirus,Sapovirus,1.5
+201,2,Diphenylguanidin (DPG),Diphénylguanidine (DPG),Difenilguanidina (DPG),Diphenylguanidine (DPG),3.0
+234,2,Sucralose,Sucralose,Sucralosio,Sucralose,1.0
+243,2,Carboxymethylcellulosen (CMC),Carboxyméthylcellulose (CMC),Carbossimetilcellulosa (CMC),Carboxymethylcellulose (CMC),2.0
+198,2,Hexamethoxymethylmelamin (HMMM),Hexaméthoxyméthylmélamine (HMMM),Esametossimetilmelamina (HMMM),Hexamethoxymethylmelamine (HMMM),3.0
+28,2,Clostridioides difficile,Clostridioides difficile,Clostridioides difficile,Clostridioides difficile,1.5
+160,2,Nipah Virus,Virus Nipah,Virus Nipah,Nipah virus,1.0
+185,2,Mineralöl,Huile minérale,Olio minerale,Mineral oil,1.0
+10,2,Toxoplasma gondii,Toxoplasma gondii,Toxoplasma gondii,Toxoplasma gondii,2.5
+209,2,Anorganische Arsen,Arsenic inorganique,Arsenico inorganica,Inorganic arsenic,1.0
+211,2,Bacillus subtilis,Bacillus subtilis,Bacillus subtilis,Bacillus subtilis,1.5
+269,2,Polybromierte Diphenylether (PBDE),Polybromodiphényléthers (PBDE),Eteri di difenile polibromurati (PBDE),Polybrominated diphenyl ethers (PBDEs),1.5
+156,2,Listeria innocua,Listeria innocua,Listeria innocua,Listeria innocua,2.5
+284,2,MOSH,MOSH,MOSH,MOSH,1.0
+196,2,Grayanotoxine,Grayanotoxine,Graianotossina,Grayanotoxin,1.5
+69,2,Tetrahydrocannabinol (THC),Tétrahydrocannabinol (THC),Tetraidrocannabinolo (THC),Tetrahydrocannabinol (THC),2.0
+48,2,marine Biotoxine,biotoxines marines,biotossine marine,marine biotoxines,2.0
+4,2,Bacillus cytotoxicus,Bacillus cytotoxicus,Bacillus cytotoxicus,Bacillus cytotoxicus,2.0
+88,2,Campylobacter coli,Campylobacter coli,Campylobacter coli,Campylobacter coli,1.5
+203,2,Ochratoxin A (OTA),Ochratoxine A (OTA),Ocratossina A (OTA),Ochratoxin A (OTA),2.0
+129,2,Affenpocken-Virus (MPXV),variole du singe (MPXV),vaiolo delle scimmie (MXPV),Monkeypox virus (MPXV),2.0
+293,2,Bromierte Flammschutzmittel (BFR),Agent ignifuge bromé (BFR),Ritardante di fiamma bromurato (BFR),Brominated flame retardants (BFRs),1.5
+79,2,Zucker,sucre,zucchero,sugar,1.0
+221,2,kurzkettige Chlorparaffine (SCCP),paraffines chlorées à chaîne courte (PCCC),paraffine clorurate a catena corta (PCCC),short-chain chlorinated paraffins (SCCP),1.5
+200,2,6-PPD,6-PPD,6-PPD,6-PPD,3.0
+319,1,Proteus spp.,Proteus spp.,Proteus spp.,Proteus spp.,2.0
+67,1,Cannabigerol (CBG),Cannabigérol (CBG),Cannabigerolo (CBG),Cannabigerol (CBG),3.0
+25,1,SARS-CoV-2,SARS-CoV-2,SARS-CoV-2,SARS-CoV-2,2.0
+218,1,Human circovirus 1 (HCirV-1),Human circovirus 1 (HCirV-1),Human circovirus 1 (HCirV-1),Human circovirus 1 (HCirV-1),3.0
+192,1,2-tert-Butylhydrochinon,tert-Butylhydroquinone,Terz-butil-idrochinone,tert-butylhydroquinone,1.0
+285,1,MOAH,MOAH,MOAH,MOAH,1.0
+260,1,benzaldehyd,benzaldéhyde,Benzaldeide,benzaldehyde,1.0
+227,1,Erythrit,Érythritol,Eritritolo,Erythritol,1.0
+251,1,Trichinella spp.,Trichinella spp.,Trichinella spp.,Trichinella spp.,1.0
+228,1,Fipronil,Fipronil,Fipronil,Fipronil,2.0
+259,1,furfural,furfural,furfurale,furfural,1.0
+258,1,"2,3,5-Trimethylpyrazine","2,3,5-Trimethylpyrazine","2,3,5-Trimethylpyrazine","2,3,5-Trimethylpyrazine",1.0
+250,1,extended-spectrum beta-lactamase produzierenden Shigella sonnei,Shigella sonnei productrices de bêta-lactamase à spectre étendu,Shigella sonnei produttrice di beta-lattamasi a spettro esteso,extended spectrum beta-lactamase producing-Shigella sonnei,1.0
+136,1,Prion,Prion,Prione,Prion,1.0
+236,1,Flüssigstickstoff,Azote liquide,Azoto liquido,Liquid nitrogen,1.0
+140,1,Streptococcus spp.,Streptococcus spp.,Streptococcus spp.,Streptococcus spp.,3.0
+245,1,Streptococcus equi,Streptococcus equi,Streptococcus equi,Streptococcus equi,3.0
+247,1,Calciumcarbid,Carbure de calcium,Carburo di calcio,Calcium carbide,2.0
+100,1,Frühsommer-Meningoenzephalitis (FSME),L'encéphalite à tiques,Encefalite trasmessa da zecche,Tick-borne encephalitis (TBE),1.0
+204,1,Streptomycin,Streptomycine,Streptomicina,Streptomycin,1.0
+262,1,formaldehyd,formaldéhyde,formaldeide,formaldehyde,1.0
+263,1,benzol,benzène,benzene,benzene,1.0
+309,1,Hexahydrocannabinol,Hexahydrocannabinol,Esaidrocannabinolo,Hexahydrocannabinol,1.0
+186,1,Biogene Amine,Amines biogènes,Ammine biogene,Biogenic amines,2.0
+36,1,Giardia spp.,Giardia spp.,Giardia spp.,Giardia spp.,3.0
+231,1,Campylobacter fetus,Campylobacter fetus,Campylobacter fetus,Campylobacter fetus,2.0
+254,1,Polyethylenterephthalat,Polytéréphtalate d'éthylène,Polietilene tereftalato,polyethylene terephthalate,1.0
+177,1,Alongshan Virus (ALSV),Virus Alongshan (ALSV),Virus Alongshan (ALSV),Alongshan virus (ALSV),3.0
+241,1,Alternariol,alternariol,alternariolo,alternariol,1.0
+73,1,Tierarzneimittel,Produits pharmaceutiques vétérinaires,Farmaci veterinari,Veterinary pharmaceuticals,2.0
+143,1,Menschliche Arzneimittelrückstände,Résidus de produits pharmacieutiques humains,Residui di farmaci umani,Human drug residues,2.0
+189,1,Heliobacter pylori,Heliobacter pylori,Heliobacter pylori,Heliobacter pylori,3.0
+146,1,Salmonella Thompson,Salmonella Thompson,Salmonella Thompson,Salmonella Thompson,3.0
+103,1,GMO (genetisch modifizierter Organismus),OGM (organisme génétiquement modifié),OGM (organismo geneticamente modificato),Genetically modified organism (GMO),1.0
+3,1,Yersinia pseudotuberculosis,Yersinia pseudotuberculosis,Yersinia pseudotuberculosis,Yersinia pseudotuberculosis,1.0
+176,1,Yersinia enterolitica,Yersinia enterolitica,Yersinia enterolitica,Yersinia enterolitica,1.0
+181,1,hochpathogene Aviären Influenza (HPAI),virus de l'influenza aviaire hautement pathogène (IAHP),virus ad alta patogenicità (HPAI) di influenza aviaria,highly pathogenic avian influenza (HPAI) virus,1.0
+239,1,enteroinvasive Escherichia coli (EIEC),Escherichia coli entéro-invasif (EIEC),Escherichia coli enteroinvasiva (EIEC),enteroinvasive Escherichia coli (EIEC),2.0
+235,1,α-Tomatin,α-Tomatine,Tomatina,tomatine,1.0
+276,1,Phytohämagglutinin,Phytohémagglutinine,Fitoemoagglutinina,Phytohaemagglutinin,1.0
+277,1,Microcystine,Microcystine,Microcistina,Microcystin,1.0
+240,1,Lithium,Lithium,Litio,Lithium,2.0
+289,1,HT-2,HT-2,HT-2,HT-2,2.0
+233,1,Glutaminsäure,Acide glutamique,Acido glutammico,Glutamic acid,1.0
+68,1,Cannabinol (CBN),Cannabinol (CBN),Cannabinolo (CBN),Cannabinol (CBN),3.0
+237,1,Quaternäre Ammoniumverbindungen,Composées quaternaires d'ammonium,-,quaternary ammonium compounds,0.0
+224,1,Perchlorat,Perchlorate,Perclorato,perchlorate,2.0
+97,1,Salmonella Kentucky,Salmonella Kentucky,Salmonella Kentucky,Salmonella Kentucky,1.0
+291,1,Milchsäurebakterien,Bactérie lactique,batteri lattici acidofili,Lactic acid bacteria,2.0
+301,1,Metalle der Seltenen Erden (REE),Terre rare (REE),Terre rare (REE),rare earth elements (REE),2.0
+313,1,"2,4-Dichlorphenoxyessigsäure","Acide 2,4-dichlorophénoxyacétique","Acido 2,4-diclorofenossiacetico","2,4-dichlorophenoxyacetic acid",1.0
+199,1,Benzothiazol (BTZ),Benzothiazole (BTZ),Benzothiazolo (BTZ),Benzothiazole (BTZ),3.0
+322,1,Dimethylmonothioarsenate ((DMMTA),Dimethylmonothioarsenate (DMMTA),Dimethylmonothioarsenate (DMMTA),Dimethylmonothioarsenate (DMMTA),1.0
+207,1,Decansäure,Acide décanoïque,acido decanoico,decanoic acid,1.0
+206,1,Caprinsäure,Acide caprique,Acido caprico,Capric acid,1.0
+120,1,Rotavirus,Rotavirus,Rotavirus,Rotavirus,2.0
+286,1,Salmonella Senftenberg,Salmonella Senftenberg,Salmonella Senftenberg,Salmonella Senftenberg,1.0
+305,1,Microbacterium,Microbacterium,Microbacterium,Microbacterium,2.0
+112,1,Aeromonas spp.,Aeromonas spp.,Aeromonas spp.,Aeromonas spp.,1.0
+6,1,Staphylococcus argenteus,Staphylococcus argenteus,Staphylococcus argenteus,Staphylococcus argenteus,2.0
+290,1,Saccharin,Saccharine,Saccarina,Saccharin,2.0
+62,1,Tierarzneimittel,les médicaments pour animaux,farmaci per animali,animal drugs,2.0
+257,1,Helicobacter pullorum,Helicobacter pullorum,Helicobacter pullorum,Helicobacter pullorum,3.0
+114,1,Klebsiella,Klebsiella,Klebsiella,Klebsiella,1.0
+118,1,Aspergillus,Aspergillus,Aspergillus,Aspergillus,2.0
+214,1,Dibutylphthalate (DBP),Phtalate de dibutyle (DBP),Dibutilftalato (DBP),Dibutyl phthalate (DBP),1.0
+215,1,Diisobutylphthalate (DIBP),Phtalate de diisobutyle (DIBP),Diisobutilftalato (DIBP),Diisobutyl phthalate (DIBP),1.0
+216,1,Bis(2-ethylhexyl) phthalate (DEHP),Phtalate de bis(2-éthylhexyle) (DEHP),Di-2-etilesilftalato (DEHP),Bis(2-ethylhexyl) phthalate (DEHP),1.0
+272,1,Mangan,Manganèse,Manganese,Manganese,1.0
+220,1,Tricyclazol,Tricyclazole,Tricyclazole,Tricyclazole,2.0
+7,1,Cyclospora spp.,Cyclospora spp.,Cyclospora spp.,Cyclospora spp.,1.0
+275,1,Cyazofamid,Cyazofamid,Cyazofamid,Cyazofamid,1.0
+299,1,Hexachlorcyclohexan,Hexachlorocyclohexane,Esaclorocicloesano,Hexachlorocyclohexane,1.0
+300,1,Vibrio vulnificus,Vibrio vulnificus,Vibrio vulnificus,Vibrio vulnificus,1.0
+121,1,Hepatitis A virus,Virus de l'hépatite A,Virus dell'epatite A,Hepatitis A virus,1.0
+306,1,Furan,Furane,Furano,Furan,2.0
+142,1,Isoflavone,Isoflavone,Isoflavone,Isoflavones,1.0
+217,1,"2,6-diisopropylnaphthalene (DIPN)","2,6-diisopropylnaphtalène (DIPN)","2,6-diisopropilnaftalene (DIPN)","2,6-diisopropylnaphthalene (DIPN)",1.0
+318,1,Diethylhexylphthalat (DEHP),phtalate de di-2-éthylhexyle (DEHP),Di-2-etilesilftalato (DEHP),diethylhexyl phthalate (DEHP),2.0
+311,1,Ätherische Öle,Huile essentielle,Olio essenziale,essential oil,0.0
+253,1,Mpox (Affenpocken),Mpox (Variole du singe),Mpox (Vaiolo delle scimmie),Mpox (Monkeypox),1.0
+321,1,Fluconazol,Fluconazole,Fluconazolo,Fluconazole,2.0
+190,1,Salmonella Bovismorbificans,Salmonella Bovismorbificans,Salmonella Bovismorbificans,Salmonella Bovismorbificans,1.0
+191,1,Solanum sp,Solanum sp,Solanum sp,Solanum sp,2.0
+292,1,Glycerin,Glycérol,Glicerolo,Glycerol,2.0
+278,1,Morchella sextelata,Morchella sextelata,Morchella sextelata,Morchella sextelata,2.0
+255,1,Chronic Wasting Disease (CWD),Maladie débilitante chronique (CWD),Malattia del deperimento cronico (CWD),Chronic Wasting Disease (CWD),2.0
+225,1,Barium,Baryum,Bario,Barium,1.0
+316,1,Fructose,Fructose,Fruttosio,Fructose,1.0
+296,1,Providencia spp.,Providencia spp.,Providencia spp.,Providencia spp.,2.0
+58,1,Melatonin,Mélatonine,Melatonina,Melatonin,1.0
+219,1,Acesulfam-K,Acésulfame K,Acesulfame K,Acesulfame K,1.0
+222,1,GenX,GenX,GenX,GenX,2.0
+252,1,Morcheln,morilles,spugnola,morel mushroom,1.0
+249,1,Nickel,Nickel,Nichel,Nickel,1.0
+297,1,Gluten,gluten,glutine,gluten,1.0
+122,1,Diabetes,diabète,diabete,diabetes,1.0
+266,1,Legionella,Legionella,Legionella,Legionella,2.0
+267,1,Cyanobakterien,Cyanobacteriota,Cyanobacteria,Cyanobacteria,2.0
+282,1,Ketoprofen,Kétoprofène,Ketoprofene,Ketoprofen,1.0
+281,1,Ethylendioxid,dioxyde d'éthylène,Ossido di etilene,ethylene dioxide,1.0
+280,1,Ethylendichlord,dichlorure d'éthylène,cloruro di etilene,ethylene dichloride,1.0
+283,1,Borax,Borax,Borace,Borax,1.0
+312,1,Clostridum sporogenes/tepidum,Clostridum sporogenes/tepidum,Clostridum sporogenes/tepidum,Clostridum sporogenes/tepidum,2.0
+188,1,Thebain,Thébaïne,Tebaina,Thebaine,1.0
+271,1,Weichmacher,Plastifiant,Plastificante,Plasticiser,1.0
+279,1,"Organische Phosphit-Antioxidantien, OPA","Phosphites organiques antioxydants, OPA","Antiossidanti organici al fosfito, OPA","Organic phosphite antioxidants, OPA",1.0
+226,1,Shigella spp.,Shigella spp.,Shigella spp.,Shigella spp.,1.0
+265,1,diastatische Hefe,levure diastatique,lievito diastatico,diastatic yeast,2.0
+294,1,Benzo(a)pyren,Benzopyrène,Benzo[a]pirene,Benzo[a]pyrene,1.0
+55,1,6-PPD-Chinon,6-PPD-Chinon,6-PPD-Chinon,6-PPD-Chinon,3.0
+46,1,Ciguatera,Ciguatera,Ciguatera,Ciguatera,2.0
+320,1,Citrobacter spp.,Citrobacter spp.,Citrobacter spp.,Citrobacter spp.,2.0
+302,1,Angiostrongylus cantonensis,Angiostrongylus cantonensis,Angiostrongylus cantonensis,Angiostrongylus cantonensis,2.0
+76,1,colistin,colistine,colistina,Colistin,1.0
+264,1,sucralose-6-acetate,sucralose-6-acétate,sucralose-6-acetato,sucralose-6-acetate,1.0
+307,1,Natriumphosphat,Phosphate de sodium,Fosfato di sodio,Trisodium phosphate,2.0
+303,1,Akkermansia,Akkermansia,Akkermansia,Akkermansia,1.0
+310,1,Polyethylenterephthalat (PET),Polytéréphtalate d'éthylène (PET),Polietilene tereftalato (PET),Polyethylene terephthalate (PET),1.0
+304,1,Clostridien,Clostridia,Clostridia,Clostridia,1.0
+210,1,Jod,Iode,Iodo,Iodine,1.0
+229,1,Streptococcus pyogenes (GAS),Streptococcus pyogenes (SGA),Streptococcus pyogenes (SGA),Streptococcus pyogenes (GAS),1.0
+51,1,Vitamin D,Vitamine D,Vitamina D,Vitamine D,1.0
+213,1,L. welshimeri ,L. welshimeri ,L. welshimeri ,L. welshimeri ,2.0
+194,1,Bourbon-Virus (BOUV),Virus de Bourbon (BOUV),Bourbon virus (BOUV),Bourbon virus (BRBV),1.0
+130,1,Bisphenol S,Bisphénol S,Bisfenolo S,Bisphenol S,1.0
+288,1,T-2,T-2,T-2,T-2,2.0
+274,1,Baikiain,Baikiain,Baikiain,Baikiain,3.0
+308,1,Fumonisine,Fumonisines,Fumonisine,Fumonisins,1.0
+248,1,Persistente organische Schadstoffe (POP),polluants organiques persistants (POP),inquinanti organici persistenti (POP),persistent organic pollutants (POPs),1.0
+212,1,Kainsäure,Acide kaïnique,Acido kainico,Kainic acid,1.0

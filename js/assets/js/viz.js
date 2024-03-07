@@ -7,9 +7,10 @@ let svg;
  * 
  * @param {Array} data - The data to be visualized.
  * @param {string} color - The color of the bubbles.
+ * @param {string} selectedColor - The color of the selected bubble.
  * @param {string} filter - The filter to be applied to the data.
  */
-function baseVisualization(data, color, filter){
+function baseVisualization(data, color, selectedColor, filter){
 
 	  let width = 0;
     let defaultId = ''; // Variable to store the id of the data with the biggest count
@@ -69,7 +70,7 @@ function baseVisualization(data, color, filter){
     .on("mouseover", function(d) {
       // Only add stroke if the circle is not the clicked one
       if (!d3.select(this).classed("clicked")) {
-          d3.select(this).attr("stroke", "#000"); 
+          d3.select(this).attr("fill", selectedColor); 
       }
     
       // Calculate the center position of the circle
@@ -103,17 +104,17 @@ function baseVisualization(data, color, filter){
     .on("mouseout", function() { 
       // Only remove stroke if the circle is not the clicked one
       if (!d3.select(this).classed("clicked")) {
-          d3.select(this).attr("stroke", null); 
+          d3.select(this).attr("fill", color); 
       }
       //Hide the tooltip
       d3.select("#tooltip").classed("hidden", true);
     })
     .on("click", function(d,i) {
       // Remove stroke from all circles
-      svg.selectAll("circle").attr("stroke", null).classed("clicked", false); 
+      svg.selectAll("circle").attr("fill", color).classed("clicked", false); 
       
       // Apply stroke to the clicked circle and add the "clicked" class
-      d3.select(this).attr("stroke", "#000").classed("clicked", true);
+      d3.select(this).attr("fill", selectedColor).classed("clicked", true);
  
 
       moveToSection('three');
@@ -151,7 +152,7 @@ function baseVisualization(data, color, filter){
     createWaffleChart(data.find(d => d.id === defaultId).treiber, data.find(d => d.id === defaultId).bereich);
     createList(defaultId, filter);
     defaultCircle = svg.select(`circle[id="${defaultId}"]`);
-    defaultCircle.attr("stroke", "#000").classed("clicked", true);
+    defaultCircle.attr("fill", selectedColor).classed("clicked", true);
 
     // Update the content of the <span> tag with the class "waffle-title"
     document.querySelector('#waffle-title').innerText = data.find(d => d.id === defaultId).name;
@@ -162,11 +163,11 @@ function baseVisualization(data, color, filter){
         const selectedCircle = data.find(circle => circle.name === selectedName);
         if (selectedCircle) {
             // Remove stroke from all circles
-            svg.selectAll("circle").attr("stroke", null).classed("clicked", false);
+            svg.selectAll("circle").attr("fill", color).classed("clicked", false);
 
             // Apply stroke to the selected circle and add the "clicked" class
             const selectedCircleElement = svg.select(`circle[id="${selectedCircle.id}"]`);
-            selectedCircleElement.attr("stroke", "#000").classed("clicked", true);
+            selectedCircleElement.attr("fill", selectedColor).classed("clicked", true);
 
             // Run createWaffleChart and createList functions
             moveToSection('three');

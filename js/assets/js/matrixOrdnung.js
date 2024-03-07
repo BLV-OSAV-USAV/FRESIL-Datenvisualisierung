@@ -43,7 +43,7 @@ function matrixOrdnung(timeFilter, lang) {
     populateSelect(nameList);
 
     // Call the baseVisualization function with the result datas
-    baseVisualization(mergedData, '#a6cee3', 'matrix');
+    baseVisualization(mergedData, '#a6cee3','#305C73', 'matrix');
   });
 } 
 

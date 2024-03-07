@@ -41,7 +41,7 @@ function gefahrOrdnung(timeFilter, lang){
     populateSelect(nameList);
 
     // Call the baseVisualization function with the result data
-    baseVisualization(mergedData, "#cab2d6", 'gefahr');
+    baseVisualization(mergedData, "#cab2d6", '#5F496A','gefahr');
 
   })
 }

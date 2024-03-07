@@ -5,29 +5,26 @@ var permalink = addPermalink();
 // Load the language
 var lang = (langs.indexOf(permalink.lang) != -1) ? permalink.lang : langs[0];
 
-
-// Define function to execute when the 'gefahrButton' is clicked
-function handleGefahrButtonClick() {
-    Ordnung = 'gefahr';
-    // Remove 'active' class from all buttons
-    document.querySelectorAll('.btn').forEach(button => {
-        button.classList.remove('active');
-    });
-    // Add 'active' class to 'gefahrButton'
-    this.classList.add('active');
-
+function handleGMddChange(ordnung){
+    Ordnung = ordnung;
     // Load and execute the script for handling gefahrButton click
     const script = document.createElement('script');
-    script.src = './assets/js/gefahrOrdnung.js'; 
+    script.src = `./assets/js/${ordnung}Ordnung.js`; 
 
     // Listen for the 'load' event on the script element
     script.addEventListener('load', () => {
-        // Call the gefahrOrdnung function with the desired timeFilter argument
-        gefahrOrdnung('all', lang);
+        if(ordnung === 'gefahr'){
+            // Call the gefahrOrdnung function with the desired timeFilter argument
+            gefahrOrdnung('all', lang);
+        } else if(ordnung==='matrix'){
+            matrixOrdnung('all', lang);
+        }
+
     });
 
     document.head.appendChild(script);
 }
+
 function handleTimeFilterChange(timeFilter) {
     // Load and execute the script for handling gefahrButton click
     const script = document.createElement('script');
@@ -56,35 +53,9 @@ function handleTimeFilterChange(timeFilter) {
     document.head.appendChild(script);
 }
 
-// Define function to execute when the 'matrixButton' is clicked
-function handleMatrixButtonClick() {
-    Ordnung = 'matrix';
-    // Remove 'active' class from all buttons
-    document.querySelectorAll('.btn').forEach(button => {
-        button.classList.remove('active');
-    });
-
-    // Add 'active' class to 'matrixButton'
-    this.classList.add('active');
-
-    // Load and execute the script for handling matrixButton click
-    const script = document.createElement('script');
-    script.src = './assets/js/matrixOrdnung.js'; 
-    // Listen for the 'load' event on the script element
-    script.addEventListener('load', () => {
-        // Call the gefahrOrdnung function with the desired timeFilter argument
-        matrixOrdnung('all', lang);
-    });
-    document.head.appendChild(script);
-}
-
 // Add event listeners to the buttons with context binding
-document.getElementById('gefahrButton').addEventListener('click', function() {
-    handleGefahrButtonClick.call(this);
-    moveToSection('two');
-});
-document.getElementById('matrixButton').addEventListener('click', function() {
-    handleMatrixButtonClick.call(this);
+document.getElementById('gm-dd').addEventListener('change', function() {
+    handleGMddChange(this.value);
     moveToSection('two');
 });
 
@@ -93,7 +64,6 @@ document.getElementById('timeFilter').addEventListener('change', function() {
     moveToSection('two');
 });
 
-// Call handleGefahrButtonClick() function by default when the page loads
 window.addEventListener('load', function() {
-    handleGefahrButtonClick.call(document.getElementById('gefahrButton'));
+    handleGMddChange('gefahr');
 });

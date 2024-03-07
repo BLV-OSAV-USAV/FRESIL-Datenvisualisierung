@@ -60,7 +60,7 @@ let sdTranslations = {
 
 	},	
 
-	gefahrButton: {
+	gefahr: {
 
 		de: 'Gefahren',
 
@@ -73,7 +73,7 @@ let sdTranslations = {
 	},
 	
 
-	matrixButton: {
+	matrix: {
 
 		de: 'Lebensmittelgruppen',
 
@@ -194,13 +194,13 @@ let sdTranslations = {
 
 	all:{
 
-		de: 'Alle Daten',
+		de: 'Ganzer Zeitbereich',
 
-		fr: 'Toutes les données',
+		fr: 'Plage temporelle complète',
 
-		it: 'tutti i dati',
+		it: 'Intervallo temporale completo',
 
-		en: 'All data'
+		en: 'Whole time range'
 	},
 
 	year:{

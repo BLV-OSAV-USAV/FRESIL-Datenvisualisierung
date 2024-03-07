@@ -71,30 +71,35 @@ function baseVisualization(data, color, filter){
       if (!d3.select(this).classed("clicked")) {
           d3.select(this).attr("stroke", "#000"); 
       }
-        let [posx, posy] = d3.mouse(this);
-
-        let w = window.innerWidth;
-		    let offsetheight = document.getElementById('bubbleChart').offsetHeight;
-		    let tooltipOffsetWidth = (w - width) / 2;
-
-            //Update the tooltip position and value
-		    d3.select("#tooltip")
-            .style("left", (posx + tooltipOffsetWidth) + "px")
-            .style("top", (posy + offsetheight) + "px")
-            .select("#titel")
-            .text(d.name);
-
-        d3.select("#tooltip")  
-		    .select("#meldungCount")
-		    .text(`Anzahl Meldungen: ${d.count}`);
-
-        d3.select("#tooltip")
-            .select("#meanSterne")
-            .text(`Durchschnittliche Wichtigkeit: ${d.mean_sterne}`);
-
-        d3.select("#tooltip").classed("hidden", false);
-
-        })
+    
+      // Calculate the center position of the circle
+      const circleCenterX = d.x;
+      const circleCenterY = d.y;
+    
+      // Update the tooltip position to the center of the circle
+      let w = window.innerWidth;
+      let offsetheight = document.getElementById('bubbleChart').offsetHeight;
+      let tooltipOffsetWidth = (w - width) / 2;
+    
+      //Update the tooltip position and value
+      d3.select("#tooltip")
+          .style("left", (circleCenterX + tooltipOffsetWidth) + "px")
+          .style("top", (circleCenterY + offsetheight) + "px")
+          .select("#titel")
+          .text(d.name);
+    
+      d3.select("#tooltip")  
+          .select("#meldungCount")
+          .text(`Anzahl Meldungen: ${d.count}`);
+    
+      d3.select("#tooltip")
+          .select("#meanSterne")
+          .text(`Durchschnittliche Wichtigkeit: ${d.mean_sterne}`);
+    
+      d3.select("#tooltip").classed("hidden", false);
+    
+    })
+    
     .on("mouseout", function() { 
       // Only remove stroke if the circle is not the clicked one
       if (!d3.select(this).classed("clicked")) {
@@ -145,6 +150,9 @@ function baseVisualization(data, color, filter){
 
     createWaffleChart(data.find(d => d.id === defaultId).treiber, data.find(d => d.id === defaultId).bereich);
     createList(defaultId, filter);
+    defaultCircle = svg.select(`circle[id="${defaultId}"]`);
+    defaultCircle.attr("stroke", "#000").classed("clicked", true);
+
     // Update the content of the <span> tag with the class "waffle-title"
     document.querySelector('#waffle-title').innerText = data.find(d => d.id === defaultId).name;
  

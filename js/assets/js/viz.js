@@ -403,13 +403,21 @@ function createWaffleChart(treiberData, bereichData) {
     // Assuming total is the sum of all values in your treiberData object
     const total = treiberArray.reduce((acc, obj) => acc + obj.value, 0);
 
+    const customColors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728',
+    '#9467bd', '#8c564b', '#e377c2', 
+    '#bcbd22', '#17becf', '#aec7e8', '#ffbb78',
+    '#98df8a', '#ff9896', '#c5b0d5', '#c49c94',
+    '#f7b6d2', '#dbdb8d'];
+
     // Now you can calculate the ratio for each treiber in the array
-    const chartData = treiberArray.map(d => ({
+    const chartData = treiberArray.map((d,index) => ({
         treiber: d.treiber,
         total: total,
         value: d.value,
-        ratio: (d.value / total) * 100
+        ratio: (d.value / total) * 100,
+        color: customColors[index % customColors.length]
     }));
+
     // Check if chartData is empty
     if (chartData.length === 0) {
       d3.select("svg#waffleChart")
@@ -440,6 +448,9 @@ function createWaffleChart(treiberData, bereichData) {
     chartData.forEach(d => {
         d.value = total * (d.ratio / 100); // Update the value based on the updated ratio
     });
+
+
+    chartData.sort((a, b) => b.ratio - a.ratio);
 
 
 
@@ -478,15 +489,6 @@ function createWaffleChart(treiberData, bereichData) {
                 .range([0, waffleSize])
                 .padding(0.1);
 
-    const customColors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728',
-    '#9467bd', '#8c564b', '#e377c2', '#7f7f7f',
-    '#bcbd22', '#17becf', '#aec7e8', '#ffbb78',
-    '#98df8a', '#ff9896', '#c5b0d5', '#c49c94',
-    '#f7b6d2', '#c7c7c7', '#dbdb8d'];
-        
-    const color = d3.scaleOrdinal()
-                    .domain(sequence(chartData.length))
-                    .range(customColors);
 
     svg_waffle = d3.select("svg#waffleChart")
                   .attr("width", width)
@@ -504,7 +506,7 @@ function createWaffleChart(treiberData, bereichData) {
                     .selectAll("rect")
                     .data(d => d)
                     .join("rect")
-                    .attr("fill", d => d.index === -1 ? "#ddd" : color(d.index));
+                    .attr("fill", (d) => d.index === -1 ? "#ddd" : chartData[d.index].color);
     
 
     cells.attr("x", d => scale(d.x))
@@ -524,10 +526,12 @@ function createWaffleChart(treiberData, bereichData) {
       .attr("y", d => scale(d.y));
 
     svg_waffle.transition().delay(550)
-      .on("end", () => drawLegend(svg_waffle, cells, color));
+      .on("end", () => drawLegend(svg_waffle, cells));
 
 
-    drawLegend = (svg, cells, color) => {
+    drawLegend = (svg, cells) => {
+      
+
       const legend = svg.selectAll(".legend")
         .data(chartData.map(d => d.treiber))
         .join("g")      
@@ -547,7 +551,7 @@ function createWaffleChart(treiberData, bereichData) {
       legend.append("rect")
         .attr("rx", 3).attr("ry", 3)
         .attr("width", 30).attr("height", 20)
-        .attr("fill", (d, i) => color(i));    
+        .attr("fill", (d, i) => chartData[i].color);    
       
       legend.append("text")
         .attr("x", 40) // Adjust the x position to align the text
@@ -560,17 +564,17 @@ function createWaffleChart(treiberData, bereichData) {
          * Highlights a specific data point in the chart.
          * @param {string} d - The value to be highlighted.
          */
-        function highlight(d) {
+         function highlight(d) {
           const i = chartData.findIndex(item => item.treiber === d);
           cells.transition().duration(500)
-            .attr("fill", data => data.index === i ? color(data.index) : "#ccc");
-        }            
-        
+              .attr("fill", data => data.index === i ? chartData[i].color : "#ccc");
+        }
+                
       /**
        * Restores the fill color of cells using a transition animation.
        */
       function restore() {
-        cells.transition().duration(200).attr("fill", d => color(d.index))
+        cells.transition().duration(200).attr("fill", d => chartData[d.index].color)
       }
     }
 

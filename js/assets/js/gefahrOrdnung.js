@@ -38,7 +38,7 @@ function gefahrOrdnung(timeFilter, lang){
     // Extract the 'name' column values
     const nameList = mergedData.map(data => data.name);
     // Call a function to populate the select element in the front end
-    populateSelect(nameList);
+    populateSelect(nameList, lang);
 
     // Call the baseVisualization function with the result data
     baseVisualization(mergedData, "#cab2d6", '#5F496A','gefahr');
@@ -47,8 +47,11 @@ function gefahrOrdnung(timeFilter, lang){
 }
 
 // Function to populate the select element in the front end
-function populateSelect(nameList) {
-  const selectElement = document.getElementById('gm-list'); 
+function populateSelect(nameList, lang) {
+  const selectElement = document.getElementById('gm-list');
+  
+  //sort the nameList alphabetically
+  nameList.sort((a, b) => a.localeCompare(b, lang, {ignorePunctuation: true}));
 
   // Clear existing options
   selectElement.innerHTML = '';

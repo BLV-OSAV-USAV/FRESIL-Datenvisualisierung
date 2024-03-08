@@ -50,6 +50,9 @@ function matrixOrdnung(timeFilter, lang) {
 // Function to populate the select element in the front end
 function populateSelect(nameList) {
   const selectElement = document.getElementById('gm-list');
+  //sort the nameList alphabetically
+  nameList.sort();
+  
   selectElement.innerHTML = '';
   nameList.forEach(name => {
       const option = document.createElement('option');

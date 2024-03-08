@@ -3,8 +3,7 @@ function gefahrOrdnung(timeFilter, lang){
     Promise.all([
       d3.csv(`../figure_data/base/gefahr_counts_${timeFilter}.csv`),
       d3.csv(`../figure_data/treiber/gefahr_treiber_counts_${lang}.csv`),
-      d3.csv(`../figure_data/bereich/gefahr_bereich_counts_${lang}.csv`)
-    ]).then(([gefahrCounts, treiberCounts, bereichCounts]) => {
+    ]).then(([gefahrCounts, treiberCounts]) => {
       d3.select("svg#bubbleChart").selectAll("*").remove();
       // Check if gefahrCounts is empty
       if (gefahrCounts.length === 0) {
@@ -22,7 +21,6 @@ function gefahrOrdnung(timeFilter, lang){
       // Merge the data on 'id' and 'gefahr_id'
       const mergedData = gefahrCounts.map(count => {
         const treiberData = treiberCounts.find(treiber => treiber.gefahr_id === count.id);
-        const bereichData = bereichCounts.find(bereich => bereich.gefahr_id === count.id);
         const size = count.count * count.mean_sterne;
         return {
           id: +count.id,
@@ -31,7 +29,6 @@ function gefahrOrdnung(timeFilter, lang){
           mean_sterne: +count.mean_sterne,
           size: +size,
           treiber: treiberData ? Object.fromEntries(Object.entries(treiberData).slice(1)) : {}, // Convert treiberData object to key-value pairs
-          bereich: bereichData ? Object.fromEntries(Object.entries(bereichData).slice(1)) : {}  // Convert bereichData object to key-value pairs
         };
       });
 

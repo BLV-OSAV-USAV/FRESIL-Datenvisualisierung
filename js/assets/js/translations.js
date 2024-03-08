@@ -236,4 +236,16 @@ let sdTranslations = {
 		en: 'last week'
 	},
 
+	Kurzinfo:{
+		
+		de: 'Zusammenfassung',
+
+		fr: 'Résumé',
+
+		it: 'Sintesi',
+		
+		en: 'Summary'
+
+	}
+
 };

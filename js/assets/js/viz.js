@@ -298,9 +298,9 @@ function createList(id, filter) {
         function convertToStars(num) {
           switch (num) {
               case '1':
-                  return '<span>&#9733;</span>'; // One star symbol
+                  return '<span>&#9733;&#9734;&#9734</span>'; // One star symbol
               case '2':
-                  return '<span>&#9733;&#9733;</span>'; // Two star symbols
+                  return '<span>&#9733;&#9733;&#9734</span>'; // Two star symbols
               case '3':
                   return '<span>&#9733;&#9733;&#9733;</span>'; // Three star symbols
               default:
@@ -310,11 +310,11 @@ function createList(id, filter) {
       
         return (
             '<dl>' +
-            '<dt style="font-weight:bold;">Kurzinfo</dt>' +
+            '<dt style="font-weight:bold;"class="trn">Kurzinfo</dt>' +
             '<dd>' +
             d.kurzinfo +
             '</dd>' +
-            '<dt style="font-weight:bold;">Wichtigkeit (von 3)</dt>' +
+            '<dt style="font-weight:bold;">Wichtigkeit</dt>' +
             '<dd>' +
             convertToStars(d.sterne) +
             '</dd>' +
@@ -393,6 +393,8 @@ let svg_waffle, width, height, treiberCache, bereichCache;
 function createWaffleChart(treiberData, bereichData) {
     treiberCache = treiberData;
     bereichData = bereichCache;
+
+    
     // Clear existing waffle chart if any
     d3.select("#waffleChart").selectAll("*").remove();
 
@@ -456,12 +458,13 @@ function createWaffleChart(treiberData, bereichData) {
 
 
 
-    padding = ({x: 10, y: 40});
-    width = window.innerWidth * 0.8; // 80% of window width
-    if (window.innerWidth < 800) {
-      height = window.innerHeight * 1.5;
+    width = window.outerWidth * 0.8; // 80% of window width
+    if (window.outerWidth < 800) {
+      height = window.outerHeight * 1.5;
+      viewboxH = height + 300;
     } else {
-      height = window.innerHeight * 0.6;
+      height = window.outerHeight * 0.6;
+      viewboxH = height;
     }
     waffleSize = width < height ? width : height;
 
@@ -495,7 +498,7 @@ function createWaffleChart(treiberData, bereichData) {
     svg_waffle = d3.select("svg#waffleChart")
                   .attr("width", width)
                   .attr("height", height)
-                  .attr("viewBox", [0, 0, width, height]);
+                  .attr("viewBox", [0, 0, width, viewboxH]);
     
     const g = svg_waffle.selectAll(".waffle")  
                     .data(array)
@@ -527,8 +530,24 @@ function createWaffleChart(treiberData, bereichData) {
       .ease(d3.easeBounce)
       .attr("y", d => scale(d.y));
 
+
+    // Calculate the width and height of the SVG
+    const svgBounds = svg_waffle.node().getBoundingClientRect();
+    const svgWidth = svgBounds.width;
+    const svgHeight = svgBounds.height;
+
+    // Update the width and height of the div
+    const div = d3.select("#waffleChart").node();
+    const divStyle = window.getComputedStyle(div);
+    const divPadding = parseFloat(divStyle.paddingLeft) + parseFloat(divStyle.paddingRight);
+    const newWidth = svgWidth + divPadding; // Add padding if necessary
+    const newHeight = svgHeight + divPadding; // Add padding if necessary
+
+    div.style.height = `${newHeight}px`;
+
+
     svg_waffle.transition().delay(550)
-      .on("end", () => drawLegend(svg_waffle, cells));
+              .on("end", () => drawLegend(svg_waffle, cells));
 
 
     drawLegend = (svg, cells) => {

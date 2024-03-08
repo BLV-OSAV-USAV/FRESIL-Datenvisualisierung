@@ -153,6 +153,8 @@ function baseVisualization(data, color, selectedColor, filter){
     createList(defaultId, filter);
     defaultCircle = svg.select(`circle[id="${defaultId}"]`);
     defaultCircle.attr("fill", selectedColor).classed("clicked", true);
+    selectElement.value = data.find(d => d.id === defaultId).name; 
+
 
     // Update the content of the <span> tag with the class "waffle-title"
     document.querySelector('#waffle-title').innerText = data.find(d => d.id === defaultId).name;
@@ -551,13 +553,14 @@ function createWaffleChart(treiberData, bereichData) {
       legend.append("rect")
         .attr("rx", 3).attr("ry", 3)
         .attr("width", 30).attr("height", 20)
-        .attr("fill", (d, i) => chartData[i].color);    
+        .attr("fill", (d, i) => chartData[i].ratio === 0 ? "#c7c7c7" : chartData[i].color); // Assign grey color if ratio is 0
       
       legend.append("text")
         .attr("x", 40) // Adjust the x position to align the text
         .attr("y", 15) // Adjust the y position to align the text
         .style("font-size", window.innerWidth < 800 ? "17px" : "14px") // Adjust the font sizes as needed
         .attr("alignment-baseline", "middle") // Align the text vertically in the middle
+        .attr("fill", (d, i) => chartData[i].ratio === 0 ? "#c7c7c7" : "black") // Assign grey color if ratio is 0
         .text((d, i) => `${d} (${chartData[i].ratio.toFixed(0)}%)`);
         
         /**

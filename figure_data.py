@@ -2,12 +2,15 @@
 
 
 import pandas as pd
+import numpy as np
 
-def count_gefahr(timeFilter):
+def count_gefahr(timeFilter, bereichName):
     # Charger les fichiers CSV
     meldungXgefahr = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_gefahr-20231128.csv', sep='#', quotechar='`')
     gefahr = pd.read_csv('./csv-files-filtered/filtered-ad_gefahr-20231128.csv', sep='#', quotechar='`')
     meldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung-20231128.csv', sep='#', quotechar='`')
+    bereich = pd.read_csv('./csv-files-filtered/filtered-ad_bereich-20231128.csv', sep='#', quotechar='`')
+    bereichXmeldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_bereich-20231128.csv', sep='#', quotechar='`')
 
     if timeFilter != 'all':
         meldung['erfDate'] = pd.to_datetime(meldung['erf_date']).dt.date
@@ -21,13 +24,19 @@ def count_gefahr(timeFilter):
             start = (today - pd.DateOffset(years=1)).date()
 
         meldung = meldung[meldung['erfDate'] >= start]
-        meldung_ids = meldung['id']
-        meldungXgefahr = meldungXgefahr[meldungXgefahr['meldung_id'].isin(meldung_ids)]
+        meldung_time_ids = meldung['id']
+        meldungXgefahr = meldungXgefahr[meldungXgefahr['meldung_id'].isin(meldung_time_ids)]
+
+    if bereichName != 'all':
+        selected_bereich_id = bereich.loc[bereich['bezeichnung_de'] == bereichName, 'id'].values[0]
+        meldung_bereich_ids = bereichXmeldung.loc[bereichXmeldung['bereich_id'] == selected_bereich_id, 'meldung_id'].values
+        meldungXgefahr = meldungXgefahr[meldungXgefahr['meldung_id'].isin(meldung_bereich_ids)]
+
 
     # Compter le nombre de meldung par gefahr
     gefahr_counts = meldungXgefahr['gefahr_id'].value_counts().reset_index()
     gefahr_counts.columns = ['id', 'count']
-
+    
     # Calculer la moyenne des valeurs de 'sterne' par gefahr
     merged_df = pd.merge(meldungXgefahr, meldung[['id', 'sterne']], left_on='meldung_id', right_on='id', how='left')
     mean_sterne = merged_df.groupby('gefahr_id')['sterne'].mean().reset_index()
@@ -38,8 +47,12 @@ def count_gefahr(timeFilter):
     gefahr_counts = pd.merge(gefahr_counts, gefahr[['id', 'bezeichnung_de', 'bezeichnung_fr', 'bezeichnung_it', 'bezeichnung_en']], on='id', how='left')
     gefahr_counts = pd.merge(gefahr_counts, mean_sterne, on='id', how='left')
 
+
     # Enregistrer le résultat dans un fichier CSV
-    gefahr_counts.to_csv(f'./figure_data/base/gefahr_counts_{timeFilter}.csv', index=False)
+    if bereichName == 'Betrug / Täuschung':
+        gefahr_counts.to_csv(f'./figure_data/base/gefahr_counts_{timeFilter}_BetrugTauschung.csv', index=False)
+    else:
+        gefahr_counts.to_csv(f'./figure_data/base/gefahr_counts_{timeFilter}_{bereichName}.csv', index=False)
 
 
 def gefahr_treiber_count(lg):
@@ -58,27 +71,13 @@ def gefahr_treiber_count(lg):
     result_df_gefahr.to_csv(f'./figure_data/treiber/gefahr_treiber_counts_{lg}.csv', index=False)
 
 
-def gefahr_bereich_count(lg):
-    # Charger les fichiers CSV
-    meldungXgefahr = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_gefahr-20231128.csv', sep='#', quotechar='`')
-    bereich = pd.read_csv('./csv-files-filtered/filtered-ad_bereich-20231128.csv', sep='#', quotechar='`')
-    bereichXmeldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_bereich-20231128.csv', sep='#', quotechar='`')
-    
-    merged_df = pd.merge(meldungXgefahr, bereichXmeldung, on='meldung_id')
-    result_df_gefahr = merged_df.groupby(['gefahr_id', 'bereich_id']).size().unstack(fill_value=0)
-    result_df_gefahr = result_df_gefahr.reset_index()
-    result_df_gefahr.columns.values[1:] = bereich[f'bezeichnung_{lg}']
-
-
-    # Enregistrer le résultat dans un fichier CSV
-    result_df_gefahr.to_csv(f'./figure_data/bereich/gefahr_bereich_counts_{lg}.csv', index=False)
-
-
-def count_matrix(timeFilter):
+def count_matrix(timeFilter, bereichName):
     # Charger les fichiers CSV
     meldungXmatrix = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_matrix-20231128.csv', sep='#', quotechar='`')
     matrix = pd.read_csv('./csv-files-filtered/filtered-ad_matrix-20231128.csv', sep='#', quotechar='`')
     meldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung-20231128.csv', sep='#', quotechar='`')
+    bereich = pd.read_csv('./csv-files-filtered/filtered-ad_bereich-20231128.csv', sep='#', quotechar='`')
+    bereichXmeldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_bereich-20231128.csv', sep='#', quotechar='`')
 
     if timeFilter != 'all':
         meldung['erfDate'] = pd.to_datetime(meldung['erf_date']).dt.date
@@ -92,8 +91,13 @@ def count_matrix(timeFilter):
             start = (today - pd.DateOffset(years=1)).date()
         
         meldung = meldung[meldung['erfDate'] >= start]
-        meldung_ids = meldung['id']
-        meldungXmatrix = meldungXmatrix[meldungXmatrix['meldung_id'].isin(meldung_ids)]
+        meldung_time_ids = meldung['id']
+        meldungXmatrix = meldungXmatrix[meldungXmatrix['meldung_id'].isin(meldung_time_ids)]
+
+    if bereichName != 'all':
+        selected_bereich_id = bereich.loc[bereich['bezeichnung_de'] == bereichName, 'id'].values[0]
+        meldung_bereich_ids = bereichXmeldung.loc[bereichXmeldung['bereich_id'] == selected_bereich_id, 'meldung_id'].values
+        meldungXmatrix = meldungXmatrix[meldungXmatrix['meldung_id'].isin(meldung_bereich_ids)]
 
     # Compter le nombre de meldung par matrix
     matrix_counts = meldungXmatrix['matrix_id'].value_counts().reset_index()
@@ -105,12 +109,26 @@ def count_matrix(timeFilter):
     mean_sterne.columns = ['id', 'mean_sterne']
     mean_sterne['mean_sterne'] = mean_sterne['mean_sterne'].round(2)
 
+    dc = {
+        'Nicht spezifiziert': 'Diverse Lebensmittel',
+
+        'Non spécifié': 'Aliments divers',
+
+        'Non specificato': 'Alimenti vari',
+
+        'Unclassified': 'Diverse foods'
+    }
+
     # Fusionner les résultats avec le DataFrame existant
     matrix_counts = pd.merge(matrix_counts, matrix[['id', 'bezeichnung_de', 'bezeichnung_fr', 'bezeichnung_it', 'bezeichnung_en']], on='id', how='left')
     matrix_counts = pd.merge(matrix_counts, mean_sterne, on='id', how='left')
-
+    matrix_counts.replace(dc, inplace = True)
+    
     # Enregistrer le résultat dans un fichier CSV
-    matrix_counts.to_csv(f'./figure_data/base/matrix_counts_{timeFilter}.csv', index=False)
+    if bereichName == 'Betrug / Täuschung':
+        matrix_counts.to_csv(f'./figure_data/base/matrix_counts_{timeFilter}_BetrugTauschung.csv', index=False)
+    else:
+        matrix_counts.to_csv(f'./figure_data/base/matrix_counts_{timeFilter}_{bereichName}.csv', index=False)
 
 
 def matrix_treiber_count(lg):
@@ -128,18 +146,6 @@ def matrix_treiber_count(lg):
     # Enregistrer le résultat dans un fichier CSV
     result_df_matrix.to_csv(f'./figure_data/treiber/matrix_treiber_counts_{lg}.csv', index=False)
 
-def matrix_bereich_count(lg):
-    # Charger les fichiers CSV
-    meldungXmatrix = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_matrix-20231128.csv', sep='#', quotechar='`')
-    bereich = pd.read_csv('./csv-files-filtered/filtered-ad_bereich-20231128.csv', sep='#', quotechar='`')
-    bereichXmeldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_bereich-20231128.csv', sep='#', quotechar='`')
-    
-    merged_df = pd.merge(meldungXmatrix, bereichXmeldung, on='meldung_id')
-    result_df_matrix = merged_df.groupby(['matrix_id', 'bereich_id']).size().unstack(fill_value=0)
-    result_df_matrix = result_df_matrix.reset_index()
-    result_df_matrix.columns.values[1:] = bereich[f'bezeichnung_{lg}']
-
-
     # Enregistrer le résultat dans un fichier CSV
     result_df_matrix.to_csv(f'./figure_data/bereich/matrix_bereich_counts_{lg}.csv', index=False)
 
@@ -156,18 +162,22 @@ def list_meldung_pro_Gefahr(id):
 
 
 for i in ['de','fr','it','en']:
-    gefahr_bereich_count(i)
-    matrix_bereich_count(i)
     matrix_treiber_count(i)
     gefahr_treiber_count(i)
 
-count_gefahr('year')
-count_gefahr('month')
-count_gefahr('week')
-count_gefahr('all')
+bereich_csv = pd.read_csv('./csv-files-filtered/filtered-ad_bereich-20231128.csv', sep='#', quotechar='`')
+bereich_list = bereich_csv.bezeichnung_de.unique()
+bereich_list = np.append(bereich_list, 'all')
+
+for bereich in bereich_list:
+    count_gefahr('year', bereich)
+    count_gefahr('month', bereich)
+    count_gefahr('week', bereich)
+    count_gefahr('all', bereich)
+
+    count_matrix('year', bereich)
+    count_matrix('month', bereich)
+    count_matrix('week', bereich)
+    count_matrix('all', bereich) 
 
 
-count_matrix('year')
-count_matrix('month')
-count_matrix('week')
-count_matrix('all')

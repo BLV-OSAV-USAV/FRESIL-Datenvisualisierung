@@ -15,9 +15,9 @@ function handleGMddChange(ordnung){
     script.addEventListener('load', () => {
         if(ordnung === 'gefahr'){
             // Call the gefahrOrdnung function with the desired timeFilter argument
-            gefahrOrdnung('all', lang);
+            gefahrOrdnung('all', lang, 'all');
         } else if(ordnung==='matrix'){
-            matrixOrdnung('all', lang);
+            matrixOrdnung('all', lang, 'all');
         }
 
     });
@@ -47,9 +47,6 @@ function handleTimeFilterChange(timeFilter) {
     }
 
     script.src = './assets/js/gefahrOrdnung.js'; 
-
-
-
     document.head.appendChild(script);
 }
 

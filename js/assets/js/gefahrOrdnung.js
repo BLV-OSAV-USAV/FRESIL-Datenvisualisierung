@@ -1,7 +1,7 @@
 function gefahrOrdnung(timeFilter, lang){
 // Load data from CSV files: gefahrCounts and treiberCounts
     Promise.all([
-      d3.csv(`../figure_data/base/gefahr_counts_${timeFilter}.csv`),
+      d3.csv(`../figure_data/base/gefahr_counts_${timeFilter}_${bereich}.csv`),
       d3.csv(`../figure_data/treiber/gefahr_treiber_counts_${lang}.csv`),
     ]).then(([gefahrCounts, treiberCounts]) => {
       d3.select("svg#bubbleChart").selectAll("*").remove();

@@ -1,0 +1,45 @@
+id,count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne
+45,5,Aspartam,Aspartam,Aspartam,Aspartam,1.6
+197,4,Nitrite,Nitrite,Nitrito,Nitrite,1.75
+128,4,Schwermetalle,métaux lourds,metalli pesanti,heavy metals,1.5
+167,4,Quecksilber,Mercure,Mercurio,Mercury,1.0
+165,4,Cadmium,Cadmium,Cadmio,Cadmium,1.5
+187,4,Arsen,Arsenic,Arsenico,Arsenic,1.25
+125,3,Mikroplastik,microplastiques,microplastica,microplastics,1.33
+102,3,Blei,Plomb,Piombo,Lead,1.33
+126,3,Per- und polyfluorierte Alkylverbindungen (PFAS),Substances per- et polyfluoroalkylées (PFAS),Sostanze per- e polifluoroalchiliche (PFAS),Per- and polyfluoroalkyl substances (PFAS),1.0
+91,3,Pestizide,pesticides,pesticidi,pesticide,1.67
+246,2,Acrylamid,Acrylamide,Acrilammide,Acrylamide,1.5
+273,2,Koffein,Caféine,Caffeina,caffein,1.0
+79,2,Zucker,sucre,zucchero,sugar,1.0
+243,2,Carboxymethylcellulosen (CMC),Carboxyméthylcellulose (CMC),Carbossimetilcellulosa (CMC),Carboxymethylcellulose (CMC),2.0
+221,1,kurzkettige Chlorparaffine (SCCP),paraffines chlorées à chaîne courte (PCCC),paraffine clorurate a catena corta (PCCC),short-chain chlorinated paraffins (SCCP),1.0
+236,1,Flüssigstickstoff,Azote liquide,Azoto liquido,Liquid nitrogen,1.0
+219,1,Acesulfam-K,Acésulfame K,Acesulfame K,Acesulfame K,1.0
+62,1,Tierarzneimittel,les médicaments pour animaux,farmaci per animali,animal drugs,2.0
+63,1,Antibiotika,antibiotiques,antibiotici,antibiotics,2.0
+307,1,Natriumphosphat,Phosphate de sodium,Fosfato di sodio,Trisodium phosphate,2.0
+180,1,Phthalate,phtalates,ftalati,phthalates,2.0
+274,1,Baikiain,Baikiain,Baikiain,Baikiain,3.0
+51,1,Vitamin D,Vitamine D,Vitamina D,Vitamine D,1.0
+122,1,Diabetes,diabète,diabete,diabetes,1.0
+166,1,Bisphenol A (BPA),Bisphénol A (BPA),Bisfenolo A (BPA),Bisphenol A (BPA),2.0
+301,1,Metalle der Seltenen Erden (REE),Terre rare (REE),Terre rare (REE),rare earth elements (REE),2.0
+230,1,Nitrate,Nitrate,Nitrato,Nitrate,1.0
+142,1,Isoflavone,Isoflavone,Isoflavone,Isoflavones,1.0
+66,1,Canabidiol (CBD),Canabidiol (CBD),Canabidiolo (CBD),Canabidiol (CBD),1.0
+258,1,"2,3,5-Trimethylpyrazine","2,3,5-Trimethylpyrazine","2,3,5-Trimethylpyrazine","2,3,5-Trimethylpyrazine",1.0
+260,1,benzaldehyd,benzaldéhyde,Benzaldeide,benzaldehyde,1.0
+259,1,furfural,furfural,furfurale,furfural,1.0
+233,1,Glutaminsäure,Acide glutamique,Acido glutammico,Glutamic acid,1.0
+234,1,Sucralose,Sucralose,Sucralosio,Sucralose,1.0
+202,1,Antibiotikaresistente Milchsäurebakterien,Bactéries lactiques résistantes aux antibiotiques,Batteri lattici resistenti agli antibiotici,Antibiotic-resistant lactic acid bacteria,2.0
+290,1,Saccharin,Saccharine,Saccarina,Saccharin,2.0
+292,1,Glycerin,Glycérol,Glicerolo,Glycerol,2.0
+297,1,Gluten,gluten,glutine,gluten,1.0
+174,1,Fungizid,Fongicide,Fungicida,Fungicide,2.0
+127,1,Perfluoroctansulfonsäure (PFOS),acide perfluorooctanesulfonique (PFOS),acido perfluoroottansolfonico,Perfluorooctanesulfonic acid (PFOS),2.0
+316,1,Fructose,Fructose,Fruttosio,Fructose,1.0
+311,1,Ätherische Öle,Huile essentielle,Olio essenziale,essential oil,0.0
+106,1,Bacillus cereus (sensu lato),Bacillus cereus (sensu lato),Bacillus cereus (sensu lato),Bacillus cereus (sensu lato),1.0
+227,1,Erythrit,Érythritol,Eritritolo,Erythritol,1.0

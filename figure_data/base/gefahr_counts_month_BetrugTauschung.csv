@@ -1,0 +1,14 @@
+id,count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne
+91,2,Pestizide,pesticides,pesticidi,pesticide,1.5
+93,2,Salmonella spp.,Salmonella spp.,Salmonella spp.,Salmonella spp.,1.5
+66,1,Canabidiol (CBD),Canabidiol (CBD),Canabidiolo (CBD),Canabidiol (CBD),1.0
+58,1,Melatonin,Mélatonine,Melatonina,Melatonin,1.0
+128,1,Schwermetalle,métaux lourds,metalli pesanti,heavy metals,1.0
+281,1,Ethylendioxid,dioxyde d'éthylène,Ossido di etilene,ethylene dioxide,1.0
+280,1,Ethylendichlord,dichlorure d'éthylène,cloruro di etilene,ethylene dichloride,1.0
+247,1,Calciumcarbid,Carbure de calcium,Carburo di calcio,Calcium carbide,2.0
+103,1,GMO (genetisch modifizierter Organismus),OGM (organisme génétiquement modifié),OGM (organismo geneticamente modificato),Genetically modified organism (GMO),1.0
+230,1,Nitrate,Nitrate,Nitrato,Nitrate,2.0
+197,1,Nitrite,Nitrite,Nitrito,Nitrite,2.0
+45,1,Aspartam,Aspartam,Aspartam,Aspartam,2.0
+290,1,Saccharin,Saccharine,Saccarina,Saccharin,2.0

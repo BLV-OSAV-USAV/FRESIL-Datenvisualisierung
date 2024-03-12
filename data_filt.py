@@ -67,7 +67,7 @@ def change_Unspecified_matrix(file,column):
 
     return file
 
-def filter_unspecified(file,column):
+#def filter_unspecified(file,column):
     
 
 
@@ -102,7 +102,10 @@ def prep_data(input_path, output_path):
                 file = func(file, column)
 
         # Save the filtered DataFrame to a new CSV file using '#' as the separator, " as quotation, and utf-8 encoding
-        return file.to_csv(output_path, sep='#', quotechar='`', index=False, encoding='utf-8-sig')
+        if input_path == './csv-files/ad_publikation_detail-20231128.csv':
+            return file.to_csv(output_path, sep='|', quotechar='"', index=False, encoding='utf-8-sig')
+        else:
+            return file.to_csv(output_path, sep='#', quotechar='`', index=False, encoding='utf-8-sig')
 
     except pd.errors.EmptyDataError:
         # Handle the case where the file is empty

@@ -219,7 +219,7 @@ function createList(id, filter) {
       // Parse CSV data
         const meldungs = d3.dsvFormat("#").parse(meldungsText);
         const meldungXfilter = d3.dsvFormat("#").parse(meldungXfilterText);
-        const publikation_detail = d3.dsvFormat("#").parse(publikationDetailText);
+        const publikation_detail = d3.dsvFormat("|").parse(publikationDetailText);
         const publikation = d3.dsvFormat("#").parse(publikationText);
         const meldungXtreiber = d3.dsvFormat("#").parse(meldungXtreiberText);
         const treiber = d3.dsvFormat("#").parse(treiberText);
@@ -239,7 +239,7 @@ function createList(id, filter) {
           console.log(row)
         // Find links associated with the current 'id'
         const links = publikation_detail
-            .filter(pubRow => pubRow.publikation_id === row.id)
+            .filter(pubRow => pubRow.meldung_id === row.id)
             .map(pubRow => {
                 const foundPublikation = publikation.find(p => p.id === pubRow.publikation_id);
                 if (foundPublikation) {

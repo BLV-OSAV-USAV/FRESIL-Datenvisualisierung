@@ -4,13 +4,15 @@
 import pandas as pd
 import numpy as np
 
-def count_gefahr(timeFilter, bereichName):
+def count_gefahr(timeFilter, bereichName, lg):
     # Charger les fichiers CSV
     meldungXgefahr = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_gefahr-20231128.csv', sep='#', quotechar='`')
     gefahr = pd.read_csv('./csv-files-filtered/filtered-ad_gefahr-20231128.csv', sep='#', quotechar='`')
     meldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung-20231128.csv', sep='#', quotechar='`')
     bereich = pd.read_csv('./csv-files-filtered/filtered-ad_bereich-20231128.csv', sep='#', quotechar='`')
     bereichXmeldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_bereich-20231128.csv', sep='#', quotechar='`')
+    treiber = pd.read_csv('./csv-files-filtered/filtered-ad_treiber-20231128.csv', sep='#', quotechar='`')
+    treiberXmeldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_treiber-20231128.csv', sep='#', quotechar='`')
 
     if timeFilter != 'all':
         meldung['erfDate'] = pd.to_datetime(meldung['erf_date']).dt.date
@@ -50,12 +52,31 @@ def count_gefahr(timeFilter, bereichName):
 
     # Enregistrer le résultat dans un fichier CSV
     if bereichName == 'Betrug / Täuschung':
-        gefahr_counts.to_csv(f'./figure_data/base/gefahr_counts_{timeFilter}_BetrugTauschung.csv', index=False)
-    else:
-        gefahr_counts.to_csv(f'./figure_data/base/gefahr_counts_{timeFilter}_{bereichName}.csv', index=False)
+        bereichName = 'BetrugTauschung'
+
+    gefahr_counts.to_csv(f'./figure_data/base/{bereichName}/gefahr_counts_{timeFilter}.csv', index=False)
+
+    merged_df_treiber = pd.merge(meldungXgefahr, treiberXmeldung, on='meldung_id')
+    # Map treiber_id to bezeichnung
+    treiber_mapping = treiber.set_index('id')['bezeichnung_' + lg].to_dict()
+
+    # Group by gefahr_id and treiber_id, count occurrences, and reshape
+    result_df_gefahr = merged_df_treiber.groupby(['gefahr_id', 'treiber_id']).size().unstack(fill_value=0)
+    result_df_gefahr = result_df_gefahr.reset_index()
+
+    # Rename columns using mapped values from treiber
+    if not result_df_gefahr.empty:
+        result_df_gefahr.columns = ['gefahr_id'] + [treiber_mapping.get(col, col) for col in result_df_gefahr.columns[1:]]
+    else: 
+        # If result_df_gefahr is empty, create an empty DataFrame with columns from treiber
+        result_df_gefahr = pd.DataFrame(columns=['gefahr_id'] + list(treiber_mapping.values()))
 
 
-def gefahr_treiber_count(lg):
+    # Enregistrer le résultat dans un fichier CSV
+    result_df_gefahr.to_csv(f'./figure_data/treiber/{bereichName}/gefahr_treiber_counts_{lg}_{timeFilter}.csv', index=False)
+
+
+""" def gefahr_treiber_count(lg):
     # Charger les fichiers CSV
     meldungXgefahr = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_gefahr-20231128.csv', sep='#', quotechar='`')
     treiber = pd.read_csv('./csv-files-filtered/filtered-ad_treiber-20231128.csv', sep='#', quotechar='`')
@@ -66,18 +87,19 @@ def gefahr_treiber_count(lg):
     result_df_gefahr = result_df_gefahr.reset_index()
     result_df_gefahr.columns.values[1:] = treiber[f'bezeichnung_{lg}']
 
-
     # Enregistrer le résultat dans un fichier CSV
-    result_df_gefahr.to_csv(f'./figure_data/treiber/gefahr_treiber_counts_{lg}.csv', index=False)
+    result_df_gefahr.to_csv(f'./figure_data/treiber/gefahr_treiber_counts_{lg}.csv', index=False) """
 
 
-def count_matrix(timeFilter, bereichName):
+def count_matrix(timeFilter, bereichName, lg):
     # Charger les fichiers CSV
     meldungXmatrix = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_matrix-20231128.csv', sep='#', quotechar='`')
     matrix = pd.read_csv('./csv-files-filtered/filtered-ad_matrix-20231128.csv', sep='#', quotechar='`')
     meldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung-20231128.csv', sep='#', quotechar='`')
     bereich = pd.read_csv('./csv-files-filtered/filtered-ad_bereich-20231128.csv', sep='#', quotechar='`')
     bereichXmeldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_bereich-20231128.csv', sep='#', quotechar='`')
+    treiber = pd.read_csv('./csv-files-filtered/filtered-ad_treiber-20231128.csv', sep='#', quotechar='`')
+    treiberXmeldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_treiber-20231128.csv', sep='#', quotechar='`')
 
     if timeFilter != 'all':
         meldung['erfDate'] = pd.to_datetime(meldung['erf_date']).dt.date
@@ -126,12 +148,30 @@ def count_matrix(timeFilter, bereichName):
     
     # Enregistrer le résultat dans un fichier CSV
     if bereichName == 'Betrug / Täuschung':
-        matrix_counts.to_csv(f'./figure_data/base/matrix_counts_{timeFilter}_BetrugTauschung.csv', index=False)
-    else:
-        matrix_counts.to_csv(f'./figure_data/base/matrix_counts_{timeFilter}_{bereichName}.csv', index=False)
+        bereichName = 'BetrugTauschung'
+
+    matrix_counts.to_csv(f'./figure_data/base/{bereichName}/matrix_counts_{timeFilter}.csv', index=False)
+
+    # Map treiber_id to bezeichnung
+    treiber_mapping = treiber.set_index('id')['bezeichnung_' + lg].to_dict()
+
+    # Merge, Group by gefahr_id and treiber_id, count occurrences, and reshape
+    merged_df_treiber = pd.merge(meldungXmatrix, treiberXmeldung, on='meldung_id')
+    result_df_matrix = merged_df_treiber.groupby(['matrix_id', 'treiber_id']).size().unstack(fill_value=0)
+    result_df_matrix = result_df_matrix.reset_index()
+
+    # Rename columns using mapped values from treiber
+    if not result_df_matrix.empty:
+        result_df_matrix.columns = ['matrix_id'] + [treiber_mapping.get(col, col) for col in result_df_matrix.columns[1:]]
+    else: 
+        # If result_df_matrix is empty, create an empty DataFrame with columns from treiber
+        result_df_matrix = pd.DataFrame(columns=['matrix_id'] + list(treiber_mapping.values()))
+
+    # Enregistrer le résultat dans un fichier CSV
+    result_df_matrix.to_csv(f'./figure_data/treiber/{bereichName}/matrix_treiber_counts_{lg}_{timeFilter}.csv', index=False)
 
 
-def matrix_treiber_count(lg):
+""" def matrix_treiber_count(lg):
     # Charger les fichiers CSV
     meldungXmatrix = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_matrix-20231128.csv', sep='#', quotechar='`')
     treiber = pd.read_csv('./csv-files-filtered/filtered-ad_treiber-20231128.csv', sep='#', quotechar='`')
@@ -145,10 +185,7 @@ def matrix_treiber_count(lg):
 
     # Enregistrer le résultat dans un fichier CSV
     result_df_matrix.to_csv(f'./figure_data/treiber/matrix_treiber_counts_{lg}.csv', index=False)
-
-    # Enregistrer le résultat dans un fichier CSV
-    result_df_matrix.to_csv(f'./figure_data/bereich/matrix_bereich_counts_{lg}.csv', index=False)
-
+ """
 
 def list_meldung_pro_Gefahr(id):
     # Charger les fichiers CSV
@@ -161,23 +198,24 @@ def list_meldung_pro_Gefahr(id):
     print(meldungs)
 
 
-for i in ['de','fr','it','en']:
+""" for i in ['de','fr','it','en']:
     matrix_treiber_count(i)
-    gefahr_treiber_count(i)
+    gefahr_treiber_count(i) """
 
 bereich_csv = pd.read_csv('./csv-files-filtered/filtered-ad_bereich-20231128.csv', sep='#', quotechar='`')
 bereich_list = bereich_csv.bezeichnung_de.unique()
 bereich_list = np.append(bereich_list, 'all')
 
 for bereich in bereich_list:
-    count_gefahr('year', bereich)
-    count_gefahr('month', bereich)
-    count_gefahr('week', bereich)
-    count_gefahr('all', bereich)
+    for lg in ['de','fr','it','en']:
+        count_gefahr('year', bereich, lg)
+        count_gefahr('month', bereich, lg)
+        count_gefahr('week', bereich, lg)
+        count_gefahr('all', bereich, lg)
 
-    count_matrix('year', bereich)
-    count_matrix('month', bereich)
-    count_matrix('week', bereich)
-    count_matrix('all', bereich) 
+        count_matrix('year', bereich, lg)
+        count_matrix('month', bereich, lg)
+        count_matrix('week', bereich, lg)
+        count_matrix('all', bereich, lg) 
 
 

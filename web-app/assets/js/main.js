@@ -7,6 +7,13 @@ var lang = (langs.indexOf(permalink.lang) != -1) ? permalink.lang : langs[0];
 
 function handleGMddChange(ordnung){
     Ordnung = ordnung;
+    
+    // Assuming your dropdown has an id attribute set to "myDropdown"
+    let bereich = document.getElementById("bereich-dd");
+    let timefilter = document.getElementById("timeFilter")
+    bereich.selectedIndex = 0;
+    timefilter.selectedIndex = 0;
+
     // Load and execute the script for handling gefahrButton click
     const script = document.createElement('script');
     script.src = `./assets/js/${ordnung}Ordnung.js`; 
@@ -25,7 +32,8 @@ function handleGMddChange(ordnung){
     document.head.appendChild(script);
 }
 
-function handleTimeFilterChange(timeFilter) {
+function handleDDChange(timeFilter, bereich) {
+
     // Load and execute the script for handling gefahrButton click
     const script = document.createElement('script');
 
@@ -34,7 +42,7 @@ function handleTimeFilterChange(timeFilter) {
             // Listen for the 'load' event on the script element
         script.addEventListener('load', () => {
             // Call the gefahrOrdnung function with the desired timeFilter argument
-            gefahrOrdnung(timeFilter, lang);
+            gefahrOrdnung(timeFilter, lang, bereich);
         });
 
     } else if (Ordnung === 'matrix') {
@@ -42,13 +50,14 @@ function handleTimeFilterChange(timeFilter) {
             // Listen for the 'load' event on the script element
         script.addEventListener('load', () => {
             // Call the matrixOrdnung function with the desired timeFilter argument
-            matrixOrdnung(timeFilter, lang);
+            matrixOrdnung(timeFilter, lang, bereich);
         });
     }
 
     script.src = './assets/js/gefahrOrdnung.js'; 
     document.head.appendChild(script);
 }
+
 
 // Add event listeners to the buttons with context binding
 document.getElementById('gm-dd').addEventListener('change', function() {
@@ -57,7 +66,14 @@ document.getElementById('gm-dd').addEventListener('change', function() {
 });
 
 document.getElementById('timeFilter').addEventListener('change', function() {
-    handleTimeFilterChange(this.value);
+    var bereichValue = document.getElementById('bereich-dd').value;
+    handleDDChange(this.value, bereichValue);
+    moveToSection('two');
+});
+
+document.getElementById('bereich-dd').addEventListener('change', function() {
+    var timeValue = document.getElementById('timeFilter').value;
+    handleDDChange(timeValue, this.value);
     moveToSection('two');
 });
 

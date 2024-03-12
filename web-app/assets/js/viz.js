@@ -236,6 +236,7 @@ function createList(id, filter) {
 
         // Add 'links' column to filteredData
         filteredData.forEach(row => {
+          console.log(row)
         // Find links associated with the current 'id'
         const links = publikation_detail
             .filter(pubRow => pubRow.publikation_id === row.id)
@@ -260,17 +261,17 @@ function createList(id, filter) {
           // Assign treibers to 'treiber' column
           row.treiber = treibers;
 
-          // Find treibers associated with the current 'id'
+          // Find matrices associated with the current 'id'
           const matrices = meldungXmatrix.filter(meldungXmatrixRow => meldungXmatrixRow.meldung_id === row.id)
           .map(meldungXmatrixRow => {
               const matrixId = meldungXmatrixRow.matrix_id;
               const matrixInfo = matrix.find(t => t.id === matrixId);
               return matrixInfo ? matrixInfo.bezeichnung_de : '-';
           });
-          // Assign treibers to 'treiber' column
           row.matrix = matrices;
 
-          // Find treibers associated with the current 'id'
+
+          // Find bereich associated with the current 'id'
           const bereichs = meldungXbereich.filter(meldungXbereichRow => meldungXbereichRow.meldung_id === row.id)
           .map(meldungXbereichRow => {
               const bereichId = meldungXbereichRow.bereich_id;
@@ -343,6 +344,11 @@ function createList(id, filter) {
       if (!table) {
         // Initialize DataTable only if it doesn't exist
         table = new DataTable('#filtered-table', {
+/*             layout:{
+              topStart:{
+                buttons: ['csv', 'pdf']
+              }
+            }, */
             columns: [
                 {
                     className: 'dt-control',

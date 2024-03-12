@@ -192,7 +192,7 @@ let sdTranslations = {
 		en: 'Notification'
 	},
 
-	all:{
+	allTimeFilter:{
 
 		de: 'Ganzer Zeitbereich',
 
@@ -246,6 +246,81 @@ let sdTranslations = {
 		
 		en: 'Summary'
 
+	},	
+	
+	allBereich:{
+		
+		de: 'Alle Bereiche',
+
+		fr: 'Tous les domaines',
+
+		it: 'Tutti settori',
+
+		en: 'All domains'
+		
+	},
+
+	Allergie:{
+		
+		de: 'Allergie',
+
+		fr: 'Allergie',
+
+		it: 'Allergia',
+
+		en: 'Allergy'
+
+	},
+
+	Mikrobiologie:{
+		
+		de: 'Mikrobiologie',
+
+		fr: 'Microbiologie',
+
+		it: 'Microbiologia',
+
+		en: 'Microbiology'
+
+	},
+
+	Chemie:{
+		
+		de: 'Chemie',
+
+		fr: 'Chimie',
+
+		it: 'Chimica',
+
+		en: 'Chemistry'
+
+	},
+
+	BetrugTauschung:{
+
+		de: 'Betrug / Tauschung',
+
+		fr: 'Fraude / Tromperie',
+
+		it: 'Froda / Truffa',
+
+		en: 'Fraud / Deception'
+	},
+
+
+	Ernährung:{
+
+		de: 'Ernährung',
+
+		fr: 'Nutrition',
+
+		it: 'Nutrizione',
+
+		en: 'Nutrition'
 	}
+
+
+
+
 
 };

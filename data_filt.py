@@ -53,6 +53,25 @@ def convert_datetime_format(file, column):
         file[f'Dates_{column}'] = pd.to_datetime(file[column]).dt.date
     return file
 
+def change_Unspecified_matrix(file,column):
+    dc = {
+        'Nicht spezifiziert': 'Diverse Lebensmittel',
+
+        'Non spécifié': 'Aliments divers',
+
+        'Non specificato': 'Alimenti vari',
+
+        'Unclassified': 'Diverse foods'
+    }
+    file.replace(dc, inplace = True)
+
+    return file
+
+def filter_unspecified(file,column):
+    
+
+
+
 
 def prep_data(input_path, output_path):
     try:
@@ -73,7 +92,8 @@ def prep_data(input_path, output_path):
             'signal': convert_to_bool,
             'sterne': convert_to_int,
             'page_count': convert_to_int,
-            'publikation_id': convert_to_int
+            'publikation_id': convert_to_int,
+            'bezeichnung_de': change_Unspecified_matrix
         }
 
         # Apply the specified filter function for each column

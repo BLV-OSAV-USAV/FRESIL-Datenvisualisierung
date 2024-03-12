@@ -1,4 +1,4 @@
-function gefahrOrdnung(timeFilter, lang){
+function gefahrOrdnung(timeFilter, lang, bereich){
 // Load data from CSV files: gefahrCounts and treiberCounts
     Promise.all([
       d3.csv(`../figure_data/base/${bereich}/gefahr_counts_${timeFilter}.csv`),

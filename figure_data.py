@@ -131,20 +131,10 @@ def count_matrix(timeFilter, bereichName, lg):
     mean_sterne.columns = ['id', 'mean_sterne']
     mean_sterne['mean_sterne'] = mean_sterne['mean_sterne'].round(2)
 
-    dc = {
-        'Nicht spezifiziert': 'Diverse Lebensmittel',
-
-        'Non spécifié': 'Aliments divers',
-
-        'Non specificato': 'Alimenti vari',
-
-        'Unclassified': 'Diverse foods'
-    }
 
     # Fusionner les résultats avec le DataFrame existant
     matrix_counts = pd.merge(matrix_counts, matrix[['id', 'bezeichnung_de', 'bezeichnung_fr', 'bezeichnung_it', 'bezeichnung_en']], on='id', how='left')
     matrix_counts = pd.merge(matrix_counts, mean_sterne, on='id', how='left')
-    matrix_counts.replace(dc, inplace = True)
     
     # Enregistrer le résultat dans un fichier CSV
     if bereichName == 'Betrug / Täuschung':

@@ -236,7 +236,6 @@ function createList(id, filter) {
 
         // Add 'links' column to filteredData
         filteredData.forEach(row => {
-          console.log(row)
         // Find links associated with the current 'id'
         const links = publikation_detail
             .filter(pubRow => pubRow.meldung_id === row.id)
@@ -344,11 +343,15 @@ function createList(id, filter) {
       if (!table) {
         // Initialize DataTable only if it doesn't exist
         table = new DataTable('#filtered-table', {
-/*             layout:{
-              topStart:{
-                buttons: ['csv', 'pdf']
-              }
-            }, */
+          layout:{
+            topStart:{
+            buttons: [
+                {
+                    extend: 'csv',
+                    filename: 'FRESIL_export', // Change 'custom_filename' to the desired name
+                    text: 'Export CSV' // Optional: Change the text of the button
+                }
+            ]}},
             columns: [
                 {
                     className: 'dt-control',
@@ -364,11 +367,11 @@ function createList(id, filter) {
             scrollCollapse: true, // Allow collapsing the table height if the content doesn't fill it
             paging: false, // Disable pagination
             order: [[2, 'desc']] // Order by the 'date' column in descending order
-              });
-            
-              // Bind the click event handler to the DataTable
-              $('#filtered-table tbody').on('click', 'td.dt-control', function () {
-                  var tr = $(this).parents('tr');
+        });
+        
+        // Bind the click event handler to the DataTable
+        $('#filtered-table tbody').on('click', 'td.dt-control', function () {
+            var tr = $(this).parents('tr');
             var row = table.row(tr);
         
             if (row.child.isShown()) {
@@ -381,10 +384,47 @@ function createList(id, filter) {
                 tr.addClass('shown');
             }
         });
-      } else {
+    } else {
         // If DataTable instance already exists, just update its data
         table.clear().rows.add(filteredData).draw();
-      }
+    }
+    
+
+/*       document.getElementById('export-button').addEventListener('click', function() {
+        // Convert the filteredData dataframe to a CSV string
+        const csvContent = convertDataFrameToCSV(filteredData);
+    
+        // Create a Blob object containing the CSV data
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    
+        // Create a temporary anchor element to trigger the download
+        const link = document.createElement('a');
+        if (link.download !== undefined) { // Check if the download attribute is supported
+            // Create a URL for the Blob object
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', 'filtered_data.csv'); // Set the file name
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        } else {
+            // If the download attribute is not supported, fallback to a data URI
+            const csvData = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvContent);
+            window.open(csvData, '_blank');
+        }
+    });
+    
+    // Function to convert DataFrame to CSV format
+    function convertDataFrameToCSV(dataFrame) {
+        const headers = Object.keys(dataFrame[0]);
+        const rows = dataFrame.map(row => {
+            return headers.map(header => {
+                return row[header];
+            }).join(',');
+        });
+        return [headers.join(','), ...rows].join('\n');
+    } */
+    
 
               });
         }

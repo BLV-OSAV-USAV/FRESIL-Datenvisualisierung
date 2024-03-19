@@ -62,16 +62,16 @@ function baseVisualization(data, color, selectedColor, filter){
 
 
     circles = svg.selectAll("circle")
-    .data(data)
-    .join("circle")
-    .attr("r", d => d.size)
-    .attr("fill", color)
-    .attr("id", d => d.id)
-    .on("mouseover", function(d) {
-      // Only add stroke if the circle is not the clicked one
-      if (!d3.select(this).classed("clicked")) {
-          d3.select(this).attr("fill", selectedColor); 
-      }
+                  .data(data)
+                  .join("circle")
+                  .attr("r", d => d.size)
+                  .attr("fill", color)
+                  .attr("id", d => d.id)
+                  .on("mouseover", function(d) {
+                    // Only add stroke if the circle is not the clicked one
+                    if (!d3.select(this).classed("clicked")) {
+                        d3.select(this).attr("fill", selectedColor); 
+                    }
     
       // Calculate the center position of the circle
       const circleCenterX = d.x;
@@ -307,30 +307,39 @@ function createList(id, filter) {
                   return '';
           }
         }
+            // Translation of <dt> tags
+          const translatedDtTags = {
+            kurzinfo: '<dt style="font-weight:bold;" class="trn">Kurzinfo</dt>',
+            wichtigkeit: '<dt style="font-weight:bold;" class="trn">Wichtigkeit</dt>',
+            treibers: '<dt style="font-weight:bold;" class="trn">Treibers</dt>',
+            matrix: '<dt style="font-weight:bold;" class="trn">Matrix</dt>',
+            bereich: '<dt style="font-weight:bold;" class="trn">Bereich</dt>',
+            links: '<dt style="font-weight:bold;" class="trn">Links</dt>'
+        };
       
         return (
             '<dl>' +
-            '<dt style="font-weight:bold;"class="trn">Kurzinfo</dt>' +
+            translatedDtTags.kurzinfo +
             '<dd>' +
             d.kurzinfo +
             '</dd>' +
-            '<dt style="font-weight:bold;">Wichtigkeit</dt>' +
+            translatedDtTags.wichtigkeit +
             '<dd>' +
             convertToStars(d.sterne) +
             '</dd>' +
-            '<dt style="font-weight:bold;">Treibers</dt>' +
+            translatedDtTags.treibers +
             '<dd>' +
             d.treiber +
             '</dd>' +
-            '<dt style="font-weight:bold;">Matrix</dt>' +
+            translatedDtTags.matrix +
             '<dd>' +
             d.matrix +
             '</dd>' +
-            '<dt style="font-weight:bold;">Bereich</dt>' +
+            translatedDtTags.bereich +
             '<dd>' +
             d.bereich +
             '</dd>' +
-            '<dt style="font-weight:bold;">Links</dt>' +
+            translatedDtTags.links +
             '<dd>' +
             linksHTML +
             '</dd>' +
@@ -349,7 +358,7 @@ function createList(id, filter) {
                 {
                     extend: 'csv',
                     filename: 'FRESIL_export', // Change 'custom_filename' to the desired name
-                    text: 'Export CSV' // Optional: Change the text of the button
+                    text: 'Export CSV', // Optional: Change the text of the button
                 }
             ]}},
             columns: [
@@ -598,9 +607,9 @@ function createWaffleChart(treiberData, bereichData) {
 
     drawLegend = (svg, cells) => {
       
-
+      const legendData = chartData.filter(d => d.ratio !== 0); // Filter out data with ratio equal to 0
       const legend = svg.selectAll(".legend")
-        .data(chartData.map(d => d.treiber))
+        .data(legendData.map(d => d.treiber))
         .join("g")      
         .attr("opacity", 1)
         .attr("transform", (d, i) => {
@@ -618,31 +627,31 @@ function createWaffleChart(treiberData, bereichData) {
       legend.append("rect")
         .attr("rx", 3).attr("ry", 3)
         .attr("width", 30).attr("height", 20)
-        .attr("fill", (d, i) => chartData[i].ratio === 0 ? "#c7c7c7" : chartData[i].color); // Assign grey color if ratio is 0
+        .attr("fill", (d, i) => legendData[i].ratio === 0 ? "#c7c7c7" : legendData[i].color); // Assign grey color if ratio is 0
       
       legend.append("text")
         .attr("x", 40) // Adjust the x position to align the text
         .attr("y", 15) // Adjust the y position to align the text
         .style("font-size", window.innerWidth < 800 ? "17px" : "14px") // Adjust the font sizes as needed
         .attr("alignment-baseline", "middle") // Align the text vertically in the middle
-        .attr("fill", (d, i) => chartData[i].ratio === 0 ? "#c7c7c7" : "black") // Assign grey color if ratio is 0
-        .text((d, i) => `${d} (${chartData[i].ratio.toFixed(0)}%)`);
+        .attr("fill", (d, i) => legendData[i].ratio === 0 ? "#c7c7c7" : "black") // Assign grey color if ratio is 0
+        .text((d, i) => `${d} (${legendData[i].ratio.toFixed(0)}%)`);
         
         /**
          * Highlights a specific data point in the chart.
          * @param {string} d - The value to be highlighted.
          */
          function highlight(d) {
-          const i = chartData.findIndex(item => item.treiber === d);
+          const i = legendData.findIndex(item => item.treiber === d);
           cells.transition().duration(500)
-              .attr("fill", data => data.index === i ? chartData[i].color : "#ccc");
+              .attr("fill", data => data.index === i ? legendData[i].color : "#ccc");
         }
                 
       /**
        * Restores the fill color of cells using a transition animation.
        */
       function restore() {
-        cells.transition().duration(200).attr("fill", d => chartData[d.index].color)
+        cells.transition().duration(200).attr("fill", d => legendData[d.index].color)
       }
     }
 

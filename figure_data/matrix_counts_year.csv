@@ -1,0 +1,84 @@
+id,count,bezeichnung_de,mean_sterne
+1,55,Nicht spezifiziert,1.58
+60,17,Fische,1.53
+3,17,Gemüse,1.71
+34,16,Früchte,1.38
+8,15,"Fleisch, Fleischprodukte und Fleischersatz",1.33
+23,14,"Blattgemüse (ohne Kohlgemüse), Blattsalate und Algen",1.79
+82,12,Wasser,1.25
+80,12,"Softdrinks, Sprudelgetränke, Energydrinks und isotonische Getränke",1.5
+54,11,Geflügel,1.91
+9,9,"Fische, Meeresfrüchte, Amphibien und Reptilien",1.11
+67,8,Pflanzliche Öle,1.12
+39,8,Milchersatz und Milchersatzprodukte,1.62
+58,8,Fleischersatz,1.62
+133,7,Honig,1.43
+24,7,Blüten- und Fruchtgemüse,1.14
+48,6,"Teigwaren, Reis, andere Getreide und Körner",1.83
+30,6,Blattstiel- und Stängelgemüse sowie Keimlinge und Sprossen,1.0
+22,6,Nicht spezifizierte sowie gemischte Gemüse und Salate,1.83
+59,6,"Nicht spezifizierte sowie gemischte Fische, Meeresfrüchte und Amphibien",1.0
+65,5,Eier,1.4
+120,5,Schwein,1.4
+56,5,Fleisch- und Wurstwaren (verarbeitetes Fleisch),1.8
+7,5,"Getreide, Getreideprodukte und Körner",1.4
+52,5,"Nicht spezifizierte sowie gemischte Fleisch, Fleischprodukte und Fleischersatz",1.0
+6,5,"Milch, Milchprodukte und Milchersatzprodukte",2.2
+155,5,Nicht spezifizierte sowie gemischte Diätprodukte und Sportlernahrung,1.4
+5,4,"Früchte, Nüsse und Samen",1.0
+27,4,Pilze,1.5
+29,4,"Zwiebelgemüse (z.B. Knoblauch, Lauch, Zwiebel)",1.25
+61,4,Schalen- und Weichtiere,1.5
+157,4,Mahlzeitenersatz und Sportlernahrung,1.5
+126,3,Huhn und Hähnchen,1.0
+79,3,Frucht- und Gemüsesäfte,1.33
+35,3,Nüsse und Samen (inkl. Aufstriche und Pasten),1.33
+104,3,Nicht spezifizierte sowie gemischte Milch und Milchgetränke,1.67
+42,3,Käse,2.33
+47,3,"Flocken, Griess, Keime, Mehl, Schrot und Stärke (inkl. Pulver für Desserts)",1.0
+21,3,Kartoffeln,1.67
+93,3,"Gewürze, Kräuter und Aromastoffe",1.33
+28,3,Hülsen- und Samengemüse,1.67
+118,3,Rind,1.0
+12,3,"Zucker, Schokolade und Süsswaren",1.33
+86,3,Bier,1.33
+32,3,Hülsenfrüchte,1.33
+100,3,Diätprodukte und Sportlernahrung,1.67
+45,3,Speiseeis (inkl. Sorbet und Wasserglace),1.33
+148,2,Wein,1.0
+150,2,Tomatensaucen,1.0
+115,2,"Brot, Brötchen und Gipfel",1.5
+55,2,Wild,1.5
+117,2,Nicht spezifizierte sowie gemischte und andere Säugetiere,3.0
+46,2,"Nicht spezifizierte sowie gemischte Getreide, Getreideprodukte und Körner",1.0
+26,2,Kohlgemüse,1.0
+18,2,Diverse Lebensmittel,1.0
+131,2,Zucker,1.0
+11,2,Fette und Öle,1.0
+144,2,Koffeinhaltiger Tee und Teezubereitungen (inkl. Pulver),1.5
+114,2,Nicht spezifizierte sowie gemischte Brote und Dauerbackwaren,1.0
+37,2,"Nicht spezifizierte sowie gemischte Milch, Milchprodukte und Milchersatzprodukte",1.0
+98,2,Nicht spezifizierte sowie gemischte diverse Lebensmittel,1.0
+33,2,"Nicht spezifizierte sowie gemischte Früchte, Nüsse und Samen",1.5
+99,1,Vegetarische Produkte und Gerichte,1.0
+142,1,"Nicht spezifizierte sowie gemischte Kaffee-, Tee-, Frucht- und Kräuterteegetränke",1.0
+106,1,Fermentierte Milch und Milchgetränke sowie Joghurtdrinks,3.0
+156,1,Künstliche Süssstoffe,1.0
+2,1,Kartoffeln und andere stärkehaltige Wurzelknollen,3.0
+135,1,Süsse Saucen und Toppings für Dessert,1.0
+62,1,Fischprodukte und panierter Fisch,1.0
+38,1,"Milch, Milchgetränke und fermentierte Milchgetränke",2.0
+16,1,"Würzmittel, Gewürze, Hefen, Kräuter und Saucen",1.0
+50,1,Frühstückscerealien,1.0
+121,1,"Lamm, Schaf und Hammel",2.0
+87,1,Spirituosen und Branntweine (z.B. Cognac),1.0
+81,1,"Kaffee, Tee, Frucht- und Kräutertee",2.0
+123,1,Ziege,2.0
+72,1,"Zucker, Konfitüre, Honig, süsse Aufstriche und Saucen sowie Sirup",1.0
+145,1,Frucht- und Kräutertee (inkl. Pulver),2.0
+132,1,Konfitüre und Marmelade,2.0
+137,1,"Nicht spezifizierte Schokolade, Schokoriegel, Aufstriche, Pulver und Süsswaren mit Schokolade (inkl. Saucen)",1.0
+151,1,"Salatsaucen, Dips und Mayonnaise",1.0
+68,1,Butter,1.0
+15,1,Alkoholische Getränke,1.0
+138,1,Schokoladentafeln,1.0

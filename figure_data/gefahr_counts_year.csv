@@ -1,0 +1,206 @@
+id,count,bezeichnung_de,mean_sterne
+126,30,Per- und polyfluorierte Alkylverbindungen (PFAS),1.63
+93,26,Salmonella spp.,1.38
+26,23,Listeria monocytogenes,1.65
+91,19,Pestizide,1.16
+19,18,STEC/VTEC,1.72
+111,17,Mykotoxine,1.35
+125,16,Mikroplastik,1.62
+1,15,Escherichia coli,1.67
+165,15,Cadmium,1.4
+63,14,Antibiotika,1.93
+102,14,Blei,1.21
+99,12,Vibrio spp.,1.42
+244,11,Antibiotikaresistenzen,1.27
+128,11,Schwermetalle,1.18
+187,10,Arsen,1.3
+166,9,Bisphenol A (BPA),1.89
+167,8,Quecksilber,1.12
+86,8,Campylobacter spp.,1.75
+106,8,Bacillus cereus (sensu lato),1.38
+197,7,Nitrite,1.71
+119,6,Norovirus,1.33
+9,5,Staphylococcus aureus,1.2
+230,5,Nitrate,1.4
+45,5,Aspartam,1.6
+261,5,Pseudomonas,1.6
+20,5,EHEC,2.2
+127,5,Perfluoroctansulfonsäure (PFOS),2.0
+180,5,Phthalate,1.6
+87,4,Campylobacter jejuni,1.5
+174,4,Fungizid,1.5
+298,4,Deoxynivalenol (DON),1.5
+150,4,Glyphosat,1.25
+66,4,Canabidiol (CBD),1.5
+238,4,Vibrio parahaemolyticus,1.25
+202,4,Antibiotikaresistente Milchsäurebakterien,2.0
+195,4,Escherichia coli (ExPEC),2.25
+256,3,Parasiten,1.33
+2,3,Hepatitis E Virus (HEV),1.67
+246,3,Acrylamid,1.67
+89,3,Cronobacter sakazakii,1.33
+123,3,Salmonella Infantis,1.33
+148,3,Radioaktivität,1.33
+109,3,Nanopartikeln,1.0
+90,3,Clostridium botulinum,1.33
+35,3,Cryptosporidium spp.,2.0
+94,3,Salmonella Typhimurium,1.0
+273,3,Koffein,1.33
+156,2,Listeria innocua,2.5
+79,2,Zucker,1.0
+196,2,Grayanotoxine,1.5
+4,2,Bacillus cytotoxicus,2.0
+284,2,MOSH,1.0
+209,2,Anorganische Arsen,1.0
+69,2,Tetrahydrocannabinol (THC),2.0
+10,2,Toxoplasma gondii,2.5
+101,2,Brucella spp.,2.5
+193,2,Salmonella Agona,2.0
+201,2,Diphenylguanidin (DPG),3.0
+200,2,6-PPD,3.0
+8,2,Sapovirus,1.5
+293,2,Bromierte Flammschutzmittel (BFR),1.5
+221,2,kurzkettige Chlorparaffine (SCCP),1.5
+129,2,Affenpocken-Virus (MPXV),2.0
+185,2,Mineralöl,1.0
+160,2,Nipah Virus,1.0
+203,2,Ochratoxin A (OTA),2.0
+234,2,Sucralose,1.0
+269,2,Polybromierte Diphenylether (PBDE),1.5
+48,2,marine Biotoxine,2.0
+211,2,Bacillus subtilis,1.5
+88,2,Campylobacter coli,1.5
+198,2,Hexamethoxymethylmelamin (HMMM),3.0
+243,2,Carboxymethylcellulosen (CMC),2.0
+28,2,Clostridioides difficile,1.5
+207,1,Decansäure,1.0
+206,1,Caprinsäure,1.0
+224,1,Perchlorat,2.0
+97,1,Salmonella Kentucky,1.0
+260,1,benzaldehyd,1.0
+68,1,Cannabinol (CBN),3.0
+67,1,Cannabigerol (CBG),3.0
+262,1,formaldehyd,1.0
+263,1,benzol,1.0
+309,1,Hexahydrocannabinol,1.0
+6,1,Staphylococcus argenteus,2.0
+186,1,Biogene Amine,2.0
+36,1,Giardia spp.,3.0
+254,1,Polyethylenterephthalat,1.0
+177,1,Alongshan Virus (ALSV),3.0
+204,1,Streptomycin,1.0
+258,1,"2,3,5-Trimethylpyrazine",1.0
+259,1,furfural,1.0
+251,1,Trichinella spp.,1.0
+285,1,MOAH,1.0
+192,1,2-tert-Butylhydrochinon,1.0
+218,1,Human circovirus 1 (HCirV-1),3.0
+237,1,Quaternäre Ammoniumverbindungen,0.0
+227,1,Erythrit,1.0
+233,1,Glutaminsäure,1.0
+291,1,Milchsäurebakterien,2.0
+286,1,Salmonella Senftenberg,1.0
+278,1,Morchella sextelata,2.0
+297,1,Gluten,1.0
+225,1,Barium,1.0
+316,1,Fructose,1.0
+311,1,Ätherische Öle,0.0
+313,1,"2,4-Dichlorphenoxyessigsäure",1.0
+322,1,Dimethylmonothioarsenate ((DMMTA),1.0
+231,1,Campylobacter fetus,2.0
+120,1,Rotavirus,2.0
+228,1,Fipronil,2.0
+319,1,Proteus spp.,2.0
+296,1,Providencia spp.,2.0
+320,1,Citrobacter spp.,2.0
+318,1,Diethylhexylphthalat (DEHP),2.0
+292,1,Glycerin,2.0
+290,1,Saccharin,2.0
+112,1,Aeromonas spp.,1.0
+100,1,Frühsommer-Meningoenzephalitis (FSME),1.0
+240,1,Lithium,2.0
+235,1,α-Tomatin,1.0
+239,1,enteroinvasive Escherichia coli (EIEC),2.0
+181,1,hochpathogene Aviären Influenza (HPAI),1.0
+176,1,Yersinia enterolitica,1.0
+25,1,SARS-CoV-2,2.0
+103,1,GMO (genetisch modifizierter Organismus),1.0
+146,1,Salmonella Thompson,3.0
+189,1,Heliobacter pylori,3.0
+143,1,Menschliche Arzneimittelrückstände,2.0
+73,1,Tierarzneimittel,2.0
+276,1,Phytohämagglutinin,1.0
+277,1,Microcystine,1.0
+305,1,Microbacterium,2.0
+289,1,HT-2,2.0
+3,1,Yersinia pseudotuberculosis,1.0
+130,1,Bisphenol S,1.0
+247,1,Calciumcarbid,2.0
+257,1,Helicobacter pullorum,3.0
+253,1,Mpox (Affenpocken),1.0
+58,1,Melatonin,1.0
+252,1,Morcheln,1.0
+249,1,Nickel,1.0
+255,1,Chronic Wasting Disease (CWD),2.0
+62,1,Tierarzneimittel,2.0
+7,1,Cyclospora spp.,1.0
+302,1,Angiostrongylus cantonensis,2.0
+275,1,Cyazofamid,1.0
+299,1,Hexachlorcyclohexan,1.0
+300,1,Vibrio vulnificus,1.0
+121,1,Hepatitis A virus,1.0
+306,1,Furan,2.0
+142,1,Isoflavone,1.0
+250,1,extended-spectrum beta-lactamase produzierenden Shigella sonnei,1.0
+236,1,Flüssigstickstoff,1.0
+241,1,Alternariol,1.0
+222,1,GenX,2.0
+219,1,Acesulfam-K,1.0
+220,1,Tricyclazol,2.0
+217,1,"2,6-diisopropylnaphthalene (DIPN)",1.0
+216,1,Bis(2-ethylhexyl) phthalate (DEHP),1.0
+215,1,Diisobutylphthalate (DIBP),1.0
+214,1,Dibutylphthalate (DBP),1.0
+118,1,Aspergillus,2.0
+114,1,Klebsiella,1.0
+212,1,Kainsäure,1.0
+210,1,Jod,1.0
+288,1,T-2,2.0
+199,1,Benzothiazol (BTZ),3.0
+191,1,Solanum sp,2.0
+312,1,Clostridum sporogenes/tepidum,2.0
+76,1,colistin,1.0
+245,1,Streptococcus equi,3.0
+226,1,Shigella spp.,1.0
+280,1,Ethylendichlord,1.0
+283,1,Borax,1.0
+272,1,Mangan,1.0
+188,1,Thebain,1.0
+271,1,Weichmacher,1.0
+279,1,"Organische Phosphit-Antioxidantien, OPA",1.0
+265,1,diastatische Hefe,2.0
+264,1,sucralose-6-acetate,1.0
+294,1,Benzo(a)pyren,1.0
+55,1,6-PPD-Chinon,3.0
+46,1,Ciguatera,2.0
+301,1,Metalle der Seltenen Erden (REE),2.0
+136,1,Prion,1.0
+140,1,Streptococcus spp.,3.0
+281,1,Ethylendioxid,1.0
+282,1,Ketoprofen,1.0
+267,1,Cyanobakterien,2.0
+266,1,Legionella,2.0
+122,1,Diabetes,1.0
+229,1,Streptococcus pyogenes (GAS),1.0
+248,1,Persistente organische Schadstoffe (POP),1.0
+308,1,Fumonisine,1.0
+274,1,Baikiain,3.0
+190,1,Salmonella Bovismorbificans,1.0
+194,1,Bourbon-Virus (BOUV),1.0
+213,1,L. welshimeri ,2.0
+51,1,Vitamin D,1.0
+304,1,Clostridien,1.0
+310,1,Polyethylenterephthalat (PET),1.0
+303,1,Akkermansia,1.0
+307,1,Natriumphosphat,2.0
+321,1,Fluconazol,2.0

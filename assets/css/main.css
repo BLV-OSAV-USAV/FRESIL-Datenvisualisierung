@@ -40,6 +40,21 @@
 		font-family: Frutiger LT Com,Helvetica Neue,sans-serif;
 	}
 
+	.svg-container {
+		display: inline-block;
+		position: relative;
+		width: 100%;
+		padding-bottom: 100%; /* aspect ratio */
+		vertical-align: top;
+		overflow: hidden;
+	  }
+
+	.svg-content-responsive {
+	display: inline-block;
+	top: 10px;
+	left: 0;
+	}
+
 	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 		display: block;
 	}

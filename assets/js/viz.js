@@ -204,16 +204,16 @@ function baseVisualization(data, color, selectedColor, filter){
  */
 function createList(id, filter) {
   Promise.all([
-    fetch("../csv-files-filtered/filtered-ad_meldung-20231128.csv").then(response => response.text()),
-    fetch(`../csv-files-filtered/filtered-ad_meldung_ad_${filter}-20231128.csv`).then(response => response.text()),
-    fetch("../csv-files-filtered/filtered-ad_publikation_detail-20231128.csv").then(response => response.text()),
-    fetch("../csv-files-filtered/filtered-ad_publikation-20231128.csv").then(response => response.text()),
-    fetch("../csv-files-filtered/filtered-ad_meldung_ad_treiber-20231128.csv").then(response => response.text()),
-    fetch("../csv-files-filtered/filtered-ad_treiber-20231128.csv").then(response => response.text()),
-    fetch("../csv-files-filtered/filtered-ad_meldung_ad_bereich-20231128.csv").then(response => response.text()),
-    fetch("../csv-files-filtered/filtered-ad_bereich-20231128.csv").then(response => response.text()),
-    fetch("../csv-files-filtered/filtered-ad_meldung_ad_matrix-20231128.csv").then(response => response.text()),
-    fetch("../csv-files-filtered/filtered-ad_matrix-20231128.csv").then(response => response.text()),
+    fetch("./csv-files-filtered/filtered-ad_meldung-20231128.csv").then(response => response.text()),
+    fetch(`./csv-files-filtered/filtered-ad_meldung_ad_${filter}-20231128.csv`).then(response => response.text()),
+    fetch("./csv-files-filtered/filtered-ad_publikation_detail-20231128.csv").then(response => response.text()),
+    fetch("./csv-files-filtered/filtered-ad_publikation-20231128.csv").then(response => response.text()),
+    fetch("./csv-files-filtered/filtered-ad_meldung_ad_treiber-20231128.csv").then(response => response.text()),
+    fetch("./csv-files-filtered/filtered-ad_treiber-20231128.csv").then(response => response.text()),
+    fetch("./csv-files-filtered/filtered-ad_meldung_ad_bereich-20231128.csv").then(response => response.text()),
+    fetch("./csv-files-filtered/filtered-ad_bereich-20231128.csv").then(response => response.text()),
+    fetch("./csv-files-filtered/filtered-ad_meldung_ad_matrix-20231128.csv").then(response => response.text()),
+    fetch("./csv-files-filtered/filtered-ad_matrix-20231128.csv").then(response => response.text()),
     ]).then(([meldungsText, meldungXfilterText, publikationDetailText, publikationText, 
           meldungXtreiberText, treiberText, meldungXbereichText, bereichText, meldungXmatrixText, matrixText]) => {
       // Parse CSV data

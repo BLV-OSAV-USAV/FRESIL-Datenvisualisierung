@@ -57,21 +57,37 @@ function baseVisualization(data, color, selectedColor, filter){
     const simulation = d3.forceSimulation(data)
     .force("x", d3.forceX().strength(0.05))
     .force("y", d3.forceY().strength(0.05))
-    .force("collide", d3.forceCollide(d => d.size + 5).iterations(8))
+    .force("collide", d3.forceCollide(d => {
+      if (maxCount > 25) {
+          return d.size + 5;
+      } else if (maxCount > 10) {
+          return d.size * 4 + 5;
+      } else {
+          return d.size * 8 + 5;
+      }
+    }).iterations(8))
     .on("tick", ticked);
 
 
     circles = svg.selectAll("circle")
                   .data(data)
                   .join("circle")
-                  .attr("r", d => d.size)
-                  .attr("fill", color)
+                  .attr("r", d => {
+                      if (maxCount > 25) {
+                          return d.size;
+                      } else if (maxCount > 10) {
+                          return d.size * 4;
+                      } else {
+                          return d.size * 8;
+                      }
+                  })                  .attr("fill", color)
                   .attr("id", d => d.id)
                   .on("mouseover", function(d) {
                     // Only add stroke if the circle is not the clicked one
                     if (!d3.select(this).classed("clicked")) {
                         d3.select(this).attr("fill", selectedColor); 
                     }
+
     
       // Calculate the center position of the circle
       const circleCenterX = d.x;

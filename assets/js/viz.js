@@ -1,7 +1,6 @@
 // Bubble chart visu
 let circles;
 let svg;
-
 /**
  * Visualizes data using a bubble chart.
  * 
@@ -148,7 +147,7 @@ function baseVisualization(data, color, selectedColor, filter){
       document.querySelector('#waffle-title').innerText = title;
       // Create and display waffle chart
       createWaffleChart(treiberData, bereichData);
-      createList(id, filter);
+      createList(id, filter, lang);
     });
 
 /*     // Create text elements for displaying circle names
@@ -166,7 +165,7 @@ function baseVisualization(data, color, selectedColor, filter){
 
 
     createWaffleChart(data.find(d => d.id === defaultId).treiber, data.find(d => d.id === defaultId).bereich);
-    createList(defaultId, filter);
+    createList(defaultId, filter, lang);
     defaultCircle = svg.select(`circle[id="${defaultId}"]`);
     defaultCircle.attr("fill", selectedColor).classed("clicked", true);
     selectElement.value = data.find(d => d.id === defaultId).name; 
@@ -190,7 +189,7 @@ function baseVisualization(data, color, selectedColor, filter){
             // Run createWaffleChart and createList functions
             moveToSection('three');
             createWaffleChart(selectedCircle.treiber, selectedCircle.bereich);
-            createList(selectedCircle.id, filter);
+            createList(selectedCircle.id, filter, lang);
 
             let title = selectedCircle.name;
 
@@ -218,7 +217,7 @@ function baseVisualization(data, color, selectedColor, filter){
  * @param {number} id - The id used for filtering the CSV data.
  * @param {string} filter - The filter used for filtering the CSV data.
  */
-function createList(id, filter) {
+function createList(id, filter, lang) {
   Promise.all([
     fetch("./csv-files-filtered/filtered-ad_meldung-20231128.csv").then(response => response.text()),
     fetch(`./csv-files-filtered/filtered-ad_meldung_ad_${filter}-20231128.csv`).then(response => response.text()),
@@ -271,7 +270,7 @@ function createList(id, filter) {
           .map(meldungXtreiberRow => {
               const treiberId = meldungXtreiberRow.treiber_id;
               const treiberInfo = treiber.find(t => t.id === treiberId);
-              return treiberInfo ? treiberInfo.bezeichnung_de : '-';
+              return treiberInfo ? treiberInfo[`bezeichnung_${lang}`] : '-';
           });
           // Assign treibers to 'treiber' column
           row.treiber = treibers;
@@ -281,7 +280,7 @@ function createList(id, filter) {
           .map(meldungXmatrixRow => {
               const matrixId = meldungXmatrixRow.matrix_id;
               const matrixInfo = matrix.find(t => t.id === matrixId);
-              return matrixInfo ? matrixInfo.bezeichnung_de : '-';
+              return matrixInfo ? matrixInfo[`bezeichnung_${lang}`] : '-';
           });
           row.matrix = matrices;
 
@@ -291,7 +290,7 @@ function createList(id, filter) {
           .map(meldungXbereichRow => {
               const bereichId = meldungXbereichRow.bereich_id;
               const bereichInfo = bereich.find(t => t.id === bereichId);
-              return bereichInfo ? bereichInfo.bezeichnung_de : '-';
+              return bereichInfo ? bereichInfo[`bezeichnung_${lang}`] : '-';
           });
           // Assign treibers to 'treiber' column
           row.bereich = bereichs;

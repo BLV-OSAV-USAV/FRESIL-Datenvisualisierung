@@ -40,7 +40,7 @@ function matrixOrdnung(timeFilter, lang, bereich) {
     populateSelect(nameList);
 
     // Call the baseVisualization function with the result datas
-    baseVisualization(mergedData, '#a6cee3','#305C73', 'matrix');
+    baseVisualization(mergedData, '#a6cee3','#305C73', 'matrix', lang);
   });
 } 
 

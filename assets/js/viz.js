@@ -322,39 +322,31 @@ function createList(id, filter, lang) {
                   return '';
           }
         }
-            // Translation of <dt> tags
-          const translatedDtTags = {
-            kurzinfo: '<dt style="font-weight:bold;" class="trn">Kurzinfo</dt>',
-            wichtigkeit: '<dt style="font-weight:bold;" class="trn">Wichtigkeit</dt>',
-            treibers: '<dt style="font-weight:bold;" class="trn">Treibers</dt>',
-            matrix: '<dt style="font-weight:bold;" class="trn">Matrix</dt>',
-            bereich: '<dt style="font-weight:bold;" class="trn">Bereich</dt>',
-            links: '<dt style="font-weight:bold;" class="trn">Links</dt>'
-        };
+
       
         return (
             '<dl>' +
-            translatedDtTags.kurzinfo +
+            '<dt style="font-weight:bold;"><span class="trn">Kurzinfo</span></dt>' +
             '<dd>' +
             d.kurzinfo +
             '</dd>' +
-            translatedDtTags.wichtigkeit +
+            '<dt style="font-weight:bold;" class="trn">Wichtigkeit</dt>' +
             '<dd>' +
             convertToStars(d.sterne) +
             '</dd>' +
-            translatedDtTags.treibers +
+            '<dt style="font-weight:bold;" class="trn">Treibers</dt>' +
             '<dd>' +
             d.treiber +
             '</dd>' +
-            translatedDtTags.matrix +
+            '<dt style="font-weight:bold;" class="trn">Matrix</dt>' +
             '<dd>' +
             d.matrix +
             '</dd>' +
-            translatedDtTags.bereich +
+            '<dt style="font-weight:bold;" class="trn">Bereich</dt>' +
             '<dd>' +
             d.bereich +
             '</dd>' +
-            translatedDtTags.links +
+            '<dt style="font-weight:bold;" class="trn">Links</dt>' +
             '<dd>' +
             linksHTML +
             '</dd>' +
@@ -529,9 +521,9 @@ function createWaffleChart(treiberData, bereichData) {
 
 
     width = window.outerWidth * 0.8; // 80% of window width
-    if (window.outerWidth < 800) {
-      height = window.outerHeight * 1.5;
-      viewboxH = height + 300;
+    if (window.outerWidth < 1000) {
+      height = window.outerHeight ;
+      viewboxH = height + 200;
     } else {
       height = window.outerHeight * 0.6;
       viewboxH = height;
@@ -628,7 +620,7 @@ function createWaffleChart(treiberData, bereichData) {
         .join("g")      
         .attr("opacity", 1)
         .attr("transform", (d, i) => {
-          if (window.innerWidth < 800) { // Adjust this value as needed
+          if (window.innerWidth < 1000) { // Adjust this value as needed
               // Position the legends beneath the chart
               return `translate(0,${waffleSize + 20 + i * 40})`;
           } else {
@@ -647,9 +639,9 @@ function createWaffleChart(treiberData, bereichData) {
       legend.append("text")
         .attr("x", 40) // Adjust the x position to align the text
         .attr("y", 15) // Adjust the y position to align the text
-        .style("font-size", window.innerWidth < 800 ? "17px" : "14px") // Adjust the font sizes as needed
+        .style("font-size", window.innerWidth < 1000 ? "17px" : "14px") // Adjust the font sizes as needed
         .attr("alignment-baseline", "middle") // Align the text vertically in the middle
-        .attr("fill", (d, i) => legendData[i].ratio === 0 ? "#c7c7c7" : "black") // Assign grey color if ratio is 0
+        .attr("fill", "black") 
         .text((d, i) => `${d} (${legendData[i].ratio.toFixed(0)}%)`);
         
         /**

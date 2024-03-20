@@ -520,13 +520,12 @@ function createWaffleChart(treiberData, bereichData) {
 
 
 
-    width = window.outerWidth * 0.8; // 80% of window width
-    if (window.outerWidth < 1000) {
-      height = window.outerHeight * 2 ;
-      viewboxH = height + 200;
+    if (window.outerWidth < 900) {
+      height = window.outerHeight * 2;
+      width = window.outerWidth * 0.8;
     } else {
       height = window.outerHeight * 0.6;
-      viewboxH = height + 200;
+      width = window.outerWidth * 0.8
     }
     waffleSize = width < height ? width : height;
 
@@ -622,7 +621,7 @@ function createWaffleChart(treiberData, bereichData) {
         .join("g")      
         .attr("opacity", 1)
         .attr("transform", (d, i) => {
-          if (window.innerWidth < 1000) { // Adjust this value as needed
+          if (window.innerWidth < 900) { // Adjust this value as needed
               // Position the legends beneath the chart
               return `translate(0,${waffleSize + 20 + i * 40})`;
           } else {
@@ -641,7 +640,7 @@ function createWaffleChart(treiberData, bereichData) {
       legend.append("text")
         .attr("x", 40) // Adjust the x position to align the text
         .attr("y", 15) // Adjust the y position to align the text
-        .style("font-size", window.innerWidth < 1000 ? "17px" : "14px") // Adjust the font sizes as needed
+        .style("font-size", window.innerWidth < 900 ? "20px" : "14px") // Adjust the font sizes as needed
         .attr("alignment-baseline", "middle") // Align the text vertically in the middle
         .attr("fill", "black") 
         .text((d, i) => `${d} (${legendData[i].ratio.toFixed(0)}%)`);

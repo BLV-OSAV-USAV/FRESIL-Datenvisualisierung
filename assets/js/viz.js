@@ -325,6 +325,7 @@ function createList(id, filter, lang) {
       // Define language-specific text mappings
       var translations = {
         'de': {
+            'Column_visibility': 'Sichtbarkeit der Spalte',
             'Titel': 'Titel',
             'Datum': 'Datum',
             'Kurzinfo': 'Kurzinfo',
@@ -335,6 +336,7 @@ function createList(id, filter, lang) {
             'Links': 'Links'
         },
         'fr': {
+            'Column_visibility': 'Visibilité des colonnes',
             'Titel': 'Titre',
             'Datum': 'Date',
             'Kurzinfo': 'Résumé',
@@ -345,6 +347,7 @@ function createList(id, filter, lang) {
             'Links': 'Liens'
         },
         'it': {
+            'Column_visibility': 'Visibilità delle colonne',
             'Titel': 'Titolo',
             'Datum': 'Data',
             'Kurzinfo': 'Sintesi',
@@ -355,6 +358,7 @@ function createList(id, filter, lang) {
             'Links': 'Links'
         },
         'en': {
+            'Column_visibility': 'Column visibility',
             'Titel': 'Title',
             'Datum': 'Date',
             'Kurzinfo': 'Summary',
@@ -399,6 +403,7 @@ function createList(id, filter, lang) {
                 {
                   extend: 'colvis',
                   columns: ':not(.noVis)',
+                  text: getTranslatedText(translations, lang,'Column_visibility'),
                   popoverTitle: 'Column visibility selector'
               }
             ]}},

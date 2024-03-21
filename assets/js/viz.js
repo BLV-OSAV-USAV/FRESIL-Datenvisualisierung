@@ -389,7 +389,7 @@ function createList(id, filter, lang) {
                 {
                     extend: 'csv',
                     filename: 'FRESIL_export', // Change 'custom_filename' to the desired name
-                    text: 'Export CSV', // Optional: Change the text of the button
+                    text: 'CSV', // Optional: Change the text of the button
                     charset: 'UTF-8',
                     exportOptions: {
                       orthogonal: 'exportData', // Use raw data for export

@@ -2,9 +2,15 @@
 let circles;
 let svg;
 
-// Function to get translated text based on language
+/**
+ * Retrieves translated text based on language.
+ * @param {Object} translation - Object containing translations.
+ * @param {string} lang - Language code.
+ * @param {string} key - Key for the translation.
+ * @returns {string} - Translated text or original key if not found.
+ */
 function getTranslatedText(translation, lang, key) {
-  return translation[lang][key] || key; // Return the translated text or the key itself if not found
+  return translation[lang][key] || key; // Returns translated text or key itself if not found
 }
 
 /**
@@ -553,7 +559,7 @@ function createWaffleChart(treiberData, bereichData) {
 
     scale = d3.scaleBand()
                 .domain(sequence(10))
-                .range([0, waffleSize])
+                .range([waffleSize, 0])
                 .padding(0.1);
 
     d3.select("div#stat")
@@ -575,6 +581,7 @@ function createWaffleChart(treiberData, bereichData) {
                     .data(d => d)
                     .join("rect")
                     .attr("fill", (d) => d.index === -1 ? "#ddd" : chartData[d.index].color);
+                    
     
 
     cells.attr("x", d => scale(d.x))

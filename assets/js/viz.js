@@ -387,7 +387,7 @@ function createList(id, filter, lang) {
             'Datum': 'Datum',
             'Kurzinfo': 'Kurzinfo',
             'Wichtigkeit': 'Wichtigkeit',
-            'Treibers': 'Treibers',
+            'Treibers': 'Treiber',
             'Matrix': 'Lebensmittelgruppen',
             'Bereich': 'Bereich',
             'Links': 'Links'

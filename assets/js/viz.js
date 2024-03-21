@@ -524,7 +524,7 @@ function createWaffleChart(treiberData, bereichData) {
       height = window.outerHeight * 2;
       width = window.outerWidth * 0.8;
     } else {
-      height = window.outerHeight * 0.6;
+      height = window.outerHeight *0.7;
       width = window.outerWidth * 0.8
     }
     waffleSize = width < height ? width : height;
@@ -559,7 +559,6 @@ function createWaffleChart(treiberData, bereichData) {
       .classed("svg-container", true);
 
     svg_waffle = d3.select("svg#waffleChart")
-                    .attr("preserveAspectRatio", "xMinYMin meet")
                     .attr("viewBox", [0, 0, width, height])
                     .classed("svg-content-responsive", true);
     
@@ -592,21 +591,6 @@ function createWaffleChart(treiberData, bereichData) {
       .duration(d => d.y * 100)
       .ease(d3.easeBounce)
       .attr("y", d => scale(d.y));
-
-
-    // Calculate the width and height of the SVG
-    const svgBounds = svg_waffle.node().getBoundingClientRect();
-    const svgWidth = svgBounds.width;
-    const svgHeight = svgBounds.height;
-
-    // Update the width and height of the div
-    const div = d3.select("#waffleChart").node();
-    const divStyle = window.getComputedStyle(div);
-    const divPadding = parseFloat(divStyle.paddingLeft) + parseFloat(divStyle.paddingRight);
-    const newWidth = svgWidth + divPadding; // Add padding if necessary
-    const newHeight = svgHeight + divPadding ; // Add padding if necessary
-
-    div.style.height = `${newHeight}px`;
 
 
     svg_waffle.transition().delay(550)

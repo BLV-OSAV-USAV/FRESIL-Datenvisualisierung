@@ -1,6 +1,12 @@
 // Bubble chart visu
 let circles;
 let svg;
+
+// Function to get translated text based on language
+function getTranslatedText(translation, lang, key) {
+  return translation[lang][key] || key; // Return the translated text or the key itself if not found
+}
+
 /**
  * Visualizes data using a bubble chart.
  * 
@@ -9,7 +15,7 @@ let svg;
  * @param {string} selectedColor - The color of the selected bubble.
  * @param {string} filter - The filter to be applied to the data.
  */
-function baseVisualization(data, color, selectedColor, filter){
+function baseVisualization(data, color, selectedColor, filter, lang){
 
 	  let width = 0;
     let defaultId = ''; // Variable to store the id of the data with the biggest count
@@ -103,14 +109,34 @@ function baseVisualization(data, color, selectedColor, filter){
           .style("top", (circleCenterY + offsetheight) + "px")
           .select("#titel")
           .text(d.name);
+
+      let translations = {
+          'de': {
+              'Anzahl': 'Anzahl Meldungen:',
+              'D_Wichtigkeit': 'Durchschnittliche Wichtigkeit:'
+          },
+          'fr': {
+              'Anzahl': 'Nombres de Notifications:',
+              'D_Wichtigkeit': 'Importance moyenne:'
+          },
+          'it': {
+              'Anzahl': 'Numero di notifiche:',
+              'D_Wichtigkeit': 'Importanza media:'
+          },
+          'en': {
+              'Anzahl': 'Number of Notifications:',
+              'D_Wichtigkeit': 'Average Importance:'
+          }
+      };
+        
     
       d3.select("#tooltip")  
           .select("#meldungCount")
-          .text(`Anzahl Meldungen: ${d.count}`);
+          .text(`${getTranslatedText(translations, lang,'Anzahl')} ${d.count}`);
     
       d3.select("#tooltip")
           .select("#meanSterne")
-          .text(`Durchschnittliche Wichtigkeit: ${d.mean_sterne}`);
+          .text(`${getTranslatedText(translations, lang, 'D_Wichtigkeit')} ${d.mean_sterne}`);
     
       d3.select("#tooltip").classed("hidden", false);
     
@@ -302,7 +328,7 @@ function createList(id, filter, lang) {
        * @param {Object} d - The original data object for the row.
        * @returns {string} The formatted HTML string.
        */
-      function format(d) {
+      function format(d, dct) {
         // `d` is the original data object for the row
         let linksHTML = '';
         for (const link of d.links) {
@@ -326,33 +352,77 @@ function createList(id, filter, lang) {
       
         return (
             '<dl>' +
-            '<dt style="font-weight:bold;"><span class="trn">Kurzinfo</span></dt>' +
+            '<dt style="font-weight:bold;"><span class="trn">' + getTranslatedText(dct, lang,'Kurzinfo') + '</span></dt>' +
             '<dd>' +
             d.kurzinfo +
             '</dd>' +
-            '<dt style="font-weight:bold;" class="trn">Wichtigkeit</dt>' +
+            '<dt style="font-weight:bold;" class="trn">' + getTranslatedText(dct, lang,'Wichtigkeit') + '</dt>' +
             '<dd>' +
             convertToStars(d.sterne) +
             '</dd>' +
-            '<dt style="font-weight:bold;" class="trn">Treibers</dt>' +
+            '<dt style="font-weight:bold;" class="trn">' + getTranslatedText(dct, lang,'Treibers') + '</dt>' +
             '<dd>' +
             d.treiber +
             '</dd>' +
-            '<dt style="font-weight:bold;" class="trn">Matrix</dt>' +
+            '<dt style="font-weight:bold;" class="trn">' + getTranslatedText(dct,lang,'Matrix') + '</dt>' +
             '<dd>' +
             d.matrix +
             '</dd>' +
-            '<dt style="font-weight:bold;" class="trn">Bereich</dt>' +
+            '<dt style="font-weight:bold;" class="trn">' + getTranslatedText(dct,lang,'Bereich') + '</dt>' +
             '<dd>' +
             d.bereich +
             '</dd>' +
-            '<dt style="font-weight:bold;" class="trn">Links</dt>' +
+            '<dt style="font-weight:bold;" class="trn">' + getTranslatedText(dct,lang,'Links') + '</dt>' +
             '<dd>' +
             linksHTML +
             '</dd>' +
             '</dl>'
         );
       }
+
+      // Define language-specific text mappings
+      var translations = {
+        'de': {
+            'Titel': 'Titel',
+            'Datum': 'Datum',
+            'Kurzinfo': 'Kurzinfo',
+            'Wichtigkeit': 'Wichtigkeit',
+            'Treibers': 'Treibers',
+            'Matrix': 'Lebensmittelgruppen',
+            'Bereich': 'Bereich',
+            'Links': 'Links'
+        },
+        'fr': {
+            'Titel': 'Titre',
+            'Datum': 'Date',
+            'Kurzinfo': 'Résumé',
+            'Wichtigkeit': 'Importance',
+            'Treibers': 'Moteurs',
+            'Matrix': 'Groupe d\'aliments',
+            'Bereich': 'Domaines',
+            'Links': 'Liens'
+        },
+        'it': {
+            'Titel': 'Titolo',
+            'Datum': 'Data',
+            'Kurzinfo': 'Sintesi',
+            'Wichtigkeit': 'Importanza',
+            'Treibers': 'Driver',
+            'Matrix': 'Gruppi Alimentari',
+            'Bereich': 'Settore',
+            'Links': 'Links'
+        },
+        'en': {
+            'Titel': 'Title',
+            'Datum': 'Date',
+            'Kurzinfo': 'Summary',
+            'Wichtigkeit': 'Importance',
+            'Treibers': 'Drivers',
+            'Matrix': 'Food groups',
+            'Bereich': 'Domains',
+            'Links': 'Links'
+        }
+      };
 
 
       // Check if the DataTable instance already exists
@@ -375,8 +445,8 @@ function createList(id, filter, lang) {
                     data: null,
                     defaultContent: ''
                 },
-                { title: 'Titel', data: 'titel' },
-                { title: 'date', data: 'Dates_erf_date' }
+                { title: getTranslatedText(translations, lang,'Titel'), data: 'titel' },
+                { title: getTranslatedText(translations, lang,'Datum'), data: 'Dates_erf_date' }
             ],
             data: filteredData, // Pass the modified data to the DataTable
             scrollY: '500px', // Set a fixed height for the table body
@@ -396,7 +466,7 @@ function createList(id, filter, lang) {
                 tr.removeClass('shown');
             } else {
                 // Open this row (the format() function would return the data to be shown)
-                row.child(format(row.data())).show();
+                row.child(format(row.data(),translations)).show();
                 tr.addClass('shown');
             }
         });

@@ -322,64 +322,6 @@ function createList(id, filter, lang) {
           row.bereich = bereichs;
       });
 
-      /**
-       * Formats the data object for a row.
-       * 
-       * @param {Object} d - The original data object for the row.
-       * @returns {string} The formatted HTML string.
-       */
-      function format(d, dct) {
-        // `d` is the original data object for the row
-        let linksHTML = '';
-        for (const link of d.links) {
-            const key = Object.keys(link)[0]; // Extracting the key from the link object
-            const value = link[key]; // Extracting the value from the link object
-            linksHTML += `<a href="${value}" target="_blank">${key}</a><br>`;
-        }
-        function convertToStars(num) {
-          switch (num) {
-              case '1':
-                  return '<span>&#9733;&#9734;&#9734</span>'; // One star symbol
-              case '2':
-                  return '<span>&#9733;&#9733;&#9734</span>'; // Two star symbols
-              case '3':
-                  return '<span>&#9733;&#9733;&#9733;</span>'; // Three star symbols
-              default:
-                  return '';
-          }
-        }
-
-      
-        return (
-            '<dl>' +
-            '<dt style="font-weight:bold;"><span class="trn">' + getTranslatedText(dct, lang,'Kurzinfo') + '</span></dt>' +
-            '<dd>' +
-            d.kurzinfo +
-            '</dd>' +
-            '<dt style="font-weight:bold;" class="trn">' + getTranslatedText(dct, lang,'Wichtigkeit') + '</dt>' +
-            '<dd>' +
-            convertToStars(d.sterne) +
-            '</dd>' +
-            '<dt style="font-weight:bold;" class="trn">' + getTranslatedText(dct, lang,'Treibers') + '</dt>' +
-            '<dd>' +
-            d.treiber +
-            '</dd>' +
-            '<dt style="font-weight:bold;" class="trn">' + getTranslatedText(dct,lang,'Matrix') + '</dt>' +
-            '<dd>' +
-            d.matrix +
-            '</dd>' +
-            '<dt style="font-weight:bold;" class="trn">' + getTranslatedText(dct,lang,'Bereich') + '</dt>' +
-            '<dd>' +
-            d.bereich +
-            '</dd>' +
-            '<dt style="font-weight:bold;" class="trn">' + getTranslatedText(dct,lang,'Links') + '</dt>' +
-            '<dd>' +
-            linksHTML +
-            '</dd>' +
-            '</dl>'
-        );
-      }
-
       // Define language-specific text mappings
       var translations = {
         'de': {
@@ -424,6 +366,18 @@ function createList(id, filter, lang) {
         }
       };
 
+      function convertToStars(num) {
+        switch (num) {
+            case '1':
+                return '<span>&#9733;&#9734;&#9734</span>'; // One star symbol
+            case '2':
+                return '<span>&#9733;&#9733;&#9734</span>'; // Two star symbols
+            case '3':
+                return '<span>&#9733;&#9733;&#9733;</span>'; // Three star symbols
+            default:
+                return '';
+        }
+      }
 
       // Check if the DataTable instance already exists
       if (!table) {
@@ -436,81 +390,53 @@ function createList(id, filter, lang) {
                     extend: 'csv',
                     filename: 'FRESIL_export', // Change 'custom_filename' to the desired name
                     text: 'Export CSV', // Optional: Change the text of the button
-                }
+                    charset: 'UTF-8',
+                    exportOptions: {
+                      orthogonal: 'exportData', // Use raw data for export
+                      columns: ':visible'
+                    }
+                },
+                {
+                  extend: 'colvis',
+                  columns: ':not(.noVis)',
+                  popoverTitle: 'Column visibility selector'
+              }
             ]}},
             columns: [
-                {
-                    className: 'dt-control',
-                    orderable: false,
-                    data: null,
-                    defaultContent: ''
-                },
                 { title: getTranslatedText(translations, lang,'Titel'), data: 'titel' },
-                { title: getTranslatedText(translations, lang,'Datum'), data: 'Dates_erf_date' }
+                { title: getTranslatedText(translations, lang,'Datum'), data: 'Dates_erf_date'},
+                { title: getTranslatedText(translations, lang,'Kurzinfo'), data: 'kurzinfo', visible: false},
+                { title: getTranslatedText(translations, lang,'Wichtigkeit'), data: 'sterne', visible: false,
+                                            render: (data, type, row) =>  type === 'exportData' ? data : convertToStars(data)},
+                { title: getTranslatedText(translations, lang,'Treiber'), data: 'treiber', visible: false},
+                { title: getTranslatedText(translations, lang,'Matrix'), data: 'matrix', visible: false},
+                { title: getTranslatedText(translations, lang,'Bereich'), data: 'bereich', visible: false},
+                { title: getTranslatedText(translations, lang,'Links'), data: 'links', visible: false,
+                                            render: function(data, type, row){
+                                              if (type === 'exportData'){
+                                                return data.map(link => Object.values(link)[0]).join(', ')
+                                              } else {
+                                                let linksHTML = '';
+                                                for (const link of data) {
+                                                    const key = Object.keys(link)[0]; // Extracting the key from the link object
+                                                    const value = link[key]; // Extracting the value from the link object
+                                                    linksHTML += `<a href="${value}" target="_blank">${key}</a><br>`;
+                                                }
+                                                return linksHTML}
+                                            } }
             ],
             data: filteredData, // Pass the modified data to the DataTable
             scrollY: '500px', // Set a fixed height for the table body
+            scrollX: '100%',
             scrollCollapse: true, // Allow collapsing the table height if the content doesn't fill it
             paging: false, // Disable pagination
-            order: [[2, 'desc']] // Order by the 'date' column in descending order
+            order: [[1, 'desc']] // Order by the 'date' column in descending order
         });
         
-        // Bind the click event handler to the DataTable
-        $('#filtered-table tbody').on('click', 'td.dt-control', function () {
-            var tr = $(this).parents('tr');
-            var row = table.row(tr);
-        
-            if (row.child.isShown()) {
-                // This row is already open - close it
-                row.child.hide();
-                tr.removeClass('shown');
-            } else {
-                // Open this row (the format() function would return the data to be shown)
-                row.child(format(row.data(),translations)).show();
-                tr.addClass('shown');
-            }
-        });
     } else {
         // If DataTable instance already exists, just update its data
         table.clear().rows.add(filteredData).draw();
     }
-    
-
-/*       document.getElementById('export-button').addEventListener('click', function() {
-        // Convert the filteredData dataframe to a CSV string
-        const csvContent = convertDataFrameToCSV(filteredData);
-    
-        // Create a Blob object containing the CSV data
-        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-    
-        // Create a temporary anchor element to trigger the download
-        const link = document.createElement('a');
-        if (link.download !== undefined) { // Check if the download attribute is supported
-            // Create a URL for the Blob object
-            const url = URL.createObjectURL(blob);
-            link.setAttribute('href', url);
-            link.setAttribute('download', 'filtered_data.csv'); // Set the file name
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        } else {
-            // If the download attribute is not supported, fallback to a data URI
-            const csvData = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvContent);
-            window.open(csvData, '_blank');
-        }
-    });
-    
-    // Function to convert DataFrame to CSV format
-    function convertDataFrameToCSV(dataFrame) {
-        const headers = Object.keys(dataFrame[0]);
-        const rows = dataFrame.map(row => {
-            return headers.map(header => {
-                return row[header];
-            }).join(',');
-        });
-        return [headers.join(','), ...rows].join('\n');
-    } */
-    
 
               });
         }

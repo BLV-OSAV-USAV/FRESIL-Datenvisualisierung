@@ -301,7 +301,7 @@ function createList(id, filter, lang, meldung_ids) {
         const matrix = d3.dsvFormat("#").parse(matrixText);
 
 
-        const filteredData = meldungs.filter(row => meldung_ids.includes(+row.id));  
+        const filteredData = meldungs.filter(row => meldung_ids.includes(Number(row.id)));  
 
         // Add 'links' column to filteredData
         filteredData.forEach(row => {

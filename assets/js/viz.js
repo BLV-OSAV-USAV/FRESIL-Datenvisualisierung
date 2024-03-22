@@ -98,30 +98,39 @@ function baseVisualization(data, color, selectedColor, filter, lang){
                       }
                   })                  .attr("fill", color)
                   .attr("id", d => d.id)
-                  .each(function(d) {
-                    const circle = d3.select(this);
-                    const circleRadius = +circle.attr("r");
-                    const textWidth = getTextWidth(d.name, "12px Arial"); // Adjust font size and font family as needed
-            
-                    // Check if the text fits within the circle's radius
-                    if (textWidth <= circleRadius * 2) {
-                        // Add text if it fits within the circle
-                        svg.append("text")
-                            .attr("class", "circle-text")
-                            .attr("x", d.x) // Position text at the x-coordinate of the circle
-                            .attr("y", d.y) // Position text at the y-coordinate of the circle
-                            .attr("text-anchor", "middle")
-                            .attr("alignment-baseline", "middle")
-                            .style("font-size", "12px") // Adjust font size as needed
-                            .text(d.name);
-                    }
-                })
                   .on("mouseover", function(d) {
                     // Only add stroke if the circle is not the clicked one
                     if (!d3.select(this).classed("clicked")) {
                         d3.select(this).attr("fill", selectedColor); 
                     }                       
+      // Append text elements for the five bigger circles
+      svg.selectAll("text")
+        .data(data.filter((d, i) => i < 5)) // Filter only the five bigger circles
+        .enter()
+        .append("text")
+        .attr("x", d => d.x) // Set x position based on data
+        .attr("y", d => d.y) // Set y position based on data
+        .text(d => d.name)   // Set text content to d.name
+        .attr("text-anchor", "middle") // Center the text horizontally
+        .attr("alignment-baseline", "middle") // Center the text vertically
+        .attr("fill", "black") // Set text color
+        .style("font-size", function(d) {
+            const circleRadius = d.size; // Get circle radius
+            const textWidth = getTextWidth(d.name, "10px sans-serif"); // Adjust font size and font family as needed
+            const maxAllowableFontSize = circleRadius * 2 / textWidth * 10; // Calculate maximum allowable font size
+            return Math.min(maxAllowableFontSize, 10) + "px"; // Set font size to the smaller of the calculated size and 10px
+      });
 
+      // Function to calculate text width
+      function getTextWidth(text, font) {
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
+        context.font = font;
+        return context.measureText(text).width;
+      }
+
+
+                        
     
       // Calculate the center position of the circle
       const circleCenterX = d.x;

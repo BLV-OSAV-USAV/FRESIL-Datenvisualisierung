@@ -288,7 +288,7 @@ function createList(id, filter, lang, meldung_ids) {
     fetch("./csv-files-filtered/filtered-ad_bereich-20231128.csv").then(response => response.text()),
     fetch("./csv-files-filtered/filtered-ad_meldung_ad_matrix-20231128.csv").then(response => response.text()),
     fetch("./csv-files-filtered/filtered-ad_matrix-20231128.csv").then(response => response.text()),
-    ]).then(([meldungsText, meldungXfilterText, publikationDetailText, publikationText, 
+    ]).then(([meldungsText, publikationDetailText, publikationText, 
           meldungXtreiberText, treiberText, meldungXbereichText, bereichText, meldungXmatrixText, matrixText]) => {
       // Parse CSV data
         const meldungs = d3.dsvFormat("#").parse(meldungsText);

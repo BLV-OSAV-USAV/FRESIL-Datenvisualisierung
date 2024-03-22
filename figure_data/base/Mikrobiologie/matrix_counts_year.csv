@@ -1,51 +1,51 @@
 id,count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne
-1,16,Diverse Lebensmittel,Aliments divers,Alimenti vari,Diverse foods,1.62
+1,15,Diverse Lebensmittel,Aliments divers,Alimenti vari,Diverse foods,1.53
 3,13,Gemüse,Légumes,Ortaggi,Vegetables,1.92
-34,10,Früchte,Fruits,Frutta,Fruits,1.5
 54,10,Geflügel,Volailles,Pollame,Poultry,1.9
+34,10,Früchte,Fruits,Frutta,Fruits,1.5
 23,8,"Blattgemüse (ohne Kohlgemüse), Blattsalate und Algen","Légumes-feuilles (excl. chou), mescluns et algues","Verdure a foglie (esclusi cavoli), insalate a foglie e alghe",Leafy Vegetables (Except Cabbages),1.75
 8,7,"Fleisch, Fleischprodukte und Fleischersatz","Viandes, produits à base de viande et substituts de viande","Carne, prodotti di carne e sostituti della carne","Meat, Meat Products And Substitutes",1.57
 59,6,"Nicht spezifizierte sowie gemischte Fische, Meeresfrüchte und Amphibien","Poissons, fruits de mer, amphibiens et reptiles non spécifiés ou mélangés","Pesce, crostacei frutti die mare e anfibi non classificati e misti",Unclassified And Combined Fish Products,1.0
-24,5,Blüten- und Fruchtgemüse,Légumes-fruits,"Ortaggi da fiore, verdura a frutti ",Fruiting Vegetables,1.2
 30,5,Blattstiel- und Stängelgemüse sowie Keimlinge und Sprossen,"Légumes-tiges, germes et pousses",Ortaggi a stelo e germogli,"Stalk Vegetables, Sprouts",1.0
-22,5,Nicht spezifizierte sowie gemischte Gemüse und Salate,Légumes et salades non spécifiés ou mélangés,Insalate e ortaggi misti non specificati,"Unclassified, Mixed Salad/Vegetables",1.6
 9,5,"Fische, Meeresfrüchte, Amphibien und Reptilien","Poissons, fruits de mer, amphibiens et reptiles","Pesce, crostacei, frutti di mare e anfibi","Fish, Shellfish And Amphibians",1.2
-120,4,Schwein,Porc,Maiale,Pork,1.5
+22,5,Nicht spezifizierte sowie gemischte Gemüse und Salate,Légumes et salades non spécifiés ou mélangés,Insalate e ortaggi misti non specificati,"Unclassified, Mixed Salad/Vegetables",1.6
+24,5,Blüten- und Fruchtgemüse,Légumes-fruits,"Ortaggi da fiore, verdura a frutti ",Fruiting Vegetables,1.2
 29,4,"Zwiebelgemüse (z.B. Knoblauch, Lauch, Zwiebel)","Légumes-bulbes (p.ex. ail, poireau, oignon)","Ortaggi a bulbo (p.e. porro, cipolla, aglio)","Leek, Onion, Garlic",1.25
 58,4,Fleischersatz,Substituts de viande,Sostituti della carne,Meat Substitutes,1.75
 39,4,Milchersatz und Milchersatzprodukte,Substituts de lait et produits à base de substitut de lait,Succedanei del latte e prodotti a base di succedanei del latte,Milk Substitutes And Milk Substitute Products,2.0
-42,3,Käse,Fromages,Formaggi,Cheeses (Including Spread Cheeses),2.33
-6,3,"Milch, Milchprodukte und Milchersatzprodukte","Laits, produits laitiers et substituts de lait","Latte, latticini e succedanei del latte",Dairy Products And Substitutes,2.33
-126,3,Huhn und Hähnchen,"Poule, poulet","Pollo, gallina","Chicken, Hen",1.0
+120,4,Schwein,Porc,Maiale,Pork,1.5
 60,3,Fische,Poissons,Pesce,Fish,1.33
 61,3,Schalen- und Weichtiere,Crustacés et mollusques,Crostacei e molluschi,"Crustaceans, Molluscs",1.33
+42,3,Käse,Fromages,Formaggi,Cheeses (Including Spread Cheeses),2.33
+126,3,Huhn und Hähnchen,"Poule, poulet","Pollo, gallina","Chicken, Hen",1.0
+6,3,"Milch, Milchprodukte und Milchersatzprodukte","Laits, produits laitiers et substituts de lait","Latte, latticini e succedanei del latte",Dairy Products And Substitutes,2.33
+52,2,"Nicht spezifizierte sowie gemischte Fleisch, Fleischprodukte und Fleischersatz","Viandes, produits à base de viande et substituts de viande non spécifiés ou mélangés","Carne, prodotti di carne e sostituti della carne non specificati e misti",Unclassified And Combined Meat And Meat P,1.0
+117,2,Nicht spezifizierte sowie gemischte und andere Säugetiere,"Mammifères non spécifiés, autres mammifères ou mélangés","Mammiferi non specificati, misti e altri mammiferi","Unclassified, Mixed And Other Mammals",3.0
 86,2,Bier,Bière,Birra,Beer,1.5
-56,2,Fleisch- und Wurstwaren (verarbeitetes Fleisch),Charcuterie,Prodotti di carne e insaccati (carne trasformata),Processed Meat,1.5
+45,2,Speiseeis (inkl. Sorbet und Wasserglace),"Glaces, substituts de glace, sorbets et glaces à l'eau",Gelato (inclusi sorbetti e ghiaccioli),"Ice Cream And Substitutes, Sorbet And Wat",1.0
+27,2,Pilze,Champignons,Funghi,Mushrooms,1.5
+55,2,Wild,Gibier,Selvaggina,Game,1.5
 155,2,Nicht spezifizierte sowie gemischte Diätprodukte und Sportlernahrung,Produits diététiques et aliments pour sportifs non spécifiés ou mélangés,Prodotti dietetici e alimenti per sportivi non classificati e misti,Unclassified And Combined Dietetic Produc,1.5
 7,2,"Getreide, Getreideprodukte und Körner",Céréales et produits céréaliers,Cereali e prodotti cereali,Cereals And Cereal Products,1.5
-45,2,Speiseeis (inkl. Sorbet und Wasserglace),"Glaces, substituts de glace, sorbets et glaces à l'eau",Gelato (inclusi sorbetti e ghiaccioli),"Ice Cream And Substitutes, Sorbet And Wat",1.0
-52,2,"Nicht spezifizierte sowie gemischte Fleisch, Fleischprodukte und Fleischersatz","Viandes, produits à base de viande et substituts de viande non spécifiés ou mélangés","Carne, prodotti di carne e sostituti della carne non specificati e misti",Unclassified And Combined Meat And Meat P,1.0
-27,2,Pilze,Champignons,Funghi,Mushrooms,1.5
-117,2,Nicht spezifizierte sowie gemischte und andere Säugetiere,"Mammifères non spécifiés, autres mammifères ou mélangés","Mammiferi non specificati, misti e altri mammiferi","Unclassified, Mixed And Other Mammals",3.0
-55,2,Wild,Gibier,Selvaggina,Game,1.5
-123,1,Ziege,Chèvre,Capra,Goat,2.0
+56,2,Fleisch- und Wurstwaren (verarbeitetes Fleisch),Charcuterie,Prodotti di carne e insaccati (carne trasformata),Processed Meat,1.5
+33,1,"Nicht spezifizierte sowie gemischte Früchte, Nüsse und Samen","Fruits, fruits oléagineux et graines non spécifiés ou mélangés","Frutta, frutta oleaginosa e semi non specificati e misti","Unclassified, Mixed Fruits, Nuts And Seed",1.0
+67,1,Pflanzliche Öle,Huiles végétales,Oli vegetali,Vegetable Oils,1.0
+104,1,Nicht spezifizierte sowie gemischte Milch und Milchgetränke,Laits et boissons à base de laits non spécifiés ou mélangés,Latte e bevande a base di latte non specificate e miste,Unclassified Or Combined Milk And Milk Beverages,2.0
+38,1,"Milch, Milchgetränke und fermentierte Milchgetränke","Laits, boissons à base de lait ou de lait fermenté","Latte, bevande a base di latte e di latte fermentato","Milk, Milk Beverages And Fermented Milk Beverages",2.0
+2,1,Kartoffeln und andere stärkehaltige Wurzelknollen,Pommes de terre et autres tubercules féculents,Patate e altri tuberi amidacei,Potatoes And Other Tubers,3.0
+21,1,Kartoffeln,Pommes de terre,Patate,Potatoes,1.0
+26,1,Kohlgemüse,Choux,Cavoli,Cabbages,1.0
+150,1,Tomatensaucen,Sauces tomate,Salse di pomodoro,Tomato Sauces,1.0
 18,1,Diverse Lebensmittel,Aliments divers,Diverse derrate alimentari,Miscellaneous,1.0
+93,1,"Gewürze, Kräuter und Aromastoffe","Epices, herbes et aromates","Spezie, erbe e aromi","Spices, Herbs And Flavourings",2.0
+62,1,Fischprodukte und panierter Fisch,Produits à base de poissons et poissons panés,Prodotti della pesca e pesce impanato,"Fish Products, Fish In Crumbs",1.0
+32,1,Hülsenfrüchte,Légumes secs,Leguminose,Legumes,2.0
+65,1,Eier,Oeufs,Uova,Egg,1.0
+151,1,"Salatsaucen, Dips und Mayonnaise","Sauces à salade, dips et mayonnaises","Salse per insalata, dips e maionese","Dressing Sauces, Mayonnaises And Similars",1.0
+118,1,Rind,Boeuf,Manzo,Beef,1.0
+47,1,"Flocken, Griess, Keime, Mehl, Schrot und Stärke (inkl. Pulver für Desserts)","Farine, fécule, gruau, germes, flocons, semoule utilisée comme farine (incl. poudre pour desserts)","Farina, fiocchi, germi, faricello, semola e amidi (incluse polveri per dessert)","Flours, Starches, Flakes, Semolina Used A",1.0
+123,1,Ziege,Chèvre,Capra,Goat,2.0
 121,1,"Lamm, Schaf und Hammel","Agneau, brebis et mouton","Agnello, pecora e montone",Mutton/Lamb,2.0
 106,1,Fermentierte Milch und Milchgetränke sowie Joghurtdrinks,"Laits fermentés et boissons à base de lait fermenté, yogourts à boire","Latte fermentato, bevande a base di latte fermentato e yogurt da bere","Fermented Milk, Milk Beverages And Yoghurt",3.0
 82,1,Wasser,Eau,Acqua,Waters,2.0
-151,1,"Salatsaucen, Dips und Mayonnaise","Sauces à salade, dips et mayonnaises","Salse per insalata, dips e maionese","Dressing Sauces, Mayonnaises And Similars",1.0
-65,1,Eier,Oeufs,Uova,Egg,1.0
-47,1,"Flocken, Griess, Keime, Mehl, Schrot und Stärke (inkl. Pulver für Desserts)","Farine, fécule, gruau, germes, flocons, semoule utilisée comme farine (incl. poudre pour desserts)","Farina, fiocchi, germi, faricello, semola e amidi (incluse polveri per dessert)","Flours, Starches, Flakes, Semolina Used A",1.0
-118,1,Rind,Boeuf,Manzo,Beef,1.0
-150,1,Tomatensaucen,Sauces tomate,Salse di pomodoro,Tomato Sauces,1.0
-93,1,"Gewürze, Kräuter und Aromastoffe","Epices, herbes et aromates","Spezie, erbe e aromi","Spices, Herbs And Flavourings",2.0
-32,1,Hülsenfrüchte,Légumes secs,Leguminose,Legumes,2.0
-62,1,Fischprodukte und panierter Fisch,Produits à base de poissons et poissons panés,Prodotti della pesca e pesce impanato,"Fish Products, Fish In Crumbs",1.0
-21,1,Kartoffeln,Pommes de terre,Patate,Potatoes,1.0
-26,1,Kohlgemüse,Choux,Cavoli,Cabbages,1.0
-67,1,Pflanzliche Öle,Huiles végétales,Oli vegetali,Vegetable Oils,1.0
-2,1,Kartoffeln und andere stärkehaltige Wurzelknollen,Pommes de terre et autres tubercules féculents,Patate e altri tuberi amidacei,Potatoes And Other Tubers,3.0
-38,1,"Milch, Milchgetränke und fermentierte Milchgetränke","Laits, boissons à base de lait ou de lait fermenté","Latte, bevande a base di latte e di latte fermentato","Milk, Milk Beverages And Fermented Milk Beverages",2.0
-104,1,Nicht spezifizierte sowie gemischte Milch und Milchgetränke,Laits et boissons à base de laits non spécifiés ou mélangés,Latte e bevande a base di latte non specificate e miste,Unclassified Or Combined Milk And Milk Beverages,2.0
-33,1,"Nicht spezifizierte sowie gemischte Früchte, Nüsse und Samen","Fruits, fruits oléagineux et graines non spécifiés ou mélangés","Frutta, frutta oleaginosa e semi non specificati e misti","Unclassified, Mixed Fruits, Nuts And Seed",1.0
 100,1,Diätprodukte und Sportlernahrung,Produits diététiques et aliments pour sportifs,Prodotti dietetici e alimenti per sportivi,Dietetic Products,1.0

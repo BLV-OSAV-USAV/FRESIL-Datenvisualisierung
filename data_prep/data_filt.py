@@ -67,10 +67,18 @@ def change_Unspecified_matrix(file,column):
 
     return file
 
-#def filter_unspecified(file,column):
-    
+def filter_unspecified_matrixXmeldung(file):
+    meldung_ids = file[file['matrix_id'] == 1].meldung_id
 
+    meldung_id_2 = file[(file['meldung_id'].isin(meldung_ids)) & (file['matrix_id'] != 1)].meldung_id
 
+    # Create a boolean mask to identify rows to drop
+    rows_to_drop = (file['meldung_id'].isin(meldung_id_2)) & (file['matrix_id'] == 1)
+
+    # Drop the rows using the boolean mask
+    file = file[~rows_to_drop]
+
+    return file
 
 
 def prep_data(input_path, output_path):
@@ -78,10 +86,13 @@ def prep_data(input_path, output_path):
         file = html_parser(input_path)
 
         # Apply remove_stx_characters to each cell in the DataFrame
-        file = file.map(remove_stx_characters)
+        file = file.applymap(remove_stx_characters)
 
         # Apply format_single_line to each cell in the DataFrame
-        file = file.map(format_single_line)
+        file = file.applymap(format_single_line)
+
+        if input_path == './csv-files/ad_meldung_ad_matrix-20231128.csv':
+            file = filter_unspecified_matrixXmeldung(file)
 
         # Define functions to filter data based on specific columns
         column_functions = {

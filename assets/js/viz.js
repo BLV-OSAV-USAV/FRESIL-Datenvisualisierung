@@ -103,31 +103,38 @@ function baseVisualization(data, color, selectedColor, filter, lang){
                     if (!d3.select(this).classed("clicked")) {
                         d3.select(this).attr("fill", selectedColor); 
                     }                       
-      // Append text elements for the five bigger circles
+/*       // Append text elements for the five bigger circles
       svg.selectAll("text")
-        .data(data.filter((d, i) => i < 5)) // Filter only the five bigger circles
-        .enter()
-        .append("text")
-        .attr("x", d => d.x) // Set x position based on data
-        .attr("y", d => d.y) // Set y position based on data
-        .text(d => d.name)   // Set text content to d.name
-        .attr("text-anchor", "middle") // Center the text horizontally
-        .attr("alignment-baseline", "middle") // Center the text vertically
-        .attr("fill", "black") // Set text color
-        .style("font-size", function(d) {
-            const circleRadius = d.size; // Get circle radius
-            const textWidth = getTextWidth(d.name, "10px sans-serif"); // Adjust font size and font family as needed
-            const maxAllowableFontSize = circleRadius * 2 / textWidth * 10; // Calculate maximum allowable font size
-            return Math.min(maxAllowableFontSize, 10) + "px"; // Set font size to the smaller of the calculated size and 10px
-      });
-
+          .data(data.filter((d, i) => i < 5)) // Filter only the five bigger circles
+          .enter()
+          .filter(d => {
+              const circleRadius = d.size; // Get circle radius
+              const textWidth = getTextWidth(d.name, "10px sans-serif"); // Adjust font size and font family as needed
+              const maxAllowableFontSize = circleRadius * 2 / textWidth * 10; // Calculate maximum allowable font size
+              return maxAllowableFontSize >= 10; // Filter out data points where font size is smaller than 10px
+          })
+          .append("text")
+          .attr("x", d => d.x) // Set x position based on data
+          .attr("y", d => d.y) // Set y position based on data
+          .text(d => d.name)   // Set text content to d.name
+          .attr("text-anchor", "middle") // Center the text horizontally
+          .attr("alignment-baseline", "middle") // Center the text vertically
+          .attr("fill", "black") // Set text color
+          .style("font-size", function(d) {
+              const circleRadius = d.size; // Get circle radius
+              const textWidth = getTextWidth(d.name, "10px sans-serif"); // Adjust font size and font family as needed
+              const maxAllowableFontSize = circleRadius * 2 / textWidth * 10; // Calculate maximum allowable font size
+              return Math.min(maxAllowableFontSize, 10) + "px"; // Set font size to the smaller of the calculated size and 10px
+          });
+        
       // Function to calculate text width
       function getTextWidth(text, font) {
-        const canvas = document.createElement("canvas");
-        const context = canvas.getContext("2d");
-        context.font = font;
-        return context.measureText(text).width;
+          const canvas = document.createElement("canvas");
+          const context = canvas.getContext("2d");
+          context.font = font;
+          return context.measureText(text).width;
       }
+ */
 
 
                         

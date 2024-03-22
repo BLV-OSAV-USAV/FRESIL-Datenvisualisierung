@@ -29,8 +29,6 @@ function baseVisualization(data, color, selectedColor, filter, lang){
         return context.measureText(text).width;
     }
 
-    console.log(data);
-
 	  let width = 0;
     let defaultId = ''; // Variable to store the id of the data with the biggest count
 
@@ -298,9 +296,6 @@ function createList(id, filter, lang, meldung_ids) {
         const bereich = d3.dsvFormat("#").parse(bereichText);
         const meldungXmatrix = d3.dsvFormat("#").parse(meldungXmatrixText);
         const matrix = d3.dsvFormat("#").parse(matrixText);
-
-        console.log(meldung_ids);
-
 
         const filteredData = meldungs.filter(row => meldung_ids.includes(Number(row.id)));  
 

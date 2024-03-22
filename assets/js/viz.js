@@ -28,7 +28,6 @@ function baseVisualization(data, color, selectedColor, filter, lang){
         context.font = font;
         return context.measureText(text).width;
     }
-    console.log(data)
 
 
 	  let width = 0;
@@ -44,7 +43,6 @@ function baseVisualization(data, color, selectedColor, filter, lang){
             defaultId = d.id;
         }
     });
-    console.log(defaultId)
 
     svg = d3.select("svg#bubbleChart");
 
@@ -299,6 +297,8 @@ function createList(id, filter, lang, meldung_ids) {
         const bereich = d3.dsvFormat("#").parse(bereichText);
         const meldungXmatrix = d3.dsvFormat("#").parse(meldungXmatrixText);
         const matrix = d3.dsvFormat("#").parse(matrixText);
+
+        console.log(meldung_ids);
 
 
         const filteredData = meldungs.filter(row => meldung_ids.includes(Number(row.id)));  

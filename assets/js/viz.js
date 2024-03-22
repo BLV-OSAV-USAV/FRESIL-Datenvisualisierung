@@ -279,7 +279,6 @@ function baseVisualization(data, color, selectedColor, filter, lang){
 function createList(id, filter, lang, meldung_ids) {
   Promise.all([
     fetch("./csv-files-filtered/filtered-ad_meldung-20231128.csv").then(response => response.text()),
-    fetch(`./csv-files-filtered/filtered-ad_meldung_ad_${filter}-20231128.csv`).then(response => response.text()),
     fetch("./csv-files-filtered/filtered-ad_publikation_detail-20231128.csv").then(response => response.text()),
     fetch("./csv-files-filtered/filtered-ad_publikation-20231128.csv").then(response => response.text()),
     fetch("./csv-files-filtered/filtered-ad_meldung_ad_treiber-20231128.csv").then(response => response.text()),

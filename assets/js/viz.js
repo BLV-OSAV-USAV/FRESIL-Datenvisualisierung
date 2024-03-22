@@ -29,6 +29,7 @@ function baseVisualization(data, color, selectedColor, filter, lang){
         return context.measureText(text).width;
     }
 
+    console.log(data);
 
 	  let width = 0;
     let defaultId = ''; // Variable to store the id of the data with the biggest count

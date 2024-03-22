@@ -21,7 +21,14 @@ function getTranslatedText(translation, lang, key) {
  * @param {string} selectedColor - The color of the selected bubble.
  * @param {string} filter - The filter to be applied to the data.
  */
-function baseVisualization(data, color, selectedColor, filter, lang){
+function baseVisualization(data, color, selectedColor, filter, lang){ 
+    function getTextWidth(text, font) {
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
+        context.font = font;
+        return context.measureText(text).width;
+    }
+
 
 	  let width = 0;
     let defaultId = ''; // Variable to store the id of the data with the biggest count
@@ -36,7 +43,7 @@ function baseVisualization(data, color, selectedColor, filter, lang){
             defaultId = d.id;
         }
     });
-
+    console.log(defaultId)
 
     svg = d3.select("svg#bubbleChart");
 
@@ -93,11 +100,29 @@ function baseVisualization(data, color, selectedColor, filter, lang){
                       }
                   })                  .attr("fill", color)
                   .attr("id", d => d.id)
+                  .each(function(d) {
+                    const circle = d3.select(this);
+                    const circleRadius = +circle.attr("r");
+                    const textWidth = getTextWidth(d.name, "12px Arial"); // Adjust font size and font family as needed
+            
+                    // Check if the text fits within the circle's radius
+                    if (textWidth <= circleRadius * 2) {
+                        // Add text if it fits within the circle
+                        svg.append("text")
+                            .attr("class", "circle-text")
+                            .attr("x", d.x) // Position text at the x-coordinate of the circle
+                            .attr("y", d.y) // Position text at the y-coordinate of the circle
+                            .attr("text-anchor", "middle")
+                            .attr("alignment-baseline", "middle")
+                            .style("font-size", "12px") // Adjust font size as needed
+                            .text(d.name);
+                    }
+                })
                   .on("mouseover", function(d) {
                     // Only add stroke if the circle is not the clicked one
                     if (!d3.select(this).classed("clicked")) {
                         d3.select(this).attr("fill", selectedColor); 
-                    }
+                    }                       
 
     
       // Calculate the center position of the circle
@@ -278,8 +303,11 @@ function createList(id, filter, lang) {
         // Filter the CSV based on the 'id' variable
         const filteredMeldungIds = meldungXfilter.filter(row => Number(row[`${filter}_id`]) === id)
                                                   .map(row => row.meldung_id);
+
+        console.log(filteredMeldungIds);
     
         const filteredData = meldungs.filter(row => filteredMeldungIds.includes(row.id));
+        console.log(filteredData)
 
         // Add 'links' column to filteredData
         filteredData.forEach(row => {

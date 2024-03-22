@@ -34,6 +34,8 @@ function gefahrOrdnung(timeFilter, lang, bereich){
         };
       });
 
+    console.log(mergedData)
+
     // Extract the 'name' column values
     const nameList = mergedData.map(data => data.name);
     // Call a function to populate the select element in the front end

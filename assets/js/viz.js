@@ -219,7 +219,7 @@ function baseVisualization(data, color, selectedColor, filter, lang){
             selectedCircleElement.attr("fill", selectedColor).classed("clicked", true);
 
             // Run createWaffleChart and createList functions
-            moveToSection('three');
+            moveToSection('two');
             createWaffleChart(selectedCircle.treiber, selectedCircle.bereich);
             createList(selectedCircle.id, filter, lang);
 
@@ -331,6 +331,8 @@ function createList(id, filter, lang) {
       // Define language-specific text mappings
       var translations = {
         'de': {
+            'search': 'Suche:',
+            'count':"Anzeige von _START_ bis _END_ der _TOTAL_ Meldungen",
             'Column_visibility': 'Sichtbarkeit der Spalte',
             'Titel': 'Titel',
             'Datum': 'Datum',
@@ -342,6 +344,8 @@ function createList(id, filter, lang) {
             'Links': 'Links'
         },
         'fr': {
+            'search':'Rechercher:',
+            'count':'Affichage du _START_ à la _END_ du _TOTAL_ des notifications',
             'Column_visibility': 'Visibilité des colonnes',
             'Titel': 'Titre',
             'Datum': 'Date',
@@ -353,6 +357,8 @@ function createList(id, filter, lang) {
             'Links': 'Liens'
         },
         'it': {
+            'search':'Ricerca:',
+            'count':'Mostra da _START_ a _END_ del _TOTAL_ delle notifiche',
             'Column_visibility': 'Visibilità delle colonne',
             'Titel': 'Titolo',
             'Datum': 'Data',
@@ -364,6 +370,8 @@ function createList(id, filter, lang) {
             'Links': 'Links'
         },
         'en': {
+            'search':'Search:',
+            'count': 'Showing _START_ to _END_ of _TOTAL_ notifications',
             'Column_visibility': 'Column visibility',
             'Titel': 'Title',
             'Datum': 'Date',
@@ -393,8 +401,12 @@ function createList(id, filter, lang) {
       if (!table) {
         // Initialize DataTable only if it doesn't exist
         table = new DataTable('#filtered-table', {
+          language:{
+            info: getTranslatedText(translations, lang,'count'),
+            search: getTranslatedText(translations, lang,'search')          
+          },
           layout:{
-            topStart:{
+            bottomStart:{
             buttons: [
                 {
                     extend: 'csv',
@@ -412,7 +424,8 @@ function createList(id, filter, lang) {
                   text: getTranslatedText(translations, lang,'Column_visibility'),
                   popoverTitle: 'Column visibility selector'
               }
-            ]}},
+            ]},
+            bottomEnd:'info'},
             columns: [
                 { title: getTranslatedText(translations, lang,'Titel'), data: 'titel' },
                 { title: getTranslatedText(translations, lang,'Datum'), data: 'Dates_erf_date'},

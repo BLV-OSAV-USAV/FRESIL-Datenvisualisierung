@@ -28,6 +28,7 @@ function baseVisualization(data, color, selectedColor, filter, lang){
         context.font = font;
         return context.measureText(text).width;
     }
+    console.log(data)
 
 
 	  let width = 0;
@@ -196,6 +197,7 @@ function baseVisualization(data, color, selectedColor, filter, lang){
       let bereichData = d.bereich;
       let id = d.id;
       let title = d.name;
+      let meldung_list = d.meldung_ids;
 
       // Set the value of the select element to the selected circle's name
       selectElement.value = title; 
@@ -204,7 +206,7 @@ function baseVisualization(data, color, selectedColor, filter, lang){
       document.querySelector('#waffle-title').innerText = title;
       // Create and display waffle chart
       createWaffleChart(treiberData, bereichData);
-      createList(id, filter, lang);
+      createList(id, filter, lang, meldung_list);
     });
 
 /*     // Create text elements for displaying circle names
@@ -222,7 +224,7 @@ function baseVisualization(data, color, selectedColor, filter, lang){
 
 
     createWaffleChart(data.find(d => d.id === defaultId).treiber, data.find(d => d.id === defaultId).bereich);
-    createList(defaultId, filter, lang);
+    createList(defaultId, filter, lang, data.find(d => d.id === defaultId).meldung_ids);
     defaultCircle = svg.select(`circle[id="${defaultId}"]`);
     defaultCircle.attr("fill", selectedColor).classed("clicked", true);
     selectElement.value = data.find(d => d.id === defaultId).name; 
@@ -246,7 +248,7 @@ function baseVisualization(data, color, selectedColor, filter, lang){
             // Run createWaffleChart and createList functions
             moveToSection('two');
             createWaffleChart(selectedCircle.treiber, selectedCircle.bereich);
-            createList(selectedCircle.id, filter, lang);
+            createList(selectedCircle.id, filter, lang, selectedCircle.meldung_ids);
 
             let title = selectedCircle.name;
 
@@ -274,7 +276,7 @@ function baseVisualization(data, color, selectedColor, filter, lang){
  * @param {number} id - The id used for filtering the CSV data.
  * @param {string} filter - The filter used for filtering the CSV data.
  */
-function createList(id, filter, lang) {
+function createList(id, filter, lang, meldung_ids) {
   Promise.all([
     fetch("./csv-files-filtered/filtered-ad_meldung-20231128.csv").then(response => response.text()),
     fetch(`./csv-files-filtered/filtered-ad_meldung_ad_${filter}-20231128.csv`).then(response => response.text()),
@@ -290,7 +292,6 @@ function createList(id, filter, lang) {
           meldungXtreiberText, treiberText, meldungXbereichText, bereichText, meldungXmatrixText, matrixText]) => {
       // Parse CSV data
         const meldungs = d3.dsvFormat("#").parse(meldungsText);
-        const meldungXfilter = d3.dsvFormat("#").parse(meldungXfilterText);
         const publikation_detail = d3.dsvFormat("|").parse(publikationDetailText);
         const publikation = d3.dsvFormat("#").parse(publikationText);
         const meldungXtreiber = d3.dsvFormat("#").parse(meldungXtreiberText);
@@ -300,14 +301,8 @@ function createList(id, filter, lang) {
         const meldungXmatrix = d3.dsvFormat("#").parse(meldungXmatrixText);
         const matrix = d3.dsvFormat("#").parse(matrixText);
 
-        // Filter the CSV based on the 'id' variable
-        const filteredMeldungIds = meldungXfilter.filter(row => Number(row[`${filter}_id`]) === id)
-                                                  .map(row => row.meldung_id);
 
-        console.log(filteredMeldungIds);
-    
-        const filteredData = meldungs.filter(row => filteredMeldungIds.includes(row.id));
-        console.log(filteredData)
+        const filteredData = meldungs.filter(row => meldung_ids.includes(+row.id));  
 
         // Add 'links' column to filteredData
         filteredData.forEach(row => {

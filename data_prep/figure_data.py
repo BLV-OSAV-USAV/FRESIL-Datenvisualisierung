@@ -37,10 +37,15 @@ def count_gefahr(timeFilter, bereichName, lg):
         meldung_bereich_ids = bereichXmeldung.loc[bereichXmeldung['bereich_id'] == selected_bereich_id, 'meldung_id'].values
         meldungXgefahr = meldungXgefahr[meldungXgefahr['meldung_id'].isin(meldung_bereich_ids)]
 
+    # Group meldung_ids by gefahr_id
+    meldung_ids_list = meldungXgefahr.groupby('gefahr_id')['meldung_id'].apply(list).reset_index()
+    meldung_ids_list.columns = ['id', 'meldung_ids']
+
 
     # Compter le nombre de meldung par gefahr
     gefahr_counts = meldungXgefahr['gefahr_id'].value_counts().reset_index()
     gefahr_counts.columns = ['id', 'count']
+
     
     # Calculer la moyenne des valeurs de 'sterne' par gefahr
     merged_df = pd.merge(meldungXgefahr, meldung[['id', 'sterne']], left_on='meldung_id', right_on='id', how='left')
@@ -51,6 +56,8 @@ def count_gefahr(timeFilter, bereichName, lg):
     # Fusionner les résultats avec le DataFrame existant
     gefahr_counts = pd.merge(gefahr_counts, gefahr[['id', 'bezeichnung_de', 'bezeichnung_fr', 'bezeichnung_it', 'bezeichnung_en']], on='id', how='left')
     gefahr_counts = pd.merge(gefahr_counts, mean_sterne, on='id', how='left')
+    # Merge meldung_ids_list into gefahr_counts
+    gefahr_counts = pd.merge(gefahr_counts, meldung_ids_list, on='id', how='left')
 
 
     # Enregistrer le résultat dans un fichier CSV
@@ -127,6 +134,10 @@ def count_matrix(timeFilter, bereichName, lg):
         meldung_bereich_ids = bereichXmeldung.loc[bereichXmeldung['bereich_id'] == selected_bereich_id, 'meldung_id'].values
         meldungXmatrix = meldungXmatrix[meldungXmatrix['meldung_id'].isin(meldung_bereich_ids)]
 
+    # Group meldung_ids by gefahr_id
+    meldung_ids_list = meldungXmatrix.groupby('matrix_id')['meldung_id'].apply(list).reset_index()
+    meldung_ids_list.columns = ['id', 'meldung_ids']
+
     # Compter le nombre de meldung par matrix
     matrix_counts = meldungXmatrix['matrix_id'].value_counts().reset_index()
     matrix_counts.columns = ['id', 'count']
@@ -141,6 +152,7 @@ def count_matrix(timeFilter, bereichName, lg):
     # Fusionner les résultats avec le DataFrame existant
     matrix_counts = pd.merge(matrix_counts, matrix[['id', 'bezeichnung_de', 'bezeichnung_fr', 'bezeichnung_it', 'bezeichnung_en']], on='id', how='left')
     matrix_counts = pd.merge(matrix_counts, mean_sterne, on='id', how='left')
+    matrix_counts = pd.merge(matrix_counts, meldung_ids_list, on='id', how='left')
     
     # Enregistrer le résultat dans un fichier CSV
     if bereichName == 'Betrug / Täuschung':

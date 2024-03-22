@@ -22,12 +22,14 @@ function gefahrOrdnung(timeFilter, lang, bereich){
       const mergedData = gefahrCounts.map(count => {
         const treiberData = treiberCounts.find(treiber => treiber.gefahr_id === count.id);
         const size = count.count * count.mean_sterne;
+        const meldungIdsArray = JSON.parse(count.meldung_ids); // Parse meldung_ids string to array
         return {
           id: +count.id,
           name: count[`bezeichnung_${lang}`],
           count: +count.count,
           mean_sterne: +count.mean_sterne,
           size: +size,
+          meldung_ids: meldungIdsArray,
           treiber: treiberData ? Object.fromEntries(Object.entries(treiberData).slice(1)) : {}, // Convert treiberData object to key-value pairs
         };
       });

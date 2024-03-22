@@ -12,6 +12,13 @@ let svg;
 function getTranslatedText(translation, lang, key) {
   return translation[lang][key] || key; // Returns translated text or key itself if not found
 }
+  // Function to calculate text width
+  function getTextWidth(text, font) {
+    const canvas = document.createElement("canvas");
+    const context = canvas.getContext("2d");
+    context.font = font;
+    return context.measureText(text).width;
+}
 
 /**
  * Visualizes data using a bubble chart.
@@ -127,13 +134,7 @@ function baseVisualization(data, color, selectedColor, filter, lang){
               return Math.min(maxAllowableFontSize, 10) + "px"; // Set font size to the smaller of the calculated size and 10px
           });
         
-      // Function to calculate text width
-      function getTextWidth(text, font) {
-          const canvas = document.createElement("canvas");
-          const context = canvas.getContext("2d");
-          context.font = font;
-          return context.measureText(text).width;
-      }
+
  */
 
 
@@ -676,13 +677,14 @@ function createWaffleChart(treiberData, bereichData) {
         .attr("width", 30).attr("height", 20)
         .attr("fill", (d, i) => legendData[i].ratio === 0 ? "#c7c7c7" : legendData[i].color); // Assign grey color if ratio is 0
       
+      // Append text in the legend
       legend.append("text")
-        .attr("x", 40) // Adjust the x position to align the text
-        .attr("y", 15) // Adjust the y position to align the text
-        .style("font-size", window.innerWidth < 900 ? "20px" : "14px") // Adjust the font sizes as needed
-        .attr("alignment-baseline", "middle") // Align the text vertically in the middle
-        .attr("fill", "black") 
-        .text((d, i) => `${d} (${legendData[i].ratio.toFixed(0)}%)`);
+      .attr("x", 40) // Adjust the x position to align the text
+      .attr("y", 15) // Adjust the y position to align the text
+      .attr("alignment-baseline", "middle") // Align the text vertically in the middle
+      .attr("fill", "black") 
+      .text((d, i) => `${d} (${legendData[i].ratio.toFixed(0)}%)`);
+      
         
         /**
          * Highlights a specific data point in the chart.

@@ -28,6 +28,9 @@ def count_gefahr(timeFilter, bereichName, lg):
         meldung = meldung[meldung['erfDate'] >= start]
         meldung_time_ids = meldung['id']
         meldungXgefahr = meldungXgefahr[meldungXgefahr['meldung_id'].isin(meldung_time_ids)]
+    else:
+        meldung_ids = meldung['id']
+        meldungXgefahr = meldungXgefahr[meldungXgefahr['meldung_id'].isin(meldung_ids)]
 
     if bereichName != 'all':
         selected_bereich_id = bereich.loc[bereich['bezeichnung_de'] == bereichName, 'id'].values[0]
@@ -115,6 +118,9 @@ def count_matrix(timeFilter, bereichName, lg):
         meldung = meldung[meldung['erfDate'] >= start]
         meldung_time_ids = meldung['id']
         meldungXmatrix = meldungXmatrix[meldungXmatrix['meldung_id'].isin(meldung_time_ids)]
+    else:
+        meldung_ids = meldung['id']
+        meldungXmatrix = meldungXmatrix[meldungXmatrix['meldung_id'].isin(meldung_ids)]
 
     if bereichName != 'all':
         selected_bereich_id = bereich.loc[bereich['bezeichnung_de'] == bereichName, 'id'].values[0]

@@ -80,6 +80,13 @@ def filter_unspecified_matrixXmeldung(file):
 
     return file
 
+def filter_nonOpen_meldung(file):
+    meldung = pd.read_csv('./csv-files/ad_meldung-20231128.csv', sep='|')
+    meldung_ids = meldung['id'] 
+
+    file = file[file['meldung_id'].isin(meldung_ids)]
+    return file
+
 
 def prep_data(input_path, output_path):
     try:

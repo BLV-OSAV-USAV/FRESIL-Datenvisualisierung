@@ -38,7 +38,7 @@ let sdTranslations = {
 
 	storymapText: {
 
-		de: 'Das Bundesamt für Lebensmittelsicherheit und Veterinärwesen (BLV) identifiziert auftretende Gefahren für die Gesundheit der Schweizer Bevölkerung wie bspw. Umweltkontaminanten, um die Lebensmittelsicherheit langfristig sicherzustellen. Die Gefahren treten in bestimmten Lebensmittelgruppen auf, wie bspw. Gemüse oder Früchte. <br><br> Die folgende Datenvisualisierung zeigt wahlweise <b style="font-weight: bold;"> die Gefahren oder die betroffenen Lebensmittelgruppen </b> in Form von Kreisen. Die Grösse des Kreises zeigt die Aktualität und Bedeutung der Gefahr bzw. Lebensmittelgruppe. Klickt man auf einen Kreis, werden die Treiber dieser Gefahr bzw. der Gefahren einer Lebensmittelgruppe dargestellt und sämtliche erfasste Meldungen dazu aufgelistet.',
+		de: 'Das Bundesamt für Lebensmittelsicherheit und Veterinärwesen (BLV) identifiziert auftretende Gefahren für die Gesundheit der Schweizer Bevölkerung, um die Lebensmittelsicherheit langfristig sicherzustellen. Die Gefahren treten in bestimmten Lebensmittelgruppen wie Gemüse oder Früchte auf und werden zusätzlich in Kategorien wie Mikrobiologie eingeteilt.<br><br>Die folgende Datenvisualisierung zeigt wahlweise <b style="font-weight: bold;"> die Gefahren oder die betroffenen Lebensmittelgruppen </b> in Form von Kreisen. Die Grösse des Kreises zeigt die Aktualität und Bedeutung der Gefahr bzw. der Betroffenheit der Lebensmittelgruppe. Man kann nach einer bestimmten Gefahr oder Lebensmittelgruppe suchen, die Kategorie filtern und den Zeitbereich einschränken. Durch Anklicken eines Kreises werden die Treiber dieser Gefahr bzw. der Gefahren einer Lebensmittelgruppe angezeigt und alle dazu erfassten Meldungen aufgelistet.',
 
 		fr: 'L\'office fédéral de la sécurité alimentaire et des affaires vétérinaires (OSAV) identifie les dangers émergents pour la santé de la population suisse tels que les contaminants environnementaux, afin de garantir à long terme la sécurité alimentaire. Les dangers se manifestent dans certains groupes d\'aliments, tels que les légumes ou les fruits. <br><br> La visualisation suivante présente <b style="font-weight: bold;"> soit les dangers, soit les groupes d\'aliments concernés </b> sous forme de cercles. La taille du cercle indique l\'actualité et l\'importance du danger ou du groupe d\'aliments. En cliquant sur un cercle, les \'moteurs\' de ce danger ou des dangers d\'un groupe d\'aliments sont présentés et toutes les notifications enregistrées à ce sujet sont répertoriées.',
 		
@@ -87,7 +87,7 @@ let sdTranslations = {
 	
 	legende_1: {
 
-		de: 'Gefahren werden durch Treiber wie bspw. den Klimawandel verursacht oder verstärkt. Die folgende Darstellung zeigt für die gewählte Gefahr oder Matrix die Treiber und deren Anteile auf.',
+		de: 'Gefahren werden durch Treiber wie beispielsweise den Klimawandel verursacht oder verstärkt. Die folgende Darstellung zeigt für die gewählte Gefahr oder Lebensmittelgruppe die Treiber und deren Anteile auf.',
 
 		fr: 'Les dangers sont causés ou exacerbés par des moteurs tels que le changement climatique. La représentation suivante montre les moteurs de la menace choisie ou de la matrice et leur part respective.',
 
@@ -183,7 +183,7 @@ let sdTranslations = {
 
 	tableTitle:{
 
-		de: 'Meldung',
+		de: 'Meldungen zur Gefahr oder Lebensmittelgruppe',
 
 		fr: 'Notification',
 
@@ -250,7 +250,7 @@ let sdTranslations = {
 	
 	allBereich:{
 		
-		de: 'Alle Bereiche',
+		de: 'Alle Kategorien',
 
 		fr: 'Tous les domaines',
 

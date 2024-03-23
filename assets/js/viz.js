@@ -59,10 +59,18 @@ function baseVisualization(data, color, selectedColor, filter, lang){
     data.sort((a, b) => b.size - a.size);
 
     // Calculate new positions for circles in a spiral layout
-    const centerX = 0;
-    const centerY = 0;
+    //const centerX = 0;
+    //const centerY = 0;
+
+    var el   = document.getElementById("bubbleChart"); // or other selector like querySelector()
+    var rect = el.getBoundingClientRect(); // get the bounding rectangle
+
+    const centerX = rect.width/2;
+    const centerY = rect.height/2;
     const radiusStep = 20; // Adjust the step based on your preference
     let angle = 0;
+
+
 
     data.forEach((circle, index) => {
       const radius = index * radiusStep;
@@ -75,6 +83,8 @@ function baseVisualization(data, color, selectedColor, filter, lang){
       // Increase the angle for the next circle
       angle += 0.1; // Adjust the angle increment based on your preference
     });
+
+
 
     // Create a force simulation
     const simulation = d3.forceSimulation(data)

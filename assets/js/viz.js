@@ -1,7 +1,7 @@
 // Bubble chart visu
 let circles;
 let svg;
-let dataCache, colorCache, selectedColorCache, filterCache, langCache
+let dataCache, colorCache, selectedColorCache, filterCache, langCache;
 
 /**
  * Retrieves translated text based on language.
@@ -11,8 +11,9 @@ let dataCache, colorCache, selectedColorCache, filterCache, langCache
  * @returns {string} - Translated text or original key if not found.
  */
 function getTranslatedText(translation, lang, key) {
-  return translation[lang][key] || key; // Returns translated text or key itself if not found
+    return translation[lang][key] || key; // Returns translated text or key itself if not found
 }
+
 // Function to calculate text width
 function getTextWidth(text, font) {
     const canvas = document.createElement("canvas");
@@ -22,6 +23,11 @@ function getTextWidth(text, font) {
 }
 
 
+
+
+
+
+
 /**
  * Visualizes data using a bubble chart.
  * 
@@ -29,35 +35,24 @@ function getTextWidth(text, font) {
  * @param {string} color - The color of the bubbles.
  * @param {string} selectedColor - The color of the selected bubble.
  * @param {string} filter - The filter to be applied to the data.
+ * @param {string} lang - The language for translation.
  */
-function baseVisualization(data, color, selectedColor, filter, lang){ 
+function baseVisualization(data, color, selectedColor, filter, lang) {
+  // Cache data for resizing events
     dataCache = data;
     colorCache = color;
     selectedColorCache = selectedColor;
     filterCache = filter;
     langCache = lang;
 
-
     let translations = {
-      'de': {
-          'Anzahl': 'Anzahl Meldungen:',
-          'D_Wichtigkeit': 'Durchschnittliche Wichtigkeit:'
-      },
-      'fr': {
-          'Anzahl': 'Nombres de Notifications:',
-          'D_Wichtigkeit': 'Importance moyenne:'
-      },
-      'it': {
-          'Anzahl': 'Numero di notifiche:',
-          'D_Wichtigkeit': 'Importanza media:'
-      },
-      'en': {
-          'Anzahl': 'Number of Notifications:',
-          'D_Wichtigkeit': 'Average Importance:'
-      }
-      };
+        'de': { 'Anzahl': 'Anzahl Meldungen:', 'D_Wichtigkeit': 'Durchschnittliche Wichtigkeit:' },
+        'fr': { 'Anzahl': 'Nombres de Notifications:', 'D_Wichtigkeit': 'Importance moyenne:' },
+        'it': { 'Anzahl': 'Numero di notifiche:', 'D_Wichtigkeit': 'Importanza media:' },
+        'en': { 'Anzahl': 'Number of Notifications:', 'D_Wichtigkeit': 'Average Importance:' }
+    };
 
-	  let width = 0;
+    let width = 0;
     let defaultId = ''; // Variable to store the id of the data with the biggest count
 
     const selectElement = document.getElementById('gm-list');
@@ -79,173 +74,129 @@ function baseVisualization(data, color, selectedColor, filter, lang){
     // Sort the result array based on circle size
     data.sort((a, b) => b.size - a.size);
 
-    var el   = document.getElementById("bubbleChart"); // or other selector like querySelector()
+    var el = document.getElementById("bubbleChart");
     var rect = el.getBoundingClientRect(); // get the bounding rectangle
 
-    let centerX = rect.width/2;
-    let centerY = rect.height/2;
+    let centerX = rect.width / 2;
+    let centerY = rect.height / 2;
     const radiusStep = 10; // Adjust the step based on your preference
     let angle = 0;
 
     data.forEach((circle, index) => {
-      const radius = index * radiusStep;
-      const x = centerX + radius * Math.cos(angle);
-      const y = centerY + radius * Math.sin(angle);
-    
-      circle.x = x;
-      circle.y = y;
-    
-      // Increase the angle for the next circle
-      angle += 0.1; // Adjust the angle increment based on your preference
-    });
+        const radius = index * radiusStep;
+        const x = centerX + radius * Math.cos(angle);
+        const y = centerY + radius * Math.sin(angle);
 
+        circle.x = x;
+        circle.y = y;
+
+        // Increase the angle for the next circle
+        angle += 0.1; // Adjust the angle increment based on your preference
+    });
 
     // Create a force simulation
     let simulation = d3.forceSimulation(data)
-                          .force("x", d3.forceX(centerX).strength(0.05))
-                          .force("y", d3.forceY(centerY).strength(0.05))
-                          .force("collide", d3.forceCollide(d => {
-                            // Adjust the multiplier as needed to control the size of the bubbles
-                            const multiplier = Math.min(rect.width, rect.height) / 500; // Adjust as needed
-                            return d.size * multiplier + 5;
-                            })
-                          .iterations(8))
-                          .on("tick", ticked);
+        .force("x", d3.forceX(centerX).strength(0.05))
+        .force("y", d3.forceY(centerY).strength(0.05))
+        .force("collide", d3.forceCollide(d => {
+            // Adjust the multiplier as needed to control the size of the bubbles
+            const multiplier = Math.min(rect.width, rect.height) / 500; // Adjust as needed
+            return d.size * multiplier + 5;
+        }).iterations(8))
+        .on("tick", ticked);
 
-    
-
-    
     circles = svg.selectAll("circle")
-                  .data(data)
-                  .join("circle")
-                  .attr("r", d => {
-                    // Adjust the multiplier as needed to control the size of the bubbles
-                    const multiplier = Math.min(rect.width, rect.height) / 500; // Adjust as needed
-                    return d.size * multiplier;
-                   })
-                  .attr("fill", color)
-                  .attr("id", d => d.id)
-                  .on("mouseover", function(d) {
-                    // Only add stroke if the circle is not the clicked one
-                    if (!d3.select(this).classed("clicked")) {
-                        d3.select(this).attr("fill", selectedColor); 
-                    }                       
-                    
-                    // Calculate the center position of the circle
-                    const circleCenterX = d.x;
-                    const circleCenterY = d.y;
+        .data(data)
+        .join("circle")
+        .attr("r", d => {
+            // Adjust the multiplier as needed to control the size of the bubbles
+            const multiplier = Math.min(rect.width, rect.height) / 500; // Adjust as needed
+            return d.size * multiplier;
+        })
+        .attr("fill", color)
+        .attr("id", d => d.id)
+        .on("mouseover", function (d) {
+            // Only add stroke if the circle is not the clicked one
+            if (!d3.select(this).classed("clicked")) {
+                d3.select(this).attr("fill", selectedColor);
+            }
 
-                    // Update the tooltip position to the center of the circle
-                    let w = window.innerWidth;
-                    let offsetheight = document.getElementById('bubbleChart').offsetHeight;
-                    let tooltipOffsetWidth = (w - width) / 2;
+            // Calculate the center position of the circle
+            const circleCenterX = d.x;
+            const circleCenterY = d.y;
 
-                    //Update the tooltip position and value
-                    d3.select("#tooltip")
-                        .style("left", (circleCenterX + tooltipOffsetWidth) + "px")
-                        .style("top", (circleCenterY + offsetheight) + "px")
-                        .select("#titel")
-                        .text(d.name);        
+            // Update the tooltip position to the center of the circle
+            let w = window.innerWidth;
+            let offsetheight = document.getElementById('bubbleChart').offsetHeight;
+            let tooltipOffsetWidth = (w - width) / 2;
 
-                    d3.select("#tooltip")  
-                        .select("#meldungCount")
-                        .text(`${getTranslatedText(translations, lang,'Anzahl')} ${d.count}`);
+            // Update the tooltip position and value
+            d3.select("#tooltip")
+                .style("left", (circleCenterX + tooltipOffsetWidth) + "px")
+                .style("top", (circleCenterY + offsetheight) + "px")
+                .select("#titel")
+                .text(d.name);
 
-                    d3.select("#tooltip")
-                        .select("#meanSterne")
-                        .text(`${getTranslatedText(translations, lang, 'D_Wichtigkeit')} ${d.mean_sterne}`);
+            d3.select("#tooltip")
+                .select("#meldungCount")
+                .text(`${getTranslatedText(translations, lang, 'Anzahl')} ${d.count}`);
 
-                    d3.select("#tooltip").classed("hidden", false);
+            d3.select("#tooltip")
+                .select("#meanSterne")
+                .text(`${getTranslatedText(translations, lang, 'D_Wichtigkeit')} ${d.mean_sterne}`);
 
-                    })              
-    
-                  .on("mouseout", function() { 
-                    // Only remove stroke if the circle is not the clicked one
-                    if (!d3.select(this).classed("clicked")) {
-                        d3.select(this).attr("fill", color); 
-                    }
-                    //Hide the tooltip
-                    d3.select("#tooltip").classed("hidden", true);
-                  })
-                  .on("click", function(d,i) {
-                    // Remove stroke from all circles
-                    svg.selectAll("circle").attr("fill", color).classed("clicked", false); 
+            d3.select("#tooltip").classed("hidden", false);
 
-                    // Apply stroke to the clicked circle and add the "clicked" class
-                    d3.select(this).attr("fill", selectedColor).classed("clicked", true);
-                  
-                  
-                    moveToSection('three');
-                  
-                    // Extract the "treiber" values from the selected circle
-                    let treiberData = d.treiber;
-                    let id = d.id;
-                    let title = d.name;
-                    let meldung_list = d.meldung_ids;
-                  
-                    // Set the value of the select element to the selected circle's name
-                    selectElement.value = title; 
+        })
 
-                    // Update the content of the <span> tag with the class "waffle-title"
-                    document.querySelector('#waffle-title').innerText = title;
-                    // Create and display waffle chart
-                    createWaffleChart(treiberData);
-                    createList(id, filter, lang, meldung_list);
-                  });
+        .on("mouseout", function () {
+            // Only remove stroke if the circle is not the clicked one
+            if (!d3.select(this).classed("clicked")) {
+                d3.select(this).attr("fill", color);
+            }
+            // Hide the tooltip
+            d3.select("#tooltip").classed("hidden", true);
+        })
 
-/*     // Create text elements for displaying circle names
-    svg.selectAll("text")
-        .data(data.slice(0, 5)) // Select only the top 5 circles
-        .enter()
-        .append("text")
-        .attr("cx", d => d.x) // Position text at the x-coordinate of the circle
-        .attr("cy", d => d.y) // Position text at the y-coordinate of the circle
-        .attr("text-anchor", "middle") // Center text horizontally
-        .attr("dy", "0.35em") // Offset text vertically for better alignment
-        .text(d => d.name) // Set text content to circle name
-        .style("font-size", "10px"); // Adjust font size as needed */
+        .on("click", function (d, i) {
+            // Remove stroke from all circles
+            svg.selectAll("circle").attr("fill", color).classed("clicked", false);
 
-    /*       // Append text elements for the five bigger circles
-      svg.selectAll("text")
-          .data(data.filter((d, i) => i < 5)) // Filter only the five bigger circles
-          .enter()
-          .filter(d => {
-              const circleRadius = d.size; // Get circle radius
-              const textWidth = getTextWidth(d.name, "10px sans-serif"); // Adjust font size and font family as needed
-              const maxAllowableFontSize = circleRadius * 2 / textWidth * 10; // Calculate maximum allowable font size
-              return maxAllowableFontSize >= 10; // Filter out data points where font size is smaller than 10px
-          })
-          .append("text")
-          .attr("x", d => d.x) // Set x position based on data
-          .attr("y", d => d.y) // Set y position based on data
-          .text(d => d.name)   // Set text content to d.name
-          .attr("text-anchor", "middle") // Center the text horizontally
-          .attr("alignment-baseline", "middle") // Center the text vertically
-          .attr("fill", "black") // Set text color
-          .style("font-size", function(d) {
-              const circleRadius = d.size; // Get circle radius
-              const textWidth = getTextWidth(d.name, "10px sans-serif"); // Adjust font size and font family as needed
-              const maxAllowableFontSize = circleRadius * 2 / textWidth * 10; // Calculate maximum allowable font size
-              return Math.min(maxAllowableFontSize, 10) + "px"; // Set font size to the smaller of the calculated size and 10px
-          });
-        
+            // Apply stroke to the clicked circle and add the "clicked" class
+            d3.select(this).attr("fill", selectedColor).classed("clicked", true);
 
- */
+            moveToSection('three');
 
+            // Extract the "treiber" values from the selected circle
+            let treiberData = d.treiber;
+            let id = d.id;
+            let title = d.name;
+            let meldung_list = d.meldung_ids;
 
+            // Set the value of the select element to the selected circle's name
+            selectElement.value = title;
 
+            // Update the content of the <span> tag with the class "waffle-title"
+            document.querySelector('#waffle-title').innerText = title;
+            // Create and display waffle chart
+            createWaffleChart(treiberData);
+            createList(id, filter, lang, meldung_list);
+        });
+
+    // Create and display waffle chart for default data
     createWaffleChart(data.find(d => d.id === defaultId).treiber);
     createList(defaultId, filter, lang, data.find(d => d.id === defaultId).meldung_ids);
+
+    // Highlight default circle
     defaultCircle = svg.select(`circle[id="${defaultId}"]`);
     defaultCircle.attr("fill", selectedColor).classed("clicked", true);
-    selectElement.value = data.find(d => d.id === defaultId).name; 
-
+    selectElement.value = data.find(d => d.id === defaultId).name;
 
     // Update the content of the <span> tag with the class "waffle-title"
     document.querySelector('#waffle-title').innerText = data.find(d => d.id === defaultId).name;
- 
-      // Add event listener to the select element
-    selectElement.addEventListener('change', function(event) {
+
+    // Add event listener to the select element
+    selectElement.addEventListener('change', function (event) {
         const selectedName = event.target.value;
         const selectedCircle = data.find(circle => circle.name === selectedName);
         if (selectedCircle) {
@@ -263,24 +214,31 @@ function baseVisualization(data, color, selectedColor, filter, lang){
 
             let title = selectedCircle.name;
 
-            // Update the content of the <span> tag with the class "trn"
+            // Update the content of the <span> tag with the class "waffle-title"
             document.querySelector('#waffle-title').innerText = title;
-
         }
     });
-
 
     /**
      * Updates the position of circles based on the tick event.
      * @param {Object} d - The data object representing the circle.
      */
     function ticked(d) {
-      circles.attr("cx", d => d.x)
-        .attr("cy", d => d.y);
+        circles.attr("cx", d => d.x)
+            .attr("cy", d => d.y);
     }
-  }
+}
 
-  let table; // Define the DataTable variable outside the function scope
+
+
+
+
+
+
+
+
+
+let table; // Define the DataTable variable outside the function scope
 
 /**
  * Creates a list based on the provided id and filter.
@@ -288,19 +246,19 @@ function baseVisualization(data, color, selectedColor, filter, lang){
  * @param {string} filter - The filter used for filtering the CSV data.
  */
 function createList(id, filter, lang, meldung_ids) {
-  Promise.all([
-    fetch("./csv-files-filtered/filtered-ad_meldung-20231128.csv").then(response => response.text()),
-    fetch("./csv-files-filtered/filtered-ad_publikation_detail-20231128.csv").then(response => response.text()),
-    fetch("./csv-files-filtered/filtered-ad_publikation-20231128.csv").then(response => response.text()),
-    fetch("./csv-files-filtered/filtered-ad_meldung_ad_treiber-20231128.csv").then(response => response.text()),
-    fetch("./csv-files-filtered/filtered-ad_treiber-20231128.csv").then(response => response.text()),
-    fetch("./csv-files-filtered/filtered-ad_meldung_ad_bereich-20231128.csv").then(response => response.text()),
-    fetch("./csv-files-filtered/filtered-ad_bereich-20231128.csv").then(response => response.text()),
-    fetch("./csv-files-filtered/filtered-ad_meldung_ad_matrix-20231128.csv").then(response => response.text()),
-    fetch("./csv-files-filtered/filtered-ad_matrix-20231128.csv").then(response => response.text()),
-    ]).then(([meldungsText, publikationDetailText, publikationText, 
-          meldungXtreiberText, treiberText, meldungXbereichText, bereichText, meldungXmatrixText, matrixText]) => {
-      // Parse CSV data
+    Promise.all([
+        fetch("./csv-files-filtered/filtered-ad_meldung-20231128.csv").then(response => response.text()),
+        fetch("./csv-files-filtered/filtered-ad_publikation_detail-20231128.csv").then(response => response.text()),
+        fetch("./csv-files-filtered/filtered-ad_publikation-20231128.csv").then(response => response.text()),
+        fetch("./csv-files-filtered/filtered-ad_meldung_ad_treiber-20231128.csv").then(response => response.text()),
+        fetch("./csv-files-filtered/filtered-ad_treiber-20231128.csv").then(response => response.text()),
+        fetch("./csv-files-filtered/filtered-ad_meldung_ad_bereich-20231128.csv").then(response => response.text()),
+        fetch("./csv-files-filtered/filtered-ad_bereich-20231128.csv").then(response => response.text()),
+        fetch("./csv-files-filtered/filtered-ad_meldung_ad_matrix-20231128.csv").then(response => response.text()),
+        fetch("./csv-files-filtered/filtered-ad_matrix-20231128.csv").then(response => response.text()),
+    ]).then(([meldungsText, publikationDetailText, publikationText,
+        meldungXtreiberText, treiberText, meldungXbereichText, bereichText, meldungXmatrixText, matrixText]) => {
+        // Parse CSV data
         const meldungs = d3.dsvFormat("#").parse(meldungsText);
         const publikation_detail = d3.dsvFormat("|").parse(publikationDetailText);
         const publikation = d3.dsvFormat("#").parse(publikationText);
@@ -311,191 +269,217 @@ function createList(id, filter, lang, meldung_ids) {
         const meldungXmatrix = d3.dsvFormat("#").parse(meldungXmatrixText);
         const matrix = d3.dsvFormat("#").parse(matrixText);
 
-        const filteredData = meldungs.filter(row => meldung_ids.includes(Number(row.id)));  
+        const filteredData = meldungs.filter(row => meldung_ids.includes(Number(row.id)));
 
-        // Add 'links' column to filteredData
+        // Modify filtered data
         filteredData.forEach(row => {
-        // Find links associated with the current 'id'
-        const links = publikation_detail
-            .filter(pubRow => pubRow.meldung_id === row.id)
-            .map(pubRow => {
-                const foundPublikation = publikation.find(p => p.id === pubRow.publikation_id);
-                if (foundPublikation) {
-                    return { [foundPublikation.titel]: pubRow.link };
-                } else {
-                    return { [pubRow.link]: pubRow.link }; // or handle the missing data accordingly
-                }
-              });
-          // Assign links to 'links' column
-          row.links = links;
+            const links = publikation_detail
+                .filter(pubRow => pubRow.meldung_id === row.id)
+                .map(pubRow => {
+                    const foundPublikation = publikation.find(p => p.id === pubRow.publikation_id);
+                    return foundPublikation ? { [foundPublikation.titel]: pubRow.link } : { [pubRow.link]: pubRow.link };
+                });
+            row.links = links;
 
-          // Find treibers associated with the current 'id'
-          const treibers = meldungXtreiber.filter(meldungXtreiberRow => meldungXtreiberRow.meldung_id === row.id)
-          .map(meldungXtreiberRow => {
-              const treiberId = meldungXtreiberRow.treiber_id;
-              const treiberInfo = treiber.find(t => t.id === treiberId);
-              return treiberInfo ? treiberInfo[`bezeichnung_${lang}`] : '-';
-          });
-          // Assign treibers to 'treiber' column
-          row.treiber = treibers;
+            const treibers = meldungXtreiber.filter(meldungXtreiberRow => meldungXtreiberRow.meldung_id === row.id)
+                .map(meldungXtreiberRow => {
+                    const treiberId = meldungXtreiberRow.treiber_id;
+                    const treiberInfo = treiber.find(t => t.id === treiberId);
+                    return treiberInfo ? treiberInfo[`bezeichnung_${lang}`] : '-';
+                });
+            row.treiber = treibers;
 
-          // Find matrices associated with the current 'id'
-          const matrices = meldungXmatrix.filter(meldungXmatrixRow => meldungXmatrixRow.meldung_id === row.id)
-          .map(meldungXmatrixRow => {
-              const matrixId = meldungXmatrixRow.matrix_id;
-              const matrixInfo = matrix.find(t => t.id === matrixId);
-              return matrixInfo ? matrixInfo[`bezeichnung_${lang}`] : '-';
-          });
-          row.matrix = matrices;
+            const matrices = meldungXmatrix.filter(meldungXmatrixRow => meldungXmatrixRow.meldung_id === row.id)
+                .map(meldungXmatrixRow => {
+                    const matrixId = meldungXmatrixRow.matrix_id;
+                    const matrixInfo = matrix.find(t => t.id === matrixId);
+                    return matrixInfo ? matrixInfo[`bezeichnung_${lang}`] : '-';
+                });
+            row.matrix = matrices;
 
-
-          // Find bereich associated with the current 'id'
-          const bereichs = meldungXbereich.filter(meldungXbereichRow => meldungXbereichRow.meldung_id === row.id)
-          .map(meldungXbereichRow => {
-              const bereichId = meldungXbereichRow.bereich_id;
-              const bereichInfo = bereich.find(t => t.id === bereichId);
-              return bereichInfo ? bereichInfo[`bezeichnung_${lang}`] : '-';
-          });
-          // Assign treibers to 'treiber' column
-          row.bereich = bereichs;
-      });
-
-      // Define language-specific text mappings
-      var translations = {
-        'de': {
-            'search': 'Suche:',
-            'count':"Anzeige von _START_ bis _END_ der _TOTAL_ Meldungen",
-            'Column_visibility': 'Sichtbarkeit der Spalte',
-            'Titel': 'Titel',
-            'Datum': 'Datum',
-            'Kurzinfo': 'Kurzinfo',
-            'Wichtigkeit': 'Wichtigkeit',
-            'Treibers': 'Treiber',
-            'Matrix': 'Lebensmittelgruppen',
-            'Bereich': 'Bereich',
-            'Links': 'Links'
-        },
-        'fr': {
-            'search':'Rechercher:',
-            'count':'Affichage du _START_ à la _END_ du _TOTAL_ des notifications',
-            'Column_visibility': 'Visibilité des colonnes',
-            'Titel': 'Titre',
-            'Datum': 'Date',
-            'Kurzinfo': 'Résumé',
-            'Wichtigkeit': 'Importance',
-            'Treibers': 'Moteurs',
-            'Matrix': 'Groupe d\'aliments',
-            'Bereich': 'Domaines',
-            'Links': 'Liens'
-        },
-        'it': {
-            'search':'Ricerca:',
-            'count':'Mostra da _START_ a _END_ del _TOTAL_ delle notifiche',
-            'Column_visibility': 'Visibilità delle colonne',
-            'Titel': 'Titolo',
-            'Datum': 'Data',
-            'Kurzinfo': 'Sintesi',
-            'Wichtigkeit': 'Importanza',
-            'Treibers': 'Driver',
-            'Matrix': 'Gruppi Alimentari',
-            'Bereich': 'Settore',
-            'Links': 'Links'
-        },
-        'en': {
-            'search':'Search:',
-            'count': 'Showing _START_ to _END_ of _TOTAL_ notifications',
-            'Column_visibility': 'Column visibility',
-            'Titel': 'Title',
-            'Datum': 'Date',
-            'Kurzinfo': 'Summary',
-            'Wichtigkeit': 'Importance',
-            'Treibers': 'Drivers',
-            'Matrix': 'Food groups',
-            'Bereich': 'Domains',
-            'Links': 'Links'
-        }
-      };
-
-      function convertToStars(num) {
-        switch (num) {
-            case '1':
-                return '<span>&#9733;&#9734;&#9734</span>'; // One star symbol
-            case '2':
-                return '<span>&#9733;&#9733;&#9734</span>'; // Two star symbols
-            case '3':
-                return '<span>&#9733;&#9733;&#9733;</span>'; // Three star symbols
-            default:
-                return '';
-        }
-      }
-
-      // Check if the DataTable instance already exists
-      if (!table) {
-        // Initialize DataTable only if it doesn't exist
-        table = new DataTable('#filtered-table', {
-          language:{
-            info: getTranslatedText(translations, lang,'count'),
-            search: getTranslatedText(translations, lang,'search')          
-          },
-          layout:{
-            bottomStart:{
-            buttons: [
-                {
-                    extend: 'csv',
-                    filename: 'FRESIL_export', // Change 'custom_filename' to the desired name
-                    text: 'CSV', // Optional: Change the text of the button
-                    charset: 'UTF-8',
-                    exportOptions: {
-                      orthogonal: 'exportData', // Use raw data for export
-                      columns: ':visible'
-                    }
-                },
-                {
-                  extend: 'colvis',
-                  columns: ':not(.noVis)',
-                  text: getTranslatedText(translations, lang,'Column_visibility'),
-                  popoverTitle: 'Column visibility selector'
-              }
-            ]},
-            bottomEnd:'info'},
-            columns: [
-                { title: getTranslatedText(translations, lang,'Titel'), data: 'titel' },
-                { title: getTranslatedText(translations, lang,'Datum'), data: 'Dates_erf_date'},
-                { title: getTranslatedText(translations, lang,'Kurzinfo'), data: 'kurzinfo', visible: false},
-                { title: getTranslatedText(translations, lang,'Wichtigkeit'), data: 'sterne', visible: false,
-                                            render: (data, type, row) =>  type === 'exportData' ? data : convertToStars(data)},
-                { title: getTranslatedText(translations, lang,'Treiber'), data: 'treiber', visible: false},
-                { title: getTranslatedText(translations, lang,'Matrix'), data: 'matrix', visible: false},
-                { title: getTranslatedText(translations, lang,'Bereich'), data: 'bereich', visible: false},
-                { title: getTranslatedText(translations, lang,'Links'), data: 'links', visible: false,
-                                            render: function(data, type, row){
-                                              if (type === 'exportData'){
-                                                return data.map(link => Object.values(link)[0]).join(', ')
-                                              } else {
-                                                let linksHTML = '';
-                                                for (const link of data) {
-                                                    const key = Object.keys(link)[0]; // Extracting the key from the link object
-                                                    const value = link[key]; // Extracting the value from the link object
-                                                    linksHTML += `<a href="${value}" target="_blank">${key}</a><br>`;
-                                                }
-                                                return linksHTML}
-                                            } }
-            ],
-            data: filteredData, // Pass the modified data to the DataTable
-            scrollY: '500px', // Set a fixed height for the table body
-            scrollX: '100%',
-            scrollCollapse: true, // Allow collapsing the table height if the content doesn't fill it
-            paging: false, // Disable pagination
-            order: [[1, 'desc']] // Order by the 'date' column in descending order
+            const bereichs = meldungXbereich.filter(meldungXbereichRow => meldungXbereichRow.meldung_id === row.id)
+                .map(meldungXbereichRow => {
+                    const bereichId = meldungXbereichRow.bereich_id;
+                    const bereichInfo = bereich.find(t => t.id === bereichId);
+                    return bereichInfo ? bereichInfo[`bezeichnung_${lang}`] : '-';
+                });
+            row.bereich = bereichs;
         });
-        
-    } else {
-        // If DataTable instance already exists, just update its data
-        table.clear().rows.add(filteredData).draw();
-    }
 
-              });
+        // Define language-specific text mappings
+        const translations = {
+            'de': {
+                'search': 'Suche:',
+                'count': 'Anzeige von _START_ bis _END_ der _TOTAL_ Meldungen',
+                'Column_visibility': 'Sichtbarkeit der Spalte',
+                'Titel': 'Titel',
+                'Datum': 'Datum',
+                'Kurzinfo': 'Kurzinfo',
+                'Wichtigkeit': 'Wichtigkeit',
+                'Treibers': 'Treiber',
+                'Matrix': 'Lebensmittelgruppen',
+                'Bereich': 'Bereich',
+                'Links': 'Links'
+            },
+            'fr': {
+                'search': 'Rechercher:',
+                'count': 'Affichage du _START_ à la _END_ du _TOTAL_ des notifications',
+                'Column_visibility': 'Visibilité des colonnes',
+                'Titel': 'Titre',
+                'Datum': 'Date',
+                'Kurzinfo': 'Résumé',
+                'Wichtigkeit': 'Importance',
+                'Treibers': 'Moteurs',
+                'Matrix': 'Groupe d\'aliments',
+                'Bereich': 'Domaines',
+                'Links': 'Liens'
+            },
+            'it': {
+                'search': 'Ricerca:',
+                'count': 'Mostra da _START_ a _END_ del _TOTAL_ delle notifiche',
+                'Column_visibility': 'Visibilità delle colonne',
+                'Titel': 'Titolo',
+                'Datum': 'Data',
+                'Kurzinfo': 'Sintesi',
+                'Wichtigkeit': 'Importanza',
+                'Treibers': 'Driver',
+                'Matrix': 'Gruppi Alimentari',
+                'Bereich': 'Settore',
+                'Links': 'Links'
+            },
+            'en': {
+                'search': 'Search:',
+                'count': 'Showing _START_ to _END_ of _TOTAL_ notifications',
+                'Column_visibility': 'Column visibility',
+                'Titel': 'Title',
+                'Datum': 'Date',
+                'Kurzinfo': 'Summary',
+                'Wichtigkeit': 'Importance',
+                'Treibers': 'Drivers',
+                'Matrix': 'Food groups',
+                'Bereich': 'Domains',
+                'Links': 'Links'
+            }
+        };
+
+                function convertToStars(num) {
+            switch (num) {
+                case '1':
+                    return '<span>&#9733;&#9734;&#9734</span>'; // One star symbol
+                case '2':
+                    return '<span>&#9733;&#9733;&#9734</span>'; // Two star symbols
+                case '3':
+                    return '<span>&#9733;&#9733;&#9733;</span>'; // Three star symbols
+                default:
+                    return '';
+            }
         }
+
+        // Check if the DataTable instance already exists
+        if (!table) {
+            // Initialize DataTable only if it doesn't exist
+            table = new DataTable('#filtered-table', {
+                language: {
+                    info: getTranslatedText(translations, lang, 'count'),
+                    search: getTranslatedText(translations, lang, 'search')
+                },
+                layout: {
+                    bottomStart: {
+                        buttons: [{
+                                extend: 'csv',
+                                filename: 'FRESIL_export', // Change 'custom_filename' to the desired name
+                                text: 'CSV', // Optional: Change the text of the button
+                                charset: 'UTF-8',
+                                exportOptions: {
+                                    orthogonal: 'exportData', // Use raw data for export
+                                    columns: ':visible'
+                                }
+                            },
+                            {
+                                extend: 'colvis',
+                                columns: ':not(.noVis)',
+                                text: getTranslatedText(translations, lang, 'Column_visibility'),
+                                popoverTitle: 'Column visibility selector'
+                            }
+                        ]
+                    },
+                    bottomEnd: 'info'
+                },
+                columns: [{
+                        title: getTranslatedText(translations, lang, 'Titel'),
+                        data: 'titel'
+                    },
+                    {
+                        title: getTranslatedText(translations, lang, 'Datum'),
+                        data: 'Dates_erf_date'
+                    },
+                    {
+                        title: getTranslatedText(translations, lang, 'Kurzinfo'),
+                        data: 'kurzinfo',
+                        visible: false
+                    },
+                    {
+                        title: getTranslatedText(translations, lang, 'Wichtigkeit'),
+                        data: 'sterne',
+                        visible: false,
+                        render: (data, type, row) => type === 'exportData' ? data : convertToStars(data)
+                    },
+                    {
+                        title: getTranslatedText(translations, lang, 'Treiber'),
+                        data: 'treiber',
+                        visible: false
+                    },
+                    {
+                        title: getTranslatedText(translations, lang, 'Matrix'),
+                        data: 'matrix',
+                        visible: false
+                    },
+                    {
+                        title: getTranslatedText(translations, lang, 'Bereich'),
+                        data: 'bereich',
+                        visible: false
+                    },
+                    {
+                        title: getTranslatedText(translations, lang, 'Links'),
+                        data: 'links',
+                        visible: false,
+                        render: function(data, type, row) {
+                            if (type === 'exportData') {
+                                return data.map(link => Object.values(link)[0]).join(', ')
+                            } else {
+                                let linksHTML = '';
+                                for (const link of data) {
+                                    const key = Object.keys(link)[0]; // Extracting the key from the link object
+                                    const value = link[key]; // Extracting the value from the link object
+                                    linksHTML += `<a href="${value}" target="_blank">${key}</a><br>`;
+                                }
+                                return linksHTML
+                            }
+                        }
+                    }
+                ],
+                data: filteredData, // Pass the modified data to the DataTable
+                scrollY: '500px', // Set a fixed height for the table body
+                scrollX: '100%',
+                scrollCollapse: true, // Allow collapsing the table height if the content doesn't fill it
+                paging: false, // Disable pagination
+                order: [
+                    [1, 'desc']
+                ] // Order by the 'date' column in descending order
+            });
+
+        } else {
+            // If DataTable instance already exists, just update its data
+            table.clear().rows.add(filteredData).draw();
+        }
+    });
+}
+
+
+
+
+
+
 
 
 let svg_waffle, width, height, treiberCache;
@@ -696,6 +680,11 @@ function createWaffleChart(treiberData) {
     }
 
 }
+
+
+
+
+
 
 
 /**

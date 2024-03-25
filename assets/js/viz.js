@@ -1,7 +1,9 @@
-// Bubble chart visu
-let circles;
-let svg;
-let dataCache, colorCache, selectedColorCache, filterCache, langCache;
+// Bubble chart visualization
+
+// Declare variables
+let circles; // Variable to store bubble elements
+let svg; // Variable to store SVG element
+let dataCache, colorCache, selectedColorCache, filterCache, langCache; // Variables for caching data and settings
 
 /**
  * Retrieves translated text based on language.
@@ -14,7 +16,12 @@ function getTranslatedText(translation, lang, key) {
     return translation[lang][key] || key; // Returns translated text or key itself if not found
 }
 
-// Function to calculate text width
+/**
+ * Calculates the width of a given text using a specific font.
+ * @param {string} text - The text to measure.
+ * @param {string} font - The font style and size.
+ * @returns {number} - The width of the text in pixels.
+ */
 function getTextWidth(text, font) {
     const canvas = document.createElement("canvas");
     const context = canvas.getContext("2d");
@@ -37,196 +44,192 @@ function getTextWidth(text, font) {
  * @param {string} filter - The filter to be applied to the data.
  * @param {string} lang - The language for translation.
  */
-function baseVisualization(data, color, selectedColor, filter, lang) {
+ function baseVisualization(data, color, selectedColor, filter, lang) {
   // Cache data for resizing events
-    dataCache = data;
-    colorCache = color;
-    selectedColorCache = selectedColor;
-    filterCache = filter;
-    langCache = lang;
+  dataCache = data;
+  colorCache = color;
+  selectedColorCache = selectedColor;
+  filterCache = filter;
+  langCache = lang;
 
-    let translations = {
-        'de': { 'Anzahl': 'Anzahl Meldungen:', 'D_Wichtigkeit': 'Durchschnittliche Wichtigkeit:' },
-        'fr': { 'Anzahl': 'Nombres de Notifications:', 'D_Wichtigkeit': 'Importance moyenne:' },
-        'it': { 'Anzahl': 'Numero di notifiche:', 'D_Wichtigkeit': 'Importanza media:' },
-        'en': { 'Anzahl': 'Number of Notifications:', 'D_Wichtigkeit': 'Average Importance:' }
-    };
+  // Object containing translations
+  let translations = {
+      'de': { 'Anzahl': 'Anzahl Meldungen:', 'D_Wichtigkeit': 'Durchschnittliche Wichtigkeit:' },
+      'fr': { 'Anzahl': 'Nombres de Notifications:', 'D_Wichtigkeit': 'Importance moyenne:' },
+      'it': { 'Anzahl': 'Numero di notifiche:', 'D_Wichtigkeit': 'Importanza media:' },
+      'en': { 'Anzahl': 'Number of Notifications:', 'D_Wichtigkeit': 'Average Importance:' }
+  };
 
-    let width = 0;
-    let defaultId = ''; // Variable to store the id of the data with the biggest count
+  let width = 0;
+  let defaultId = ''; // Variable to store the id of the data with the biggest count
 
-    const selectElement = document.getElementById('gm-list');
+  const selectElement = document.getElementById('gm-list');
 
-    // Find the data with the biggest count
-    let maxCount = -Infinity;
-    data.forEach(d => {
-        if (d.count > maxCount) {
-            maxCount = d.count;
-            defaultId = d.id;
-        }
-    });
+  // Find the data with the biggest count
+  let maxCount = -Infinity;
+  data.forEach(d => {
+      if (d.count > maxCount) {
+          maxCount = d.count;
+          defaultId = d.id;
+      }
+  });
 
-    svg = d3.select("svg#bubbleChart");
+  svg = d3.select("svg#bubbleChart");
 
-    // Remove existing title elements
-    svg.selectAll("title").remove();
+  // Remove existing title elements
+  svg.selectAll("title").remove();
 
-    // Sort the result array based on circle size
-    data.sort((a, b) => b.size - a.size);
+  // Sort the result array based on circle size
+  data.sort((a, b) => b.size - a.size);
 
-    var el = document.getElementById("bubbleChart");
-    var rect = el.getBoundingClientRect(); // get the bounding rectangle
+  var el = document.getElementById("bubbleChart");
+  var rect = el.getBoundingClientRect(); // get the bounding rectangle
 
-    let centerX = rect.width / 2;
-    let centerY = rect.height / 2;
-    const radiusStep = 10; // Adjust the step based on your preference
-    let angle = 0;
+  let centerX = rect.width / 2;
+  let centerY = rect.height / 2;
+  const radiusStep = 10; // Adjust the step based on your preference
+  let angle = 0;
 
-    data.forEach((circle, index) => {
-        const radius = index * radiusStep;
-        const x = centerX + radius * Math.cos(angle);
-        const y = centerY + radius * Math.sin(angle);
+  data.forEach((circle, index) => {
+      const radius = index * radiusStep;
+      const x = centerX + radius * Math.cos(angle);
+      const y = centerY + radius * Math.sin(angle);
 
-        circle.x = x;
-        circle.y = y;
+      circle.x = x;
+      circle.y = y;
 
-        // Increase the angle for the next circle
-        angle += 0.1; // Adjust the angle increment based on your preference
-    });
+      // Increase the angle for the next circle
+      angle += 0.1; // Adjust the angle increment based on your preference
+  });
 
-    // Create a force simulation
-    let simulation = d3.forceSimulation(data)
-        .force("x", d3.forceX(centerX).strength(0.05))
-        .force("y", d3.forceY(centerY).strength(0.05))
-        .force("collide", d3.forceCollide(d => {
-            // Adjust the multiplier as needed to control the size of the bubbles
-            const multiplier = Math.min(rect.width, rect.height) / 500; // Adjust as needed
-            return d.size * multiplier + 5;
-        }).iterations(8))
-        .on("tick", ticked);
+  // Create a force simulation
+  let simulation = d3.forceSimulation(data)
+      .force("x", d3.forceX(centerX).strength(0.05))
+      .force("y", d3.forceY(centerY).strength(0.05))
+      .force("collide", d3.forceCollide(d => {
+          // Adjust the multiplier as needed to control the size of the bubbles
+          const multiplier = Math.min(rect.width, rect.height) / 500; // Adjust as needed
+          return d.size * multiplier + 5;
+      }).iterations(8))
+      .on("tick", ticked);
 
-    circles = svg.selectAll("circle")
-        .data(data)
-        .join("circle")
-        .attr("r", d => {
-            // Adjust the multiplier as needed to control the size of the bubbles
-            const multiplier = Math.min(rect.width, rect.height) / 500; // Adjust as needed
-            return d.size * multiplier;
-        })
-        .attr("fill", color)
-        .attr("id", d => d.id)
-        .on("mouseover", function (d) {
-            // Only add stroke if the circle is not the clicked one
-            if (!d3.select(this).classed("clicked")) {
-                d3.select(this).attr("fill", selectedColor);
-            }
+  circles = svg.selectAll("circle")
+      .data(data)
+      .join("circle")
+      .attr("r", d => {
+          // Adjust the multiplier as needed to control the size of the bubbles
+          const multiplier = Math.min(rect.width, rect.height) / 500; // Adjust as needed
+          return d.size * multiplier;
+      })
+      .attr("fill", color)
+      .attr("id", d => d.id)
+      .on("mouseover", function (d) {
+          // Only add stroke if the circle is not the clicked one
+          if (!d3.select(this).classed("clicked")) {
+              d3.select(this).attr("fill", selectedColor);
+          }
 
-            // Calculate the center position of the circle
-            const circleCenterX = d.x;
-            const circleCenterY = d.y;
+          // Update the tooltip position to the center of the circle
+          let w = window.innerWidth;
 
-            // Update the tooltip position to the center of the circle
-            let w = window.innerWidth;
-            let offsetheight = document.getElementById('bubbleChart').offsetHeight;
-            let tooltipOffsetWidth = (w - width) / 2;
 
-            // Update the tooltip position and value
-            d3.select("#tooltip")
-                .style("left", (circleCenterX + tooltipOffsetWidth) + "px")
-                .style("top", (circleCenterY + offsetheight) + "px")
-                .select("#titel")
-                .text(d.name);
+          // Update the tooltip position and value
+          d3.select("#tooltip")
+              .style("left", (d3.event.pageX-25) + "px")
+              .style("top", (d3.event.pageY-75) + "px")
+              .select("#titel")
+              .text(d.name);
 
-            d3.select("#tooltip")
-                .select("#meldungCount")
-                .text(`${getTranslatedText(translations, lang, 'Anzahl')} ${d.count}`);
+          d3.select("#tooltip")
+              .select("#meldungCount")
+              .text(`${getTranslatedText(translations, lang, 'Anzahl')} ${d.count}`);
 
-            d3.select("#tooltip")
-                .select("#meanSterne")
-                .text(`${getTranslatedText(translations, lang, 'D_Wichtigkeit')} ${d.mean_sterne}`);
+          d3.select("#tooltip")
+              .select("#meanSterne")
+              .text(`${getTranslatedText(translations, lang, 'D_Wichtigkeit')} ${d.mean_sterne}`);
 
-            d3.select("#tooltip").classed("hidden", false);
+          d3.select("#tooltip").classed("hidden", false);
 
-        })
+      })
 
-        .on("mouseout", function () {
-            // Only remove stroke if the circle is not the clicked one
-            if (!d3.select(this).classed("clicked")) {
-                d3.select(this).attr("fill", color);
-            }
-            // Hide the tooltip
-            d3.select("#tooltip").classed("hidden", true);
-        })
+      .on("mouseout", function () {
+          // Only remove stroke if the circle is not the clicked one
+          if (!d3.select(this).classed("clicked")) {
+              d3.select(this).attr("fill", color);
+          }
+          // Hide the tooltip
+          d3.select("#tooltip").classed("hidden", true);
+      })
 
-        .on("click", function (d, i) {
-            // Remove stroke from all circles
-            svg.selectAll("circle").attr("fill", color).classed("clicked", false);
+      .on("click", function (d, i) {
+          // Remove stroke from all circles
+          svg.selectAll("circle").attr("fill", color).classed("clicked", false);
 
-            // Apply stroke to the clicked circle and add the "clicked" class
-            d3.select(this).attr("fill", selectedColor).classed("clicked", true);
+          // Apply stroke to the clicked circle and add the "clicked" class
+          d3.select(this).attr("fill", selectedColor).classed("clicked", true);
 
-            moveToSection('three');
+          moveToSection('three');
 
-            // Extract the "treiber" values from the selected circle
-            let treiberData = d.treiber;
-            let id = d.id;
-            let title = d.name;
-            let meldung_list = d.meldung_ids;
+          // Extract the "treiber" values from the selected circle
+          let treiberData = d.treiber;
+          let id = d.id;
+          let title = d.name;
+          let meldung_list = d.meldung_ids;
 
-            // Set the value of the select element to the selected circle's name
-            selectElement.value = title;
+          // Set the value of the select element to the selected circle's name
+          selectElement.value = title;
 
-            // Update the content of the <span> tag with the class "waffle-title"
-            document.querySelector('#waffle-title').innerText = title;
-            // Create and display waffle chart
-            createWaffleChart(treiberData);
-            createList(id, filter, lang, meldung_list);
-        });
+          // Update the content of the <span> tag with the class "waffle-title"
+          document.querySelector('#waffle-title').innerText = title;
+          // Create and display waffle chart
+          createWaffleChart(treiberData);
+          createList(id, filter, lang, meldung_list);
+      });
 
-    // Create and display waffle chart for default data
-    createWaffleChart(data.find(d => d.id === defaultId).treiber);
-    createList(defaultId, filter, lang, data.find(d => d.id === defaultId).meldung_ids);
+  // Create and display waffle chart for default data
+  createWaffleChart(data.find(d => d.id === defaultId).treiber);
+  createList(defaultId, filter, lang, data.find(d => d.id === defaultId).meldung_ids);
 
-    // Highlight default circle
-    defaultCircle = svg.select(`circle[id="${defaultId}"]`);
-    defaultCircle.attr("fill", selectedColor).classed("clicked", true);
-    selectElement.value = data.find(d => d.id === defaultId).name;
+  // Highlight default circle
+  defaultCircle = svg.select(`circle[id="${defaultId}"]`);
+  defaultCircle.attr("fill", selectedColor).classed("clicked", true);
+  selectElement.value = data.find(d => d.id === defaultId).name;
 
-    // Update the content of the <span> tag with the class "waffle-title"
-    document.querySelector('#waffle-title').innerText = data.find(d => d.id === defaultId).name;
+  // Update the content of the <span> tag with the class "waffle-title"
+  document.querySelector('#waffle-title').innerText = data.find(d => d.id === defaultId).name;
 
-    // Add event listener to the select element
-    selectElement.addEventListener('change', function (event) {
-        const selectedName = event.target.value;
-        const selectedCircle = data.find(circle => circle.name === selectedName);
-        if (selectedCircle) {
-            // Remove stroke from all circles
-            svg.selectAll("circle").attr("fill", color).classed("clicked", false);
+  // Add event listener to the select element
+  selectElement.addEventListener('change', function (event) {
+    const selectedName = event.target.value;
+    const selectedCircle = data.find(circle => circle.name === selectedName);
+    if (selectedCircle) {
+        // Remove stroke from all circles
+        svg.selectAll("circle").attr("fill", color).classed("clicked", false);
 
-            // Apply stroke to the selected circle and add the "clicked" class
-            const selectedCircleElement = svg.select(`circle[id="${selectedCircle.id}"]`);
-            selectedCircleElement.attr("fill", selectedColor).classed("clicked", true);
+        // Apply stroke to the selected circle and add the "clicked" class
+        const selectedCircleElement = svg.select(`circle[id="${selectedCircle.id}"]`);
+        selectedCircleElement.attr("fill", selectedColor).classed("clicked", true);
 
-            // Run createWaffleChart and createList functions
-            moveToSection('two');
-            createWaffleChart(selectedCircle.treiber);
-            createList(selectedCircle.id, filter, lang, selectedCircle.meldung_ids);
+        // Run createWaffleChart and createList functions
+        moveToSection('two');
+        createWaffleChart(selectedCircle.treiber);
+        createList(selectedCircle.id, filter, lang, selectedCircle.meldung_ids);
 
-            let title = selectedCircle.name;
+        let title = selectedCircle.name;
 
-            // Update the content of the <span> tag with the class "waffle-title"
-            document.querySelector('#waffle-title').innerText = title;
-        }
-    });
-
-    /**
-     * Updates the position of circles based on the tick event.
-     * @param {Object} d - The data object representing the circle.
-     */
-    function ticked(d) {
-        circles.attr("cx", d => d.x)
-            .attr("cy", d => d.y);
+        // Update the content of the <span> tag with the class "waffle-title"
+        document.querySelector('#waffle-title').innerText = title;
     }
+});
+
+/**
+ * Updates the position of circles based on the tick event.
+ * @param {Object} d - The data object representing the circle.
+ */
+function ticked(d) {
+    circles.attr("cx", d => d.x)
+        .attr("cy", d => d.y);
+}
 }
 
 
@@ -362,7 +365,7 @@ function createList(id, filter, lang, meldung_ids) {
             }
         };
 
-                function convertToStars(num) {
+        function convertToStars(num) {
             switch (num) {
                 case '1':
                     return '<span>&#9733;&#9734;&#9734</span>'; // One star symbol

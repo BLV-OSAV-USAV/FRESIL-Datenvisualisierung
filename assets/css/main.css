@@ -103,6 +103,15 @@
 		-webkit-text-size-adjust: none;
 	}
 
+	/* Style for dropdowns */
+	.dropdown {
+	    width: calc(20% - 10px); /* Set initial width for dropdowns */
+	    margin: 0 5px 10px 0; /* Add some spacing between dropdowns */
+	    display: inline-block; /* Make dropdowns inline-block elements */
+	    vertical-align: top; /* Align dropdowns to the top */
+	}
+	
+
 /* Box Model */
 
 	*, *:before, *:after {
@@ -193,6 +202,13 @@
 	}
 
 	@media screen and (max-width: 980px) {
+
+		/* Change the display to block for dropdowns */
+	    .dropdown {
+	        width: 25%; /* Set dropdowns to occupy full width */
+	        margin: 0 auto 10px auto; /* Add spacing only at the bottom */
+	        display: block; /* Make dropdowns block-level elements */
+	    }
 
 		.container.\31 25\25 {
 			width: 100%;

@@ -1,6 +1,7 @@
 // Bubble chart visu
 let circles;
 let svg;
+let dataCache, colorCache, selectedColorCache, filterCache, langCache
 
 /**
  * Retrieves translated text based on language.
@@ -12,13 +13,14 @@ let svg;
 function getTranslatedText(translation, lang, key) {
   return translation[lang][key] || key; // Returns translated text or key itself if not found
 }
-  // Function to calculate text width
-  function getTextWidth(text, font) {
+// Function to calculate text width
+function getTextWidth(text, font) {
     const canvas = document.createElement("canvas");
     const context = canvas.getContext("2d");
     context.font = font;
     return context.measureText(text).width;
 }
+
 
 /**
  * Visualizes data using a bubble chart.
@@ -29,12 +31,31 @@ function getTranslatedText(translation, lang, key) {
  * @param {string} filter - The filter to be applied to the data.
  */
 function baseVisualization(data, color, selectedColor, filter, lang){ 
-    function getTextWidth(text, font) {
-        const canvas = document.createElement("canvas");
-        const context = canvas.getContext("2d");
-        context.font = font;
-        return context.measureText(text).width;
-    }
+    dataCache = data;
+    colorCache = color;
+    selectedColorCache = selectedColor;
+    filterCache = filter;
+    langCache = lang;
+
+
+    let translations = {
+      'de': {
+          'Anzahl': 'Anzahl Meldungen:',
+          'D_Wichtigkeit': 'Durchschnittliche Wichtigkeit:'
+      },
+      'fr': {
+          'Anzahl': 'Nombres de Notifications:',
+          'D_Wichtigkeit': 'Importance moyenne:'
+      },
+      'it': {
+          'Anzahl': 'Numero di notifiche:',
+          'D_Wichtigkeit': 'Importanza media:'
+      },
+      'en': {
+          'Anzahl': 'Number of Notifications:',
+          'D_Wichtigkeit': 'Average Importance:'
+      }
+      };
 
 	  let width = 0;
     let defaultId = ''; // Variable to store the id of the data with the biggest count
@@ -58,19 +79,13 @@ function baseVisualization(data, color, selectedColor, filter, lang){
     // Sort the result array based on circle size
     data.sort((a, b) => b.size - a.size);
 
-    // Calculate new positions for circles in a spiral layout
-    //const centerX = 0;
-    //const centerY = 0;
-
     var el   = document.getElementById("bubbleChart"); // or other selector like querySelector()
     var rect = el.getBoundingClientRect(); // get the bounding rectangle
 
-    const centerX = rect.width/2;
-    const centerY = rect.height/2;
-    const radiusStep = 20; // Adjust the step based on your preference
+    let centerX = rect.width/2;
+    let centerY = rect.height/2;
+    const radiusStep = 10; // Adjust the step based on your preference
     let angle = 0;
-
-
 
     data.forEach((circle, index) => {
       const radius = index * radiusStep;
@@ -85,42 +100,112 @@ function baseVisualization(data, color, selectedColor, filter, lang){
     });
 
 
-
     // Create a force simulation
-    const simulation = d3.forceSimulation(data)
-    .force("x", d3.forceX().strength(0.05))
-    .force("y", d3.forceY().strength(0.05))
-    .force("collide", d3.forceCollide(d => {
-      if (maxCount > 25) {
-          return d.size + 5;
-      } else if (maxCount > 10) {
-          return d.size * 4 + 5;
-      } else {
-          return d.size * 8 + 5;
-      }
-    }).iterations(8))
-    .on("tick", ticked);
+    let simulation = d3.forceSimulation(data)
+                          .force("x", d3.forceX(centerX).strength(0.05))
+                          .force("y", d3.forceY(centerY).strength(0.05))
+                          .force("collide", d3.forceCollide(d => {
+                            // Adjust the multiplier as needed to control the size of the bubbles
+                            const multiplier = Math.min(rect.width, rect.height) / 500; // Adjust as needed
+                            return d.size * multiplier + 5;
+                            })
+                          .iterations(8))
+                          .on("tick", ticked);
 
+    
 
+    
     circles = svg.selectAll("circle")
                   .data(data)
                   .join("circle")
                   .attr("r", d => {
-                      if (maxCount > 25) {
-                          return d.size;
-                      } else if (maxCount > 10) {
-                          return d.size * 4;
-                      } else {
-                          return d.size * 8;
-                      }
-                  })                  .attr("fill", color)
+                    // Adjust the multiplier as needed to control the size of the bubbles
+                    const multiplier = Math.min(rect.width, rect.height) / 500; // Adjust as needed
+                    return d.size * multiplier;
+                   })
+                  .attr("fill", color)
                   .attr("id", d => d.id)
                   .on("mouseover", function(d) {
                     // Only add stroke if the circle is not the clicked one
                     if (!d3.select(this).classed("clicked")) {
                         d3.select(this).attr("fill", selectedColor); 
                     }                       
-/*       // Append text elements for the five bigger circles
+                    
+                    // Calculate the center position of the circle
+                    const circleCenterX = d.x;
+                    const circleCenterY = d.y;
+
+                    // Update the tooltip position to the center of the circle
+                    let w = window.innerWidth;
+                    let offsetheight = document.getElementById('bubbleChart').offsetHeight;
+                    let tooltipOffsetWidth = (w - width) / 2;
+
+                    //Update the tooltip position and value
+                    d3.select("#tooltip")
+                        .style("left", (circleCenterX + tooltipOffsetWidth) + "px")
+                        .style("top", (circleCenterY + offsetheight) + "px")
+                        .select("#titel")
+                        .text(d.name);        
+
+                    d3.select("#tooltip")  
+                        .select("#meldungCount")
+                        .text(`${getTranslatedText(translations, lang,'Anzahl')} ${d.count}`);
+
+                    d3.select("#tooltip")
+                        .select("#meanSterne")
+                        .text(`${getTranslatedText(translations, lang, 'D_Wichtigkeit')} ${d.mean_sterne}`);
+
+                    d3.select("#tooltip").classed("hidden", false);
+
+                    })              
+    
+                  .on("mouseout", function() { 
+                    // Only remove stroke if the circle is not the clicked one
+                    if (!d3.select(this).classed("clicked")) {
+                        d3.select(this).attr("fill", color); 
+                    }
+                    //Hide the tooltip
+                    d3.select("#tooltip").classed("hidden", true);
+                  })
+                  .on("click", function(d,i) {
+                    // Remove stroke from all circles
+                    svg.selectAll("circle").attr("fill", color).classed("clicked", false); 
+
+                    // Apply stroke to the clicked circle and add the "clicked" class
+                    d3.select(this).attr("fill", selectedColor).classed("clicked", true);
+                  
+                  
+                    moveToSection('three');
+                  
+                    // Extract the "treiber" values from the selected circle
+                    let treiberData = d.treiber;
+                    let id = d.id;
+                    let title = d.name;
+                    let meldung_list = d.meldung_ids;
+                  
+                    // Set the value of the select element to the selected circle's name
+                    selectElement.value = title; 
+
+                    // Update the content of the <span> tag with the class "waffle-title"
+                    document.querySelector('#waffle-title').innerText = title;
+                    // Create and display waffle chart
+                    createWaffleChart(treiberData);
+                    createList(id, filter, lang, meldung_list);
+                  });
+
+/*     // Create text elements for displaying circle names
+    svg.selectAll("text")
+        .data(data.slice(0, 5)) // Select only the top 5 circles
+        .enter()
+        .append("text")
+        .attr("cx", d => d.x) // Position text at the x-coordinate of the circle
+        .attr("cy", d => d.y) // Position text at the y-coordinate of the circle
+        .attr("text-anchor", "middle") // Center text horizontally
+        .attr("dy", "0.35em") // Offset text vertically for better alignment
+        .text(d => d.name) // Set text content to circle name
+        .style("font-size", "10px"); // Adjust font size as needed */
+
+    /*       // Append text elements for the five bigger circles
       svg.selectAll("text")
           .data(data.filter((d, i) => i < 5)) // Filter only the five bigger circles
           .enter()
@@ -148,106 +233,8 @@ function baseVisualization(data, color, selectedColor, filter, lang){
  */
 
 
-                        
-    
-      // Calculate the center position of the circle
-      const circleCenterX = d.x;
-      const circleCenterY = d.y;
-    
-      // Update the tooltip position to the center of the circle
-      let w = window.innerWidth;
-      let offsetheight = document.getElementById('bubbleChart').offsetHeight;
-      let tooltipOffsetWidth = (w - width) / 2;
-    
-      //Update the tooltip position and value
-      d3.select("#tooltip")
-          .style("left", (circleCenterX + tooltipOffsetWidth) + "px")
-          .style("top", (circleCenterY + offsetheight) + "px")
-          .select("#titel")
-          .text(d.name);
 
-      let translations = {
-          'de': {
-              'Anzahl': 'Anzahl Meldungen:',
-              'D_Wichtigkeit': 'Durchschnittliche Wichtigkeit:'
-          },
-          'fr': {
-              'Anzahl': 'Nombres de Notifications:',
-              'D_Wichtigkeit': 'Importance moyenne:'
-          },
-          'it': {
-              'Anzahl': 'Numero di notifiche:',
-              'D_Wichtigkeit': 'Importanza media:'
-          },
-          'en': {
-              'Anzahl': 'Number of Notifications:',
-              'D_Wichtigkeit': 'Average Importance:'
-          }
-      };
-        
-    
-      d3.select("#tooltip")  
-          .select("#meldungCount")
-          .text(`${getTranslatedText(translations, lang,'Anzahl')} ${d.count}`);
-    
-      d3.select("#tooltip")
-          .select("#meanSterne")
-          .text(`${getTranslatedText(translations, lang, 'D_Wichtigkeit')} ${d.mean_sterne}`);
-    
-      d3.select("#tooltip").classed("hidden", false);
-    
-    })
-    
-    .on("mouseout", function() { 
-      // Only remove stroke if the circle is not the clicked one
-      if (!d3.select(this).classed("clicked")) {
-          d3.select(this).attr("fill", color); 
-      }
-      //Hide the tooltip
-      d3.select("#tooltip").classed("hidden", true);
-    })
-    .on("click", function(d,i) {
-      // Remove stroke from all circles
-      svg.selectAll("circle").attr("fill", color).classed("clicked", false); 
-      
-      // Apply stroke to the clicked circle and add the "clicked" class
-      d3.select(this).attr("fill", selectedColor).classed("clicked", true);
- 
-
-      moveToSection('three');
-
-      // Extract the "treiber" values from the selected circle
-      let treiberData = d.treiber;
-      let bereichData = d.bereich;
-      let id = d.id;
-      let title = d.name;
-      let meldung_list = d.meldung_ids;
-
-      // Set the value of the select element to the selected circle's name
-      selectElement.value = title; 
-      
-      // Update the content of the <span> tag with the class "waffle-title"
-      document.querySelector('#waffle-title').innerText = title;
-      // Create and display waffle chart
-      createWaffleChart(treiberData, bereichData);
-      createList(id, filter, lang, meldung_list);
-    });
-
-/*     // Create text elements for displaying circle names
-    svg.selectAll("text")
-        .data(data.slice(0, 5)) // Select only the top 5 circles
-        .enter()
-        .append("text")
-        .attr("cx", d => d.x) // Position text at the x-coordinate of the circle
-        .attr("cy", d => d.y) // Position text at the y-coordinate of the circle
-        .attr("text-anchor", "middle") // Center text horizontally
-        .attr("dy", "0.35em") // Offset text vertically for better alignment
-        .text(d => d.name) // Set text content to circle name
-        .style("font-size", "10px"); // Adjust font size as needed */
-
-
-
-    createWaffleChart(data.find(d => d.id === defaultId).treiber, data.find(d => d.id === defaultId).bereich);
+    createWaffleChart(data.find(d => d.id === defaultId).treiber);
     createList(defaultId, filter, lang, data.find(d => d.id === defaultId).meldung_ids);
     defaultCircle = svg.select(`circle[id="${defaultId}"]`);
     defaultCircle.attr("fill", selectedColor).classed("clicked", true);
@@ -271,7 +258,7 @@ function baseVisualization(data, color, selectedColor, filter, lang){
 
             // Run createWaffleChart and createList functions
             moveToSection('two');
-            createWaffleChart(selectedCircle.treiber, selectedCircle.bereich);
+            createWaffleChart(selectedCircle.treiber);
             createList(selectedCircle.id, filter, lang, selectedCircle.meldung_ids);
 
             let title = selectedCircle.name;
@@ -511,19 +498,23 @@ function createList(id, filter, lang, meldung_ids) {
         }
 
 
-let svg_waffle, width, height, treiberCache, bereichCache;
+let svg_waffle, width, height, treiberCache;
 
 /**
  * Creates a waffle chart based on the provided treiberData and title.
  * @param {Object} treiberData - The data object containing treiber values.
  */
-function createWaffleChart(treiberData, bereichData) {
+function createWaffleChart(treiberData) {
     treiberCache = treiberData;
-    bereichData = bereichCache;
+
 
     
     // Clear existing waffle chart if any
     d3.select("#waffleChart").selectAll("*").remove();
+    var el   = document.getElementById("waffleChart");
+    var rect = el.getBoundingClientRect(); // get the bounding rectangle
+
+
 
     // Convert the object to an array of objects
     const treiberArray = Object.keys(treiberData).map(key => ({
@@ -584,15 +575,10 @@ function createWaffleChart(treiberData, bereichData) {
     chartData.sort((a, b) => b.ratio - a.ratio);
 
 
-
-    if (window.outerWidth < 900) {
-      height = window.outerHeight * 2;
-      width = window.outerWidth * 0.8;
-    } else {
-      height = window.outerHeight *0.7;
-      width = window.outerWidth * 0.8
-    }
+    width = rect.width/2
+    height = rect.height
     waffleSize = width < height ? width : height;
+    console.log(rect.width,rect.height)
 
 
     const max = chartData.length; 
@@ -620,12 +606,8 @@ function createWaffleChart(treiberData, bereichData) {
                 .range([waffleSize, 0])
                 .padding(0.1);
 
-    d3.select("div#stat")
-      .classed("svg-container", true);
 
-    svg_waffle = d3.select("svg#waffleChart")
-                    .attr("viewBox", [0, 0, width, height])
-                    .classed("svg-content-responsive", true);
+    svg_waffle = d3.select("svg#waffleChart");
     
     const g = svg_waffle.selectAll(".waffle")  
                     .data(array)
@@ -633,7 +615,6 @@ function createWaffleChart(treiberData, bereichData) {
                     .attr("class", "waffle");
     
     const cellSize = scale.bandwidth();
-    const half = cellSize / 2;
     const cells = g.append("g")
                     .selectAll("rect")
                     .data(d => d)
@@ -671,7 +652,7 @@ function createWaffleChart(treiberData, bereichData) {
         .join("g")      
         .attr("opacity", 1)
         .attr("transform", (d, i) => {
-          if (window.innerWidth < 900) { // Adjust this value as needed
+          if (window.innerWidth < 980) { // Adjust this value as needed
               // Position the legends beneath the chart
               return `translate(0,${waffleSize + 20 + i * 40})`;
           } else {
@@ -729,5 +710,5 @@ function createWaffleChart(treiberData, bereichData) {
 
 
 window.addEventListener('resize', () => {
-  createWaffleChart(treiberCache, bereichCache);
+  baseVisualization(dataCache, colorCache, selectedColorCache, filterCache, langCache);
 });

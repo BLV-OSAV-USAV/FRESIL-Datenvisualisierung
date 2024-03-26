@@ -87,7 +87,7 @@ function getTextWidth(text, font) {
 
   let centerX = rect.width / 2;
   let centerY = rect.height / 2;
-  const radiusStep = 10; // Adjust the step based on your preference
+  const radiusStep = 20; // Adjust the step based on your preference
   let angle = 0;
 
   data.forEach((circle, index) => {
@@ -99,7 +99,7 @@ function getTextWidth(text, font) {
       circle.y = y;
 
       // Increase the angle for the next circle
-      angle += 0.1; // Adjust the angle increment based on your preference
+      angle += 0.01; // Adjust the angle increment based on your preference
   });
 
   // Create a force simulation

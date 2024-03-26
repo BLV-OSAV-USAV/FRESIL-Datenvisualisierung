@@ -63,7 +63,7 @@
 	  }
 
 	.viz {
-		width: 1200px;
+		width: 800px;
 		height: 800px;
 	}
 
@@ -109,6 +109,7 @@
 	    margin: 0 5px 10px 0; /* Add some spacing between dropdowns */
 	    display: inline-block; /* Make dropdowns inline-block elements */
 	    vertical-align: top; /* Align dropdowns to the top */
+	    font-size: 75%;
 	}
 	
 
@@ -205,9 +206,8 @@
 
 		/* Change the display to block for dropdowns */
 	    .dropdown {
-	        width: 25%; /* Set dropdowns to occupy full width */
+	        width: 50%; /* Set dropdowns to occupy full width */
 	        margin: 0 auto 10px auto; /* Add spacing only at the bottom */
-	        display: block; /* Make dropdowns block-level elements */
 	    }
 
 		.container.\31 25\25 {
@@ -236,6 +236,13 @@
 
 	@media screen and (max-width: 736px) {
 
+		/* Change the display to block for dropdowns */
+	    .dropdown {
+	        width: 60%; /* Set dropdowns to occupy full width */
+	        margin: 0 auto 10px auto; /* Add spacing only at the bottom */
+	        display: block; /* Make dropdowns block-level elements */
+	    }
+
 		.container.\31 25\25 {
 			width: 100%;
 			max-width: 125%;
@@ -262,6 +269,13 @@
 
 	@media screen and (max-width: 480px) {
 
+		/* Change the display to block for dropdowns */
+	    .dropdown {
+	        width: 80%; /* Set dropdowns to occupy full width */
+	        margin: 0 auto 10px auto; /* Add spacing only at the bottom */
+	        display: block; /* Make dropdowns block-level elements */
+	    }
+
 		.container.\31 25\25 {
 			width: 100%;
 			max-width: 125%;
@@ -287,6 +301,13 @@
 	}
 
 	@media screen and (max-width: 320px) {
+
+		/* Change the display to block for dropdowns */
+	    .dropdown {
+	        width: 80%; /* Set dropdowns to occupy full width */
+	        margin: 0 auto 10px auto; /* Add spacing only at the bottom */
+	        display: block; /* Make dropdowns block-level elements */
+	    }
 
 		.container.\31 25\25 {
 			width: 100%;
@@ -3170,8 +3191,13 @@
 			}
 
 			.viz {
-				width: 1200px;
+				width: 800px;
 				height: 800px;
+			}
+
+			.viz2 {
+				width: 800px;
+				height: 400px;
 			}
 
 		/* Header */
@@ -3197,8 +3223,13 @@
 			}
 
 			.viz {
-				width: 800px;
+				width: 700px;
 				height: 700px;
+			}
+
+			.viz2 {
+				width: 700px;
+				height: 400px;
 			}
 
 		/* List */
@@ -3251,7 +3282,12 @@
 
 			.viz {
 				width: 700px;
-				height: 800px;
+				height: 700px;
+			}
+
+			.viz2 {
+				width: 700px;
+				height: 700px;
 			}
 
 			ul.major-icons li {
@@ -3301,6 +3337,12 @@
 	@media screen and (max-width: 736px) {
 
 			.viz {
+				width: 500px;
+				height: 500px;
+			}
+
+
+			.viz2 {
 				width: 500px;
 				height: 700px;
 			}
@@ -3391,7 +3433,12 @@
 
 		.viz {
 			width: 350px;
-			height: 600px;
+			height: 350px;
+		}
+
+		.viz2 {
+			width: 350px;
+			height: 550px;
 		}
 
 		/* List */
@@ -3493,8 +3540,14 @@
 
 			.viz {
 				width: 250px;
-				height: 550px;
+				height: 250px;
 			}
+
+			.viz2 {
+				width: 250px;
+				height: 450px;
+			}
+
 		/* Basic */
 
 			html, body {

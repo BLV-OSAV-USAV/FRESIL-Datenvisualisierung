@@ -387,6 +387,14 @@ function createList(id, filter, lang, meldung_ids) {
                     search: getTranslatedText(translations, lang, 'search')
                 },
                 layout: {
+                    topStart:{
+                        buttons:[{
+                            extend: 'colvis',
+                                columns: ':not(.noVis)',
+                                text: getTranslatedText(translations, lang, 'Column_visibility'),
+                                popoverTitle: 'Column visibility selector'
+                        }]
+                    },
                     bottomStart: {
                         buttons: [{
                                 extend: 'csv',
@@ -397,12 +405,6 @@ function createList(id, filter, lang, meldung_ids) {
                                     orthogonal: 'exportData', // Use raw data for export
                                     columns: ':visible'
                                 }
-                            },
-                            {
-                                extend: 'colvis',
-                                columns: ':not(.noVis)',
-                                text: getTranslatedText(translations, lang, 'Column_visibility'),
-                                popoverTitle: 'Column visibility selector'
                             }
                         ]
                     },
@@ -418,13 +420,11 @@ function createList(id, filter, lang, meldung_ids) {
                     },
                     {
                         title: getTranslatedText(translations, lang, 'Kurzinfo'),
-                        data: 'kurzinfo',
-                        visible: false
+                        data: 'kurzinfo'
                     },
                     {
                         title: getTranslatedText(translations, lang, 'Wichtigkeit'),
                         data: 'sterne',
-                        visible: false,
                         render: (data, type, row) => type === 'exportData' ? data : convertToStars(data)
                     },
                     {
@@ -445,7 +445,6 @@ function createList(id, filter, lang, meldung_ids) {
                     {
                         title: getTranslatedText(translations, lang, 'Links'),
                         data: 'links',
-                        visible: false,
                         render: function(data, type, row) {
                             if (type === 'exportData') {
                                 return data.map(link => Object.values(link)[0]).join(', ')

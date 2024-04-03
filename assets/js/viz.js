@@ -462,7 +462,7 @@ function createList(id, filter, lang, meldung_ids) {
                 ],
                 data: filteredData, // Pass the modified data to the DataTable
                 scrollY: '500px', // Set a fixed height for the table body
-                scrollX: '100%',
+                scrollX: true,
                 scrollCollapse: true, // Allow collapsing the table height if the content doesn't fill it
                 paging: false, // Disable pagination
                 order: [

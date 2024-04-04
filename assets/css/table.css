@@ -12,3 +12,10 @@
   font-size: 70% !important;
 }
   
+td {
+  line-height: 1.5em;
+}
+
+td.kurzinfo-class {
+  min-width: 800px;
+}

@@ -426,7 +426,8 @@ function createList(id, filter, lang, meldung_ids) {
                 },
                 columns: [{
                         title: getTranslatedText(translations, lang, 'Titel'),
-                        data: 'titel'
+                        data: 'titel',
+                        className: 'title-class'
                     },
                     {
                         title: getTranslatedText(translations, lang, 'Datum'),
@@ -434,7 +435,8 @@ function createList(id, filter, lang, meldung_ids) {
                     },
                     {
                         title: getTranslatedText(translations, lang, 'Kurzinfo'),
-                        data: 'kurzinfo'
+                        data: 'kurzinfo',
+                        className: 'kurzinfo-class'
                     },
                     {
                         title: getTranslatedText(translations, lang, 'Wichtigkeit'),
@@ -481,7 +483,7 @@ function createList(id, filter, lang, meldung_ids) {
                 paging: false, // Disable pagination
                 order: [
                     [1, 'desc']
-                ] // Order by the 'date' column in descending order
+                ], // Order by the 'date' column in descending order
             });
 
         } else {

@@ -64,6 +64,16 @@ function getTextWidth(text, font) {
   let defaultId = ''; // Variable to store the id of the data with the biggest count
 
   const selectElement = document.getElementById('gm-list');
+  console.log(data.length)
+
+    // Check if data is empty
+    if (data.length === 0) {
+        // Display message and clear existing waffle chart and list
+        document.querySelector('#bubbleChart').innerHTML = 'Nothing to display';
+        document.querySelector('#waffleChart').innerHTML = '';
+        document.querySelector('#filtered-table').innerHTML = '';
+        return; // Exit the function
+      }
 
   // Find the data with the biggest count
   let maxCount = -Infinity;
@@ -322,7 +332,8 @@ function createList(id, filter, lang, meldung_ids) {
                 'Treibers': 'Treiber',
                 'Matrix': 'Lebensmittelgruppen',
                 'Bereich': 'Bereich',
-                'Links': 'Links'
+                'Links': 'Links',
+                'csv': 'Tabelle als CSV exportieren'
             },
             'fr': {
                 'search': 'Rechercher:',
@@ -335,7 +346,8 @@ function createList(id, filter, lang, meldung_ids) {
                 'Treibers': 'Moteurs',
                 'Matrix': 'Groupe d\'aliments',
                 'Bereich': 'Domaines',
-                'Links': 'Liens'
+                'Links': 'Liens',
+                'csv':'Exporter la table en format CSV'
             },
             'it': {
                 'search': 'Ricerca:',
@@ -348,7 +360,8 @@ function createList(id, filter, lang, meldung_ids) {
                 'Treibers': 'Driver',
                 'Matrix': 'Gruppi Alimentari',
                 'Bereich': 'Settore',
-                'Links': 'Links'
+                'Links': 'Links',
+                'csv': 'Esportare la tabella come CSV'
             },
             'en': {
                 'search': 'Search:',
@@ -361,7 +374,8 @@ function createList(id, filter, lang, meldung_ids) {
                 'Treibers': 'Drivers',
                 'Matrix': 'Food groups',
                 'Bereich': 'Domains',
-                'Links': 'Links'
+                'Links': 'Links',
+                'csv': 'Export table as CSV'
             }
         };
 
@@ -399,7 +413,7 @@ function createList(id, filter, lang, meldung_ids) {
                         buttons: [{
                                 extend: 'csv',
                                 filename: 'FRESIL_export', // Change 'custom_filename' to the desired name
-                                text: 'CSV', // Optional: Change the text of the button
+                                text: getTranslatedText(translations, lang, 'csv'),
                                 charset: 'UTF-8',
                                 exportOptions: {
                                     orthogonal: 'exportData', // Use raw data for export
@@ -564,7 +578,6 @@ function createWaffleChart(treiberData) {
     width = rect.width/2
     height = rect.height
     waffleSize = width < height ? width : height;
-    console.log(rect.width,rect.height)
 
 
     const max = chartData.length; 

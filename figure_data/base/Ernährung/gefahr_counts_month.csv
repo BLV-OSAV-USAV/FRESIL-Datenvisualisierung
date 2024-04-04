@@ -1,43 +1,4 @@
 id,count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne,meldung_ids
-45,5,Aspartam,Aspartam,Aspartam,Aspartam,1.6,"[809, 813, 602, 691, 938]"
-187,4,Arsen,Arsenic,Arsenico,Arsenic,1.25,"[750, 392, 532, 659]"
-167,4,Quecksilber,Mercure,Mercurio,Mercury,1.0,"[321, 750, 273, 532]"
-125,3,Mikroplastik,microplastiques,microplastica,microplastics,1.33,"[524, 310, 453]"
-165,3,Cadmium,Cadmium,Cadmio,Cadmium,1.33,"[750, 392, 532]"
-128,3,Schwermetalle,métaux lourds,metalli pesanti,heavy metals,1.33,"[533, 392, 783]"
-126,3,Per- und polyfluorierte Alkylverbindungen (PFAS),Substances per- et polyfluoroalkylées (PFAS),Sostanze per- e polifluoroalchiliche (PFAS),Per- and polyfluoroalkyl substances (PFAS),1.0,"[908, 552, 852]"
-91,3,Pestizide,pesticides,pesticidi,pesticide,1.67,"[417, 524, 798]"
-246,2,Acrylamid,Acrylamide,Acrilammide,Acrylamide,1.5,"[458, 718]"
-79,2,Zucker,sucre,zucchero,sugar,1.0,"[712, 846]"
-273,2,Koffein,Caféine,Caffeina,caffein,1.0,"[622, 747]"
-102,2,Blei,Plomb,Piombo,Lead,1.0,"[750, 701]"
-197,2,Nitrite,Nitrite,Nitrito,Nitrite,1.0,"[316, 750]"
-243,2,Carboxymethylcellulosen (CMC),Carboxyméthylcellulose (CMC),Carbossimetilcellulosa (CMC),Carboxymethylcellulose (CMC),2.0,"[825, 445]"
-233,1,Glutaminsäure,Acide glutamique,Acido glutammico,Glutamic acid,1.0,[381]
-234,1,Sucralose,Sucralose,Sucralosio,Sucralose,1.0,[386]
-202,1,Antibiotikaresistente Milchsäurebakterien,Bactéries lactiques résistantes aux antibiotiques,Batteri lattici resistenti agli antibiotici,Antibiotic-resistant lactic acid bacteria,2.0,[424]
-290,1,Saccharin,Saccharine,Saccarina,Saccharin,2.0,[691]
-292,1,Glycerin,Glycérol,Glicerolo,Glycerol,2.0,[708]
-316,1,Fructose,Fructose,Fruttosio,Fructose,1.0,[885]
-297,1,Gluten,gluten,glutine,gluten,1.0,[725]
-174,1,Fungizid,Fongicide,Fungicida,Fungicide,2.0,[377]
-259,1,furfural,furfural,furfurale,furfural,1.0,[537]
+126,1,Per- und polyfluorierte Alkylverbindungen (PFAS),Substances per- et polyfluoroalkylées (PFAS),Sostanze per- e polifluoroalchiliche (PFAS),Per- and polyfluoroalkyl substances (PFAS),1.0,[908]
+45,1,Aspartam,Aspartam,Aspartam,Aspartam,1.0,[938]
 106,1,Bacillus cereus (sensu lato),Bacillus cereus (sensu lato),Bacillus cereus (sensu lato),Bacillus cereus (sensu lato),1.0,[912]
-127,1,Perfluoroctansulfonsäure (PFOS),acide perfluorooctanesulfonique (PFOS),acido perfluoroottansolfonico,Perfluorooctanesulfonic acid (PFOS),2.0,[377]
-311,1,Ätherische Öle,Huile essentielle,Olio essenziale,essential oil,0.0,[853]
-260,1,benzaldehyd,benzaldéhyde,Benzaldeide,benzaldehyde,1.0,[537]
-219,1,Acesulfam-K,Acésulfame K,Acesulfame K,Acesulfame K,1.0,[289]
-258,1,"2,3,5-Trimethylpyrazine","2,3,5-Trimethylpyrazine","2,3,5-Trimethylpyrazine","2,3,5-Trimethylpyrazine",1.0,[537]
-66,1,Canabidiol (CBD),Canabidiol (CBD),Canabidiolo (CBD),Canabidiol (CBD),1.0,[353]
-230,1,Nitrate,Nitrate,Nitrato,Nitrate,1.0,[750]
-301,1,Metalle der Seltenen Erden (REE),Terre rare (REE),Terre rare (REE),rare earth elements (REE),2.0,[749]
-122,1,Diabetes,diabète,diabete,diabetes,1.0,[448]
-180,1,Phthalate,phtalates,ftalati,phthalates,2.0,[295]
-274,1,Baikiain,Baikiain,Baikiain,Baikiain,3.0,[637]
-307,1,Natriumphosphat,Phosphate de sodium,Fosfato di sodio,Trisodium phosphate,2.0,[825]
-142,1,Isoflavone,Isoflavone,Isoflavone,Isoflavones,1.0,[621]
-221,1,kurzkettige Chlorparaffine (SCCP),paraffines chlorées à chaîne courte (PCCC),paraffine clorurate a catena corta (PCCC),short-chain chlorinated paraffins (SCCP),1.0,[534]
-62,1,Tierarzneimittel,les médicaments pour animaux,farmaci per animali,animal drugs,2.0,[524]
-63,1,Antibiotika,antibiotiques,antibiotici,antibiotics,2.0,[438]
-236,1,Flüssigstickstoff,Azote liquide,Azoto liquido,Liquid nitrogen,1.0,[413]
-227,1,Erythrit,Érythritol,Eritritolo,Erythritol,1.0,[323]

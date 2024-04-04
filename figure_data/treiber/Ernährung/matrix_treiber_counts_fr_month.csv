@@ -1,19 +1,4 @@
-matrix_id,Innovations technologiques et progrès scientifiques,Nouveaux aliments et systèmes de production alimentaire,Comportement des consommateurs et tendances de consommation,Évolution microbienne et antibiorésistance,Société,Économie
-1,0,1,10,0,0,0
-3,1,0,0,0,0,0
-8,2,2,6,0,1,1
-27,0,0,1,0,0,0
-28,0,1,0,0,0,0
-34,1,0,0,0,0,0
-39,0,0,2,0,0,0
-48,0,0,1,0,0,0
-56,1,0,0,0,0,0
-58,0,0,2,0,0,0
-62,0,0,1,0,0,0
-65,1,0,0,0,0,0
-80,1,0,4,0,0,0
-98,0,0,1,0,1,1
-99,0,0,1,0,0,0
-100,1,0,2,1,0,0
-131,0,1,1,0,0,0
-157,0,0,1,0,0,0
+matrix_id,Innovations technologiques et progrès scientifiques,Nouveaux aliments et systèmes de production alimentaire,Comportement des consommateurs et tendances de consommation,Évolution microbienne et antibiorésistance
+8,0,1,1,0
+80,0,0,1,0
+100,1,0,1,1

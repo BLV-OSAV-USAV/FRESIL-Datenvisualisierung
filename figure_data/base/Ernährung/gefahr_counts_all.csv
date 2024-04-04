@@ -1,49 +1,49 @@
 id,count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne,meldung_ids
 45,5,Aspartam,Aspartam,Aspartam,Aspartam,1.6,"[809, 813, 602, 691, 938]"
+197,4,Nitrite,Nitrite,Nitrito,Nitrite,1.75,"[226, 316, 259, 750]"
+128,4,Schwermetalle,métaux lourds,metalli pesanti,heavy metals,1.5,"[533, 263, 392, 783]"
 167,4,Quecksilber,Mercure,Mercurio,Mercury,1.0,"[321, 750, 273, 532]"
 187,4,Arsen,Arsenic,Arsenico,Arsenic,1.25,"[750, 392, 532, 659]"
-197,4,Nitrite,Nitrite,Nitrito,Nitrite,1.75,"[226, 316, 259, 750]"
 165,4,Cadmium,Cadmium,Cadmio,Cadmium,1.5,"[263, 750, 392, 532]"
-128,4,Schwermetalle,métaux lourds,metalli pesanti,heavy metals,1.5,"[533, 263, 392, 783]"
-92,3,Fettleibigkeit,obésité,obesità,obesity,1.0,"[44, 4, 122]"
-91,3,Pestizide,pesticides,pesticidi,pesticide,1.67,"[417, 524, 798]"
 125,3,Mikroplastik,microplastiques,microplastica,microplastics,1.33,"[524, 310, 453]"
-102,3,Blei,Plomb,Piombo,Lead,1.33,"[263, 750, 701]"
 126,3,Per- und polyfluorierte Alkylverbindungen (PFAS),Substances per- et polyfluoroalkylées (PFAS),Sostanze per- e polifluoroalchiliche (PFAS),Per- and polyfluoroalkyl substances (PFAS),1.0,"[908, 552, 852]"
-51,2,Vitamin D,Vitamine D,Vitamina D,Vitamine D,1.5,"[210, 54]"
-66,2,Canabidiol (CBD),Canabidiol (CBD),Canabidiolo (CBD),Canabidiol (CBD),1.0,"[353, 32]"
-122,2,Diabetes,diabète,diabete,diabetes,1.5,"[448, 94]"
-79,2,Zucker,sucre,zucchero,sugar,1.0,"[712, 846]"
-243,2,Carboxymethylcellulosen (CMC),Carboxyméthylcellulose (CMC),Carbossimetilcellulosa (CMC),Carboxymethylcellulose (CMC),2.0,"[825, 445]"
+91,3,Pestizide,pesticides,pesticidi,pesticide,1.67,"[417, 524, 798]"
+102,3,Blei,Plomb,Piombo,Lead,1.33,"[263, 750, 701]"
+92,3,Fettleibigkeit,obésité,obesità,obesity,1.0,"[44, 4, 122]"
 273,2,Koffein,Caféine,Caffeina,caffein,1.0,"[622, 747]"
+243,2,Carboxymethylcellulosen (CMC),Carboxyméthylcellulose (CMC),Carbossimetilcellulosa (CMC),Carboxymethylcellulose (CMC),2.0,"[825, 445]"
 246,2,Acrylamid,Acrylamide,Acrilammide,Acrylamide,1.5,"[458, 718]"
+51,2,Vitamin D,Vitamine D,Vitamina D,Vitamine D,1.5,"[210, 54]"
+122,2,Diabetes,diabète,diabete,diabetes,1.5,"[448, 94]"
+66,2,Canabidiol (CBD),Canabidiol (CBD),Canabidiolo (CBD),Canabidiol (CBD),1.0,"[353, 32]"
+79,2,Zucker,sucre,zucchero,sugar,1.0,"[712, 846]"
+142,1,Isoflavone,Isoflavone,Isoflavone,Isoflavones,1.0,[621]
+221,1,kurzkettige Chlorparaffine (SCCP),paraffines chlorées à chaîne courte (PCCC),paraffine clorurate a catena corta (PCCC),short-chain chlorinated paraffins (SCCP),1.0,[534]
+236,1,Flüssigstickstoff,Azote liquide,Azoto liquido,Liquid nitrogen,1.0,[413]
+219,1,Acesulfam-K,Acésulfame K,Acesulfame K,Acesulfame K,1.0,[289]
+62,1,Tierarzneimittel,les médicaments pour animaux,farmaci per animali,animal drugs,2.0,[524]
+63,1,Antibiotika,antibiotiques,antibiotici,antibiotics,2.0,[438]
+180,1,Phthalate,phtalates,ftalati,phthalates,2.0,[295]
+274,1,Baikiain,Baikiain,Baikiain,Baikiain,3.0,[637]
+301,1,Metalle der Seltenen Erden (REE),Terre rare (REE),Terre rare (REE),rare earth elements (REE),2.0,[749]
+166,1,Bisphenol A (BPA),Bisphénol A (BPA),Bisfenolo A (BPA),Bisphenol A (BPA),2.0,[263]
+230,1,Nitrate,Nitrate,Nitrato,Nitrate,1.0,[750]
+103,1,GMO (genetisch modifizierter Organismus),OGM (organisme génétiquement modifié),OGM (organismo geneticamente modificato),Genetically modified organism (GMO),1.0,[138]
+258,1,"2,3,5-Trimethylpyrazine","2,3,5-Trimethylpyrazine","2,3,5-Trimethylpyrazine","2,3,5-Trimethylpyrazine",1.0,[537]
+307,1,Natriumphosphat,Phosphate de sodium,Fosfato di sodio,Trisodium phosphate,2.0,[825]
+259,1,furfural,furfural,furfurale,furfural,1.0,[537]
 260,1,benzaldehyd,benzaldéhyde,Benzaldeide,benzaldehyde,1.0,[537]
+145,1,Mangelernährung,Malnutrition,Malnutrizione,Malnutrition,2.0,[76]
+108,1,Trimethylaminoxid,Oxyde de triméthylamine,Trimetilammina-N-ossido,Trimethylamine N-oxide,3.0,[38]
+233,1,Glutaminsäure,Acide glutamique,Acido glutammico,Glutamic acid,1.0,[381]
+234,1,Sucralose,Sucralose,Sucralosio,Sucralose,1.0,[386]
+202,1,Antibiotikaresistente Milchsäurebakterien,Bactéries lactiques résistantes aux antibiotiques,Batteri lattici resistenti agli antibiotici,Antibiotic-resistant lactic acid bacteria,2.0,[424]
+290,1,Saccharin,Saccharine,Saccarina,Saccharin,2.0,[691]
 292,1,Glycerin,Glycérol,Glicerolo,Glycerol,2.0,[708]
 297,1,Gluten,gluten,glutine,gluten,1.0,[725]
-290,1,Saccharin,Saccharine,Saccarina,Saccharin,2.0,[691]
 174,1,Fungizid,Fongicide,Fungicida,Fungicide,2.0,[377]
 127,1,Perfluoroctansulfonsäure (PFOS),acide perfluorooctanesulfonique (PFOS),acido perfluoroottansolfonico,Perfluorooctanesulfonic acid (PFOS),2.0,[377]
 316,1,Fructose,Fructose,Fruttosio,Fructose,1.0,[885]
-202,1,Antibiotikaresistente Milchsäurebakterien,Bactéries lactiques résistantes aux antibiotiques,Batteri lattici resistenti agli antibiotici,Antibiotic-resistant lactic acid bacteria,2.0,[424]
 311,1,Ätherische Öle,Huile essentielle,Olio essenziale,essential oil,0.0,[853]
-234,1,Sucralose,Sucralose,Sucralosio,Sucralose,1.0,[386]
 106,1,Bacillus cereus (sensu lato),Bacillus cereus (sensu lato),Bacillus cereus (sensu lato),Bacillus cereus (sensu lato),1.0,[912]
-233,1,Glutaminsäure,Acide glutamique,Acido glutammico,Glutamic acid,1.0,[381]
-145,1,Mangelernährung,Malnutrition,Malnutrizione,Malnutrition,2.0,[76]
-108,1,Trimethylaminoxid,Oxyde de triméthylamine,Trimetilammina-N-ossido,Trimethylamine N-oxide,3.0,[38]
-166,1,Bisphenol A (BPA),Bisphénol A (BPA),Bisfenolo A (BPA),Bisphenol A (BPA),2.0,[263]
-259,1,furfural,furfural,furfurale,furfural,1.0,[537]
-258,1,"2,3,5-Trimethylpyrazine","2,3,5-Trimethylpyrazine","2,3,5-Trimethylpyrazine","2,3,5-Trimethylpyrazine",1.0,[537]
-103,1,GMO (genetisch modifizierter Organismus),OGM (organisme génétiquement modifié),OGM (organismo geneticamente modificato),Genetically modified organism (GMO),1.0,[138]
-230,1,Nitrate,Nitrate,Nitrato,Nitrate,1.0,[750]
-301,1,Metalle der Seltenen Erden (REE),Terre rare (REE),Terre rare (REE),rare earth elements (REE),2.0,[749]
-180,1,Phthalate,phtalates,ftalati,phthalates,2.0,[295]
-274,1,Baikiain,Baikiain,Baikiain,Baikiain,3.0,[637]
-307,1,Natriumphosphat,Phosphate de sodium,Fosfato di sodio,Trisodium phosphate,2.0,[825]
-142,1,Isoflavone,Isoflavone,Isoflavone,Isoflavones,1.0,[621]
-221,1,kurzkettige Chlorparaffine (SCCP),paraffines chlorées à chaîne courte (PCCC),paraffine clorurate a catena corta (PCCC),short-chain chlorinated paraffins (SCCP),1.0,[534]
-62,1,Tierarzneimittel,les médicaments pour animaux,farmaci per animali,animal drugs,2.0,[524]
-63,1,Antibiotika,antibiotiques,antibiotici,antibiotics,2.0,[438]
-236,1,Flüssigstickstoff,Azote liquide,Azoto liquido,Liquid nitrogen,1.0,[413]
-219,1,Acesulfam-K,Acésulfame K,Acesulfame K,Acesulfame K,1.0,[289]
 227,1,Erythrit,Érythritol,Eritritolo,Erythritol,1.0,[323]

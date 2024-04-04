@@ -21,7 +21,7 @@ def count_gefahr(timeFilter, bereichName, lg):
         if timeFilter == 'week':
             start = (today - pd.DateOffset(weeks=1)).date()
         elif timeFilter == 'month':
-            start = (today - pd.DateOffset(month=1)).date()
+            start = (today - pd.DateOffset(months=1)).date()
         elif timeFilter == 'year':
             start = (today - pd.DateOffset(years=1)).date()
 
@@ -118,7 +118,7 @@ def count_matrix(timeFilter, bereichName, lg):
         if timeFilter == 'week':
             start = (today - pd.DateOffset(weeks=1)).date()
         elif timeFilter == 'month':
-            start = (today - pd.DateOffset(month=1)).date()
+            start = (today - pd.DateOffset(months=1)).date()
         elif timeFilter == 'year':
             start = (today - pd.DateOffset(years=1)).date()
         

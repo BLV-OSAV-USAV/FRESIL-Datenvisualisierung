@@ -1,3 +1,1 @@
-id,count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne,meldung_ids
-142,1,Isoflavone,Isoflavone,Isoflavone,Isoflavones,1.0,[621]
-297,1,Gluten,gluten,glutine,gluten,1.0,[725]
+count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne,id,meldung_ids

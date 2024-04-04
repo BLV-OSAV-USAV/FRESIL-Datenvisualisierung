@@ -1,9 +1,2 @@
-gefahr_id,Urbanizzazione e agricoltura urbana,Nuovi alimenti e sistemi di produzione alimentare,Comportamento dei consumatori e tendenze di consumo,Economia
-45,0,0,1,0
-58,0,0,1,0
-66,0,0,1,0
-103,0,1,0,0
-128,0,0,0,1
-280,1,0,0,0
-281,1,0,0,0
-290,0,0,1,0
+gefahr_id,Economia
+128,1

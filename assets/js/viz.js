@@ -16,24 +16,6 @@ function getTranslatedText(translation, lang, key) {
     return translation[lang][key] || key; // Returns translated text or key itself if not found
 }
 
-/**
- * Calculates the width of a given text using a specific font.
- * @param {string} text - The text to measure.
- * @param {string} font - The font style and size.
- * @returns {number} - The width of the text in pixels.
- */
-function getTextWidth(text, font) {
-    const canvas = document.createElement("canvas");
-    const context = canvas.getContext("2d");
-    context.font = font;
-    return context.measureText(text).width;
-}
-
-
-
-
-
-
 
 /**
  * Visualizes data using a bubble chart.
@@ -54,10 +36,18 @@ function getTextWidth(text, font) {
 
   // Object containing translations
   let translations = {
-      'de': { 'Anzahl': 'Anzahl Meldungen:', 'D_Wichtigkeit': 'Durchschnittliche Wichtigkeit:' },
-      'fr': { 'Anzahl': 'Nombres de Notifications:', 'D_Wichtigkeit': 'Importance moyenne:' },
-      'it': { 'Anzahl': 'Numero di notifiche:', 'D_Wichtigkeit': 'Importanza media:' },
-      'en': { 'Anzahl': 'Number of Notifications:', 'D_Wichtigkeit': 'Average Importance:' }
+      'de': { 'Anzahl': 'Anzahl Meldungen:', 
+                'D_Wichtigkeit': 'Durchschnittliche Wichtigkeit:',
+                'empty': 'Keine Daten verfügbar zur Anzeige des Diagramms.' },
+      'fr': { 'Anzahl': 'Nombres de Notifications:', 
+                'D_Wichtigkeit': 'Importance moyenne:', 
+                'empty': 'Aucune donnée disponible pour afficher le graphique.'},
+      'it': { 'Anzahl': 'Numero di notifiche:', 
+                'D_Wichtigkeit': 'Importanza media:',
+                'empty': 'Nessun dato disponibile per visualizzare il grafico.'},
+      'en': { 'Anzahl': 'Number of Notifications:', 
+                'D_Wichtigkeit': 'Average Importance:',
+                'empty': 'No data available to display the chart' }
   };
 
   let width = 0;
@@ -86,6 +76,22 @@ function getTextWidth(text, font) {
   let centerY = rect.height / 2;
   const radiusStep = 20; // Adjust the step based on your preference
   let angle = 0;
+
+  if(data.length === 0){
+        svg.append("text")
+            .attr('x', centerX)
+            .attr('y', centerY)
+            .attr('text-anchor', 'middle')
+            .attr("font-size", "15px")
+            .text(getTranslatedText(translations, lang, 'empty'));
+
+        document.querySelector('#waffle-title').innerHTML = '-';
+        document.querySelector('#waffleChart').innerHTML = '';
+
+        createList(lang);
+
+    return;
+  }
 
   data.forEach((circle, index) => {
       const radius = index * radiusStep;
@@ -180,12 +186,12 @@ function getTextWidth(text, font) {
           document.querySelector('#waffle-title').innerText = title;
           // Create and display waffle chart
           createWaffleChart(treiberData);
-          createList(id, filter, lang, meldung_list);
+          createList(lang, meldung_list);
       });
 
   // Create and display waffle chart for default data
   createWaffleChart(data.find(d => d.id === defaultId).treiber);
-  createList(defaultId, filter, lang, data.find(d => d.id === defaultId).meldung_ids);
+  createList(lang, data.find(d => d.id === defaultId).meldung_ids);
 
   // Highlight default circle
   defaultCircle = svg.select(`circle[id="${defaultId}"]`);
@@ -210,7 +216,7 @@ function getTextWidth(text, font) {
         // Run createWaffleChart and createList functions
         moveToSection('two');
         createWaffleChart(selectedCircle.treiber);
-        createList(selectedCircle.id, filter, lang, selectedCircle.meldung_ids);
+        createList(lang, selectedCircle.meldung_ids);
 
         let title = selectedCircle.name;
 
@@ -245,7 +251,7 @@ let table; // Define the DataTable variable outside the function scope
  * @param {number} id - The id used for filtering the CSV data.
  * @param {string} filter - The filter used for filtering the CSV data.
  */
-function createList(id, filter, lang, meldung_ids) {
+function createList(lang, meldung_ids = []) {
     Promise.all([
         fetch("./csv-files-filtered/filtered-ad_meldung-20231128.csv").then(response => response.text()),
         fetch("./csv-files-filtered/filtered-ad_publikation_detail-20231128.csv").then(response => response.text()),
@@ -703,5 +709,8 @@ function createWaffleChart(treiberData) {
 
 
 window.addEventListener('resize', () => {
-  baseVisualization(dataCache, colorCache, selectedColorCache, filterCache, langCache);
+    var width = $(window).width(), height = $(window).height();
+    if($(window).width() != width || $(window).height() != height){
+        baseVisualization(dataCache, colorCache, selectedColorCache, filterCache, langCache);
+      }
 });

@@ -64,16 +64,6 @@ function getTextWidth(text, font) {
   let defaultId = ''; // Variable to store the id of the data with the biggest count
 
   const selectElement = document.getElementById('gm-list');
-  console.log(data.length)
-
-    // Check if data is empty
-    if (data.length === 0) {
-        // Display message and clear existing waffle chart and list
-        document.querySelector('#bubbleChart').innerHTML = 'Nothing to display';
-        document.querySelector('#waffleChart').innerHTML = '';
-        document.querySelector('#filtered-table').innerHTML = '';
-        return; // Exit the function
-      }
 
   // Find the data with the biggest count
   let maxCount = -Infinity;
@@ -84,10 +74,7 @@ function getTextWidth(text, font) {
       }
   });
 
-  svg = d3.select("svg#bubbleChart");
-
-  // Remove existing title elements
-  svg.selectAll("title").remove();
+  svg = d3.select("svg#bubbleChart");  
 
   // Sort the result array based on circle size
   data.sort((a, b) => b.size - a.size);

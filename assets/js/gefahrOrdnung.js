@@ -11,6 +11,8 @@ function gefahrOrdnung(timeFilter, lang, bereich){
             .append("text")
             .attr("text-anchor", "middle")
             .text("No data available to display the chart.");
+        document.querySelector('#waffleChart').innerHTML = '';
+        document.querySelector('#filtered-table').innerHTML = '';
         return; // Exit the function early
       }
       var langs = ['de', 'fr', 'it', 'en'];

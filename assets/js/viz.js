@@ -201,29 +201,7 @@ function getTranslatedText(translation, lang, key) {
   // Update the content of the <span> tag with the class "waffle-title"
   document.querySelector('#waffle-title').innerText = data.find(d => d.id === defaultId).name;
 
-  // Add event listener to the select element
-  selectElement.addEventListener('change', function (event) {
-    const selectedName = event.target.value;
-    const selectedCircle = data.find(circle => circle.name === selectedName);
-    if (selectedCircle) {
-        // Remove stroke from all circles
-        svg.selectAll("circle").attr("fill", color).classed("clicked", false);
 
-        // Apply stroke to the selected circle and add the "clicked" class
-        const selectedCircleElement = svg.select(`circle[id="${selectedCircle.id}"]`);
-        selectedCircleElement.attr("fill", selectedColor).classed("clicked", true);
-
-        // Run createWaffleChart and createList functions
-        moveToSection('two');
-        createWaffleChart(selectedCircle.treiber);
-        createList(lang, selectedCircle.meldung_ids);
-
-        let title = selectedCircle.name;
-
-        // Update the content of the <span> tag with the class "waffle-title"
-        document.querySelector('#waffle-title').innerText = title;
-    }
-});
 
 /**
  * Updates the position of circles based on the tick event.
@@ -709,4 +687,28 @@ window.addEventListener('resize', () => {
 function isMobileDevice() {
     return (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
 }
+
+// Move event listener registration outside baseVisualization function
+document.getElementById('gm-list').addEventListener('change', function(event) {
+    const selectedName = event.target.value;
+    const selectedCircle = dataCache.find(circle => circle.name === selectedName);
+    if (selectedCircle) {
+        // Remove stroke from all circles
+        svg.selectAll("circle").attr("fill", colorCache).classed("clicked", false);
+
+        // Apply stroke to the selected circle and add the "clicked" class
+        const selectedCircleElement = svg.select(`circle[id="${selectedCircle.id}"]`);
+        selectedCircleElement.attr("fill", selectedColorCache).classed("clicked", true);
+
+        // Run createWaffleChart and createList functions
+        moveToSection('two');
+        createWaffleChart(selectedCircle.treiber);
+        createList(langCache, selectedCircle.meldung_ids);
+
+        let title = selectedCircle.name;
+
+        // Update the content of the <span> tag with the class "waffle-title"
+        document.querySelector('#waffle-title').innerText = title;
+    }
+});
 

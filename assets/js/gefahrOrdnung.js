@@ -5,19 +5,7 @@ function gefahrOrdnung(timeFilter, lang, bereich){
       d3.csv(`./figure_data/treiber/${bereich}/gefahr_treiber_counts_${lang}_${timeFilter}.csv`),
     ]).then(([gefahrCounts, treiberCounts]) => {
       d3.select("svg#bubbleChart").selectAll("*").remove();
-      console.log(gefahrCounts)
-/*       // Check if gefahrCounts is empty
-      if (gefahrCounts.length === 0) {
-        console.log('true')
-        d3.select("svg#bubbleChart")
-            .append("text")
-            .attr("text-anchor", "middle")
-            .attr("font-size", "15px")
-            .text("No data available to display the chart.");
-        document.querySelector('#waffleChart').innerHTML = '';
-        document.querySelector('#filtered-table').innerHTML = '';
-        return; // Exit the function early
-      } */
+
       var langs = ['de', 'fr', 'it', 'en'];
       var permalink = addPermalink();
       // Load the language

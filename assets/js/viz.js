@@ -236,14 +236,6 @@ function ticked(d) {
 }
 
 
-
-
-
-
-
-
-
-
 let table; // Define the DataTable variable outside the function scope
 
 /**
@@ -501,7 +493,7 @@ let svg_waffle, width, height, treiberCache;
  */
 function createWaffleChart(treiberData) {
     treiberCache = treiberData;
-
+    console.log(treiberData);
 
     
     // Clear existing waffle chart if any
@@ -709,8 +701,12 @@ function createWaffleChart(treiberData) {
 
 
 window.addEventListener('resize', () => {
-    var width = $(window).width(), height = $(window).height();
-    if($(window).width() != width || $(window).height() != height){
+    if(!isMobileDevice()){
         baseVisualization(dataCache, colorCache, selectedColorCache, filterCache, langCache);
-      }
+    }
 });
+
+function isMobileDevice() {
+    return (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+}
+

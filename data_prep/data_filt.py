@@ -55,9 +55,9 @@ def convert_datetime_format(file, column):
 
 def change_Unspecified_matrix(file,column):
     dc = {
-        'Nicht spezifiziert': 'Diverse Lebensmittel',
+        'Nicht spezifiziert': 'Diverse',
 
-        'Non spécifié': 'Aliments divers',
+        'Non spécifié': 'Divers',
 
         'Non specificato': 'Alimenti vari',
 

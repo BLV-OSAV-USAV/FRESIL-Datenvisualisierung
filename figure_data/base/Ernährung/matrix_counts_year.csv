@@ -1,5 +1,5 @@
 id,count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne,meldung_ids
-1,20,Diverse Lebensmittel,Aliments divers,Alimenti vari,Diverse foods,1.7,"[196, 209, 264, 276, 290, 232, 295, 342, 364, 363, 365, 368, 386, 433, 383, 546, 377, 744, 748, 751]"
+1,20,Diverse,Divers,Alimenti vari,Diverse foods,1.7,"[196, 209, 264, 276, 290, 232, 295, 342, 364, 363, 365, 368, 386, 433, 383, 546, 377, 744, 748, 751]"
 80,8,"Softdrinks, Sprudelgetränke, Energydrinks und isotonische Getränke","Boissons sucrées, gazeuses, énergétiques et isotoniques","Bevande zuccherate, gasate, energy drink e bevande isotoniche","Carbonated/Soft/Isotonic Drinks, Diluted",1.62,"[272, 511, 617, 648, 661, 813, 846, 938]"
 8,6,"Fleisch, Fleischprodukte und Fleischersatz","Viandes, produits à base de viande et substituts de viande","Carne, prodotti di carne e sostituti della carne","Meat, Meat Products And Substitutes",1.17,"[579, 639, 883, 900, 882, 924]"
 39,5,Milchersatz und Milchersatzprodukte,Substituts de lait et produits à base de substitut de lait,Succedanei del latte e prodotti a base di succedanei del latte,Milk Substitutes And Milk Substitute Products,1.4,"[186, 501, 660, 621, 910]"

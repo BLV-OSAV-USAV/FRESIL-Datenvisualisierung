@@ -306,7 +306,7 @@ function createList(lang, meldung_ids = []) {
                 'Datum': 'Date',
                 'Kurzinfo': 'Résumé',
                 'Wichtigkeit': 'Importance',
-                'Treibers': 'Moteurs',
+                'Treibers': 'Facteurs de risque',
                 'Matrix': 'Groupe d\'aliments',
                 'Bereich': 'Domaines',
                 'Links': 'Liens',
@@ -320,7 +320,7 @@ function createList(lang, meldung_ids = []) {
                 'Datum': 'Data',
                 'Kurzinfo': 'Sintesi',
                 'Wichtigkeit': 'Importanza',
-                'Treibers': 'Driver',
+                'Treibers': 'Fattori di rischio',
                 'Matrix': 'Gruppi Alimentari',
                 'Bereich': 'Settore',
                 'Links': 'Links',
@@ -407,7 +407,7 @@ function createList(lang, meldung_ids = []) {
                         render: (data, type, row) => type === 'exportData' ? data : convertToStars(data)
                     },
                     {
-                        title: getTranslatedText(translations, lang, 'Treiber'),
+                        title: getTranslatedText(translations, lang, 'Treibers'),
                         data: 'treiber',
                         visible: false
                     },
@@ -496,6 +496,14 @@ function createWaffleChart(treiberData) {
     '#98df8a', '#ff9896', '#c5b0d5', '#c49c94',
     '#f7b6d2', '#dbdb8d'];
 
+      // Object containing translations
+    let translations = {
+      'de': { 'emptyTreiber': 'Keine Daten zum Treiber verfügbar'},
+      'fr': { 'emptyTreiber': 'Pas de données disponibles sur le facteur de risque'},
+      'it': { 'emptyTreiber': 'Nessun dato disponibile sul fattore di rischio'},
+      'en': { 'emptyTreiber': 'No data available on the hazard driver'}
+    };     
+
     // Now you can calculate the ratio for each treiber in the array
     const chartData = treiberArray.map((d,index) => ({
         treiber: d.treiber,
@@ -511,8 +519,7 @@ function createWaffleChart(treiberData) {
           .append("text")
           .attr("x", width / 2)
           .attr("y", height / 2)
-          .attr("text-anchor", "middle")
-          .text("No data available to display the chart.");
+          .text(getTranslatedText(translations, lang, 'emptyTreiber'));
       return; // Exit the function early
     }
 

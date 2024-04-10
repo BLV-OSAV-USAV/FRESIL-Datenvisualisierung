@@ -71,6 +71,7 @@ function getTranslatedText(translation, lang, key) {
 
   var el = document.getElementById("bubbleChart");
   var rect = el.getBoundingClientRect(); // get the bounding rectangle
+  console.log(rect)
 
   let centerX = rect.width / 2;
   let centerY = rect.height / 2;
@@ -104,6 +105,15 @@ function getTranslatedText(translation, lang, key) {
       // Increase the angle for the next circle
       angle += 0.01; // Adjust the angle increment based on your preference
   });
+  let multiplier
+  console.log(maxCount)
+  if (maxCount > 25) {
+    multiplier = Math.min(rect.width, rect.height) / 500; // Adjust as needed
+  } else if(26 > maxCount > 15){
+    multiplier =  Math.min(rect.width, rect.height) / 250; // Adjust as needed
+  } else {
+    multiplier = Math.min(rect.width, rect.height) / 100 ;
+  }
 
   // Create a force simulation
   let simulation = d3.forceSimulation(data)
@@ -111,7 +121,6 @@ function getTranslatedText(translation, lang, key) {
       .force("y", d3.forceY(centerY).strength(0.05))
       .force("collide", d3.forceCollide(d => {
           // Adjust the multiplier as needed to control the size of the bubbles
-          const multiplier = Math.min(rect.width, rect.height) / 500; // Adjust as needed
           return d.size * multiplier + 5;
       }).iterations(8))
       .on("tick", ticked);
@@ -121,7 +130,6 @@ function getTranslatedText(translation, lang, key) {
       .join("circle")
       .attr("r", d => {
           // Adjust the multiplier as needed to control the size of the bubbles
-          const multiplier = Math.min(rect.width, rect.height) / 500; // Adjust as needed
           return d.size * multiplier;
       })
       .attr("fill", color)

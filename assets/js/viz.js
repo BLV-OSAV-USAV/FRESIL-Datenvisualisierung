@@ -109,7 +109,7 @@ function getTranslatedText(translation, lang, key) {
   console.log(maxCount)
   if (maxCount > 25) {
     multiplier = Math.min(rect.width, rect.height) / 500; // Adjust as needed
-  } else if(26 > maxCount > 15){
+  } else if (26 > maxCount > 15) {
     multiplier =  Math.min(rect.width, rect.height) / 250; // Adjust as needed
   } else {
     multiplier = Math.min(rect.width, rect.height) / 100 ;

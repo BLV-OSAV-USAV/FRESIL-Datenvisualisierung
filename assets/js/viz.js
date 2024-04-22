@@ -498,28 +498,12 @@ function createWaffleChart(treiberData) {
     // Assuming total is the sum of all values in your treiberData object
     const total = treiberArray.reduce((acc, obj) => acc + obj.value, 0);
 
-    const customColors = [
-    "#710679",
-    "#9E10DA",
-    "#6A14CC",
-    "#3A16B1",
-    "#0F0F66",
-    "#152B75",
-    "#1B4C83",
-    "#226F91",
-    "#2A959D",
-    "#32A995",
-    "#3CB484",
-    "#49BC73",
-    "#5CBC69",
-    "#77BE6F",
-    "#96C181",
-    "#AEC492",
-    "#C1C8A2",
-    "#CDCCB1",
-    "#D3CEC0",
-    "#DAD4CE",
-    ];
+    const customColors = ['#a6cee3','#1f78b4','#b2df8a',
+                            '#33a02c','#fb9a99','#e31a1c',
+                            '#fdbf6f','#ff7f00','#cab2d6',
+                            '#6a3d9a','#ffff99','#b15928',
+                            '#8dd3c7', '#ffffb3', '#bebada',
+                            '#fb8072'];
 
       // Object containing translations
     let translations = {

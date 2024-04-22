@@ -111,7 +111,7 @@ def prep_data(input_path, output_path):
             'sterne': convert_to_int,
             'page_count': convert_to_int,
             'publikation_id': convert_to_int,
-            'bezeichnung_de': change_Unspecified_matrix
+            #'bezeichnung_de': change_Unspecified_matrix
         }
 
         # Apply the specified filter function for each column

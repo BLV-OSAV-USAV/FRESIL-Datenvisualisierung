@@ -7,7 +7,7 @@ id,count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne
 52,2,"Nicht spezifizierte sowie gemischte Fleisch, Fleischprodukte und Fleischersatz","Viandes, produits à base de viande et substituts de viande non spécifiés ou mélangés","Carne, prodotti di carne e sostituti della carne non specificati e misti",Unclassified And Combined Meat And Meat P,1.0,"[360, 770]"
 93,2,"Gewürze, Kräuter und Aromastoffe","Epices, herbes et aromates","Spezie, erbe e aromi","Spices, Herbs And Flavourings",1.5,"[349, 603]"
 118,2,Rind,Boeuf,Manzo,Beef,1.0,"[235, 362]"
-1,2,Diverse,Divers,Alimenti vari,Diverse foods,2.0,"[212, 288]"
+1,2,Nicht spezifiziert,Non spécifié,Non specificato,Unclassified,2.0,"[212, 288]"
 157,2,Mahlzeitenersatz und Sportlernahrung,Substituts de repas et aliments pour sportifs,Prodotti sostitutivi dei pasti e alimenti per sportivi,Meal Substitutes,2.0,"[262, 686]"
 3,1,Gemüse,Légumes,Ortaggi,Vegetables,1.0,[220]
 72,1,"Zucker, Konfitüre, Honig, süsse Aufstriche und Saucen sowie Sirup","Sucre, pâtes à tartiner sucrées, miel, confitures, sauces sucrées et sirop","Zucchero, miele, marmellata, prodotti da spalmare e salse dolci, sciroppo","Sugar, Honey, Jam, Syrup",1.0,[237]

@@ -1,5 +1,5 @@
 ﻿id#bezeichnung_de#bezeichnung_en#bezeichnung_fr#bezeichnung_it#parent_id#sortierung#erf_date#erf_user#mut_date#mut_user#version#Dates_erf_date#Dates_mut_date
-1#Diverse#Diverse foods#Divers#Alimenti vari##00#2022-08-08T20:05:21#-1#2022-08-08T20:05:21#-1#0#2022-08-08#2022-08-08
+1#Nicht spezifiziert#Unclassified#Non spécifié#Non specificato##00#2022-08-08T20:05:21#-1#2022-08-08T20:05:21#-1#0#2022-08-08#2022-08-08
 2#Kartoffeln und andere stärkehaltige Wurzelknollen#Potatoes And Other Tubers#Pommes de terre et autres tubercules féculents#Patate e altri tuberi amidacei##01#2022-08-08T20:05:21#-1#2022-08-08T20:05:21#-1#0#2022-08-08#2022-08-08
 3#Gemüse#Vegetables#Légumes#Ortaggi##02#2022-08-08T20:05:21#-1#2022-08-08T20:05:21#-1#0#2022-08-08#2022-08-08
 4#Hülsenfrüchte (getrocknet)#Legumes#Légumes secs#Leguminose##03#2022-08-08T20:05:21#-1#2022-08-08T20:05:21#-1#0#2022-08-08#2022-08-08
@@ -29,7 +29,7 @@
 28#Hülsen- und Samengemüse#Grain And Pod Vegetables#Légumes grains et pois#Ortaggi a seme e leguminose#3.0#02 06#2022-08-08T20:05:21#-1#2022-08-08T20:05:21#-1#0#2022-08-08#2022-08-08
 29#Zwiebelgemüse (z.B. Knoblauch, Lauch, Zwiebel)#Leek, Onion, Garlic#Légumes-bulbes (p.ex. ail, poireau, oignon)#Ortaggi a bulbo (p.e. porro, cipolla, aglio)#3.0#02 07#2022-08-08T20:05:21#-1#2022-08-08T20:05:21#-1#0#2022-08-08#2022-08-08
 30#Blattstiel- und Stängelgemüse sowie Keimlinge und Sprossen#Stalk Vegetables, Sprouts#Légumes-tiges, germes et pousses#Ortaggi a stelo e germogli#3.0#02 08#2022-08-08T20:05:21#-1#2022-08-08T20:05:21#-1#0#2022-08-08#2022-08-08
-31#Nicht spezifizierte sowie gemischte Hülsenfrüchte#Diverse foods#Légumes secs non spécifiés et mélangés#Leguminose non specificate e miste#4.0#03 00#2022-08-08T20:05:21#-1#2022-08-08T20:05:21#-1#0#2022-08-08#2022-08-08
+31#Nicht spezifizierte sowie gemischte Hülsenfrüchte#Unclassified#Légumes secs non spécifiés et mélangés#Leguminose non specificate e miste#4.0#03 00#2022-08-08T20:05:21#-1#2022-08-08T20:05:21#-1#0#2022-08-08#2022-08-08
 32#Hülsenfrüchte#Legumes#Légumes secs#Leguminose#4.0#03 01#2022-08-08T20:05:21#-1#2022-08-08T20:05:21#-1#0#2022-08-08#2022-08-08
 33#Nicht spezifizierte sowie gemischte Früchte, Nüsse und Samen#Unclassified, Mixed Fruits, Nuts And Seed#Fruits, fruits oléagineux et graines non spécifiés ou mélangés#Frutta, frutta oleaginosa e semi non specificati e misti#5.0#04 00#2022-08-08T20:05:21#-1#2022-08-08T20:05:21#-1#0#2022-08-08#2022-08-08
 34#Früchte#Fruits#Fruits#Frutta#5.0#04 01#2022-08-08T20:05:21#-1#2022-08-08T20:05:21#-1#0#2022-08-08#2022-08-08

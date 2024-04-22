@@ -1,5 +1,5 @@
 id,count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne,meldung_ids
-1,15,Diverse,Divers,Alimenti vari,Diverse foods,1.53,"[190, 264, 271, 223, 356, 332, 368, 410, 434, 475, 303, 531, 625, 838, 942]"
+1,15,Nicht spezifiziert,Non spécifié,Non specificato,Unclassified,1.53,"[190, 264, 271, 223, 356, 332, 368, 410, 434, 475, 303, 531, 625, 838, 942]"
 3,13,Gemüse,Légumes,Ortaggi,Vegetables,1.92,"[217, 224, 251, 261, 245, 371, 407, 487, 520, 806, 923, 864, 922]"
 34,10,Früchte,Fruits,Frutta,Fruits,1.5,"[234, 269, 250, 420, 465, 551, 520, 886, 864, 918]"
 54,10,Geflügel,Volailles,Pollame,Poultry,1.9,"[189, 372, 395, 432, 439, 536, 676, 703, 709, 923]"

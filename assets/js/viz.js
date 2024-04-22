@@ -71,7 +71,6 @@ function getTranslatedText(translation, lang, key) {
 
   var el = document.getElementById("bubbleChart");
   var rect = el.getBoundingClientRect(); // get the bounding rectangle
-  console.log(rect)
 
   let centerX = rect.width / 2;
   let centerY = rect.height / 2;
@@ -106,7 +105,6 @@ function getTranslatedText(translation, lang, key) {
       angle += 0.01; // Adjust the angle increment based on your preference
   });
   let multiplier
-  console.log(maxCount)
   if (maxCount > 25) {
     multiplier = Math.min(rect.width, rect.height) / 500; // Adjust as needed
   } else if (26 > maxCount > 15) {
@@ -479,7 +477,6 @@ let svg_waffle, width, height, treiberCache;
  */
 function createWaffleChart(treiberData) {
     treiberCache = treiberData;
-    console.log(treiberData);
 
     
     // Clear existing waffle chart if any

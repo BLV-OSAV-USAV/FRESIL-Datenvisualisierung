@@ -400,7 +400,8 @@ function createList(lang, meldung_ids = []) {
                     },
                     {
                         title: getTranslatedText(translations, lang, 'Datum'),
-                        data: 'Dates_erf_date'
+                        data: 'Dates_erf_date',
+                        className: 'date-class'
                     },
                     {
                         title: getTranslatedText(translations, lang, 'Kurzinfo'),

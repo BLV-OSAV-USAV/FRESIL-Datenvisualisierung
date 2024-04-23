@@ -19,3 +19,7 @@ td {
 td.kurzinfo-class {
   min-width: 500px;
 }
+
+td.date-class {
+  min-width: 300px;
+}

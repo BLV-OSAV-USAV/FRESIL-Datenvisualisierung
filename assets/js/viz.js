@@ -153,9 +153,9 @@ function getTranslatedText(translation, lang, key) {
               .select("#meldungCount")
               .text(`${getTranslatedText(translations, lang, 'Anzahl')} ${d.count}`);
 
-          d3.select("#tooltip")
+/*           d3.select("#tooltip")
               .select("#meanSterne")
-              .text(`${getTranslatedText(translations, lang, 'D_Wichtigkeit')} ${d.mean_sterne}`);
+              .text(`${getTranslatedText(translations, lang, 'D_Wichtigkeit')} ${d.mean_sterne}`); */
 
           d3.select("#tooltip").classed("hidden", false);
 

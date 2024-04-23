@@ -58,8 +58,8 @@ function getTranslatedText(translation, lang, key) {
   // Find the data with the biggest count
   let maxCount = -Infinity;
   data.forEach(d => {
-      if (d.count > maxCount) {
-          maxCount = d.count;
+      if (d.size > maxCount) {
+          maxCount = d.size;
           defaultId = d.id;
       }
   });

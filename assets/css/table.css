@@ -23,3 +23,7 @@ td.kurzinfo-class {
 td.date-class {
   min-width: 100px;
 }
+
+td.title-class {
+  min-width: 200px;
+}

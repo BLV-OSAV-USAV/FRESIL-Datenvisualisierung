@@ -317,10 +317,17 @@ let sdTranslations = {
 		it: 'Nutrizione',
 
 		en: 'Nutrition'
+	},
+
+	steckbrief:{
+
+		de: 'Steckbrief',
+
+		fr: 'Fiches signalétiques',
+
+		it: 'Schede informative',
+
+		en: 'Fact sheets'
 	}
-
-
-
-
 
 };

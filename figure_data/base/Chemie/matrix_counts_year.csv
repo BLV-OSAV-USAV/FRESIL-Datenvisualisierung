@@ -1,5 +1,5 @@
 id,count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne,meldung_ids
-1,25,Nicht spezifiziert,Non spécifié,Non specificato,Unclassified,1.4,"[209, 212, 243, 264, 295, 283, 300, 302, 350, 391, 414, 429, 389, 430, 386, 516, 508, 651, 674, 377, 657, 720, 748, 849, 838]"
+1,26,Nicht spezifiziert,Non spécifié,Non specificato,Unclassified,1.38,"[209, 212, 243, 264, 295, 283, 300, 302, 350, 391, 414, 429, 389, 430, 386, 516, 508, 651, 674, 377, 657, 720, 748, 621, 849, 838]"
 82,12,Wasser,Eau,Acqua,Waters,1.25,"[201, 289, 366, 426, 613, 623, 643, 641, 618, 638, 745, 926]"
 60,10,Fische,Poissons,Pesce,Fish,1.8,"[246, 321, 554, 273, 580, 566, 633, 658, 680, 722]"
 23,6,"Blattgemüse (ohne Kohlgemüse), Blattsalate und Algen","Légumes-feuilles (excl. chou), mescluns et algues","Verdure a foglie (esclusi cavoli), insalate a foglie e alghe",Leafy Vegetables (Except Cabbages),1.83,"[213, 428, 550, 735, 772, 921]"
@@ -29,7 +29,7 @@ id,count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne
 35,2,Nüsse und Samen (inkl. Aufstriche und Pasten),Fruits oléagineux et graines (incl. beurre),Frutta oleaginosa e semi (inclusi prodotti da spalmare e paste),Nuts And Seeds (+ Nut Spread),1.5,"[319, 604]"
 61,1,Schalen- und Weichtiere,Crustacés et mollusques,Crostacei e molluschi,"Crustaceans, Molluscs",1.0,[258]
 22,1,Nicht spezifizierte sowie gemischte Gemüse und Salate,Légumes et salades non spécifiés ou mélangés,Insalate e ortaggi misti non specificati,"Unclassified, Mixed Salad/Vegetables",3.0,[229]
-145,1,Frucht- und Kräutertee (inkl. Pulver),Tisanes aux fruits et aux herbes (poudre incluse),Tè di frutti e di erbe (inclusa polvere),Herbal Tea (Incl Powdered),2.0,[252]
+145,1,Frucht- und Kräutertee (inkl. Pulver),Tisanes aux fruits et aux herbes (poudre incluse),Tè di frutti e di erbe (inclusa polvere),Herbal Tea  (Incl Powdered),2.0,[252]
 18,1,Diverse Lebensmittel,Aliments divers,Diverse derrate alimentari,Miscellaneous,1.0,[215]
 6,1,"Milch, Milchprodukte und Milchersatzprodukte","Laits, produits laitiers et substituts de lait","Latte, latticini e succedanei del latte",Dairy Products And Substitutes,3.0,[199]
 114,1,Nicht spezifizierte sowie gemischte Brote und Dauerbackwaren,Pains et biscottes non spécifiés ou mélangés,Pane e articoli di biscotteria non specificati e misti,Unclassified Or Mixed Breads And Rusks,1.0,[277]

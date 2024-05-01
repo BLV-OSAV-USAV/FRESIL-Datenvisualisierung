@@ -16,6 +16,29 @@ function getTranslatedText(translation, lang, key) {
     return translation[lang][key] || key; // Returns translated text or key itself if not found
 }
 
+function addSteckbriefInfo(filter, id, data){
+    if (filter === 'steckbrief') {
+        div = document.getElementById('two_b');
+        div.innerHTML = ''
+        div.style.display = 'block';
+        div.innerHTML +=  `
+        <center>
+            <p>${data.find(d => d.id === id).kurzinfo}</p>
+            <br>
+            Creation date: ${data.find(d => d.id === id).erf_date}
+            <br>
+            Last modification: ${data.find(d => d.id === id).mut_date}
+            <br>
+			<svg height="5" width="200">
+			  <line x1="0" y1="0" x2="200" y2="0" style="stroke:rgba(144, 144, 144, 0.5);stroke-width:2" />
+			</svg>
+	 	</center>	
+        `;
+        } else {
+        document.getElementById('two_b').style.display = 'none';
+        }
+}
+
 
 /**
  * Visualizes data using a bubble chart.
@@ -38,16 +61,20 @@ function getTranslatedText(translation, lang, key) {
   let translations = {
       'de': { 'Anzahl': 'Anzahl Meldungen:', 
                 'D_Wichtigkeit': 'Durchschnittliche Wichtigkeit:',
-                'empty': 'Keine Daten verfügbar zur Anzeige des Diagramms.' },
+                'empty': 'Keine Daten verfügbar zur Anzeige des Diagramms.',
+                'mut_count': 'Anzahl der Änderungen:' },
       'fr': { 'Anzahl': 'Nombres de Notifications:', 
                 'D_Wichtigkeit': 'Importance moyenne:', 
-                'empty': 'Aucune donnée disponible pour afficher le graphique.'},
+                'empty': 'Aucune donnée disponible pour afficher le graphique.',
+                'mut_count': 'Nombre de changements:' },
       'it': { 'Anzahl': 'Numero di notifiche:', 
                 'D_Wichtigkeit': 'Importanza media:',
-                'empty': 'Nessun dato disponibile per visualizzare il grafico.'},
+                'empty': 'Nessun dato disponibile per visualizzare il grafico.',
+                'mut_count': 'Numero di modifiche:'},
       'en': { 'Anzahl': 'Number of Notifications:', 
                 'D_Wichtigkeit': 'Average Importance:',
-                'empty': 'No data available to display the chart' }
+                'empty': 'No data available to display the chart',
+                'mut_count': 'Number of changes:' }
   };
 
   let width = 0;
@@ -57,10 +84,16 @@ function getTranslatedText(translation, lang, key) {
 
   // Find the data with the biggest count
   let maxCount = -Infinity;
+  let mutMaxCount = -Infinity;
   data.forEach(d => {
       if (d.size > maxCount) {
           maxCount = d.size;
           defaultId = d.id;
+      };
+      if (filter === 'steckbrief'){
+        if (d.mut_count > mutMaxCount){
+            mutMaxCount = d.mut_count
+        }
       }
   });
 
@@ -113,6 +146,7 @@ function getTranslatedText(translation, lang, key) {
     multiplier = Math.min(rect.width, rect.height) / 100 ;
   }
 
+
   // Create a force simulation
   let simulation = d3.forceSimulation(data)
       .force("x", d3.forceX(centerX).strength(0.05))
@@ -138,9 +172,6 @@ function getTranslatedText(translation, lang, key) {
               d3.select(this).attr("fill", selectedColor);
           }
 
-          // Update the tooltip position to the center of the circle
-          let w = window.innerWidth;
-
 
           // Update the tooltip position and value
           d3.select("#tooltip")
@@ -153,7 +184,13 @@ function getTranslatedText(translation, lang, key) {
               .select("#meldungCount")
               .text(`${getTranslatedText(translations, lang, 'Anzahl')} ${d.count}`);
 
-/*           d3.select("#tooltip")
+          if (filter === 'steckbrief'){
+            d3.select("#tooltip")
+              .select("#mutCount")
+              .text(`${getTranslatedText(translations, lang, 'mut_count')} ${d.count_mut}`);
+          }
+
+           /* d3.select("#tooltip")
               .select("#meanSterne")
               .text(`${getTranslatedText(translations, lang, 'D_Wichtigkeit')} ${d.mean_sterne}`); */
 
@@ -190,22 +227,27 @@ function getTranslatedText(translation, lang, key) {
 
           // Update the content of the <span> tag with the class "waffle-title"
           document.querySelector('#waffle-title').innerText = title;
+
+          addSteckbriefInfo(filter, id, data)
+
           // Create and display waffle chart
           createWaffleChart(treiberData);
           createList(lang, meldung_list);
       });
 
-  // Create and display waffle chart for default data
-  createWaffleChart(data.find(d => d.id === defaultId).treiber);
-  createList(lang, data.find(d => d.id === defaultId).meldung_ids);
 
-  // Highlight default circle
-  defaultCircle = svg.select(`circle[id="${defaultId}"]`);
-  defaultCircle.attr("fill", selectedColor).classed("clicked", true);
-  selectElement.value = data.find(d => d.id === defaultId).name;
-
-  // Update the content of the <span> tag with the class "waffle-title"
-  document.querySelector('#waffle-title').innerText = data.find(d => d.id === defaultId).name;
+    addSteckbriefInfo(filter, defaultId, data)
+    // Create and display waffle chart and list for default data
+    createWaffleChart(data.find(d => d.id === defaultId).treiber);
+    createList(lang, data.find(d => d.id === defaultId).meldung_ids);
+    
+    // Highlight default circle
+    defaultCircle = svg.select(`circle[id="${defaultId}"]`);
+    defaultCircle.attr("fill", selectedColor).classed("clicked", true);
+    selectElement.value = data.find(d => d.id === defaultId).name;
+    
+    // Update the content of the <span> tag with the class "waffle-title"
+    document.querySelector('#waffle-title').innerText = data.find(d => d.id === defaultId).name;
 
 
 

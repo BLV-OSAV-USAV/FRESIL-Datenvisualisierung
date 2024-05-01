@@ -1,7 +1,7 @@
 id,count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne,meldung_ids
 91,3,Pestizide,pesticides,pesticidi,pesticide,2.0,"[417, 56, 415]"
 66,2,Canabidiol (CBD),Canabidiol (CBD),Canabidiolo (CBD),Canabidiol (CBD),1.0,"[467, 32]"
-103,2,GMO (genetisch modifizierter Organismus),OGM (organisme génétiquement modifié),OGM (organismo geneticamente modificato),Genetically modified organism (GMO),2.0,"[31, 441]"
+103,2,GMO (genetisch modifizierter Organismus),OGM (organisme génétiquement modifié),OGM (organismo geneticamente modificato),Genetically modified organism (GMO),2.0,"[31, 441]"
 93,2,Salmonella spp.,Salmonella spp.,Salmonella spp.,Salmonella spp.,1.5,"[603, 492]"
 196,1,Grayanotoxine,Grayanotoxine,Graianotossina,Grayanotoxin,1.0,[225]
 58,1,Melatonin,Mélatonine,Melatonina,Melatonin,1.0,[467]

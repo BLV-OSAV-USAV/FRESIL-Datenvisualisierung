@@ -32,6 +32,8 @@ function addSteckbriefInfo(filter, id, data){
 			<svg height="5" width="200">
 			  <line x1="0" y1="0" x2="200" y2="0" style="stroke:rgba(144, 144, 144, 0.5);stroke-width:2" />
 			</svg>
+            <br>
+            <br>
 	 	</center>	
         `;
         } else {
@@ -719,10 +721,6 @@ function createWaffleChart(treiberData) {
 
 
 
-
-
-
-
 /**
  * Scrolls the page to the specified section using jQuery.
  * @param {string} sectionId - The ID of the section to scroll to.
@@ -730,7 +728,7 @@ function createWaffleChart(treiberData) {
  function moveToSection(sectionId) {
   $('html, body').animate({
     scrollTop: $('#' + sectionId).offset().top
-  }, 'slow');
+  });
 }
 
 

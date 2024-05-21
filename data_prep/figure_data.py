@@ -241,7 +241,7 @@ def count_steckbrief(timeFilter, bereichName, lg):
     mean_sterne['mean_sterne'] = mean_sterne['mean_sterne'].round(2)
 
     # Merge results with existing DataFrame
-    steckbrief_counts = pd.merge(steckbrief_counts, steckbrief[['id', 'code', 'titel', 'kurzinfo', 'erf_date', 'mut_date']], on='id', how='left')
+    steckbrief_counts = pd.merge(steckbrief_counts, steckbrief[['id', 'code', 'titel', 'kurzinfo', 'signal', 'erf_date', 'mut_date']], on='id', how='left')
     steckbrief_counts = pd.merge(steckbrief_counts, mean_sterne, on='id', how='left')
     steckbrief_counts = pd.merge(steckbrief_counts, steckbrief_mut, on='code', how='left')
     steckbrief_counts = pd.merge(steckbrief_counts, meldung_ids_list, on='id', how='left')

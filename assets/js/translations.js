@@ -321,13 +321,25 @@ let sdTranslations = {
 
 	steckbrief:{
 
-		de: 'Steckbrief',
+		de: 'Potenzielle Signale',
 
-		fr: 'Fiches signalétiques',
+		fr: 'Signaux potentiels',
 
-		it: 'Schede informative',
+		it: 'Segnali potenziali',
 
-		en: 'Fact sheets'
+		en: 'Potential signals'
+	},
+
+	signal:{
+
+		de: 'Signale',
+
+		fr: 'Signaux',
+
+		it: 'Segnali', 
+
+		en: 'Signals'
+		
 	}
 
 };

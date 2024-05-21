@@ -17,7 +17,8 @@ function getTranslatedText(translation, lang, key) {
 }
 
 function addSteckbriefInfo(filter, id, data){
-    if (filter === 'steckbrief') {
+    console.log(filter);
+    if (filter === 'steckbrief' || filter === 'signal') {
         div = document.getElementById('two_b');
         div.innerHTML = ''
         div.style.display = 'block';
@@ -92,7 +93,7 @@ function addSteckbriefInfo(filter, id, data){
           maxCount = d.size;
           defaultId = d.id;
       };
-      if (filter === 'steckbrief'){
+      if (filter === 'steckbrief' || filter === 'signal'){
         if (d.mut_count > mutMaxCount){
             mutMaxCount = d.mut_count
         }
@@ -186,7 +187,7 @@ function addSteckbriefInfo(filter, id, data){
               .select("#meldungCount")
               .text(`${getTranslatedText(translations, lang, 'Anzahl')} ${d.count}`);
 
-          if (filter === 'steckbrief'){
+          if (filter === 'steckbrief' || filter === 'signal'){
             d3.select("#tooltip")
               .select("#mutCount")
               .text(`${getTranslatedText(translations, lang, 'mut_count')} ${d.count_mut}`);

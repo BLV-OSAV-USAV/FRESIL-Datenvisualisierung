@@ -16,6 +16,12 @@ function getTranslatedText(translation, lang, key) {
     return translation[lang][key] || key; // Returns translated text or key itself if not found
 }
 
+/**
+ * Adds steckbrief information to a div element based on the selected filter and id.
+ * @param {string} filter - The selected filter (steckbrief or signal).
+ * @param {number} id - The id of the selected data item.
+ * @param {Array} data - The data array.
+ */
 function addSteckbriefInfo(filter, id, data){
     console.log(filter);
     if (filter === 'steckbrief' || filter === 'signal') {
@@ -142,9 +148,9 @@ function addSteckbriefInfo(filter, id, data){
   });
   let multiplier
   if (maxCount > 25) {
-    multiplier = Math.min(rect.width, rect.height) / 500; // Adjust as needed
+    multiplier = Math.min(rect.width, rect.height) / 500;
   } else if (26 > maxCount > 15) {
-    multiplier =  Math.min(rect.width, rect.height) / 250; // Adjust as needed
+    multiplier =  Math.min(rect.width, rect.height) / 250;
   } else {
     multiplier = Math.min(rect.width, rect.height) / 100 ;
   }
@@ -729,7 +735,7 @@ function createWaffleChart(treiberData) {
  function moveToSection(sectionId) {
   $('html, body').animate({
     scrollTop: $('#' + sectionId).offset().top
-  });
+  }, 1);
 }
 
 

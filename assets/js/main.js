@@ -25,7 +25,11 @@ function handleGMddChange(ordnung){
             gefahrOrdnung('all', lang, 'all');
         } else if(ordnung==='matrix'){
             matrixOrdnung('all', lang, 'all');
-        }
+        } else if(ordnung==='steckbrief'){
+            steckbriefOrdnung('all', lang, 'all');
+        } else if(ordnung==='signal'){
+            signalOrdnung('all', lang, 'all')
+        };
 
     });
 
@@ -51,6 +55,20 @@ function handleDDChange(timeFilter, bereich) {
         script.addEventListener('load', () => {
             // Call the matrixOrdnung function with the desired timeFilter argument
             matrixOrdnung(timeFilter, lang, bereich);
+        });
+    } else if (Ordnung === 'steckbrief'){
+        script.src = './assets/js/steckbriefOrdnung.js';
+            // Listen for the 'load' event on the script element
+        script.addEventListener('load', () => {
+            // Call the matrixOrdnung function with the desired timeFilter argument
+            steckbriefOrdnung(timeFilter, lang, bereich);
+        });
+    } else if (Ordnung === 'signal'){
+        script.src = './assets/js/signalOrdnung.js';
+            // Listen for the 'load' event on the script element
+        script.addEventListener('load', () => {
+            // Call the matrixOrdnung function with the desired timeFilter argument
+            signalOrdnung(timeFilter, lang, bereich);
         });
     }
 

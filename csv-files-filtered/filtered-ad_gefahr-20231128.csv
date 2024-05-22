@@ -50,7 +50,7 @@
 49#künstlicher Süßstoff#artificial sweetener#édulcorant artificiel#dolcificante artificiale#False#2022-08-08T20:05:21#-1#2022-08-08T20:05:21#-1#0#2022-08-08#2022-08-08
 50#Brevetoxin#Brevetoxin#Brevetoxin#Brevetoxin#False#2022-08-08T20:05:21#-1#2022-08-08T20:05:21#-1#0#2022-08-08#2022-08-08
 51#Vitamin D#Vitamine D#Vitamine D#Vitamina D#False#2022-08-08T20:05:21#-1#2022-08-08T20:05:21#-1#0#2022-08-08#2022-08-08
-52#Kochsalz (NaCl)#Table salt (NaCl)#Sel de table (NaCl)#Sale da tavola (NaCl)#False#2022-08-08T20:05:21#-1#2022-08-08T20:05:21#-1#0#2022-08-08#2022-08-08
+52#Kochsalz (NaCl)#Table salt  (NaCl)#Sel de table (NaCl)#Sale da tavola (NaCl)#False#2022-08-08T20:05:21#-1#2022-08-08T20:05:21#-1#0#2022-08-08#2022-08-08
 53#Pheophorbid#Pheophorbide#Phéophorbide#Feoforbide#False#2022-08-08T20:05:21#-1#2022-08-08T20:05:21#-1#0#2022-08-08#2022-08-08
 54#seltene Metalle#rare metals#métaux rares#metalli rari#False#2022-08-08T20:05:21#-1#2022-08-08T20:05:21#-1#0#2022-08-08#2022-08-08
 55#6-PPD-Chinon#6-PPD-Chinon#6-PPD-Chinon#6-PPD-Chinon#False#2022-08-08T20:05:21#-1#2022-08-08T20:05:21#-1#0#2022-08-08#2022-08-08
@@ -83,7 +83,7 @@
 82#Fischöl#fish oil#huile de poisson#olio di pesce#False#2022-08-08T20:05:21#-1#2022-08-08T20:05:21#-1#0#2022-08-08#2022-08-08
 83#Kokosnussöl#coconat oil#huile de coco#olio di cocco#False#2022-08-08T20:05:21#-1#2022-08-08T20:05:21#-1#0#2022-08-08#2022-08-08
 84#Sojabohnenöl#soy bean oil#huile de soja#olio di soia#False#2022-08-08T20:05:21#-1#2022-08-08T20:05:21#-1#0#2022-08-08#2022-08-08
-85#Langya henipavirus (LayV)#Langya henipavirus (LayV)#Langya henipavirus (LayV)#Langya henipavirus (LayV)#False#2022-08-11T07:49:49#84#2022-08-11T07:49:49#84#0#2022-08-11#2022-08-11
+85#Langya henipavirus (LayV)#Langya henipavirus (LayV)#Langya henipavirus (LayV)#Langya henipavirus (LayV)#False#2022-08-11T07:49:49#84#2022-08-11T07:49:49#84#0#2022-08-11#2022-08-11
 86#Campylobacter spp.#Campylobacter spp.#Campylobacter spp.#Campylobacter spp.#False#2022-08-12T07:53:02#84#2022-08-12T07:53:02#84#0#2022-08-12#2022-08-12
 87#Campylobacter jejuni#Campylobacter jejuni#Campylobacter jejuni#Campylobacter jejuni#False#2022-08-12T07:53:47#84#2022-08-12T07:53:47#84#0#2022-08-12#2022-08-12
 88#Campylobacter coli#Campylobacter coli#Campylobacter coli#Campylobacter coli#False#2022-08-12T07:54:19#84#2022-08-12T07:54:19#84#0#2022-08-12#2022-08-12
@@ -98,10 +98,10 @@
 97#Salmonella Kentucky#Salmonella Kentucky#Salmonella Kentucky#Salmonella Kentucky#False#2022-08-16T09:21:38#84#2022-08-16T09:21:38#84#0#2022-08-16#2022-08-16
 98#Organophosphatester#organophosphate ester#esters d'organophosphate#esteri di organofosfati#False#2022-08-17T08:13:03#84#2022-08-17T08:13:03#84#0#2022-08-17#2022-08-17
 99#Vibrio spp.#Vibrio spp.#Vibrio spp.#Vibrio spp.#False#2022-08-18T09:33:55#84#2022-08-18T09:33:55#84#0#2022-08-18#2022-08-18
-100#Frühsommer-Meningoenzephalitis (FSME)#Tick-borne encephalitis (TBE)#L'encéphalite à tiques#Encefalite trasmessa da zecche#False#2022-08-22T06:44:36#84#2022-08-22T06:44:36#84#0#2022-08-22#2022-08-22
+100#Frühsommer-Meningoenzephalitis (FSME)#Tick-borne encephalitis (TBE)#L'encéphalite à tiques#Encefalite trasmessa da zecche#False#2022-08-22T06:44:36#84#2022-08-22T06:44:36#84#0#2022-08-22#2022-08-22
 101#Brucella spp.#Brucella spp.#Brucella spp.#Brucella spp.#False#2022-08-22T07:22:52#84#2022-08-22T07:22:52#84#0#2022-08-22#2022-08-22
 102#Blei#Lead#Plomb#Piombo#False#2022-08-23T08:53:19#36#2022-08-23T08:53:19#36#0#2022-08-23#2022-08-23
-103#GMO (genetisch modifizierter Organismus)#Genetically modified organism (GMO)#OGM (organisme génétiquement modifié)#OGM (organismo geneticamente modificato)#False#2022-08-24T08:30:34#36#2022-08-24T08:30:34#36#0#2022-08-24#2022-08-24
+103#GMO (genetisch modifizierter Organismus)#Genetically modified organism (GMO)#OGM (organisme génétiquement modifié)#OGM (organismo geneticamente modificato)#False#2022-08-24T08:30:34#36#2022-08-24T08:30:34#36#0#2022-08-24#2022-08-24
 104#Enteroaggregative Escherichia coli (EAEC)#Enteroaggregative Escherichia coli (EAEC)#Escherichia coli entéro-agrégatif#Escherichia coli enteroaggregativo#False#2022-08-24T08:55:47#84#2022-08-24T08:55:47#84#0#2022-08-24#2022-08-24
 105#Giardia duodenalis#Giardia duodenalis#Giardia duodenalis#Giardia duodenalis#False#2022-08-25T07:30:07#84#2022-08-25T07:30:07#84#0#2022-08-25#2022-08-25
 106#Bacillus cereus (sensu lato)#Bacillus cereus (sensu lato)#Bacillus cereus (sensu lato)#Bacillus cereus (sensu lato)#False#2022-08-25T08:15:57#84#2022-08-25T08:15:57#84#0#2022-08-25#2022-08-25
@@ -125,7 +125,7 @@
 124#Melamin#Melamine#Mélamine#Melammina#False#2022-08-30T10:55:57#36#2022-08-30T10:55:57#36#0#2022-08-30#2022-08-30
 125#Mikroplastik#microplastics#microplastiques#microplastica#False#2022-08-30T11:32:48#36#2022-08-30T11:32:48#36#0#2022-08-30#2022-08-30
 126#Per- und polyfluorierte Alkylverbindungen (PFAS)#Per- and polyfluoroalkyl substances (PFAS)#Substances per- et polyfluoroalkylées (PFAS)#Sostanze per- e polifluoroalchiliche (PFAS)#False#2022-08-30T12:02:55#36#2022-08-30T12:02:55#36#0#2022-08-30#2022-08-30
-127#Perfluoroctansulfonsäure (PFOS)#Perfluorooctanesulfonic acid (PFOS)#acide perfluorooctanesulfonique (PFOS)#acido perfluoroottansolfonico#False#2022-08-30T13:55:19#84#2022-08-30T13:55:19#84#0#2022-08-30#2022-08-30
+127#Perfluoroctansulfonsäure (PFOS)#Perfluorooctanesulfonic acid (PFOS)#acide perfluorooctanesulfonique (PFOS)#acido perfluoroottansolfonico#False#2022-08-30T13:55:19#84#2022-08-30T13:55:19#84#0#2022-08-30#2022-08-30
 128#Schwermetalle#heavy metals#métaux lourds#metalli pesanti#False#2022-09-01T09:20:40#84#2022-09-01T09:20:40#84#0#2022-09-01#2022-09-01
 129#Affenpocken-Virus (MPXV)#Monkeypox virus (MPXV)#variole du singe (MPXV)#vaiolo delle scimmie (MXPV)#False#2022-09-02T11:54:14#84#2022-09-02T11:54:14#84#0#2022-09-02#2022-09-02
 130#Bisphenol S#Bisphenol S#Bisphénol S#Bisfenolo S#False#2022-09-06T13:19:17#36#2022-09-06T13:19:17#36#0#2022-09-06#2022-09-06
@@ -157,7 +157,7 @@
 159#Mycobacterium avium ssp. paratuberculosis (MAP)#Mycobacterium avium ssp. paratuberculosis (MAP)#Mycobacterium avium ssp. paratuberculosis (MAP)#Mycobacterium avium ssp. paratuberculosis (MAP)#False#2022-09-16T14:17:27#36#2022-09-16T14:17:27#36#0#2022-09-16#2022-09-16
 160#Nipah Virus#Nipah virus#Virus Nipah#Virus Nipah#False#2022-09-19T09:07:05#36#2022-09-19T09:07:05#36#0#2022-09-19#2022-09-19
 161#Siliciumorganische Tenside#Organosilicone surfactants#Tensioactifs organosilicié#Tensioattivi organosilicati#False#2022-09-19T09:14:41#36#2022-09-19T09:14:41#36#0#2022-09-19#2022-09-19
-162#Toxocara spp.#Toxocara spp.#Toxocara spp.#Toxocara spp.#False#2022-09-19T09:24:33#84#2022-09-19T09:24:33#84#0#2022-09-19#2022-09-19
+162#Toxocara spp.#Toxocara spp.#Toxocara spp.#Toxocara spp.#False#2022-09-19T09:24:33#84#2022-09-19T09:24:33#84#0#2022-09-19#2022-09-19
 163#Pinnatoxine#Pinnatoxins#Pinnatoxines#Pinnatossine#False#2022-09-19T09:24:58#36#2022-09-19T09:24:58#36#0#2022-09-19#2022-09-19
 164#Phytoöstrogene#Phytoestrogens#Phytoestrogène#Fitoestrogeni#False#2022-09-19T09:27:19#36#2022-09-19T09:27:19#36#0#2022-09-19#2022-09-19
 165#Cadmium#Cadmium#Cadmium#Cadmio#False#2022-09-19T09:30:05#36#2022-09-19T09:30:05#36#0#2022-09-19#2022-09-19
@@ -176,7 +176,7 @@
 178#Fusarium sambucinum#Fusarium sambucinum#Fusarium sambucinum#Fusarium sambucinum#False#2022-09-26T08:38:32#84#2022-09-26T08:38:32#84#0#2022-09-26#2022-09-26
 180#Phthalate#phthalates#phtalates#ftalati#False#2022-09-27T07:18:36#84#2022-09-27T07:18:36#84#0#2022-09-27#2022-09-27
 181#hochpathogene Aviären Influenza (HPAI)#highly pathogenic avian influenza (HPAI) virus#virus de l'influenza aviaire hautement pathogène (IAHP)#virus ad alta patogenicità (HPAI) di influenza aviaria#False#2022-10-06T07:13:21#84#2022-10-06T07:13:21#84#0#2022-10-06#2022-10-06
-182#Glyphosat#glyphosate#DébutPropriétés chimiquesUtilisation et intérêt agronomiqueAfficher / masquer la sous-section Utilisation et intérêt agronomiqueMécanisme d'actionUtilisations et polémiquesAfficher / masquer la sous-section Utilisations et polémiquesDifficultés analytique#Glifosato#False#2022-10-18T07:45:22#84#2022-10-18T07:45:22#84#0#2022-10-18#2022-10-18
+182#Glyphosat#glyphosate#DébutPropriétés chimiquesUtilisation et intérêt agronomiqueAfficher / masquer la sous-section Utilisation et intérêt agronomiqueMécanisme d'actionUtilisations et polémiquesAfficher / masquer la sous-section Utilisations et polémiquesDifficultés analytique#Glifosato#False#2022-10-18T07:45:22#84#2022-10-18T07:45:22#84#0#2022-10-18#2022-10-18
 183#Salmonella Litchfield#Salmonella Litchfield#Salmonella Litchfield#Salmonella Litchfield#False#2022-10-21T08:00:46#36#2022-10-21T08:00:46#36#0#2022-10-21#2022-10-21
 184#Morganella morganii#Morganella morganii#Morganella morganii#Morganella morganii#False#2022-10-31T08:26:33#84#2022-10-31T08:26:33#84#0#2022-10-31#2022-10-31
 185#Mineralöl#Mineral oil#Huile minérale#Olio minerale#False#2022-11-03T10:56:21#84#2022-11-03T10:56:21#84#0#2022-11-03#2022-11-03
@@ -188,7 +188,7 @@
 191#Solanum sp#Solanum sp#Solanum sp#Solanum sp#False#2022-12-19T08:53:24#84#2022-12-19T08:53:24#84#0#2022-12-19#2022-12-19
 192#2-tert-Butylhydrochinon#tert-butylhydroquinone#tert-Butylhydroquinone#Terz-butil-idrochinone#False#2022-12-19T14:34:18#84#2022-12-19T14:34:18#84#0#2022-12-19#2022-12-19
 193#Salmonella Agona#Salmonella Agona#Salmonella Agona#Salmonella Agona#False#2022-12-22T09:36:30#36#2022-12-22T09:36:30#36#0#2022-12-22#2022-12-22
-194#Bourbon-Virus (BOUV)#Bourbon virus (BRBV)#Virus de Bourbon (BOUV)#Bourbon virus (BOUV)#False#2023-01-03T13:36:49#84#2023-01-03T13:36:49#84#0#2023-01-03#2023-01-03
+194#Bourbon-Virus (BOUV)#Bourbon virus (BRBV)#Virus de Bourbon (BOUV)#Bourbon virus (BOUV)#False#2023-01-03T13:36:49#84#2023-01-03T13:36:49#84#0#2023-01-03#2023-01-03
 195#Escherichia coli (ExPEC)#Escherichia coli (ExPEC)#Escherichia coli (ExPEC)#Escherichia coli (ExPEC)#False#2023-01-03T14:37:35#84#2023-01-03T14:37:35#84#0#2023-01-03#2023-01-03
 196#Grayanotoxine#Grayanotoxin#Grayanotoxine#Graianotossina#False#2023-01-03T15:36:23#84#2023-01-03T15:36:23#84#0#2023-01-03#2023-01-03
 197#Nitrite#Nitrite#Nitrite#Nitrito#False#2023-01-04T10:33:08#84#2023-01-04T10:33:08#84#0#2023-01-04#2023-01-04
@@ -197,9 +197,9 @@
 200#6-PPD#6-PPD#6-PPD#6-PPD#False#2023-01-06T08:11:51#932#2023-01-06T08:11:51#932#0#2023-01-06#2023-01-06
 201#Diphenylguanidin (DPG)#Diphenylguanidine (DPG)#Diphénylguanidine (DPG)#Difenilguanidina (DPG)#False#2023-01-06T08:15:23#932#2023-01-06T08:15:23#932#0#2023-01-06#2023-01-06
 202#Antibiotikaresistente Milchsäurebakterien#Antibiotic-resistant lactic acid bacteria#Bactéries lactiques résistantes aux antibiotiques#Batteri lattici resistenti agli antibiotici#False#2023-01-10T10:33:04#932#2023-01-10T10:33:04#932#0#2023-01-10#2023-01-10
-203#Ochratoxin A (OTA)#Ochratoxin A (OTA)#Ochratoxine A (OTA)#Ocratossina A (OTA)#False#2023-01-10T11:21:47#932#2023-01-10T11:21:47#932#0#2023-01-10#2023-01-10
+203#Ochratoxin A (OTA)#Ochratoxin A (OTA)#Ochratoxine A (OTA)#Ocratossina A (OTA)#False#2023-01-10T11:21:47#932#2023-01-10T11:21:47#932#0#2023-01-10#2023-01-10
 204#Streptomycin#Streptomycin#Streptomycine#Streptomicina#False#2023-01-13T11:13:32#932#2023-01-13T11:13:32#932#0#2023-01-13#2023-01-13
-205#Neospora caninum#Neospora caninum#Neospora caninum#Neospora caninum#False#2023-01-20T08:00:18#84#2023-01-20T08:00:18#84#0#2023-01-20#2023-01-20
+205#Neospora caninum#Neospora caninum#Neospora caninum#Neospora caninum#False#2023-01-20T08:00:18#84#2023-01-20T08:00:18#84#0#2023-01-20#2023-01-20
 206#Caprinsäure#Capric acid#Acide caprique#Acido caprico#False#2023-01-20T08:51:54#84#2023-01-20T08:51:54#84#0#2023-01-20#2023-01-20
 207#Decansäure#decanoic acid#Acide décanoïque#acido decanoico#False#2023-01-20T08:57:21#84#2023-01-20T08:57:21#84#0#2023-01-20#2023-01-20
 208#Phomopsin#Phomopsin#Phomopsine#Phomopsin#False#2023-01-23T10:05:15#84#2023-01-23T10:05:15#84#0#2023-01-23#2023-01-23
@@ -207,7 +207,7 @@
 210#Jod#Iodine#Iode#Iodo#False#2023-01-25T11:00:18#932#2023-01-25T11:00:18#932#0#2023-01-25#2023-01-25
 211#Bacillus subtilis#Bacillus subtilis#Bacillus subtilis#Bacillus subtilis#False#2023-01-25T11:04:49#932#2023-01-25T11:04:49#932#0#2023-01-25#2023-01-25
 212#Kainsäure#Kainic acid#Acide kaïnique#Acido kainico#False#2023-01-25T11:06:19#932#2023-01-25T11:06:19#932#0#2023-01-25#2023-01-25
-213#L. welshimeri #L. welshimeri #L. welshimeri #L. welshimeri #False#2023-01-31T07:57:38#84#2023-01-31T07:57:38#84#0#2023-01-31#2023-01-31
+213#L. welshimeri #L. welshimeri #L. welshimeri #L. welshimeri #False#2023-01-31T07:57:38#84#2023-01-31T07:57:38#84#0#2023-01-31#2023-01-31
 214#Dibutylphthalate (DBP)#Dibutyl phthalate (DBP)#Phtalate de dibutyle (DBP)#Dibutilftalato (DBP)#False#2023-02-06T10:45:59#932#2023-02-06T10:45:59#932#0#2023-02-06#2023-02-06
 215#Diisobutylphthalate (DIBP)#Diisobutyl phthalate (DIBP)#Phtalate de diisobutyle (DIBP)#Diisobutilftalato (DIBP)#False#2023-02-06T10:49:07#932#2023-02-06T10:49:07#932#0#2023-02-06#2023-02-06
 216#Bis(2-ethylhexyl) phthalate (DEHP)#Bis(2-ethylhexyl) phthalate (DEHP)#Phtalate de bis(2-éthylhexyle) (DEHP)#Di-2-etilesilftalato (DEHP)#False#2023-02-06T10:51:48#932#2023-02-06T10:51:48#932#0#2023-02-06#2023-02-06
@@ -225,7 +225,7 @@
 229#Streptococcus pyogenes (GAS)#Streptococcus pyogenes (GAS)#Streptococcus pyogenes (SGA)#Streptococcus pyogenes (SGA)#False#2023-03-03T08:00:57#932#2023-03-03T08:00:57#932#0#2023-03-03#2023-03-03
 230#Nitrate#Nitrate#Nitrate#Nitrato#False#2023-03-09T09:13:09#932#2023-03-09T09:13:09#932#0#2023-03-09#2023-03-09
 231#Campylobacter fetus#Campylobacter fetus#Campylobacter fetus#Campylobacter fetus#False#2023-03-10T07:52:11#84#2023-03-10T07:52:11#84#0#2023-03-10#2023-03-10
-232#Shewanella spp.#Shewanella spp.#Shewanella spp.#Shewanella spp.#False#2023-03-10T07:59:08#84#2023-03-10T07:59:08#84#0#2023-03-10#2023-03-10
+232#Shewanella spp.#Shewanella spp.#Shewanella spp.#Shewanella spp.#False#2023-03-10T07:59:08#84#2023-03-10T07:59:08#84#0#2023-03-10#2023-03-10
 233#Glutaminsäure#Glutamic acid#Acide glutamique#Acido glutammico#False#2023-03-27T07:26:57#84#2023-03-27T07:26:57#84#0#2023-03-27#2023-03-27
 234#Sucralose#Sucralose#Sucralose#Sucralosio#False#2023-03-27T13:42:47#932#2023-03-27T13:42:47#932#0#2023-03-27#2023-03-27
 235#α-Tomatin#tomatine#α-Tomatine#Tomatina#False#2023-03-31T08:27:36#84#2023-03-31T08:27:36#84#0#2023-03-31#2023-03-31
@@ -240,7 +240,7 @@
 245#Streptococcus equi#Streptococcus equi#Streptococcus equi#Streptococcus equi#False#2023-04-25T08:17:54#84#2023-04-25T08:22:11#84#1#2023-04-25#2023-04-25
 246#Acrylamid#Acrylamide#Acrylamide#Acrilammide#False#2023-04-26T08:33:57#84#2023-04-26T08:33:57#84#0#2023-04-26#2023-04-26
 247#Calciumcarbid#Calcium carbide#Carbure de calcium#Carburo di calcio#False#2023-04-27T11:50:17#84#2023-04-27T11:50:17#84#0#2023-04-27#2023-04-27
-248#Persistente organische Schadstoffe (POP)#persistent organic pollutants (POPs)#polluants organiques persistants (POP)#inquinanti organici persistenti (POP)#False#2023-04-28T14:16:42#932#2023-04-28T14:16:42#932#0#2023-04-28#2023-04-28
+248#Persistente organische Schadstoffe (POP)#persistent organic pollutants (POPs)#polluants organiques persistants (POP)#inquinanti organici persistenti (POP)#False#2023-04-28T14:16:42#932#2023-04-28T14:16:42#932#0#2023-04-28#2023-04-28
 249#Nickel#Nickel#Nickel#Nichel#False#2023-05-05T07:48:07#932#2023-05-05T07:48:07#932#0#2023-05-05#2023-05-05
 250#extended-spectrum beta-lactamase produzierenden Shigella sonnei#extended spectrum beta-lactamase producing-Shigella sonnei#Shigella sonnei productrices de bêta-lactamase à spectre étendu#Shigella sonnei produttrice di beta-lattamasi a spettro esteso#False#2023-05-05T10:42:11#932#2023-05-05T10:42:11#932#0#2023-05-05#2023-05-05
 251#Trichinella spp.#Trichinella spp.#Trichinella spp.#Trichinella spp.#False#2023-05-10T08:03:48#84#2023-05-10T08:03:48#84#0#2023-05-10#2023-05-10
@@ -260,7 +260,7 @@
 265#diastatische Hefe#diastatic yeast#levure diastatique#lievito diastatico#False#2023-06-08T13:11:05#932#2023-06-08T13:11:05#932#0#2023-06-08#2023-06-08
 266#Legionella#Legionella#Legionella#Legionella#False#2023-06-08T15:17:00#932#2023-06-08T15:17:00#932#0#2023-06-08#2023-06-08
 267#Cyanobakterien#Cyanobacteria#Cyanobacteriota#Cyanobacteria#False#2023-06-08T15:21:02#932#2023-06-08T15:21:02#932#0#2023-06-08#2023-06-08
-269#Polybromierte Diphenylether (PBDE)#Polybrominated diphenyl ethers (PBDEs)#Polybromodiphényléthers (PBDE)#Eteri di difenile polibromurati (PBDE)#False#2023-06-09T07:35:58#932#2023-06-09T07:35:58#932#0#2023-06-09#2023-06-09
+269#Polybromierte Diphenylether (PBDE)#Polybrominated diphenyl ethers (PBDEs)#Polybromodiphényléthers (PBDE)#Eteri di difenile polibromurati (PBDE)#False#2023-06-09T07:35:58#932#2023-06-09T07:35:58#932#0#2023-06-09#2023-06-09
 270#Domoinsäure#Domoic acid#Acide domoïque#Acido domoico#False#2023-06-19T08:18:51#932#2023-06-19T08:18:51#932#0#2023-06-19#2023-06-19
 271#Weichmacher#Plasticiser#Plastifiant#Plastificante#False#2023-07-04T09:31:24#932#2023-07-04T09:31:24#932#0#2023-07-04#2023-07-04
 272#Mangan#Manganese#Manganèse#Manganese#False#2023-07-11T08:34:42#932#2023-07-11T08:34:42#932#0#2023-07-11#2023-07-11
@@ -284,7 +284,7 @@
 290#Saccharin#Saccharin#Saccharine#Saccarina#False#2023-08-04T06:23:27#932#2023-08-04T06:23:27#932#0#2023-08-04#2023-08-04
 291#Milchsäurebakterien#Lactic acid bacteria#Bactérie lactique#batteri lattici acidofili#False#2023-08-07T07:18:49#84#2023-08-07T07:18:49#84#0#2023-08-07#2023-08-07
 292#Glycerin#Glycerol#Glycérol#Glicerolo#False#2023-08-11T08:36:46#84#2023-08-11T08:36:46#84#0#2023-08-11#2023-08-11
-293#Bromierte Flammschutzmittel (BFR)#Brominated flame retardants (BFRs)#Agent ignifuge bromé (BFR)#Ritardante di fiamma bromurato (BFR)#False#2023-08-11T09:38:08#932#2023-08-11T09:38:08#932#0#2023-08-11#2023-08-11
+293#Bromierte Flammschutzmittel (BFR)#Brominated flame retardants (BFRs)#Agent ignifuge bromé (BFR)#Ritardante di fiamma bromurato (BFR)#False#2023-08-11T09:38:08#932#2023-08-11T09:38:08#932#0#2023-08-11#2023-08-11
 294#Benzo(a)pyren#Benzo[a]pyrene#Benzopyrène#Benzo[a]pirene#False#2023-08-14T06:50:31#84#2023-08-14T06:50:31#84#0#2023-08-14#2023-08-14
 296#Providencia spp.#Providencia spp.#Providencia spp.#Providencia spp.#False#2023-08-17T07:31:46#84#2023-08-17T07:31:46#84#0#2023-08-17#2023-08-17
 297#Gluten#gluten#gluten#glutine#False#2023-08-17T08:27:15#932#2023-08-17T08:27:15#932#0#2023-08-17#2023-08-17

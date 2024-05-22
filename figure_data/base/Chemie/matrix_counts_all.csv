@@ -1,5 +1,5 @@
 id,count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne,meldung_ids
-1,34,Nicht spezifiziert,Non spécifié,Non specificato,Unclassified,1.44,"[14, 8, 32, 19, 19, 117, 100, 127, 209, 180, 212, 243, 264, 295, 283, 300, 302, 350, 391, 414, 429, 389, 430, 386, 516, 508, 651, 674, 377, 657, 720, 748, 849, 838]"
+1,36,Nicht spezifiziert,Non spécifié,Non specificato,Unclassified,1.44,"[14, 8, 32, 19, 19, 117, 100, 127, 156, 209, 180, 212, 243, 264, 295, 283, 300, 302, 350, 391, 414, 429, 389, 430, 386, 516, 508, 651, 674, 377, 657, 720, 748, 621, 849, 838]"
 82,15,Wasser,Eau,Acqua,Waters,1.33,"[49, 73, 201, 289, 57, 366, 426, 613, 623, 643, 641, 618, 638, 745, 926]"
 60,12,Fische,Poissons,Pesce,Fish,1.67,"[85, 124, 246, 321, 554, 273, 580, 566, 633, 658, 680, 722]"
 34,8,Früchte,Fruits,Frutta,Fruits,1.12,"[21, 18, 250, 461, 519, 620, 750, 794]"
@@ -44,7 +44,7 @@ id,count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne
 81,1,"Kaffee, Tee, Frucht- und Kräutertee","Café, thé, tisane aux fruits et aux herbes","Caffè, tè, tè di frutti e di erbe","Coffee, Tea And Herbal Teas",2.0,[328]
 68,1,Butter,Beurre,Burro,Butter,1.0,[359]
 26,1,Kohlgemüse,Choux,Cavoli,Cabbages,1.0,[247]
-145,1,Frucht- und Kräutertee (inkl. Pulver),Tisanes aux fruits et aux herbes (poudre incluse),Tè di frutti e di erbe (inclusa polvere),Herbal Tea (Incl Powdered),2.0,[252]
+145,1,Frucht- und Kräutertee (inkl. Pulver),Tisanes aux fruits et aux herbes (poudre incluse),Tè di frutti e di erbe (inclusa polvere),Herbal Tea  (Incl Powdered),2.0,[252]
 114,1,Nicht spezifizierte sowie gemischte Brote und Dauerbackwaren,Pains et biscottes non spécifiés ou mélangés,Pane e articoli di biscotteria non specificati e misti,Unclassified Or Mixed Breads And Rusks,1.0,[277]
 148,1,Wein,Vin,Vino,Wine,1.0,[443]
 30,1,Blattstiel- und Stängelgemüse sowie Keimlinge und Sprossen,"Légumes-tiges, germes et pousses",Ortaggi a stelo e germogli,"Stalk Vegetables, Sprouts",1.0,[493]

@@ -1,5 +1,5 @@
 id,count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne,meldung_ids
-1,52,Nicht spezifiziert,Non spécifié,Non specificato,Unclassified,1.58,"[196, 190, 209, 212, 243, 264, 276, 288, 290, 232, 295, 283, 271, 342, 223, 364, 363, 300, 302, 356, 332, 350, 365, 368, 391, 410, 414, 429, 434, 389, 430, 386, 433, 383, 475, 516, 303, 508, 531, 546, 625, 651, 674, 377, 657, 744, 720, 748, 751, 849, 838, 942]"
+1,55,Nicht spezifiziert,Non spécifié,Non specificato,Unclassified,1.58,"[196, 190, 209, 212, 243, 264, 276, 288, 290, 232, 295, 283, 271, 342, 223, 364, 363, 360, 300, 302, 356, 332, 350, 365, 368, 391, 410, 414, 429, 434, 389, 430, 386, 433, 383, 475, 516, 303, 508, 531, 546, 625, 651, 674, 377, 657, 744, 720, 748, 751, 621, 849, 838, 861, 942]"
 3,17,Gemüse,Légumes,Ortaggi,Vegetables,1.71,"[217, 224, 220, 251, 261, 245, 371, 407, 487, 519, 520, 794, 806, 907, 923, 864, 922]"
 60,17,Fische,Poissons,Pesce,Fish,1.53,"[285, 278, 246, 349, 321, 554, 273, 580, 566, 633, 616, 658, 680, 722, 717, 930, 922]"
 34,16,Früchte,Fruits,Frutta,Fruits,1.38,"[234, 238, 269, 250, 420, 465, 461, 519, 551, 520, 620, 750, 794, 886, 864, 918]"
@@ -69,7 +69,7 @@ id,count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne
 137,1,"Nicht spezifizierte Schokolade, Schokoriegel, Aufstriche, Pulver und Süsswaren mit Schokolade (inkl. Saucen)","Chocolat, barre, pâte à tartiner, poudre et confiserie avec chocolat non spécifiés (incl. sauces)","Cioccolato, barrette di cioccolato, prodotti da spalmare, polvere e dolciumi al cioccolato non specificati (incluse salse)",Unclassified And Other Chocolate Confectionery (Incl. Sauces),1.0,[277]
 106,1,Fermentierte Milch und Milchgetränke sowie Joghurtdrinks,"Laits fermentés et boissons à base de lait fermenté, yogourts à boire","Latte fermentato, bevande a base di latte fermentato e yogurt da bere","Fermented Milk, Milk Beverages And Yoghurt",3.0,[233]
 72,1,"Zucker, Konfitüre, Honig, süsse Aufstriche und Saucen sowie Sirup","Sucre, pâtes à tartiner sucrées, miel, confitures, sauces sucrées et sirop","Zucchero, miele, marmellata, prodotti da spalmare e salse dolci, sciroppo","Sugar, Honey, Jam, Syrup",1.0,[237]
-145,1,Frucht- und Kräutertee (inkl. Pulver),Tisanes aux fruits et aux herbes (poudre incluse),Tè di frutti e di erbe (inclusa polvere),Herbal Tea (Incl Powdered),2.0,[252]
+145,1,Frucht- und Kräutertee (inkl. Pulver),Tisanes aux fruits et aux herbes (poudre incluse),Tè di frutti e di erbe (inclusa polvere),Herbal Tea  (Incl Powdered),2.0,[252]
 15,1,Alkoholische Getränke,Boissons avec alcool,Bevande alcoliche,Alcoholic Beverages,1.0,[373]
 68,1,Butter,Beurre,Burro,Butter,1.0,[359]
 50,1,Frühstückscerealien,Céréales du petit-déjeuner,Cereali per la colazione,Breakfast Cereals,1.0,[296]

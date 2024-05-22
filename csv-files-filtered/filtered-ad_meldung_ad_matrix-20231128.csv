@@ -127,6 +127,7 @@
 541#166#1#ultra-processed foods
 545#128#1#
 547#131#16#
+548#156#1#Futtermittel für Geflügel 
 549#156#125#poultry from Poland
 550#134#67#olive oil
 555#132#60#salmon
@@ -134,7 +135,7 @@
 560#133#120#
 561#135#1#Food supplement
 572#173#42#
-573#173#56#cold cuts, lunch meats, hot dogs, pâtés
+573#173#56#cold cuts, lunch meats, hot dogs,  pâtés
 591#169#58#Insects
 595#196#1#ultraprocessed foods
 596#199#6#
@@ -253,6 +254,7 @@
 993#364#1#Low-carbohydrate, high-fat (LCHF) diets
 994#363#1#ultra-processed foods
 995#362#118#prepacked sliced beef
+996#360#1#food supplements
 997#360#52#
 998#360#67#olive oil
 999#369#1#glutenfree products
@@ -355,7 +357,7 @@
 1289#480#79#single fruit juice and mixed fruit juices 
 1290#480#80#soda
 1291#496#28#soybeans
-1292#456#42#unpasteurized dairy products
+1292#456#42#unpasteurized  dairy products
 1293#475#1#Bee pollen
 1294#461#34#
 1298#449#22#produce
@@ -503,10 +505,11 @@
 1752#832#80#Energy drinks
 1756#836#46#corn, pop corn
 1761#840#52#Kebab
+1762#621#1#food supplements
 1763#621#39#
 1764#621#58#
 1765#621#99#
-1769#849#1#Food Contact Material (FCM)
+1769#849#1#Food Contact Material  (FCM)
 1773#854#30#leafy green
 1774#854#8#beef, lamb
 1792#838#1#Cannabis sativa
@@ -519,6 +522,7 @@
 1799#794#3#
 1800#794#34#
 1801#778#24#tomato
+1805#861#1#insects products
 1806#861#2#potato flakes, starch
 1807#799#22#
 1808#880#47#

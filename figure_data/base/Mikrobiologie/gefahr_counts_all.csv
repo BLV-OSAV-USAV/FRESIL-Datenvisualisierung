@@ -33,7 +33,7 @@ id,count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne
 101,3,Brucella spp.,Brucella spp.,Brucella spp.,Brucella spp.,2.0,"[25, 730, 581]"
 4,3,Bacillus cytotoxicus,Bacillus cytotoxicus,Bacillus cytotoxicus,Bacillus cytotoxicus,1.67,"[37, 505, 861]"
 193,2,Salmonella Agona,Salmonella Agona,Salmonella Agona,Salmonella Agona,2.0,"[896, 217]"
-103,2,GMO (genetisch modifizierter Organismus),OGM (organisme génétiquement modifié),OGM (organismo geneticamente modificato),Genetically modified organism (GMO),2.0,"[31, 441]"
+103,2,GMO (genetisch modifizierter Organismus),OGM (organisme génétiquement modifié),OGM (organismo geneticamente modificato),Genetically modified organism (GMO),2.0,"[31, 441]"
 120,2,Rotavirus,Rotavirus,Rotavirus,Rotavirus,1.5,"[42, 920]"
 153,2,Hepatitis,Hépatite,Epatite,Hepatitis,1.5,"[146, 112]"
 48,2,marine Biotoxine,biotoxines marines,biotossine marine,marine biotoxines,2.0,"[96, 705]"
@@ -59,7 +59,7 @@ id,count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne
 136,1,Prion,Prion,Prione,Prion,1.0,[431]
 140,1,Streptococcus spp.,Streptococcus spp.,Streptococcus spp.,Streptococcus spp.,3.0,[456]
 245,1,Streptococcus equi,Streptococcus equi,Streptococcus equi,Streptococcus equi,3.0,[456]
-100,1,Frühsommer-Meningoenzephalitis (FSME),L'encéphalite à tiques,Encefalite trasmessa da zecche,Tick-borne encephalitis (TBE),1.0,[625]
+100,1,Frühsommer-Meningoenzephalitis (FSME),L'encéphalite à tiques,Encefalite trasmessa da zecche,Tick-borne encephalitis (TBE),1.0,[625]
 251,1,Trichinella spp.,Trichinella spp.,Trichinella spp.,Trichinella spp.,1.0,[486]
 319,1,Proteus spp.,Proteus spp.,Proteus spp.,Proteus spp.,2.0,[922]
 278,1,Morchella sextelata,Morchella sextelata,Morchella sextelata,Morchella sextelata,2.0,[650]
@@ -88,7 +88,7 @@ id,count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne
 250,1,extended-spectrum beta-lactamase produzierenden Shigella sonnei,Shigella sonnei productrices de bêta-lactamase à spectre étendu,Shigella sonnei produttrice di beta-lattamasi a spettro esteso,extended spectrum beta-lactamase producing-Shigella sonnei,1.0,[481]
 197,1,Nitrite,Nitrite,Nitrito,Nitrite,1.0,[316]
 114,1,Klebsiella,Klebsiella,Klebsiella,Klebsiella,1.0,[278]
-213,1,L. welshimeri ,L. welshimeri ,L. welshimeri ,L. welshimeri ,2.0,[267]
+213,1,L. welshimeri ,L. welshimeri ,L. welshimeri ,L. welshimeri ,2.0,[267]
 167,1,Quecksilber,Mercure,Mercurio,Mercury,1.0,[258]
 102,1,Blei,Plomb,Piombo,Lead,1.0,[258]
 210,1,Jod,Iode,Iodo,Iodine,1.0,[258]
@@ -101,11 +101,11 @@ id,count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne
 267,1,Cyanobakterien,Cyanobacteriota,Cyanobacteria,Cyanobacteria,2.0,[558]
 266,1,Legionella,Legionella,Legionella,Legionella,2.0,[558]
 229,1,Streptococcus pyogenes (GAS),Streptococcus pyogenes (SGA),Streptococcus pyogenes (SGA),Streptococcus pyogenes (GAS),1.0,[341]
-194,1,Bourbon-Virus (BOUV),Virus de Bourbon (BOUV),Bourbon virus (BOUV),Bourbon virus (BRBV),1.0,[221]
+194,1,Bourbon-Virus (BOUV),Virus de Bourbon (BOUV),Bourbon virus (BOUV),Bourbon virus (BRBV),1.0,[221]
 6,1,Staphylococcus argenteus,Staphylococcus argenteus,Staphylococcus argenteus,Staphylococcus argenteus,2.0,[406]
 107,1,Clostridium perfringens,Clostridium perfringens,Clostridium perfringens,Clostridium perfringens,1.0,[106]
 23,1,Anisakis spp.,Anisakis spp.,Anisakis spp.,Anisakis spp.,1.0,[98]
-162,1,Toxocara spp.,Toxocara spp.,Toxocara spp.,Toxocara spp.,1.0,[90]
+162,1,Toxocara spp.,Toxocara spp.,Toxocara spp.,Toxocara spp.,1.0,[90]
 165,1,Cadmium,Cadmium,Cadmio,Cadmium,1.0,[258]
 183,1,Salmonella Litchfield,Salmonella Litchfield,Salmonella Litchfield,Salmonella Litchfield,2.0,[132]
 304,1,Clostridien,Clostridia,Clostridia,Clostridia,1.0,[801]

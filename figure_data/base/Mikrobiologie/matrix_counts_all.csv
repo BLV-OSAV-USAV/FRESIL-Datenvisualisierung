@@ -1,5 +1,5 @@
 id,count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne,meldung_ids
-1,24,Nicht spezifiziert,Non spécifié,Non specificato,Unclassified,1.46,"[42, 37, 28, 13, 117, 126, 148, 190, 180, 264, 271, 223, 356, 332, 368, 410, 434, 475, 164, 303, 531, 625, 838, 942]"
+1,25,Nicht spezifiziert,Non spécifié,Non specificato,Unclassified,1.52,"[42, 37, 28, 13, 117, 126, 148, 190, 180, 264, 271, 223, 356, 332, 368, 410, 434, 475, 164, 303, 531, 625, 838, 861, 942]"
 3,18,Gemüse,Légumes,Ortaggi,Vegetables,1.94,"[50, 40, 41, 92, 217, 224, 251, 261, 245, 371, 407, 52, 487, 520, 806, 923, 864, 922]"
 54,16,Geflügel,Volailles,Pollame,Poultry,1.75,"[17, 45, 5, 101, 103, 116, 189, 372, 395, 432, 439, 536, 676, 703, 709, 923]"
 34,13,Früchte,Fruits,Frutta,Fruits,1.62,"[40, 9, 165, 234, 269, 250, 420, 465, 551, 520, 886, 864, 918]"

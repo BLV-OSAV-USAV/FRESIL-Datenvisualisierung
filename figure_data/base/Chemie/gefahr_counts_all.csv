@@ -12,7 +12,7 @@ id,count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne
 167,9,Quecksilber,Mercure,Mercurio,Mercury,1.11,"[258, 321, 471, 391, 130, 750, 273, 532, 772]"
 109,7,Nanopartikeln,Nanoparticules,Nanoparticole,Nanoparticles,1.14,"[308, 81, 479, 85, 137, 147, 488]"
 197,7,Nitrite,Nitrite,Nitrito,Nitrite,1.71,"[226, 316, 516, 259, 750, 394, 633]"
-127,6,Perfluoroctansulfonsäure (PFOS),acide perfluorooctanesulfonique (PFOS),acido perfluoroottansolfonico,Perfluorooctanesulfonic acid (PFOS),2.0,"[246, 389, 58, 931, 377, 296]"
+127,6,Perfluoroctansulfonsäure (PFOS),acide perfluorooctanesulfonique (PFOS),acido perfluoroottansolfonico,Perfluorooctanesulfonic acid (PFOS),2.0,"[246, 389, 58, 931, 377, 296]"
 150,5,Glyphosat,Glyphosate,Glifosato,Glyphosate,1.4,"[129, 792, 425, 666, 871]"
 230,5,Nitrate,Nitrate,Nitrato,Nitrate,1.4,"[516, 351, 750, 394, 633]"
 66,5,Canabidiol (CBD),Canabidiol (CBD),Canabidiolo (CBD),Canabidiol (CBD),1.4,"[467, 298, 353, 32, 199]"
@@ -24,7 +24,7 @@ id,count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne
 45,3,Aspartam,Aspartam,Aspartam,Aspartam,1.67,"[809, 813, 602]"
 148,3,Radioaktivität,Radioactivité,Radioattività,Radioactivity,1.33,"[255, 658, 319]"
 185,3,Mineralöl,Huile minérale,Olio minerale,Mineral oil,1.33,"[812, 359, 156]"
-293,2,Bromierte Flammschutzmittel (BFR),Agent ignifuge bromé (BFR),Ritardante di fiamma bromurato (BFR),Brominated flame retardants (BFRs),1.5,"[711, 865]"
+293,2,Bromierte Flammschutzmittel (BFR),Agent ignifuge bromé (BFR),Ritardante di fiamma bromurato (BFR),Brominated flame retardants (BFRs),1.5,"[711, 865]"
 73,2,Tierarzneimittel,Produits pharmaceutiques vétérinaires,Farmaci veterinari,Veterinary pharmaceuticals,2.0,"[613, 67]"
 198,2,Hexamethoxymethylmelamin (HMMM),Hexaméthoxyméthylmélamine (HMMM),Esametossimetilmelamina (HMMM),Hexamethoxymethylmelamine (HMMM),3.0,"[229, 735]"
 98,2,Organophosphatester,esters d'organophosphate,esteri di organofosfati,organophosphate ester,2.0,"[19, 86]"
@@ -33,8 +33,8 @@ id,count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne
 196,2,Grayanotoxine,Grayanotoxine,Graianotossina,Grayanotoxin,1.5,"[225, 345]"
 284,2,MOSH,MOSH,MOSH,MOSH,1.0,"[674, 773]"
 143,2,Menschliche Arzneimittelrückstände,Résidus de produits pharmacieutiques humains,Residui di farmaci umani,Human drug residues,1.5,"[73, 613]"
-203,2,Ochratoxin A (OTA),Ochratoxine A (OTA),Ocratossina A (OTA),Ochratoxin A (OTA),2.0,"[916, 236]"
-269,2,Polybromierte Diphenylether (PBDE),Polybromodiphényléthers (PBDE),Eteri di difenile polibromurati (PBDE),Polybrominated diphenyl ethers (PBDEs),1.5,"[560, 865]"
+203,2,Ochratoxin A (OTA),Ochratoxine A (OTA),Ocratossina A (OTA),Ochratoxin A (OTA),2.0,"[916, 236]"
+269,2,Polybromierte Diphenylether (PBDE),Polybromodiphényléthers (PBDE),Eteri di difenile polibromurati (PBDE),Polybrominated diphenyl ethers (PBDEs),1.5,"[560, 865]"
 209,2,Anorganische Arsen,Arsenic inorganique,Arsenico inorganica,Inorganic arsenic,1.0,"[258, 921]"
 69,2,Tetrahydrocannabinol (THC),Tétrahydrocannabinol (THC),Tetraidrocannabinolo (THC),Tetrahydrocannabinol (THC),2.0,"[656, 199]"
 234,2,Sucralose,Sucralose,Sucralosio,Sucralose,1.0,"[543, 386]"
@@ -77,7 +77,7 @@ id,count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne
 130,1,Bisphenol S,Bisphénol S,Bisfenolo S,Bisphenol S,1.0,[430]
 274,1,Baikiain,Baikiain,Baikiain,Baikiain,3.0,[637]
 308,1,Fumonisine,Fumonisines,Fumonisine,Fumonisins,1.0,[836]
-248,1,Persistente organische Schadstoffe (POP),polluants organiques persistants (POP),inquinanti organici persistenti (POP),persistent organic pollutants (POPs),1.0,[468]
+248,1,Persistente organische Schadstoffe (POP),polluants organiques persistants (POP),inquinanti organici persistenti (POP),persistent organic pollutants (POPs),1.0,[468]
 282,1,Ketoprofen,Kétoprofène,Ketoprofene,Ketoprofen,1.0,[667]
 281,1,Ethylendioxid,dioxyde d'éthylène,Ossido di etilene,ethylene dioxide,1.0,[663]
 280,1,Ethylendichlord,dichlorure d'éthylène,cloruro di etilene,ethylene dichloride,1.0,[663]
@@ -92,7 +92,7 @@ id,count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne
 301,1,Metalle der Seltenen Erden (REE),Terre rare (REE),Terre rare (REE),rare earth elements (REE),2.0,[749]
 1,1,Escherichia coli,Escherichia coli,Escherichia coli,Escherichia coli,2.0,[201]
 247,1,Calciumcarbid,Carbure de calcium,Carburo di calcio,Calcium carbide,2.0,[461]
-103,1,GMO (genetisch modifizierter Organismus),OGM (organisme génétiquement modifié),OGM (organismo geneticamente modificato),Genetically modified organism (GMO),1.0,[138]
+103,1,GMO (genetisch modifizierter Organismus),OGM (organisme génétiquement modifié),OGM (organismo geneticamente modificato),Genetically modified organism (GMO),1.0,[138]
 262,1,formaldehyd,formaldéhyde,formaldeide,formaldehyde,1.0,[542]
 263,1,benzol,benzène,benzene,benzene,1.0,[542]
 309,1,Hexahydrocannabinol,Hexahydrocannabinol,Esaidrocannabinolo,Hexahydrocannabinol,1.0,[845]

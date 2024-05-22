@@ -317,10 +317,29 @@ let sdTranslations = {
 		it: 'Nutrizione',
 
 		en: 'Nutrition'
+	},
+
+	steckbrief:{
+
+		de: 'Potenzielle Signale',
+
+		fr: 'Signaux potentiels',
+
+		it: 'Segnali potenziali',
+
+		en: 'Potential signals'
+	},
+
+	signal:{
+
+		de: 'Signale',
+
+		fr: 'Signaux',
+
+		it: 'Segnali', 
+
+		en: 'Signals'
+		
 	}
-
-
-
-
 
 };

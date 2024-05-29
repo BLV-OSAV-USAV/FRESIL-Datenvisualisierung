@@ -3,7 +3,7 @@
 
 
 //Defines available languages and loads the language from permalink.
- var langs = ['de', 'fr', 'it', 'en'];
+ var langs = ['en','de', 'fr', 'it'];
  var permalink = addPermalink();
 
  //Sets the language based on the permalink or defaults to the first language.

@@ -23,7 +23,7 @@
       }
 
       // Define available languages
-      var langs = ['de', 'fr', 'it', 'en'];
+      var langs = ['en','de', 'fr', 'it'];
       
       // Add permalink (assuming addPermalink is defined elsewhere)
       var permalink = addPermalink();

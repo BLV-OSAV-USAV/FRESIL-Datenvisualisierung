@@ -3,7 +3,7 @@
  */
 var init = function(nointeraction) {
   
-  var langs = ['de', 'fr', 'it', 'en'];
+  var langs = ['en', 'de', 'fr', 'it'];
   var body = $(document.body);
   var permalink = addPermalink();
 

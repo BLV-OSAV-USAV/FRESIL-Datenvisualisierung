@@ -47,7 +47,6 @@
           };
       });
 
-      console.log(mergedData);
 
       // Extract the 'name' column values for the select element
       const nameList = mergedData.map(data => data.name);

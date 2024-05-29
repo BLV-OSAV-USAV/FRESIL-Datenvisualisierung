@@ -23,7 +23,6 @@ function getTranslatedText(translation, lang, key) {
  * @param {Array} data - The data array.
  */
 function addSteckbriefInfo(filter, id, data){
-    console.log(filter);
     if (filter === 'steckbrief' || filter === 'signal') {
         div = document.getElementById('two_b');
         div.innerHTML = ''
@@ -149,7 +148,7 @@ function addSteckbriefInfo(filter, id, data){
   let multiplier
   if (maxCount > 25) {
     multiplier = Math.min(rect.width, rect.height) / 500;
-  } else if (26 > maxCount > 15) {
+  } else if (maxCount > 15 && maxCount <= 25) {
     multiplier =  Math.min(rect.width, rect.height) / 250;
   } else {
     multiplier = Math.min(rect.width, rect.height) / 100 ;

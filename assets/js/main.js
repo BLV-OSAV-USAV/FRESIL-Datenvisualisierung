@@ -1,6 +1,7 @@
 //Sets the initial category (Ordnung) to 'gefahr'.
  var Ordnung = 'gefahr';
 
+
 //Defines available languages and loads the language from permalink.
  var langs = ['de', 'fr', 'it', 'en'];
  var permalink = addPermalink();
@@ -16,8 +17,8 @@
      Ordnung = ordnung;
  
      // Assuming your dropdown has an id attribute set to "myDropdown"
-     let bereich = document.getElementById("bereich-dd");
-     let timefilter = document.getElementById("timeFilter");
+     let bereich = document.getElementById("bereich-dd").value;
+     let timefilter = document.getElementById("timeFilter").value;
      bereich.selectedIndex = 0;
      timefilter.selectedIndex = 0;
  
@@ -28,13 +29,13 @@
      // Listen for the 'load' event on the script element
      script.addEventListener('load', () => {
          if (ordnung === 'gefahr') {
-             gefahrOrdnung('all', lang, 'all');
+             gefahrOrdnung(timefilter, lang, bereich);
          } else if (ordnung === 'matrix') {
-             matrixOrdnung('all', lang, 'all');
+             matrixOrdnung(timefilter, lang, bereich);
          } else if (ordnung === 'steckbrief') {
-             steckbriefOrdnung('all', lang, 'all');
+             steckbriefOrdnung(timefilter, lang, bereich);
          } else if (ordnung === 'signal') {
-             signalOrdnung('all', lang, 'all');
+             signalOrdnung(timefilter, lang, bereich);
          }
      });
  

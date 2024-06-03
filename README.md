@@ -18,11 +18,11 @@ Vor diesem Hintergrund möchte das BLV ein automatisiertes Dashboard erstellen, 
 
 - `images/`: contains all the static images found in the dashboard
 
-- `dump/`: Directory containing early tests for the dashboard
+- `archive/`: Directory containing early tests for the dashboard
 
-- `dump/python-test/`: Directory that includes a test Dash application.
+- `archive/python-test/`: Directory that includes a test Dash application.
 
-- `dump/d3/`: Directory that contains drafts of the visualizations used in the main app.
+- `archive/d3/`: Directory that contains drafts of the visualizations used in the main app.
 
 
 ## Running the Application Locally

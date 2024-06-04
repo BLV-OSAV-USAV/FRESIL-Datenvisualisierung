@@ -329,6 +329,61 @@ let sdTranslations = {
 
 		en: 'Signals'
 		
-	}
+	},
+
+	glossar:{
+
+		de: 'Glossar',
+
+		fr: 'Glossaire',
+
+		it: 'Glossario',
+
+		en: 'Glossary'
+	},
+
+	signalTitle:{
+
+		de: 'Signalen',
+
+		fr: 'Signaux',
+
+		it: 'Segnali',
+
+		en: 'Signals'
+	},
+
+	signalDef:{
+
+		de: 'Der Begriff "Signal" bezieht sich auf beobachtbare, unklare Trends oder Muster, die die Möglichkeit zukünftiger Ereignisse ankündigen und potenzielle zukünftige Entwicklungen (d. h. neu auftretende Fragen) veranschaulichen, für die es derzeit nur begrenzte und in der Lebens- und Futtermittellandschaft verstreute Nachweise gibt.',
+
+		fr: 'Le terme "signal" fait référence à des tendances ou à des schémas observables et peu clairs qui annoncent la possibilité d\'événements futurs et illustrent des développements futurs potentiels (c\'est-à-dire des questions émergentes) pour lesquels il existe actuellement des preuves limitées et dispersées dans le paysage des denrées alimentaires et des aliments pour animaux.',
+
+		it: 'Il termine "segnale" si riferisce a tendenze o modelli osservabili e poco chiari che preannunciano la possibilità di eventi futuri e illustrano potenziali sviluppi futuri (cioè questioni emergenti) per i quali esistono attualmente prove limitate e disperse nel panorama degli alimenti e dei mangimi.',
+
+		en: 'The term "signal" refers to observable and unclear trends or patterns that herald the possibility of future events and illustrate potential future developments (i.e. emerging issues) for which there is currently limited and scattered evidence in the food and feed landscape.'
+	},
+
+	impTitle:{
+
+		de: 'Wichtigkeit',
+
+		fr: 'Importance',
+
+		it: 'Importanza',
+
+		en: 'Importance'
+	},
+
+	impDef:{
+
+		de: 'Jeder Meldung wird eine Wichtigkeit von 1 bis 3 zugewiesen. Der Durchschnitt wird dann berechnet und zeigt die Wichtigkeit der Gruppe an.',
+
+		fr: 'Une importance allant de 1 à 3 est assignée à chaque notifications. La moyenne est ensuite calculée et indique l\'importance du groupe.',
+
+		it: 'A ciascuna notifica viene assegnata un\'importanza che va da 1 a 3. Viene quindi calcolata la media, che indica l\'importanza del gruppo.',
+
+		en: 'An importance ranging from 1 to 3 is assigned to each notification. The average is then calculated, indicating the importance of the group.'
+	},
 
 };

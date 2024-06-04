@@ -14,23 +14,6 @@ var init = function(nointeraction) {
     t: sdTranslations // Object defined in translations.js
   });
 
-  // Set Twitter share link
-  if ($.contains(document.body, document.getElementById("socialTwitter"))) {
-    document.getElementById("socialTwitter").href = 
-    'https://twitter.com/intent/tweet?text=' + translator.get('pagetitle').replace(" ","%20") + '&url=' + translator.get('domain') + '&related=BFEgeoinfo,BFEenergeia,EnergieSchweiz&hashtags=Wasserkraft&via=BFEgeoinfo';
-  }
-
-  // Set Facebook share link
-  if ($.contains(document.body, document.getElementById("socialFB"))) {
-    document.getElementById("socialFB").href = 
-    'http://www.facebook.com/sharer.php?u=' + translator.get('domain').replace(" ","%20");
-  }
-
-  // Set email share link
-  if ($.contains(document.body, document.getElementById("socialMail"))) {
-    document.getElementById("socialMail").href = 
-    'mailto:?subject=' + translator.get('pagetitle') + ' ' + translator.get('domain');
-  }
     
   $(document).ready(function () {
       document.title = translator.get('pagetitle');

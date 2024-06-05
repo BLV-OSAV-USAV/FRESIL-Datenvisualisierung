@@ -226,7 +226,7 @@ def prep_data(input_path, output_path):
 
 # Define input and output directories
 input_directory = './csv-files'
-output_directory = './csv-files-filtered'
+output_directory = './web-app/csv-files-filtered'
 
 # Loop through each file in the input directory
 for file in os.listdir(input_directory):

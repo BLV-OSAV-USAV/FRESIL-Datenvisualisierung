@@ -17,13 +17,13 @@ def count_gefahr(timeFilter, bereichName, lg):
     - CSV files with counts and related data.
     """
     # Load CSV files
-    meldungXgefahr = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_gefahr-20231128.csv', sep='#', quotechar='`')
-    gefahr = pd.read_csv('./csv-files-filtered/filtered-ad_gefahr-20231128.csv', sep='#', quotechar='`')
-    meldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung-20231128.csv', sep='#', quotechar='`')
-    bereich = pd.read_csv('./csv-files-filtered/filtered-ad_bereich-20231128.csv', sep='#', quotechar='`')
-    bereichXmeldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_bereich-20231128.csv', sep='#', quotechar='`')
-    treiber = pd.read_csv('./csv-files-filtered/filtered-ad_treiber-20231128.csv', sep='#', quotechar='`')
-    treiberXmeldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_treiber-20231128.csv', sep='#', quotechar='`')
+    meldungXgefahr = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_gefahr-20231128.csv', sep='#', quotechar='`')
+    gefahr = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_gefahr-20231128.csv', sep='#', quotechar='`')
+    meldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung-20231128.csv', sep='#', quotechar='`')
+    bereich = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_bereich-20231128.csv', sep='#', quotechar='`')
+    bereichXmeldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_bereich-20231128.csv', sep='#', quotechar='`')
+    treiber = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_treiber-20231128.csv', sep='#', quotechar='`')
+    treiberXmeldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_treiber-20231128.csv', sep='#', quotechar='`')
 
     # Apply time filter
     if timeFilter != 'all':
@@ -72,7 +72,7 @@ def count_gefahr(timeFilter, bereichName, lg):
     # Save the result to a CSV file
     if bereichName == 'Betrug / Täuschung':
         bereichName = 'BetrugTauschung'
-    gefahr_counts.to_csv(f'./figure_data/base/{bereichName}/gefahr_counts_{timeFilter}.csv', index=False)
+    gefahr_counts.to_csv(f'./web-app/figure_data/base/{bereichName}/gefahr_counts_{timeFilter}.csv', index=False)
 
     # Merge and count treiber_id occurrences
     merged_df_treiber = pd.merge(meldungXgefahr, treiberXmeldung, on='meldung_id')
@@ -87,7 +87,7 @@ def count_gefahr(timeFilter, bereichName, lg):
         result_df_gefahr = pd.DataFrame(columns=['gefahr_id'] + list(treiber_mapping.values()))
 
     # Save the result to a CSV file
-    result_df_gefahr.to_csv(f'./figure_data/treiber/{bereichName}/gefahr_treiber_counts_{lg}_{timeFilter}.csv', index=False)
+    result_df_gefahr.to_csv(f'./web-app/figure_data/treiber/{bereichName}/gefahr_treiber_counts_{lg}_{timeFilter}.csv', index=False)
 
 
 def count_matrix(timeFilter, bereichName, lg):
@@ -103,13 +103,13 @@ def count_matrix(timeFilter, bereichName, lg):
     - CSV files with counts and related data.
     """
     # Load CSV files
-    meldungXmatrix = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_matrix-20231128.csv', sep='#', quotechar='`')
-    matrix = pd.read_csv('./csv-files-filtered/filtered-ad_matrix-20231128.csv', sep='#', quotechar='`')
-    meldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung-20231128.csv', sep='#', quotechar='`')
-    bereich = pd.read_csv('./csv-files-filtered/filtered-ad_bereich-20231128.csv', sep='#', quotechar='`')
-    bereichXmeldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_bereich-20231128.csv', sep='#', quotechar='`')
-    treiber = pd.read_csv('./csv-files-filtered/filtered-ad_treiber-20231128.csv', sep='#', quotechar='`')
-    treiberXmeldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_treiber-20231128.csv', sep='#', quotechar='`')
+    meldungXmatrix = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_matrix-20231128.csv', sep='#', quotechar='`')
+    matrix = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_matrix-20231128.csv', sep='#', quotechar='`')
+    meldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung-20231128.csv', sep='#', quotechar='`')
+    bereich = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_bereich-20231128.csv', sep='#', quotechar='`')
+    bereichXmeldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_bereich-20231128.csv', sep='#', quotechar='`')
+    treiber = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_treiber-20231128.csv', sep='#', quotechar='`')
+    treiberXmeldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_treiber-20231128.csv', sep='#', quotechar='`')
 
     # Apply time filter
     if timeFilter != 'all':
@@ -158,7 +158,7 @@ def count_matrix(timeFilter, bereichName, lg):
     # Save the result to a CSV file
     if bereichName == 'Betrug / Täuschung':
         bereichName = 'BetrugTauschung'
-    matrix_counts.to_csv(f'./figure_data/base/{bereichName}/matrix_counts_{timeFilter}.csv', index=False)
+    matrix_counts.to_csv(f'./web-app/figure_data/base/{bereichName}/matrix_counts_{timeFilter}.csv', index=False)
 
     # Merge and count treiber_id occurrences
     merged_df_treiber = pd.merge(meldungXmatrix, treiberXmeldung, on='meldung_id')
@@ -173,7 +173,7 @@ def count_matrix(timeFilter, bereichName, lg):
         result_df_matrix = pd.DataFrame(columns=['matrix_id'] + list(treiber_mapping.values()))
 
     # Save the result to a CSV file
-    result_df_matrix.to_csv(f'./figure_data/treiber/{bereichName}/matrix_treiber_counts_{lg}_{timeFilter}.csv', index=False)
+    result_df_matrix.to_csv(f'./web-app/figure_data/treiber/{bereichName}/matrix_treiber_counts_{lg}_{timeFilter}.csv', index=False)
 
 def count_steckbrief(timeFilter, bereichName, lg):
     """
@@ -188,14 +188,14 @@ def count_steckbrief(timeFilter, bereichName, lg):
     - CSV files with counts and related data.
     """
     # Load CSV files
-    meldungXsteckbrief = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_steckbrief-20231128.csv', sep='#', quotechar='`')
-    steckbrief = pd.read_csv('./csv-files-filtered/filtered-ad_steckbrief-20231128.csv', sep='#', quotechar='`')
-    meldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung-20231128.csv', sep='#', quotechar='`')
-    bereich = pd.read_csv('./csv-files-filtered/filtered-ad_bereich-20231128.csv', sep='#', quotechar='`')
-    bereichXmeldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_bereich-20231128.csv', sep='#', quotechar='`')
-    treiber = pd.read_csv('./csv-files-filtered/filtered-ad_treiber-20231128.csv', sep='#', quotechar='`')
-    treiberXmeldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_treiber-20231128.csv', sep='#', quotechar='`')
-    log = pd.read_csv('./csv-files-filtered/filtered-ad_log-20231128.csv', sep='#', quotechar='`')
+    meldungXsteckbrief = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_steckbrief-20231128.csv', sep='#', quotechar='`')
+    steckbrief = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_steckbrief-20231128.csv', sep='#', quotechar='`')
+    meldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung-20231128.csv', sep='#', quotechar='`')
+    bereich = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_bereich-20231128.csv', sep='#', quotechar='`')
+    bereichXmeldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_bereich-20231128.csv', sep='#', quotechar='`')
+    treiber = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_treiber-20231128.csv', sep='#', quotechar='`')
+    treiberXmeldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_treiber-20231128.csv', sep='#', quotechar='`')
+    log = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_log-20231128.csv', sep='#', quotechar='`')
 
     # Apply time filter
     if timeFilter != 'all':
@@ -255,7 +255,7 @@ def count_steckbrief(timeFilter, bereichName, lg):
     # Save the result to a CSV file
     if bereichName == 'Betrug / Täuschung':
         bereichName = 'BetrugTauschung'
-    steckbrief_counts.to_csv(f'./figure_data/base/{bereichName}/steckbrief_counts_{timeFilter}.csv', index=False)
+    steckbrief_counts.to_csv(f'./web-app/figure_data/base/{bereichName}/steckbrief_counts_{timeFilter}.csv', index=False)
 
     # Merge and count treiber_id occurrences
     merged_df_treiber = pd.merge(meldungXsteckbrief, treiberXmeldung, on='meldung_id')
@@ -271,13 +271,13 @@ def count_steckbrief(timeFilter, bereichName, lg):
         result_df_steckbrief = pd.DataFrame(columns=['steckbrief_id'] + list(treiber_mapping.values()))
 
     # Save the result to a CSV file
-    result_df_steckbrief.to_csv(f'./figure_data/treiber/{bereichName}/steckbrief_treiber_counts_{lg}_{timeFilter}.csv', index=False)
+    result_df_steckbrief.to_csv(f'./web-app/figure_data/treiber/{bereichName}/steckbrief_treiber_counts_{lg}_{timeFilter}.csv', index=False)
 
 
 def list_meldung_pro_Gefahr(id):
     # Charger les fichiers CSV
-    meldungXgefahr = pd.read_csv('./csv-files-filtered/filtered-ad_meldung_ad_gefahr-20231128.csv', sep='#', quotechar='`')
-    meldung = pd.read_csv('./csv-files-filtered/filtered-ad_meldung-20231128.csv', sep='#', quotechar='`')
+    meldungXgefahr = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_gefahr-20231128.csv', sep='#', quotechar='`')
+    meldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung-20231128.csv', sep='#', quotechar='`')
 
     meldung_ids = list(meldungXgefahr.meldung_id[meldungXgefahr['gefahr_id'] == id])
 
@@ -287,7 +287,7 @@ def list_meldung_pro_Gefahr(id):
 
 
 # Read the Bereich CSV file
-bereich_csv = pd.read_csv('./csv-files-filtered/filtered-ad_bereich-20231128.csv', sep='#', quotechar='`')
+bereich_csv = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_bereich-20231128.csv', sep='#', quotechar='`')
 
 # Get unique values of Bereich names and add 'all' as an option
 bereich_list = bereich_csv.bezeichnung_de.unique()

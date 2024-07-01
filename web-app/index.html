@@ -117,6 +117,40 @@ The file is organized into different sections, each with its own HTML tags and a
 		}	
 
 		</style>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+			    // Get the URL parameters
+			    const params = new URLSearchParams(window.location.search);
+
+			    // Get the 'visu' parameter value
+			    const visuParam = params.get('visu');
+
+			    // Depending on the value of 'visu', show/hide sections
+			    if (visuParam === 'bubbleChart') {
+			        showSection('two');
+			    } else if (visuParam === 'waffleChart') {
+			        showSection('three');
+			    } else if (visuParam === 'table'){
+					showSection('four')
+				}
+			
+			    // Function to show a specific section by its ID
+			    function showSection(sectionId) {
+			        // Hide all sections first
+			        const sections = document.querySelectorAll('section');
+			        sections.forEach(section => {
+			            section.style.display = 'none';
+			        });
+				
+			        // Show the requested section
+			        const sectionToShow = document.getElementById(sectionId);
+			        if (sectionToShow) {
+			            sectionToShow.style.display = 'block';
+			        }
+			    }
+			});
+
+		</script>
 
 	</head>
 

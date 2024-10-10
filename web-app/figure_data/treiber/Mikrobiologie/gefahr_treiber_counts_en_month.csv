@@ -1,13 +1,23 @@
-gefahr_id,Climate change,Technological innovations and scientific advances,New foods and food production systems,Consumer behaviour and consumption trends,Microbial evolution and antibiotic resistance,Society,Ecology,Economy,Policy
-1,0,0,0,0,1,0,0,0,0
-26,1,0,0,0,1,1,0,1,1
-63,0,0,1,0,3,0,0,0,0
-93,0,1,0,1,0,0,0,0,0
-99,2,0,0,0,2,0,2,0,0
-106,0,1,0,1,2,0,0,0,0
-119,1,0,0,0,0,1,0,1,1
-202,0,0,1,0,1,0,0,0,0
-244,0,0,1,0,3,0,0,0,0
-296,0,0,0,0,1,0,0,0,0
-319,0,0,0,0,1,0,0,0,0
-320,0,0,0,0,1,0,0,0,0
+gefahr_id,Climate change,Technological innovations and scientific advances,Urbanization and urban agriculture,Circular economy,Microbiomes and food safety,New foods and food production systems,Consumer behaviour and consumption trends,Microbial evolution and antibiotic resistance,Ecology,Policy
+2,0,0,0,0,0,0,0,1,0,0
+18,0,0,0,0,0,0,0,1,0,0
+19,1,0,0,0,0,0,0,0,0,0
+26,0,1,0,0,0,0,0,4,0,0
+63,0,0,0,0,0,0,0,1,0,0
+86,0,0,0,0,0,0,0,1,0,0
+87,0,0,0,0,0,0,0,2,0,0
+88,0,0,0,0,0,0,0,2,0,0
+93,0,1,0,1,0,0,0,0,1,0
+94,0,0,0,0,1,1,0,0,0,1
+99,1,0,0,0,0,0,0,0,1,0
+111,0,0,0,0,0,1,0,0,1,0
+119,0,0,1,0,0,0,0,0,1,0
+137,1,0,0,0,0,0,0,0,0,0
+165,0,0,0,0,0,1,0,0,1,0
+231,0,0,0,0,1,0,0,0,0,0
+244,0,0,0,1,0,0,0,4,0,0
+256,1,0,0,0,0,0,0,0,0,0
+361,0,0,0,0,0,0,1,0,0,0
+427,0,0,1,0,0,0,0,0,1,0
+457,0,0,1,0,0,0,0,0,1,0
+464,1,0,0,0,0,0,0,0,0,0

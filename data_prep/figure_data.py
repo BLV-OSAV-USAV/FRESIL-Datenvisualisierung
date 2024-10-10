@@ -3,6 +3,7 @@
 
 import pandas as pd
 import numpy as np
+from datetime import date
 
 def count_gefahr(timeFilter, bereichName, lg):
     """
@@ -17,18 +18,18 @@ def count_gefahr(timeFilter, bereichName, lg):
     - CSV files with counts and related data.
     """
     # Load CSV files
-    meldungXgefahr = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_gefahr-20231128.csv', sep='#', quotechar='`')
-    gefahr = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_gefahr-20231128.csv', sep='#', quotechar='`')
-    meldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung-20231128.csv', sep='#', quotechar='`')
-    bereich = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_bereich-20231128.csv', sep='#', quotechar='`')
-    bereichXmeldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_bereich-20231128.csv', sep='#', quotechar='`')
-    treiber = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_treiber-20231128.csv', sep='#', quotechar='`')
-    treiberXmeldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_treiber-20231128.csv', sep='#', quotechar='`')
+    meldungXgefahr = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_gefahr.csv', sep='#', quotechar='`')
+    gefahr = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_gefahr.csv', sep='#', quotechar='`')
+    meldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung.csv', sep='#', quotechar='`')
+    bereich = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_bereich.csv', sep='#', quotechar='`')
+    bereichXmeldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_bereich.csv', sep='#', quotechar='`')
+    treiber = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_treiber.csv', sep='#', quotechar='`')
+    treiberXmeldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_treiber.csv', sep='#', quotechar='`')
 
     # Apply time filter
     if timeFilter != 'all':
         meldung['erfDate'] = pd.to_datetime(meldung['erf_date']).dt.date
-        today = pd.to_datetime('2023-11-28')
+        today = date.today()
         
         if timeFilter == 'week':
             start = (today - pd.DateOffset(weeks=1)).date()
@@ -103,13 +104,13 @@ def count_matrix(timeFilter, bereichName, lg):
     - CSV files with counts and related data.
     """
     # Load CSV files
-    meldungXmatrix = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_matrix-20231128.csv', sep='#', quotechar='`')
-    matrix = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_matrix-20231128.csv', sep='#', quotechar='`')
-    meldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung-20231128.csv', sep='#', quotechar='`')
-    bereich = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_bereich-20231128.csv', sep='#', quotechar='`')
-    bereichXmeldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_bereich-20231128.csv', sep='#', quotechar='`')
-    treiber = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_treiber-20231128.csv', sep='#', quotechar='`')
-    treiberXmeldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_treiber-20231128.csv', sep='#', quotechar='`')
+    meldungXmatrix = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_matrix.csv', sep='#', quotechar='`')
+    matrix = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_matrix.csv', sep='#', quotechar='`')
+    meldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung.csv', sep='#', quotechar='`')
+    bereich = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_bereich.csv', sep='#', quotechar='`')
+    bereichXmeldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_bereich.csv', sep='#', quotechar='`')
+    treiber = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_treiber.csv', sep='#', quotechar='`')
+    treiberXmeldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_treiber.csv', sep='#', quotechar='`')
 
     # Apply time filter
     if timeFilter != 'all':
@@ -188,14 +189,14 @@ def count_steckbrief(timeFilter, bereichName, lg):
     - CSV files with counts and related data.
     """
     # Load CSV files
-    meldungXsteckbrief = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_steckbrief-20231128.csv', sep='#', quotechar='`')
-    steckbrief = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_steckbrief-20231128.csv', sep='#', quotechar='`')
-    meldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung-20231128.csv', sep='#', quotechar='`')
-    bereich = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_bereich-20231128.csv', sep='#', quotechar='`')
-    bereichXmeldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_bereich-20231128.csv', sep='#', quotechar='`')
-    treiber = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_treiber-20231128.csv', sep='#', quotechar='`')
-    treiberXmeldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_treiber-20231128.csv', sep='#', quotechar='`')
-    log = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_log-20231128.csv', sep='#', quotechar='`')
+    meldungXsteckbrief = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_steckbrief.csv', sep='#', quotechar='`')
+    steckbrief = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_steckbrief.csv', sep='#', quotechar='`')
+    meldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung.csv', sep='#', quotechar='`')
+    bereich = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_bereich.csv', sep='#', quotechar='`')
+    bereichXmeldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_bereich.csv', sep='#', quotechar='`')
+    treiber = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_treiber.csv', sep='#', quotechar='`')
+    treiberXmeldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_treiber.csv', sep='#', quotechar='`')
+    log = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_log.csv', sep='#', quotechar='`')
 
     # Apply time filter
     if timeFilter != 'all':
@@ -276,8 +277,8 @@ def count_steckbrief(timeFilter, bereichName, lg):
 
 def list_meldung_pro_Gefahr(id):
     # Charger les fichiers CSV
-    meldungXgefahr = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_gefahr-20231128.csv', sep='#', quotechar='`')
-    meldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung-20231128.csv', sep='#', quotechar='`')
+    meldungXgefahr = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung_ad_gefahr.csv', sep='#', quotechar='`')
+    meldung = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_meldung.csv', sep='#', quotechar='`')
 
     meldung_ids = list(meldungXgefahr.meldung_id[meldungXgefahr['gefahr_id'] == id])
 
@@ -287,7 +288,7 @@ def list_meldung_pro_Gefahr(id):
 
 
 # Read the Bereich CSV file
-bereich_csv = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_bereich-20231128.csv', sep='#', quotechar='`')
+bereich_csv = pd.read_csv('./web-app/csv-files-filtered/filtered-ad_bereich.csv', sep='#', quotechar='`')
 
 # Get unique values of Bereich names and add 'all' as an option
 bereich_list = bereich_csv.bezeichnung_de.unique()

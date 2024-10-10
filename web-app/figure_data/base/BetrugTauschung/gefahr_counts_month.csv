@@ -1,2 +1,1 @@
-id,count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne,meldung_ids
-128,1,Schwermetalle,métaux lourds,metalli pesanti,heavy metals,1.0,[929]
+count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne,id,meldung_ids

@@ -1,32 +1,64 @@
 id,count,bezeichnung_de,bezeichnung_fr,bezeichnung_it,bezeichnung_en,mean_sterne,meldung_ids
-26,4,Listeria monocytogenes,Listeria monocytogenes,Listeria monocytogenes,Listeria monocytogenes,1.5,"[935, 927, 920, 943]"
-93,4,Salmonella spp.,Salmonella spp.,Salmonella spp.,Salmonella spp.,1.25,"[934, 927, 920, 942]"
-244,3,Antibiotikaresistenzen,Antibiorésistance,Antibiotico-resistenza,Antibiotic resistance,1.33,"[919, 923, 930]"
-63,3,Antibiotika,antibiotiques,antibiotici,antibiotics,1.33,"[919, 923, 930]"
-91,3,Pestizide,pesticides,pesticidi,pesticide,1.0,"[907, 902, 905]"
-99,2,Vibrio spp.,Vibrio spp.,Vibrio spp.,Vibrio spp.,1.0,"[940, 903]"
-298,2,Deoxynivalenol (DON),Déoxynivalénol (DON),Deossinivalenolo (DON),Deoxynivalenol (DON),2.0,"[916, 901]"
-106,2,Bacillus cereus (sensu lato),Bacillus cereus (sensu lato),Bacillus cereus (sensu lato),Bacillus cereus (sensu lato),1.0,"[918, 912]"
-119,2,Norovirus,Norovirus,Norovirus,Norovirus,1.5,"[920, 943]"
-126,2,Per- und polyfluorierte Alkylverbindungen (PFAS),Substances per- et polyfluoroalkylées (PFAS),Sostanze per- e polifluoroalchiliche (PFAS),Per- and polyfluoroalkyl substances (PFAS),1.5,"[908, 931]"
-202,1,Antibiotikaresistente Milchsäurebakterien,Bactéries lactiques résistantes aux antibiotiques,Batteri lattici resistenti agli antibiotici,Antibiotic-resistant lactic acid bacteria,1.0,[919]
-187,1,Arsen,Arsenic,Arsenico,Arsenic,1.0,[921]
-128,1,Schwermetalle,métaux lourds,metalli pesanti,heavy metals,1.0,[929]
-111,1,Mykotoxine,Mycotoxine,Micotossine,Mycotoxin,1.0,[901]
-209,1,Anorganische Arsen,Arsenic inorganique,Arsenico inorganica,Inorganic arsenic,1.0,[921]
-45,1,Aspartam,Aspartam,Aspartam,Aspartam,1.0,[938]
-127,1,Perfluoroctansulfonsäure (PFOS),acide perfluorooctanesulfonique (PFOS),acido perfluoroottansolfonico,Perfluorooctanesulfonic acid (PFOS),2.0,[931]
-203,1,Ochratoxin A (OTA),Ochratoxine A (OTA),Ocratossina A (OTA),Ochratoxin A (OTA),3.0,[916]
-261,1,Pseudomonas,Pseudomonas,Pseudomonas,Pseudomonas,1.0,[927]
-322,1,Dimethylmonothioarsenate ((DMMTA),Dimethylmonothioarsenate (DMMTA),Dimethylmonothioarsenate (DMMTA),Dimethylmonothioarsenate (DMMTA),1.0,[933]
-19,1,STEC/VTEC,STEC/VTEC,STEC/VTEC,STEC/VTEC,2.0,[920]
-20,1,EHEC,EHEC,EHEC,EHEC,2.0,[920]
-120,1,Rotavirus,Rotavirus,Rotavirus,Rotavirus,2.0,[920]
-8,1,Sapovirus,Sapovirus,Sapovirus,Sapovirus,2.0,[920]
-48,1,marine Biotoxine,biotoxines marines,biotossine marine,marine biotoxines,1.0,[941]
-1,1,Escherichia coli,Escherichia coli,Escherichia coli,Escherichia coli,2.0,[922]
-319,1,Proteus spp.,Proteus spp.,Proteus spp.,Proteus spp.,2.0,[922]
-296,1,Providencia spp.,Providencia spp.,Providencia spp.,Providencia spp.,2.0,[922]
-320,1,Citrobacter spp.,Citrobacter spp.,Citrobacter spp.,Citrobacter spp.,2.0,[922]
-273,1,Koffein,Caféine,Caffeina,caffein,2.0,[926]
-321,1,Fluconazol,Fluconazole,Fluconazolo,Fluconazole,2.0,[926]
+244,7,Antibiotikaresistenzen,Antibiorésistance,Antibiotico-resistenza,Antibiotic resistance,1.43,"[1647, 1660, 1657, 1659, 1650, 1706, 1707]"
+26,6,Listeria monocytogenes,Listeria monocytogenes,Listeria monocytogenes,Listeria monocytogenes,1.67,"[1676, 1697, 1694, 1677, 1629, 1654]"
+102,3,Blei,Plomb,Piombo,Lead,1.33,"[1633, 1668, 1689]"
+111,3,Mykotoxine,Mycotoxine,Micotossine,Mycotoxin,1.33,"[1653, 1675, 1626]"
+91,3,Pestizide,pesticides,pesticidi,pesticide,1.33,"[1669, 1670, 1675]"
+125,3,Mikroplastik,microplastiques,microplastica,microplastics,1.0,"[1701, 1670, 1702]"
+126,3,Per- und polyfluorierte Alkylverbindungen (PFAS),Substances per- et polyfluoroalkylées (PFAS),Sostanze per- e polifluoroalchiliche (PFAS),Per- and polyfluoroalkyl substances (PFAS),1.33,"[1634, 1690, 1713]"
+165,3,Cadmium,Cadmium,Cadmio,Cadmium,1.67,"[1626, 1668, 1689]"
+93,3,Salmonella spp.,Salmonella spp.,Salmonella spp.,Salmonella spp.,1.0,"[1657, 1654, 1655]"
+128,2,Schwermetalle,métaux lourds,metalli pesanti,heavy metals,1.0,"[1670, 1703]"
+119,2,Norovirus,Norovirus,Norovirus,Norovirus,1.0,"[1635, 1683]"
+127,2,Perfluoroctansulfonsäure (PFOS),acide perfluorooctanesulfonique (PFOS),acido perfluoroottansolfonico,Perfluorooctanesulfonic acid (PFOS),1.5,"[1713, 1668]"
+87,2,Campylobacter jejuni,Campylobacter jejuni,Campylobacter jejuni,Campylobacter jejuni,1.0,"[1674, 1704]"
+458,2,Salmonella enterica serovar Umbilo,Salmonella enterica serovar Umbilo,Salmonella enterica serovar Umbilo,Salmonella enterica serovar Umbilo,1.0,"[1671, 1661]"
+109,2,Nanopartikeln,Nanoparticules,Nanoparticole,Nanoparticles,1.0,"[1670, 1703]"
+88,2,Campylobacter coli,Campylobacter coli,Campylobacter coli,Campylobacter coli,1.0,"[1674, 1704]"
+459,1,Hexahydrocannabinol (HHC),Hexahydrocannabinol (HHC),Hexahydrocannabinol (HHC),Hexahydrocannabinol (HHC),1.0,[1672]
+118,1,Aspergillus,Aspergillus,Aspergillus,Aspergillus,1.0,[1653]
+66,1,Canabidiol (CBD),Canabidiol (CBD),Canabidiolo (CBD),Canabidiol (CBD),1.0,[1672]
+110,1,Chlorkohlenwasserstoffe,Composés organochlorés,Organocloruro,Organochlorine compound,1.0,[1632]
+461,1,Ethanol,Éthanol,Etanolo,Ethanol,1.0,[1696]
+130,1,Bisphenol S,Bisphénol S,Bisfenolo S,Bisphenol S,1.0,[1698]
+166,1,Bisphenol A (BPA),Bisphénol A (BPA),Bisfenolo A (BPA),Bisphenol A (BPA),1.0,[1698]
+29,1,Streptococcus agalactiae,Streptococcus agalactiae,Streptococcus agalactiae,Streptococcus agalactiae,1.0,[1658]
+1,1,Escherichia coli,Escherichia coli,Escherichia coli,Escherichia coli,1.0,[1660]
+18,1,Escherichia albertii,Escherichia albertii,Escherichia albertii,Escherichia albertii,1.0,[1700]
+178,1,Fusarium sambucinum,Fusarium sambucinum,Fusarium sambucinum,Fusarium sambucinum,1.0,[1653]
+427,1,Enterovirus,Entérovirus,Enterovirus,Enterovirus,1.0,[1635]
+79,1,Zucker,sucre,zucchero,sugar,1.0,[1648]
+457,1,Adenoviren (HAdV),adénovirus,adenovirus,Adenovirus (HAdV),1.0,[1635]
+106,1,Bacillus cereus (sensu lato),Bacillus cereus (sensu lato),Bacillus cereus (sensu lato),Bacillus cereus (sensu lato),2.0,[1667]
+288,1,T-2,T-2,T-2,T-2,1.0,[1675]
+180,1,Phthalate,phtalates,ftalati,phthalates,1.0,[1628]
+169,1,Endokrine Disruptoren,Perturbateur endocrinien,Interferenti endocrini,Endocrine disruptors,1.0,[1628]
+246,1,Acrylamid,Acrylamide,Acrilammide,Acrylamide,1.0,[1639]
+145,1,Mangelernährung,Malnutrition,Malnutrizione,Malnutrition,1.0,[1664]
+231,1,Campylobacter fetus,Campylobacter fetus,Campylobacter fetus,Campylobacter fetus,2.0,[1652]
+464,1, Babesia, Babesia, Babesia, Babesia,1.0,[1711]
+289,1,HT-2,HT-2,HT-2,HT-2,1.0,[1675]
+86,1,Campylobacter spp.,Campylobacter spp.,Campylobacter spp.,Campylobacter spp.,1.0,[1674]
+256,1,Parasiten,Parasites,Parassiti,Parasites,1.0,[1711]
+63,1,Antibiotika,antibiotiques,antibiotici,antibiotics,1.0,[1647]
+99,1,Vibrio spp.,Vibrio spp.,Vibrio spp.,Vibrio spp.,1.0,[1691]
+225,1,Barium,Baryum,Bario,Barium,1.0,[1689]
+251,1,Trichinella spp.,Trichinella spp.,Trichinella spp.,Trichinella spp.,1.0,[1638]
+19,1,STEC/VTEC,STEC/VTEC,STEC/VTEC,STEC/VTEC,3.0,[1627]
+187,1,Arsen,Arsenic,Arsenico,Arsenic,1.0,[1644]
+316,1,Fructose,Fructose,Fruttosio,Fructose,1.0,[1651]
+69,1,Tetrahydrocannabinol (THC),Tétrahydrocannabinol (THC),Tetraidrocannabinolo (THC),Tetrahydrocannabinol (THC),1.0,[1636]
+401,1,Enterococcus spp.,Enterococcus spp.,Enterococcus spp.,Enterococcus spp.,2.0,[1650]
+344,1,Chrom,Chrome,Cromo,Chromium,2.0,[1668]
+272,1,Mangan,Manganèse,Manganese,Manganese,2.0,[1668]
+249,1,Nickel,Nickel,Nichel,Nickel,2.0,[1668]
+324,1,Polychlorierte Dibenzodioxine und Dibenzofurane (PCDD/PCDF),Polychlorodibenzo-p-dioxine (PCDD/PCDF),policloro-dibenzo-p-diossine (PCDD/PCDF),Polychlorinated dibenzodioxins (PCDD/PCDF),2.0,[1668]
+137,1,Klimawandel,Changement climatique,Cambiamento climatico,Climate change,1.0,[1673]
+2,1,Hepatitis E Virus (HEV),Hepatitis E Virus (HEV),Hepatitis E Virus (HEV),Hepatitis E Virus (HEV),1.0,[1679]
+98,1,Organophosphatester,esters d'organophosphate,esteri di organofosfati,organophosphate ester,1.0,[1685]
+402,1,Thallium,Thallium,Tallio,Thallium,1.0,[1689]
+431,1,Cobalt,Cobalt,Cobalto,Cobalt,1.0,[1689]
+167,1,Quecksilber,Mercure,Mercurio,Mercury,1.0,[1689]
+361,1,Extended-Spectrum-Betalaktamasen (ESBL),Bactéries productrices de béta-lactamases à spectre élargi (ESBL),Le beta-lattamasi a spettro esteso (ESBL),Extended Spectrum β-Lactamase (ESBL),2.0,[1686]
+463,1,Burkholderia multivorans,Burkholderia multivorans,Burkholderia multivorans,Burkholderia multivorans,1.0,[1708]
+94,1,Salmonella Typhimurium,Salmonella Typhimurium,Salmonella Typhimurium,Salmonella Typhimurium,1.0,[1709]

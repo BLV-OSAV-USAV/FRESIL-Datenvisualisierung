@@ -176,14 +176,14 @@
 178#Fusarium sambucinum#Fusarium sambucinum#Fusarium sambucinum#Fusarium sambucinum#False#2022-09-26T08:38:32#84#2022-09-26T08:38:32#84#0#2022-09-26#2022-09-26
 180#Phthalate#phthalates#phtalates#ftalati#False#2022-09-27T07:18:36#84#2022-09-27T07:18:36#84#0#2022-09-27#2022-09-27
 181#hochpathogene Aviären Influenza (HPAI)#highly pathogenic avian influenza (HPAI) virus#virus de l'influenza aviaire hautement pathogène (IAHP)#virus ad alta patogenicità (HPAI) di influenza aviaria#False#2022-10-06T07:13:21#84#2022-10-06T07:13:21#84#0#2022-10-06#2022-10-06
-182#Glyphosat#glyphosate#DébutPropriétés chimiquesUtilisation et intérêt agronomiqueAfficher / masquer la sous-section Utilisation et intérêt agronomiqueMécanisme d'actionUtilisations et polémiquesAfficher / masquer la sous-section Utilisations et polémiquesDifficultés analytique#Glifosato#False#2022-10-18T07:45:22#84#2022-10-18T07:45:22#84#0#2022-10-18#2022-10-18
+182#Glyphosat#glyphosate#Glyphosate#Glifosato#False#2022-10-18T07:45:22#84#2024-05-16T08:02:44#84#1#2022-10-18#2024-05-16
 183#Salmonella Litchfield#Salmonella Litchfield#Salmonella Litchfield#Salmonella Litchfield#False#2022-10-21T08:00:46#36#2022-10-21T08:00:46#36#0#2022-10-21#2022-10-21
 184#Morganella morganii#Morganella morganii#Morganella morganii#Morganella morganii#False#2022-10-31T08:26:33#84#2022-10-31T08:26:33#84#0#2022-10-31#2022-10-31
 185#Mineralöl#Mineral oil#Huile minérale#Olio minerale#False#2022-11-03T10:56:21#84#2022-11-03T10:56:21#84#0#2022-11-03#2022-11-03
 186#Biogene Amine#Biogenic amines#Amines biogènes#Ammine biogene#False#2022-11-10T09:44:13#36#2022-11-10T09:44:13#36#0#2022-11-10#2022-11-10
 187#Arsen#Arsenic#Arsenic#Arsenico#False#2022-11-18T08:40:17#36#2022-11-18T08:40:17#36#0#2022-11-18#2022-11-18
 188#Thebain#Thebaine#Thébaïne#Tebaina#False#2022-11-18T09:09:32#36#2022-11-18T09:09:32#36#0#2022-11-18#2022-11-18
-189#Heliobacter pylori#Heliobacter pylori#Heliobacter pylori#Heliobacter pylori#False#2022-12-09T07:52:20#36#2022-12-09T07:52:20#36#0#2022-12-09#2022-12-09
+189#Helicobacter pylori#Helicobacter pylori#Helicobacter pylori#Helicobacter pylori#False#2022-12-09T07:52:20#36#2024-01-03T09:09:02#84#1#2022-12-09#2024-01-03
 190#Salmonella Bovismorbificans#Salmonella Bovismorbificans#Salmonella Bovismorbificans#Salmonella Bovismorbificans#False#2022-12-09T14:05:24#84#2022-12-09T14:05:24#84#0#2022-12-09#2022-12-09
 191#Solanum sp#Solanum sp#Solanum sp#Solanum sp#False#2022-12-19T08:53:24#84#2022-12-19T08:53:24#84#0#2022-12-19#2022-12-19
 192#2-tert-Butylhydrochinon#tert-butylhydroquinone#tert-Butylhydroquinone#Terz-butil-idrochinone#False#2022-12-19T14:34:18#84#2022-12-19T14:34:18#84#0#2022-12-19#2022-12-19
@@ -239,7 +239,7 @@
 244#Antibiotikaresistenzen#Antibiotic resistance#Antibiorésistance#Antibiotico-resistenza#False#2023-04-25T07:45:53#932#2023-04-25T07:45:53#932#0#2023-04-25#2023-04-25
 245#Streptococcus equi#Streptococcus equi#Streptococcus equi#Streptococcus equi#False#2023-04-25T08:17:54#84#2023-04-25T08:22:11#84#1#2023-04-25#2023-04-25
 246#Acrylamid#Acrylamide#Acrylamide#Acrilammide#False#2023-04-26T08:33:57#84#2023-04-26T08:33:57#84#0#2023-04-26#2023-04-26
-247#Calciumcarbid#Calcium carbide#Carbure de calcium#Carburo di calcio#False#2023-04-27T11:50:17#84#2023-04-27T11:50:17#84#0#2023-04-27#2023-04-27
+247#Calciumcarbid#Calcium carbide#Carbure de calcium#Carburo di calcio#False#2023-04-27T11:50:17#84#2024-05-29T08:57:17#932#1#2023-04-27#2024-05-29
 248#Persistente organische Schadstoffe (POP)#persistent organic pollutants (POPs)#polluants organiques persistants (POP)#inquinanti organici persistenti (POP)#False#2023-04-28T14:16:42#932#2023-04-28T14:16:42#932#0#2023-04-28#2023-04-28
 249#Nickel#Nickel#Nickel#Nichel#False#2023-05-05T07:48:07#932#2023-05-05T07:48:07#932#0#2023-05-05#2023-05-05
 250#extended-spectrum beta-lactamase produzierenden Shigella sonnei#extended spectrum beta-lactamase producing-Shigella sonnei#Shigella sonnei productrices de bêta-lactamase à spectre étendu#Shigella sonnei produttrice di beta-lattamasi a spettro esteso#False#2023-05-05T10:42:11#932#2023-05-05T10:42:11#932#0#2023-05-05#2023-05-05
@@ -298,7 +298,7 @@
 305#Microbacterium#Microbacterium#Microbacterium#Microbacterium#False#2023-09-25T16:19:53#932#2023-09-25T16:19:53#932#0#2023-09-25#2023-09-25
 306#Furan#Furan#Furane#Furano#False#2023-09-29T07:36:14#84#2023-09-29T07:36:14#84#0#2023-09-29#2023-09-29
 307#Natriumphosphat#Trisodium phosphate#Phosphate de sodium#Fosfato di sodio#False#2023-09-29T08:05:41#932#2023-09-29T08:05:41#932#0#2023-09-29#2023-09-29
-308#Fumonisine#Fumonisins#Fumonisines#Fumonisine#False#2023-10-04T06:45:21#84#2023-10-04T06:45:21#84#0#2023-10-04#2023-10-04
+308#Fumonisine#Fumonisins#Fumonisines#Fumonisine#False#2023-10-04T06:45:21#84#2024-08-06T07:40:34#84#1#2023-10-04#2024-08-06
 309#Hexahydrocannabinol#Hexahydrocannabinol#Hexahydrocannabinol#Esaidrocannabinolo#False#2023-10-09T11:34:11#84#2023-10-09T11:34:11#84#0#2023-10-09#2023-10-09
 310#Polyethylenterephthalat (PET)#Polyethylene terephthalate (PET)#Polytéréphtalate d'éthylène (PET)#Polietilene tereftalato (PET)#False#2023-10-10T09:36:09#84#2023-10-10T09:36:09#84#0#2023-10-10#2023-10-10
 311#Ätherische Öle#essential oil#Huile essentielle#Olio essenziale#False#2023-10-11T11:08:51#84#2023-10-11T11:08:51#84#0#2023-10-11#2023-10-11
@@ -325,3 +325,124 @@
 333#Bacillus spp.#Bacillus spp.#Bacillus spp.#Bacillus spp.#False#2023-11-28T09:49:47#932#2023-11-28T09:49:47#932#0#2023-11-28#2023-11-28
 334#Clostridium spp.#Clostridium spp.#Clostridium spp.#Clostridium spp.#False#2023-11-28T09:50:50#932#2023-11-28T09:50:50#932#0#2023-11-28#2023-11-28
 335#Withania somnifera (ashwagandha)#Withania somnifera (ashwagandha)#Withania somnifera (ashwagandha)#Withania somnifera (ashwagandha)#False#2023-11-28T11:16:54#932#2023-11-28T11:16:54#932#0#2023-11-28#2023-11-28
+336#Taenia solium#Taenia solium#Taenia solium#Taenia solium#False#2023-11-30T15:09:42#932#2023-11-30T15:09:42#932#0#2023-11-30#2023-11-30
+337#3-monochloropropanediol esters (3-MCPDEs)#3-monochloropropanediol esters (3-MCPDEs)#3-monochloropropanediol esters (3-MCPDEs)#3-monochloropropanediol esters (3-MCPDEs)#False#2023-12-04T12:37:22#932#2023-12-04T12:37:22#932#0#2023-12-04#2023-12-04
+338#glycidyl esters (GEs)#glycidyl esters (GEs)#glycidyl esters (GEs)#glycidyl esters (GEs)#False#2023-12-04T12:43:02#932#2023-12-04T12:43:02#932#0#2023-12-04#2023-12-04
+339#Ammoniak#Ammonia#Ammoniac#Ammoniaca#False#2023-12-12T07:30:20#932#2023-12-12T07:30:20#932#0#2023-12-12#2023-12-12
+340#Phosphor#Phosphorus#Phosphore#Fosforo#False#2023-12-12T07:31:20#932#2023-12-12T07:31:20#932#0#2023-12-12#2023-12-12
+341#Schimmelpilze#Mold#Moisissure#Muffa#False#2023-12-13T08:02:28#932#2023-12-13T08:02:28#932#0#2023-12-13#2023-12-13
+342#Campylobacter lari#Campylobacter lari#Campylobacter lari#Campylobacter lari#False#2023-12-18T08:09:09#932#2023-12-18T08:09:09#932#0#2023-12-18#2023-12-18
+343#Campylobacter concisus#Campylobacter concisus#Campylobacter concisus#Campylobacter concisus#False#2023-12-20T06:56:54#84#2023-12-20T07:02:52#84#1#2023-12-20#2023-12-20
+344#Chrom#Chromium#Chrome#Cromo#False#2024-01-08T11:00:42#932#2024-01-08T11:00:42#932#0#2024-01-08#2024-01-08
+345#Zinkoxid-Nanopartikel#zinc oxid nanoparticles#nanoparticules d'oxyde de zinc#nanoparticelle di ossido di zinco#False#2024-01-12T06:52:09#84#2024-01-12T06:52:09#84#0#2024-01-12#2024-01-12
+346#Salmonella Kiambu#Salmonella Kiambu#Salmonella Kiambu#Salmonella Kiambu#False#2024-01-17T08:33:54#84#2024-01-17T08:33:54#84#0#2024-01-17#2024-01-17
+347#Vibrio metschnikovii#Vibrio metschnikovii#Vibrio metschnikovii#Vibrio metschnikovii#False#2024-01-22T08:13:09#932#2024-01-22T08:13:09#932#0#2024-01-22#2024-01-22
+348#Salmonella enterica#Salmonella enterica#Salmonella enterica#Salmonella enterica#False#2024-01-22T08:19:56#932#2024-01-22T08:19:56#932#0#2024-01-22#2024-01-22
+349#Henipavirus#Henipavirus#Henipavirus#Henipavirus#False#2024-01-22T09:25:05#84#2024-01-22T09:25:05#84#0#2024-01-22#2024-01-22
+350#Propylenoxid#Propylene oxide#Oxyde de propylène#Ossido di propilene#False#2024-01-23T07:52:52#84#2024-01-23T07:52:52#84#0#2024-01-23#2024-01-23
+351#Brom#bromine#brom#bromo#False#2024-01-25T09:09:00#932#2024-01-25T09:09:00#932#0#2024-01-25#2024-01-25
+352#Scopolamin#scopolamine#scopolamine#scopolamina#False#2024-01-25T12:02:54#932#2024-01-25T12:02:54#932#0#2024-01-25#2024-01-25
+353#Paralytic shellfish poisoning (PSP)#Paralytic shellfish poisoning (PSP)#Intoxication paralysante par les mollusques#Intossicazione da molluschi paralizzanti#False#2024-01-29T06:48:52#84#2024-01-29T06:48:52#84#0#2024-01-29#2024-01-29
+354#Tianeptin#Tianeptin#Tianeptine#Tianeptina#False#2024-01-30T06:58:43#84#2024-01-30T06:58:43#84#0#2024-01-30#2024-01-30
+355#Bacillus licheniformis#Bacillus licheniformis#Bacillus licheniformis#Bacillus licheniformis#False#2024-02-01T08:38:21#932#2024-02-01T08:38:21#932#0#2024-02-01#2024-02-01
+356#Streptococcus anginosus#Streptococcus anginosus#Streptococcus anginosus#Streptococcus anginosus#False#2024-02-02T07:26:32#84#2024-02-02T07:26:32#84#0#2024-02-02#2024-02-02
+357#Polysorbat 80#Polysorbate 80#Polysorbate 80#Polisorbato 80#False#2024-02-02T14:00:07#932#2024-02-02T14:00:07#932#0#2024-02-02#2024-02-02
+358#Nisin#Nisin#Nisine#Nisina#False#2024-02-05T08:40:22#932#2024-02-05T08:40:22#932#0#2024-02-05#2024-02-05
+359#Magnaporthe oryzae#Magnaporthe oryzae#Magnaporthe oryzae#Magnaporthe oryzae#False#2024-02-06T08:10:43#932#2024-02-06T08:10:43#932#0#2024-02-06#2024-02-06
+360#Echinococcus granulosus#Echinococcus granulosus#Echinococcus granulosus#Echinococcus granulosus#False#2024-02-07T07:14:40#84#2024-02-07T07:14:40#84#0#2024-02-07#2024-02-07
+361#Extended-Spectrum-Betalaktamasen (ESBL)#Extended Spectrum β-Lactamase (ESBL)#Bactéries productrices de béta-lactamases à spectre élargi (ESBL)#Le beta-lattamasi a spettro esteso (ESBL)#False#2024-02-09T15:39:41#932#2024-02-09T15:39:41#932#0#2024-02-09#2024-02-09
+362#Reinigungsmittel und Desinfektionsmittel#Cleaning agents and disinfectants#Agents de nettoyage et désinfectants#Detergenti e disinfettanti#False#2024-02-12T13:38:57#932#2024-02-12T13:38:57#932#0#2024-02-12#2024-02-12
+363#Lebensmittelzusatzstoff#food additive#additif alimentaire#additivo alimentare#False#2024-02-12T13:40:50#932#2024-02-12T13:40:50#932#0#2024-02-12#2024-02-12
+364#Maillard-Reaktion#Maillard reaction#Réaction de Maillard#Reazione di Maillard#False#2024-02-12T14:09:54#932#2024-02-12T14:09:54#932#0#2024-02-12#2024-02-12
+365#Anisakidae#Anisakidae#Anisakidae#Anisakidae#False#2024-02-19T08:16:57#932#2024-02-19T08:16:57#932#0#2024-02-19#2024-02-19
+366#Rhaphidascarididae#Rhaphidascarididae#Rhaphidascarididae#Rhaphidascarididae#False#2024-02-19T08:17:25#932#2024-02-19T08:17:25#932#0#2024-02-19#2024-02-19
+367#Mono- und Diglyceride von Speisefettsäuren (E471)#Mono- and diglycerides of fatty acids (E471)#Mono et diglycérides d'acides gras (E471)#Mono- e digliceridi degli acidi grassi (E471)#False#2024-02-19T09:25:45#932#2024-02-19T09:25:45#932#0#2024-02-19#2024-02-19
+368#Carrageen (E407 and E407a)#Carrageenan (E407 and E407a)#Carraghénanes (E407 and E407a)#Carraghenina (E407 and E407a)#False#2024-02-19T09:27:11#932#2024-02-19T09:27:11#932#0#2024-02-19#2024-02-19
+369#leucin#leucine#leucine#leucina#False#2024-02-20T07:17:34#932#2024-02-20T07:17:34#932#0#2024-02-20#2024-02-20
+370#Polycyclische aromatische Kohlenwasserstoffe#Polycyclic aromatic hydrocarbon#Hydrocarbure aromatique polycyclique#Idrocarburi policiclici aromatici#False#2024-02-20T07:55:46#932#2024-02-20T07:55:46#932#0#2024-02-20#2024-02-20
+371#Heterozyklische aromatische Amine#Heterocyclic Aromatic Amines#Amines aromatiques hétérocycliques#Ammine aromatiche eterocicliche#False#2024-02-20T08:00:32#932#2024-02-20T08:00:32#932#0#2024-02-20#2024-02-20
+372#dicamba#dicamba#dicamba#dicamba#False#2024-02-21T14:19:54#932#2024-02-21T14:19:54#932#0#2024-02-21#2024-02-21
+373#Niacin (Vitamin B3)#Niacin (Vitami B3)#Niacine (Vitamine B3)#Niacina (Vitamina B3)#False#2024-02-22T09:22:58#932#2024-02-22T09:22:58#932#0#2024-02-22#2024-02-22
+374#Rhodamin-B#Rhodamine-B#Rhodamine-B#Rhodamina-B#False#2024-02-23T09:12:59#932#2024-02-23T09:12:59#932#0#2024-02-23#2024-02-23
+375#Leptospira spp.#Leptospira spp.#Leptospira spp.#Leptospira spp.#False#2024-02-27T10:23:48#932#2024-02-27T10:23:48#932#0#2024-02-27#2024-02-27
+376#Histamin#Histamine#Histamine#Istamina#False#2024-02-29T07:59:06#932#2024-02-29T07:59:06#932#0#2024-02-29#2024-02-29
+377#Cannabis#Cannabis#Cannabis#Cannabis#False#2024-02-29T09:02:18#932#2024-02-29T09:02:18#932#0#2024-02-29#2024-02-29
+378#Siliciumdioxid#silicon dioxide#Dioxyde de silicium#Silice#False#2024-03-04T07:28:58#84#2024-03-04T07:28:58#84#0#2024-03-04#2024-03-04
+379#Polycyclische aromatische Kohlenwasserstoffe (PAK)#polycyclic aromatic hydrocarbons (PAHs)#Hydrocarbure aromatique polycyclique (HAP)#Idrocarburi policiclici aromatici (IPA, PAHs)#False#2024-03-04T08:11:22#84#2024-03-04T08:11:22#84#0#2024-03-04#2024-03-04
+380#Taenia martis#Taenia martis#Taenia martis#Taenia martis#False#2024-03-06T07:08:56#84#2024-03-06T07:08:56#84#0#2024-03-06#2024-03-06
+381#Staphylococcus succinus#Staphylococcus succinus#Staphylococcus succinus#Staphylococcus succinus#False#2024-03-06T07:15:19#84#2024-03-06T07:15:19#84#0#2024-03-06#2024-03-06
+382#Tyramin#Tyramine#Tyramine#Tiramina#False#2024-03-07T07:30:08#84#2024-03-07T07:30:08#84#0#2024-03-07#2024-03-07
+383#Ruminococcus gnavus#Ruminococcus gnavus#Ruminococcus gnavus#Ruminococcus gnavus#False#2024-03-11T08:20:10#84#2024-03-11T08:20:10#84#0#2024-03-11#2024-03-11
+384#Salmonella enterica Serovar Abortusovis#Salmonella enterica Serovar Abortusovis#Salmonella enterica Serovar Abortusovis#Salmonella enterica Serovar Abortusovis#False#2024-03-14T08:44:54#84#2024-03-14T08:44:54#84#0#2024-03-14#2024-03-14
+385#Usutu-Virus#Usutu virus (USUV)#Virus d'Usutu#Usutu virus#False#2024-03-22T14:41:06#84#2024-03-22T14:41:06#84#0#2024-03-22#2024-03-22
+386#Aichivirus (AiV)#Aichivirus (AiV)#Aichivirus (AiV)#Aichivirus (AiV)#False#2024-03-22T14:48:05#84#2024-03-22T14:48:05#84#0#2024-03-22#2024-03-22
+387#Xylella#Xylella#Xylella#Xylella#False#2024-03-25T07:34:14#84#2024-03-25T07:34:14#84#0#2024-03-25#2024-03-25
+388#Clostridium butyricum#Clostridium butyricum#Clostridium butyricum#Clostridium butyricum#False#2024-03-25T08:35:50#84#2024-03-25T08:35:50#84#0#2024-03-25#2024-03-25
+389#Frittieröl#Frying oil#huile de friture#Olio per friggere#False#2024-04-02T09:04:46#84#2024-04-02T09:04:46#84#0#2024-04-02#2024-04-02
+390#Ethylenoxid#Ethylene oxide#Oxyde d'éthylène#Ossido di etilene#False#2024-04-02T14:43:50#932#2024-04-02T14:43:50#932#0#2024-04-02#2024-04-02
+391#Elizabethkingia anophelis#Elizabethkingia anophelis#Elizabethkingia anophelis#Elizabethkingia anophelis#False#2024-04-05T06:40:37#84#2024-04-05T06:40:37#84#0#2024-04-05#2024-04-05
+392#Burkholderia gladioli#Burkholderia gladioli#Burkholderia gladioli#Burkholderia gladioli#False#2024-04-05T08:35:29#84#2024-05-29T08:57:09#932#1#2024-04-05#2024-05-29
+393#Salmonella arizonae#Salmonella arizonae#Salmonella arizonae#Salmonella arizonae#False#2024-04-10T07:25:16#84#2024-04-10T07:25:16#84#0#2024-04-10#2024-04-10
+394#Pyrrolizidinalkaloide#Pyrrolizidine alkaloids#Alcaloïde pyrrolizidinique#Alcaloide pirrolizidinico#False#2024-04-12T07:14:31#84#2024-04-12T07:14:31#84#0#2024-04-12#2024-04-12
+395#Tropan-Alkaloide#tropane alkaloids#Alcaloïde tropanique#Alcaloide tropanico#False#2024-04-12T07:16:52#84#2024-04-12T07:16:52#84#0#2024-04-12#2024-04-12
+396#Koffein#caffein#Caféine#Caffeina#True#2024-04-22T07:28:06#84#2024-04-22T07:32:31#84#1#2024-04-22#2024-04-22
+397#Methylglyoxal#methylglyoxal#Méthylglyoxal#Metilgliossale#False#2024-04-23T07:30:48#84#2024-04-23T07:30:48#84#0#2024-04-23#2024-04-23
+398#Butylhydroxyanisol#Butylated hydroxyanisole#Hydroxyanisole butylé#Butilidrossianisolo#False#2024-04-23T07:49:03#84#2024-04-23T07:49:03#84#0#2024-04-23#2024-04-23
+399#Natriumhydroxid (kaustische(s) Soda)#Sodium hydroxide (caustic soda)#Hydroxyde de sodium (soude caustique)#Idrossido di sodio (soda caustica)#False#2024-04-29T08:24:11#932#2024-04-29T08:24:11#932#0#2024-04-29#2024-04-29
+400#Wasserstoffperoxid#Hydrogen peroxide#Peroxyde d'hydrogène#Perossido di idrogeno#False#2024-04-29T08:25:16#932#2024-04-29T08:25:16#932#0#2024-04-29#2024-04-29
+401#Enterococcus spp.#Enterococcus spp.#Enterococcus spp.#Enterococcus spp.#False#2024-05-02T08:38:57#84#2024-05-02T08:38:57#84#0#2024-05-02#2024-05-02
+402#Thallium#Thallium#Thallium#Tallio#False#2024-05-06T07:34:58#84#2024-05-06T07:34:58#84#0#2024-05-06#2024-05-06
+403#Mykobakterien#Mycobacterium#Mycobacterium#Mycobacterium#False#2024-05-07T09:48:31#932#2024-05-07T09:48:31#932#0#2024-05-07#2024-05-07
+405#Salmonella Grumpensis#Salmonella Grumpensis#Salmonella Grumpensis#Salmonella Grumpensis#False#2024-05-17T07:23:21#84#2024-05-17T07:23:21#84#0#2024-05-17#2024-05-17
+406#Microsporidium theragrae#Microsporidium theragrae#Microsporidium theragrae#Microsporidium theragrae#False#2024-05-21T07:02:17#84#2024-05-21T07:02:17#84#0#2024-05-21#2024-05-21
+407#Rodentizid#Rodenticide#Rodenticide#Rodenticida#False#2024-05-27T16:04:15#932#2024-05-27T16:04:15#932#0#2024-05-27#2024-05-27
+408#illegale Drogen#illicit drugs#drogues illicites#droghe illecite#False#2024-05-27T16:05:48#932#2024-05-27T16:05:48#932#0#2024-05-27#2024-05-27
+409#Cronobacter spp.#Cronobacter spp.#Cronobacter spp.#Cronobacter spp.#False#2024-05-29T08:56:04#932#2024-05-29T08:56:04#932#0#2024-05-29#2024-05-29
+411#α,β-ungesättigte Carbonylverbindung#α,β-Unsaturated carbonyl compound#Composé carbonylé α,β-insaturé#α,β-Composto carbonilico insaturo#False#2024-05-30T10:12:35#932#2024-05-30T10:12:35#932#0#2024-05-30#2024-05-30
+412#MnHexP#MnHexP#MnHexP#MnHexP#False#2024-06-06T17:06:45#84#2024-06-06T17:06:45#84#0#2024-06-06#2024-06-06
+413#Xylit#Xylitol#Xylitol#Xilitolo#False#2024-06-13T15:09:38#932#2024-06-13T15:09:38#932#0#2024-06-13#2024-06-13
+414#Glycidol#Glycidol#Glycidol#Glicidolo#False#2024-06-24T12:17:38#932#2024-06-24T12:17:38#932#0#2024-06-24#2024-06-24
+415#monacoline K#monacolin K#monacoline K#monacolina K#False#2024-06-25T07:37:58#932#2024-06-25T07:37:58#932#0#2024-06-25#2024-06-25
+416#Polyethylen niedriger Dichte (LDPE)#Low density polyethylene (LDPE)#polyéthylène basse densité (LDPE)#polietilene a bassa densità (LDPE)#False#2024-07-01T10:57:52#932#2024-07-01T10:57:52#932#0#2024-07-01#2024-07-01
+417#polypropylen (PP)#polypropylene (PP)#polypropylène (PP)#polipropilene (pp)#False#2024-07-01T10:59:01#932#2024-07-01T10:59:01#932#0#2024-07-01#2024-07-01
+419#polyurethane (PUR)#polyurethane (PUR)#polyuréthane (PUR)#Poliuretano (PUR)#False#2024-07-01T11:02:13#932#2024-07-01T11:02:13#932#0#2024-07-01#2024-07-01
+420#Polyvinylchlorid (PVC)#polyvinyl chloride (PVC)#Polychlorure de vinyle (PVC)#Polivinilcloruro (PVC)#False#2024-07-01T11:03:22#932#2024-07-01T11:03:22#932#0#2024-07-01#2024-07-01
+421#Dimethylarsinsäure (DMA)#dimethylarsinic acid (DMA)#Acide diméthylarsinique (DMA)#acido dimetilarsinico (DMA)#False#2024-07-03T13:40:57#932#2024-07-03T13:40:57#932#0#2024-07-03#2024-07-03
+422#Muscimol#Muscimol#MuscimolE#Muscimolo#False#2024-07-04T07:26:50#932#2024-07-04T07:26:50#932#0#2024-07-04#2024-07-04
+423#Glasfaserverstärkter Kunststoff (Fiberglas)#Fibreglass#Plastique à renfort de verre#Vetroresina#False#2024-07-04T07:49:35#84#2024-07-04T07:53:11#84#1#2024-07-04#2024-07-04
+424#Flüchtige, organische Verbindungen#volatile organic compounds#Les composés organiques volatils#Composti organici volatili#False#2024-07-08T07:53:03#84#2024-07-08T07:53:03#84#0#2024-07-08#2024-07-08
+425#Kupfer#Copper#Cuivre#Rame#False#2024-07-10T08:49:02#84#2024-07-10T08:49:02#84#0#2024-07-10#2024-07-10
+427#Enterovirus#Enterovirus#Entérovirus#Enterovirus#False#2024-07-22T08:49:45#84#2024-07-22T08:49:45#84#0#2024-07-22#2024-07-22
+428#Vibrio mimicus#Vibrio mimicus#Vibrio mimicus#Vibrio mimicus#False#2024-07-24T08:57:59#84#2024-07-24T08:57:59#84#0#2024-07-24#2024-07-24
+429#Wolfram#Tungsten#Tungstène#Tungsteno#False#2024-08-02T06:45:23#84#2024-08-02T06:45:23#84#0#2024-08-02#2024-08-02
+430#Uran#Uranium#Uranium#Uranio#False#2024-08-02T06:47:09#84#2024-08-02T06:47:09#84#0#2024-08-02#2024-08-02
+431#Cobalt#Cobalt#Cobalt#Cobalto#False#2024-08-02T06:48:49#84#2024-08-02T06:48:49#84#0#2024-08-02#2024-08-02
+432#Zink#Zinc#Zinc#Zinco#False#2024-08-02T06:50:29#84#2024-08-02T06:50:29#84#0#2024-08-02#2024-08-02
+433#Poliovirus#Poliovirus#Poliovirus#Poliovirus#False#2024-08-02T08:04:02#84#2024-08-02T08:04:02#84#0#2024-08-02#2024-08-02
+434#Coxsackie-Virus#coxsackieviruses#coxsackievirus#Coxsackie virus#False#2024-08-02T08:06:30#84#2024-08-02T08:06:30#84#0#2024-08-02#2024-08-02
+435#Ricinus communis#Ricinus communis#Ricinus communis#Ricinus communis#False#2024-08-05T08:44:25#932#2024-08-05T08:44:25#932#0#2024-08-05#2024-08-05
+436#Ricinolsäure#ricinoleic acid#Acide ricinoléique#Acido ricinoleico#False#2024-08-05T08:48:05#932#2024-08-05T08:48:05#932#0#2024-08-05#2024-08-05
+437#Zearalenon#Zearalenone (ZEN)#Zéaralénone#Zearalenone#False#2024-08-06T07:35:09#84#2024-08-06T07:35:09#84#0#2024-08-06#2024-08-06
+439#Beryllium#Beryllium#Béryllium#Berillio#False#2024-08-06T08:51:45#932#2024-08-06T08:51:45#932#0#2024-08-06#2024-08-06
+440#Tellur#Tellurium#Tellure#Tellurio#False#2024-08-08T07:39:57#84#2024-08-08T07:39:57#84#0#2024-08-08#2024-08-08
+441#Dimethyltetrachlorterephthalat#Dimethyl tetrachloroterephthalate (DCPA)#Diméthyltétrachlorotéréphtalate#Tetraclorotereftalato di dimetile#False#2024-08-09T07:26:09#84#2024-08-09T07:26:09#84#0#2024-08-09#2024-08-09
+442#Phytotoxin#Phytotoxin#Phytotoxine#Fitotossina#False#2024-08-16T07:46:20#932#2024-08-16T07:46:20#932#0#2024-08-16#2024-08-16
+443#5-hydroxymethylfurfural#5-hydroxymethylfurfural#5-hydroxyméthylfurfurale#5-Idrossimetilfurfurale#False#2024-08-16T07:47:33#932#2024-08-16T07:47:33#932#0#2024-08-16#2024-08-16
+444#Salmonella Derby#Salmonella Derby#Salmonella Derby#Salmonella Derby#False#2024-08-21T08:03:12#84#2024-08-21T08:03:12#84#0#2024-08-21#2024-08-21
+445#Hämeisen#Haem iron#fer héminique#ferro ematico#False#2024-08-21T11:38:25#932#2024-08-21T11:38:25#932#0#2024-08-21#2024-08-21
+447#Lactococcus lactis cremoris#Lactococcus lactis cremoris#Lactococcus lactis cremoris#Lactococcus lactis cremoris#False#2024-08-26T08:51:53#932#2024-08-26T08:51:53#932#0#2024-08-26#2024-08-26
+448#psychoaktive Droge#psychoactive drug#drogue psychoactive#farmaco psicoattivo#False#2024-08-26T09:15:18#932#2024-08-26T09:15:18#932#0#2024-08-26#2024-08-26
+449#Patulin#Patulin#Patuline#Patulina#False#2024-08-26T09:26:13#84#2024-08-26T09:26:13#84#0#2024-08-26#2024-08-26
+450#Fluoride#Fluoride#Fluorure#Fluoruro#False#2024-08-27T07:44:32#932#2024-08-27T07:44:32#932#0#2024-08-27#2024-08-27
+451#Xanthomonas hortorum pv. Vitians#Xanthomonas hortorum pv. Vitians#Xanthomonas hortorum pv. Vitians#Xanthomonas hortorum pv. Vitians#False#2024-09-04T16:06:47#932#2024-09-04T16:06:47#932#0#2024-09-04#2024-09-04
+452#Hefen#Yeast#Levure#Lievito#False#2024-09-04T16:30:03#932#2024-09-04T16:30:03#932#0#2024-09-04#2024-09-04
+453#Trihalogenmethane#trihalomethanes#Trihalogénométhane#Trialometano#False#2024-09-05T06:40:14#932#2024-09-05T06:40:14#932#0#2024-09-05#2024-09-05
+454#Farbstoffe#Dye#Colorant#Colorante#False#2024-09-05T07:49:58#932#2024-09-05T07:49:58#932#0#2024-09-05#2024-09-05
+457#Adenoviren (HAdV)#Adenovirus (HAdV)#adénovirus#adenovirus#False#2024-09-13T07:55:40#84#2024-09-13T07:55:40#84#0#2024-09-13#2024-09-13
+458#Salmonella enterica serovar Umbilo#Salmonella enterica serovar Umbilo#Salmonella enterica serovar Umbilo#Salmonella enterica serovar Umbilo#False#2024-09-27T08:27:53#1192#2024-09-27T08:27:53#1192#0#2024-09-27#2024-09-27
+459#Hexahydrocannabinol (HHC)#Hexahydrocannabinol (HHC)#Hexahydrocannabinol (HHC)#Hexahydrocannabinol (HHC)#False#2024-09-27T08:43:48#1192#2024-09-27T08:43:48#1192#0#2024-09-27#2024-09-27
+460#Brustkrebs erregende Stoffe#mammary carcinogens#cancérogènes mammaires#cancerogeni mammari#False#2024-09-30T08:58:46#932#2024-09-30T08:58:46#932#0#2024-09-30#2024-09-30
+461#Ethanol#Ethanol#Éthanol#Etanolo#False#2024-10-03T08:03:57#84#2024-10-03T08:03:57#84#0#2024-10-03#2024-10-03
+462#Phenols#Phenols#Phenols#Phenols#False#2024-10-04T08:40:54#1192#2024-10-04T08:40:54#1192#0#2024-10-04#2024-10-04
+463#Burkholderia multivorans#Burkholderia multivorans#Burkholderia multivorans#Burkholderia multivorans#False#2024-10-08T08:33:13#84#2024-10-08T08:33:13#84#0#2024-10-08#2024-10-08
+464# Babesia# Babesia# Babesia# Babesia#False#2024-10-09T08:03:27#932#2024-10-09T08:03:27#932#0#2024-10-09#2024-10-09

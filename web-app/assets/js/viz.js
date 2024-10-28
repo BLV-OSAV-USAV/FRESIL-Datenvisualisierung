@@ -146,7 +146,9 @@ function addSteckbriefInfo(filter, id, data){
       angle += 0.01; // Adjust the angle increment based on your preference
   });
   let multiplier
-  if (maxCount > 25) {
+  if (maxCount > 50) {
+    multiplier = Math.min(rect.width, rect.height) / 1000;
+    } else if (maxCount > 25 && maxCount <= 50) {
     multiplier = Math.min(rect.width, rect.height) / 500;
   } else if (maxCount > 15 && maxCount <= 25) {
     multiplier =  Math.min(rect.width, rect.height) / 250;
